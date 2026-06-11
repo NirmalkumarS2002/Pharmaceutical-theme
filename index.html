@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediCore Pharma</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <section class="hero">
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+
+      <div class="logo">
+        <img src="./src/logo.webp" alt="Stackly Logo">
+      </div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Products</a></li>
+        <li><a href="#">Research</a></li>
+        <li><a href="#">Hospitals</a></li>
+        <li><a href="#">Contact</a></li>
+        <button class="nav-btn login-btn">
+          <span>Login</span>
+        </button>
+      </ul>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+    </nav>
+
+    <!-- HERO CONTENT -->
+    <div class="hero-content">
+
+      <!-- SLIDER BUTTONS -->
+      <div class="slider-buttons">
+        <button id="prevBtn" class="slide-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button id="nextBtn" class="slide-btn">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- TAG -->
+      <div class="tag homta">
+        Trusted by 5,000+ Healthcare Professionals
+        <i class="fa-solid fa-arrow-right"></i>
+      </div>
+
+      <!-- TITLE -->
+      <h1 id="heroTitle">
+        Advancing Health With Science-Driven Pharmaceutical Solutions.
+      </h1>
+
+      <!-- TEXT -->
+      <p id="heroText">
+        We develop safe, effective, and affordable medicines to improve lives across communities worldwide.
+      </p>
+
+      <!-- STATS ROW -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">200+</span>
+          <span class="stat-label">Products</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Countries</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">30yr</span>
+          <span class="stat-label">Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">ISO</span>
+          <span class="stat-label">Certified</span>
+        </div>
+      </div>
+
+      <!-- BUTTONS -->
+      <div class="hero-buttons">
+        <button class="btn btn-outline">
+          <span>
+            <i class="fa-solid fa-play"></i>
+            Our Research
+          </span>
+        </button>
+        <button class="btn btn-primary">
+          <span>Browse Products</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- SLIDE DOTS -->
+    <div class="slide-dots" id="slideDots"></div>
+
+  </section>
+
+  <script>
+    // NAVBAR SCROLL
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("active", window.scrollY > 50);
+    });
+
+    // MOBILE MENU
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+      menuToggle.innerHTML = navLinks.classList.contains("active")
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    const loginBtn = document.querySelector(".login-btn");
+    function checkMobileMenu() {
+      if (window.innerWidth <= 1100) {
+        navLinks.appendChild(loginBtn);
+      } else {
+        document.querySelector(".navbar").insertBefore(loginBtn, menuToggle);
+      }
+    }
+    checkMobileMenu();
+    window.addEventListener("resize", checkMobileMenu);
+
+    // HERO SLIDER
+    const hero = document.querySelector(".hero");
+    const heroTitle = document.getElementById("heroTitle");
+    const heroText = document.getElementById("heroText");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const dotsContainer = document.getElementById("slideDots");
+
+
+//linear-gradient(rgba(13,92,85,.85),rgba(8,72,65,.85))
+const slides = [
+{
+image:"./src/home1.webp",
+title:"Advancing Health With Science-Driven Pharmaceutical Solutions.",
+text:"We develop safe, effective, and affordable medicines."
+},
+{
+image:"./src/home2.webp",
+title:"Pioneering Research For a Healthier Tomorrow.",
+text:"Our R&D teams work tirelessly to discover breakthrough therapies."
+},
+{
+image:"./src/home3.webp",
+title:"Trusted Medicines. Certified Quality. Global Reach.",
+text:"From manufacturing to delivery, every step meets international standards."
+}
+];
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "dot" + (i === 0 ? " active" : "");
+      dot.addEventListener("click", () => { clearInterval(autoSlide); goTo(i); });
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll(".dot");
+
+    let index = 0;
+
+    function goTo(n) {
+      index = n;
+      updateSlide();
+    }
+
+function updateSlide() {
+
+  hero.style.backgroundImage =
+  `linear-gradient(
+    rgba(13,92,85,.45),
+    rgba(8,72,65,.45)
+  ),
+  url('${slides[index].image}')`;
+
+  hero.style.backgroundSize = "cover";
+  hero.style.backgroundPosition = "center center";
+  hero.style.backgroundRepeat = "no-repeat";
+
+  heroTitle.style.opacity = 0;
+  heroText.style.opacity = 0;
+
+  setTimeout(() => {
+    heroTitle.innerText = slides[index].title;
+    heroText.innerText = slides[index].text;
+
+    heroTitle.style.opacity = 1;
+    heroText.style.opacity = 1;
+  }, 300);
+
+  dots.forEach((d, i) =>
+    d.classList.toggle("active", i === index)
+  );
+}
+    // Set initial bg
+    hero.style.background = slides[0].bg;
+
+    let autoSlide = setInterval(() => {
+      index = (index + 1) % slides.length;
+      updateSlide();
+    }, 4000);
+
+    nextBtn.addEventListener("click", () => {
+      clearInterval(autoSlide);
+      index = (index + 1) % slides.length;
+      updateSlide();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      clearInterval(autoSlide);
+      index = (index - 1 + slides.length) % slides.length;
+      updateSlide();
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      });
+    });
+  </script>
+
+</body>
+
+</html>
