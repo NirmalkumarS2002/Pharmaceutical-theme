@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+
+  <title>Law Service Login</title>
+
+  <!-- GOOGLE FONT -->
+
+  <link rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- FONT AWESOME -->
+
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+
+      font-family:'Poppins', sans-serif;
+
+      min-height:100vh;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      padding:10px;
+
+      overflow:auto;
+
+      background:
+      linear-gradient(
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.88)
+      ),
+      url('./src/login-bg.webp');
+
+      background-size:cover;
+      background-position:center;
+
+      position:relative;
+    }
+
+    body::before{
+
+      content:"";
+
+      position:absolute;
+
+      width:100%;
+      height:100%;
+
+      backdrop-filter:blur(3px);
+    }
+
+    /* LOGIN CARD */
+
+    .login-box{
+
+      width:340px;
+
+      padding:20px 30px;
+
+      border-radius:20px;
+
+      background:rgba(0,0,0,0.55);
+
+      border:1px solid rgba(212,175,55,0.35);
+
+      backdrop-filter:blur(12px);
+
+      box-shadow:
+      0 0 20px rgba(0,0,0,0.5),
+      0 0 10px rgba(212,175,55,0.08);
+
+      position:relative;
+      z-index:10;
+    }
+
+    /* COMPANY LOGO */
+
+    .logowrap{
+
+      display:flex;
+      justify-content:center;
+
+      margin-bottom:2px;
+    }
+
+    .companylogo{
+
+      width:clamp(170px,19vw,210px);
+      margin-bottom: 20px;
+      object-fit:contain;
+    }
+
+    /* LOGIN HERE TEXT */
+
+    .login-here-text{
+
+      text-align:center;
+
+      color:white;
+
+      font-size:18px;
+
+      font-weight:600;
+
+      margin-top:-2px;
+
+      margin-bottom:12px;
+
+      letter-spacing:1px;
+    }
+
+    /* LINE DESIGN */
+
+    .line-design{
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      gap:10px;
+
+      margin-bottom:14px;
+    }
+
+    .line{
+
+      width:65px;
+      height:1px;
+
+      background:#9b7a22;
+    }
+
+    .line-design i{
+
+      color:#c89b2d;
+
+      font-size:10px;
+    }
+
+    /* SUBTITLE */
+
+    .subtitle{
+
+      text-align:center;
+
+      color:#d3d3d3;
+
+      font-size:12px;
+
+      margin-bottom:16px;
+
+      line-height:1.5;
+    }
+
+    /* INPUT BOX */
+
+    .input-box{
+
+      margin-bottom:14px;
+    }
+
+    .input-box label{
+
+      display:block;
+
+      color:#e6c15a;
+
+      margin-bottom:6px;
+
+      font-size:13px;
+
+      font-weight:600;
+    }
+
+    .input-field{
+
+      position:relative;
+    }
+
+    /* LEFT ICON */
+
+    .input-field i.left-icon{
+
+      position:absolute;
+
+      left:16px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      color:#d4af37;
+
+      font-size:14px;
+    }
+
+    /* INPUTS */
+
+    .input-field input{
+
+      width:100%;
+
+      height:46px;
+
+      border-radius:12px;
+
+      border:1px solid rgba(212,175,55,0.35);
+
+      background:rgba(0,0,0,0.35);
+
+      color:white;
+
+      font-size:13px;
+
+      padding-left:45px;
+      padding-right:40px;
+
+      outline:none;
+
+      transition:0.3s;
+    }
+
+    .input-field input::placeholder{
+
+      color:#bdbdbd;
+    }
+
+    .input-field input:focus{
+
+      border-color:#f5d76e;
+
+      box-shadow:
+      0 0 10px rgba(212,175,55,0.1);
+    }
+
+    /* CUSTOM DROPDOWN */
+
+    .custom-select{
+      position:relative;
+    }
+
+    .select-btn{
+
+      width:100%;
+
+      height:46px;
+
+      border-radius:12px;
+
+      border:1px solid rgba(212,175,55,0.35);
+
+      background:rgba(0,0,0,0.35);
+
+      padding:0 16px;
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:space-between;
+
+      cursor:pointer;
+
+      transition:0.3s;
+    }
+
+    .select-btn:hover{
+
+      border-color:#f5d76e;
+
+      box-shadow:
+      0 0 10px rgba(212,175,55,0.1);
+    }
+
+    .select-left{
+
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+    }
+
+    .select-left i{
+
+      color:#d4af37;
+
+      font-size:14px;
+    }
+
+    .select-left span{
+
+      color:white;
+
+      font-size:13px;
+    }
+
+    .arrow{
+
+      color:#d4af37;
+
+      font-size:12px;
+
+      transition:0.3s;
+    }
+
+    .custom-select.active .arrow{
+
+      transform:rotate(180deg);
+    }
+
+    /* OPTIONS */
+
+    .select-options{
+
+      position:absolute;
+
+      top:54px;
+
+      left:0;
+
+      width:100%;
+
+      background:#111;
+
+      border:1px solid rgba(212,175,55,0.35);
+
+      border-radius:12px;
+
+      overflow:hidden;
+
+      display:none;
+
+      z-index:100;
+
+      box-shadow:
+      0 10px 20px rgba(0,0,0,0.35);
+    }
+
+    .custom-select.active .select-options{
+      display:block;
+    }
+
+    /* OPTION */
+
+    .option{
+
+      padding:13px 16px;
+
+      color:#f5d76e;
+
+      font-size:13px;
+
+      cursor:pointer;
+
+      transition:0.25s;
+    }
+
+    .option:hover{
+
+      background:#c89b2d;
+
+      color:#000;
+    }
+
+    /* EYE BUTTON */
+
+    .eye-btn{
+
+      position:absolute;
+
+      right:14px;
+      top:50%;
+
+      transform:translateY(-50%);
+
+      color:#d4af37;
+
+      cursor:pointer;
+
+      font-size:14px;
+    }
+
+    /* LOGIN BUTTON */
+
+    .login-btn{
+
+      width:100%;
+
+      height:46px;
+
+      border:none;
+
+      border-radius:12px;
+
+      background:
+      linear-gradient(
+        135deg,
+        #c89b2d,
+        #f5de87
+      );
+
+      color:black;
+
+      font-size:14px;
+
+      font-weight:700;
+
+      cursor:pointer;
+
+      display:flex;
+      justify-content:center;
+      align-items:center;
+
+      gap:8px;
+
+      transition:0.3s;
+
+      margin-top:2px;
+    }
+
+    .login-btn:hover{
+
+      transform:translateY(-2px);
+
+      box-shadow:
+      0 8px 16px rgba(212,175,55,0.15);
+    }
+
+    /* BOTTOM LINE */
+
+    .bottom-line{
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      gap:8px;
+
+      margin-top:14px;
+      margin-bottom:10px;
+    }
+
+    .bottom-line .line{
+
+      width:55px;
+    }
+
+    /* FOOTER */
+
+    .footer-text{
+
+      text-align:center;
+
+      color:#bdbdbd;
+
+      font-size:12px;
+    }
+
+    .footer-text a{
+
+      color:#d4af37;
+
+      text-decoration:none;
+
+      font-weight:600;
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+      .login-box{
+
+        width:100%;
+
+        max-width:320px;
+
+        padding:12px 16px;
+      }
+
+      .companylogo{
+
+        width:120px;
+      }
+
+      .login-here-text{
+
+        font-size:14px;
+      }
+
+    }
+
+    .forget{
+      text-align: center;
+    }
+    .forget a{
+      text-decoration: none;
+        text-align:center;
+
+      color:#bdbdbd;
+
+      font-size:12px;
+    }
+
+    /* =========================
+   PHARMA GREEN THEME
+========================= */
+
+body{
+  background:
+  linear-gradient(
+    rgba(4,44,42,.60),
+    rgba(5,57,54,.92)
+  ),
+  url('./src/login-bg.webp') !important;
+
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+}
+
+body::before{
+  backdrop-filter:blur(8px);
+
+  background:
+  radial-gradient(circle at 20% 20%,
+  rgba(16,185,129,.15),
+  transparent 35%),
+
+  radial-gradient(circle at 80% 80%,
+  rgba(6,182,212,.15),
+  transparent 35%);
+}
+
+.login-box{
+  background:rgba(12,52,49,.82) !important;
+  border:1px solid rgba(31,164,140,.30) !important;
+
+  box-shadow:
+  0 0 30px rgba(0,0,0,.35),
+  0 0 20px rgba(31,164,140,.15) !important;
+}
+
+.login-here-text{
+  color:#fff !important;
+}
+
+.subtitle{
+  color:#c8e6df !important;
+}
+
+.input-box label{
+  color:#6ee7c8 !important;
+}
+
+.input-field i.left-icon,
+.select-left i,
+.arrow,
+.eye-btn{
+  color:#10b981 !important;
+}
+
+.input-field input,
+.select-btn{
+  border:1px solid rgba(110,231,200,.25) !important;
+  background:rgba(255,255,255,.05) !important;
+}
+
+.input-field input:focus,
+.select-btn:hover{
+  border-color:#10b981 !important;
+
+  box-shadow:
+  0 0 15px rgba(16,185,129,.15) !important;
+}
+
+.line{
+  background:#10b981 !important;
+}
+
+.line-design i,
+.bottom-line i{
+  color:#10b981 !important;
+}
+
+.select-options{
+  background:#103c39 !important;
+  border:1px solid rgba(16,185,129,.30) !important;
+}
+
+.option{
+  color:#b8fff0 !important;
+}
+
+.option:hover{
+  background:#10b981 !important;
+  color:#fff !important;
+}
+
+.login-btn{
+  background:
+  linear-gradient(
+    135deg,
+    #0f766e,
+    #10b981
+  ) !important;
+
+  color:#fff !important;
+}
+
+.login-btn:hover{
+  box-shadow:
+  0 10px 25px rgba(16,185,129,.35) !important;
+}
+
+.footer-text{
+  color:#b7d7d0 !important;
+}
+
+.footer-text a{
+  color:#34d399 !important;
+}
+
+.forget a{
+  color:#b7d7d0 !important;
+}
+
+.footer-text a:hover,
+.forget a:hover{
+  color:#6ee7c8 !important;
+}
+  </style>
+
+</head>
+
+<body>
+
+ <div class="login-box">
+
+    <!-- COMPANY LOGO -->
+    <div class="logowrap">
+      <a href="login.html">
+        <img src="./src/logo.webp"
+          alt="company logo"
+          class="companylogo">
+      </a>
+    </div>
+
+    <!-- LOGIN HERE -->
+    <p class="login-here-text">
+      Pharma Portal Login
+    </p>
+
+    <!-- LINE -->
+    <div class="line-design">
+      <div class="line"></div>
+      <i class="fa-solid fa-staff-snake"></i>
+      <div class="line"></div>
+    </div>
+
+    <!-- SUBTITLE -->
+    <p class="subtitle">
+      Secure access for Medical Representatives and Administrators
+    </p>
+
+    <!-- ROLE -->
+    <div class="input-box">
+
+      <label>Select User Type</label>
+
+      <div class="custom-select">
+
+        <!-- BUTTON -->
+        <div class="select-btn" id="selectBtn">
+
+          <div class="select-left">
+
+            <i class="fa-solid fa-user-doctor"></i>
+
+            <span id="selectedText">
+              Select User Type
+            </span>
+
+          </div>
+
+          <i class="fa-solid fa-chevron-down arrow"></i>
+
+        </div>
+
+        <!-- OPTIONS -->
+        <div class="select-options" id="selectOptions">
+
+          <div class="option"
+            data-value="Administrator">
+            Administrator
+          </div>
+
+          <div class="option"
+            data-value="Medical Representative">
+            Medical Representative
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- EMAIL -->
+    <div class="input-box">
+
+      <label>Corporate Email</label>
+
+      <div class="input-field">
+
+        <i class="fa-solid fa-envelope left-icon"></i>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your corporate email">
+
+      </div>
+
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="input-box">
+
+      <label>Password</label>
+
+      <div class="input-field">
+
+        <i class="fa-solid fa-lock left-icon"></i>
+
+        <input
+          type="password"
+          placeholder="Enter your secure password"
+          id="password">
+
+        <span
+          class="eye-btn"
+          id="togglePassword">
+
+          <i class="fa-solid fa-eye"></i>
+
+        </span>
+
+      </div>
+
+    </div>
+
+    <!-- LOGIN BUTTON -->
+    <button class="login-btn">
+
+      <i class="fa-solid fa-capsules"></i>
+
+      Access Portal
+
+    </button>
+
+    <!-- BOTTOM LINE -->
+    <div class="bottom-line">
+
+      <div class="line"></div>
+
+      <i class="fa-solid fa-heart-pulse"
+        style="color:#00b4d8;font-size:10px;"></i>
+
+      <div class="line"></div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer-text">
+
+      New to the platform?
+
+      <a href="sign.html">
+        Register Account
+      </a>
+
+    </div>
+
+    <div class="forget">
+      <a href="404.html">
+        Forgot Password?
+      </a>
+    </div>
+
+</div>
+
+<script>
+
+  /* CUSTOM DROPDOWN */
+
+  const customSelect =
+    document.querySelector(".custom-select");
+
+  const selectBtn =
+    document.getElementById("selectBtn");
+
+  const selectedText =
+    document.getElementById("selectedText");
+
+  const options =
+    document.querySelectorAll(".option");
+
+  let selectedRole = "";
+
+  /* OPEN */
+
+  selectBtn.addEventListener("click", () => {
+
+    customSelect.classList.toggle("active");
+
+  });
+
+  /* SELECT */
+
+  options.forEach((option) => {
+
+    option.addEventListener("click", () => {
+
+      selectedText.innerText =
+        option.innerText;
+
+      selectedRole =
+        option.dataset.value;
+
+      customSelect.classList.remove("active");
+
+    });
+
+  });
+
+  /* OUTSIDE CLICK */
+
+  document.addEventListener("click", (e) => {
+
+    if(!customSelect.contains(e.target)){
+
+      customSelect.classList.remove("active");
+
+    }
+
+  });
+
+  // GET FORM ELEMENTS
+
+  const emailInput =
+    document.querySelector('input[type="email"]');
+
+  const passwordInput =
+    document.getElementById("password");
+
+  const loginBtn =
+    document.querySelector(".login-btn");
+
+  // LOGIN BUTTON CLICK
+
+  loginBtn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    const role =
+      selectedRole;
+
+    const email =
+      emailInput.value.trim();
+
+    const password =
+      passwordInput.value.trim();
+
+    // ROLE VALIDATION
+
+    if(role === ""){
+
+      alert("Please select role");
+
+      return;
+    }
+
+    // EMAIL VALIDATION
+
+    if(email === ""){
+
+      alert("Please enter email address");
+
+      emailInput.focus();
+
+      return;
+    }
+
+    const emailPattern =
+      /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(!email.match(emailPattern)){
+
+      alert("Please enter valid email");
+
+      emailInput.focus();
+
+      return;
+    }
+
+    // PASSWORD VALIDATION
+
+    if(password === ""){
+
+      alert("Please enter password");
+
+      passwordInput.focus();
+
+      return;
+    }
+
+    if(password.length < 6){
+
+      alert("Password must be minimum 6 characters");
+
+      passwordInput.focus();
+
+      return;
+    }
+
+    // ROLE BASED REDIRECT
+
+    if(role === "Admin"){
+
+      localStorage.setItem(
+        "adminEmail",
+        email
+      );
+
+      window.location.href =
+        "admin.html";
+    }
+
+    else if(role === "Client"){
+
+      localStorage.setItem(
+        "adminEmail",
+        email
+      );
+
+      window.location.href =
+        "client.html";
+    }
+
+  });
+
+  // PASSWORD SHOW / HIDE
+
+  const togglePassword =
+    document.getElementById("togglePassword");
+
+  togglePassword.addEventListener("click", () => {
+
+    const type =
+      passwordInput.getAttribute("type") === "password"
+      ? "text"
+      : "password";
+
+    passwordInput.setAttribute("type", type);
+
+    togglePassword.innerHTML =
+      type === "password"
+      ? '<i class="fa-solid fa-eye"></i>'
+      : '<i class="fa-solid fa-eye-slash"></i>';
+
+  });
+
+</script>
+
+</body>
+
+</html>

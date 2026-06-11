@@ -5,10 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>404 - Pharmaceutical Page Not Found</title>
+  <title>404 - Page Not Found</title>
 
   <!-- GOOGLE FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
@@ -16,222 +17,416 @@
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
- <style>
-  *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body{
-  font-family:'Poppins',sans-serif;
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-  padding:20px;
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px;
+      position: relative;
+      background:
+        radial-gradient(circle at top left,
+          rgba(255, 196, 0, 0.08),
+          transparent 35%),
 
-  background:
-  radial-gradient(circle at top left,
-  rgba(0,255,136,.12),
-  transparent 35%),
+        radial-gradient(circle at bottom right,
+          rgba(255, 196, 0, 0.08),
+          transparent 35%),
 
-  radial-gradient(circle at bottom right,
-  rgba(0,200,120,.12),
-  transparent 35%),
+        #000;
+    }
 
-  #07130d;
-}
+    /* FLOATING ICONS */
 
- .logo{
-  width: clamp(130px,16vw,220px);
- }
+    .floating-icon {
+      position: absolute;
+      color: rgba(255, 201, 59, 0.06);
+      z-index: 0;
+      animation: float 6s ease-in-out infinite;
+    }
 
-.error-container{
+    .icon1 {
+      top: 10%;
+      left: 8%;
+      font-size: 45px;
+    }
 
-  width:100%;
-  max-width: 600px;
-  padding: 40px 25px;
+    .icon2 {
+      bottom: 12%;
+      right: 10%;
+      font-size: 42px;
+      animation-delay: 2s;
+    }
 
-  text-align:center;
+    .icon3 {
+      top: 55%;
+      left: 15%;
+      font-size: 35px;
+      animation-delay: 1s;
+    }
 
-  background:rgba(8,18,12,.96);
+    @keyframes float {
 
-  border:1px solid rgba(0,255,136,.15);
+      0% {
+        transform: translateY(0px);
+      }
 
-  border-radius:30px;
+      50% {
+        transform: translateY(-15px);
+      }
 
-  backdrop-filter:blur(12px);
+      100% {
+        transform: translateY(0px);
+      }
 
-  box-shadow:
-  0 0 0 1px rgba(255,255,255,.03),
-  0 20px 50px rgba(0,0,0,.7),
-  0 0 45px rgba(0,255,136,.15);
-}
+    }
 
-.error-code{
+    /* CONTAINER */
 
-  font-size: clamp(50px, 7vw, 100px);
+    .container {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(10, 10, 10, 0.96);
+      border: 1px solid rgba(255, 196, 0, 0.08);
+      border-radius: 26px;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
 
-  font-weight:800;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03),
+        0 20px 50px rgba(0, 0, 0, 0.7),
+        0 0 40px rgba(255, 196, 0, 0.06);
 
-  line-height:1;
+      backdrop-filter: blur(14px);
+    }
 
-  margin-bottom:15px;
+    .container::before {
 
-  color:#00ff88;
+      content: '';
 
-  text-shadow:
-  0 0 15px rgba(0,255,136,.5),
-  0 0 35px rgba(0,255,136,.25);
-}
+      position: absolute;
 
-.error-title{
-  font-size: clamp(18px, 2.5vw, 35px);
+      inset: 0;
 
-  color:white;
+      border-radius: 26px;
 
-  font-weight:700;
+      padding: 1px;
 
-  margin-bottom:18px;
-}
+      background: linear-gradient(135deg,
+          rgba(255, 196, 0, 0.25),
+          transparent,
+          rgba(255, 196, 0, 0.12));
 
-.error-text{
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
 
-  max-width:580px;
+      -webkit-mask-composite: xor;
 
-  margin:auto;
+      mask-composite: exclude;
 
-  color:rgba(255,255,255,0.7);
+      pointer-events: none;
+    }
 
-  line-height:1.9;
+    /* LOGO */
 
-  font-size:15px;
+    .logo {
+      width: 145px;
+      margin-bottom: 20px;
+      object-fit: contain;
 
-  margin-bottom:35px;
-}
+      filter:
+        drop-shadow(0 0 10px rgba(255, 196, 0, 0.15));
+    }
 
-.error-buttons{
+    /* 404 */
 
-  display:flex;
+    .error-code {
 
-  justify-content:center;
+      font-size: 5.5rem;
 
-  gap:18px;
+      line-height: 1;
 
-  flex-wrap:wrap;
-}
+      font-weight: 800;
 
-.btn{
+      color: #f7c948;
 
-  padding:14px 30px;
+      text-shadow:
+        0 0 15px rgba(255, 201, 72, 0.35),
+        0 0 35px rgba(255, 201, 72, 0.12);
 
-  border-radius:50px;
+      margin-bottom: 10px;
+    }
 
-  text-decoration:none;
+    .title {
 
-  font-size:15px;
+      color: #fff;
 
-  font-weight:600;
+      font-size: 1.7rem;
 
-  display:flex;
+      font-weight: 700;
 
-  align-items:center;
+      margin-bottom: 14px;
+    }
 
-  gap:10px;
+    .description {
 
-  transition:.35s ease;
-}
+      color: #9d9d9d;
 
-.btn-primary{
+      font-size: 0.92rem;
 
-  background:
-  linear-gradient(
-  135deg,
-  #00ff88,
-  #00c76f
-  );
+      line-height: 1.7;
 
-  color:#05230f;
+      max-width: 420px;
 
-  box-shadow:
-  0 0 20px rgba(0,255,136,.25);
-}
+      margin: 0 auto 28px;
+    }
 
-.btn-primary:hover{
+    /* BUTTONS */
 
-  transform:
-  translateY(-4px)
-  scale(1.02);
-}
+    .buttons {
 
-@media(max-width:768px){
+      display: flex;
 
-  .error-container{
-    padding:40px 18px;
-  }
+      align-items: center;
 
-  .error-text{
-    font-size:13px;
-  }
+      justify-content: center;
 
-  .btn{
-    padding:12px 18px;
-    font-size:12px;
-    justify-content:center;
-  }
-}
- </style>
+      gap: 14px;
+
+      flex-wrap: wrap;
+    }
+
+    .btn {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      gap: 10px;
+
+      border: none;
+
+      outline: none;
+
+      cursor: pointer;
+
+      padding: 13px 20px;
+
+      border-radius: 14px;
+
+      min-width: 180px;
+
+      font-size: 0.92rem;
+
+      font-weight: 600;
+
+      transition: 0.35s ease;
+
+      font-family: inherit;
+    }
+
+    .btn i {
+      font-size: 0.9rem;
+    }
+
+    /* PRIMARY */
+
+    .btn-primary {
+
+      background: #f7c948;
+
+      color: #000;
+
+      box-shadow:
+        0 0 20px rgba(247, 201, 72, 0.22);
+    }
+
+    .btn-primary:hover {
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 0 30px rgba(247, 201, 72, 0.35);
+    }
+
+    /* SECONDARY */
+
+    .btn-secondary {
+
+      background: rgba(255, 255, 255, 0.03);
+
+      border: 1px solid rgba(255, 255, 255, 0.08);
+
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+
+      background: rgba(255, 255, 255, 0.08);
+
+      transform: translateY(-3px);
+    }
+
+    /* MOBILE */
+
+    @media (max-width:480px) {
+
+      body {
+        padding: 15px;
+      }
+
+      .container {
+
+        padding: 30px 18px;
+
+        border-radius: 22px;
+      }
+
+      .logo {
+        width: 120px;
+      }
+
+      .error-code {
+        font-size: 4rem;
+      }
+
+      .title {
+        font-size: 1.35rem;
+      }
+
+      .description {
+
+        font-size: 0.88rem;
+
+        margin-bottom: 24px;
+      }
+
+      .buttons {
+
+        flex-direction: column;
+
+        gap: 12px;
+      }
+
+      .btn {
+
+        width: 100%;
+
+        min-width: 100%;
+      }
+
+      .icon1 {
+        font-size: 30px;
+      }
+
+      .icon2 {
+        font-size: 30px;
+      }
+
+      .icon3 {
+        font-size: 24px;
+      }
+
+    }
+  </style>
 </head>
 
 <body>
-<div class="error-container">
- 
-  <img src="./src/logo.webp" alt="company logo" class="logo">
 
-  <h1 class="error-code">
-    404
-  </h1>
+  <!-- FLOATING ICONS -->
 
-  <h2 class="error-title">
-    Pharmaceutical Page <br> Not Found
-  </h2>
+  <i class="fa-solid fa-scale-balanced floating-icon icon1"></i>
 
-  <p class="error-text">
+  <i class="fa-solid fa-gavel floating-icon icon2"></i>
 
-    The hospital page you are trying to access may have been moved,
-    removed, or is currently unavailable.
+  <i class="fa-solid fa-book floating-icon icon3"></i>
 
-    Please return to the dashboard or continue exploring our
-    doctors, appointments, patient care services,
-    healthcare facilities, and medical solutions.
+  <!-- CONTAINER -->
 
-  </p>
+  <div class="container">
 
-  <div class="error-buttons">
+    <!-- LOGO -->
 
-    <a href="index.html"
-    class="btn btn-primary">
+    <img src="./src/logo.webp"
+      alt="Logo"
+      class="logo">
 
-      <i class="fa-solid fa-house"></i>
+    <!-- 404 -->
 
-      Back To Dashboard
+    <h1 class="error-code">404</h1>
 
-    </a>
+    <!-- TITLE -->
+
+    <h2 class="title">
+      Page Not Found
+    </h2>
+
+    <!-- DESCRIPTION -->
+
+    <p class="description">
+
+      The legal page you are trying to access may have been moved,
+      removed, or temporarily unavailable.
+
+      Please return to the dashboard or continue browsing
+      our legal services.
+
+    </p>
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+      <button type="button"
+        class="btn btn-primary"
+        onclick="goDashboard()">
+
+        <i class="fa-solid fa-house"></i>
+
+        Back To Dashboard
+
+      </button>
+
+      <button type="button"
+        class="btn btn-secondary"
+        onclick="goBackPage()">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Go Back
+
+      </button>
+
+    </div>
 
   </div>
-
-</div>
 
   <script>
 
     function goDashboard() {
+
       window.location.href = "index.html";
+
     }
 
     function goBackPage() {
+
       history.back();
+
     }
 
   </script>

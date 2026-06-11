@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8" />
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+
+    <title>Law Service Sign Up</title>
+
+    <!-- GOOGLE FONT -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins', sans-serif;
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            padding:10px;
+
+            overflow:auto;
+
+            background:
+            linear-gradient(
+                rgba(0,0,0,0.336),
+                rgba(0,0,0,0.418)
+            ),
+            url('./src/signup-bg.webp');
+
+            background-size:cover;
+            background-position:center;
+        }
+
+        /* MAIN CONTAINER */
+
+        .signup-container{
+
+            width:900px;
+
+            display:flex;
+
+            overflow:hidden;
+
+            border-radius:22px;
+
+            background:rgba(0,0,0,0.55);
+
+            border:1px solid rgba(212,175,55,0.15);
+
+            backdrop-filter:blur(8px);
+
+            box-shadow:
+            0 0 20px rgba(0,0,0,0.4);
+        }
+
+        /* LEFT SIDE */
+
+        .left-side{
+
+            width:43%;
+
+            padding:24px 22px;
+
+            background:
+            linear-gradient(
+                180deg,
+                rgba(17,17,17,0.96),
+                rgba(30,20,5,0.96)
+            );
+
+            position:relative;
+
+            overflow:hidden;
+
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+        }
+
+        .left-side::before{
+
+            content:"";
+
+            position:absolute;
+
+            width:220px;
+            height:220px;
+
+            border-radius:50%;
+
+            background:
+            rgba(212,175,55,0.04);
+
+            top:-100px;
+            left:-100px;
+
+            filter:blur(30px);
+        }
+
+        /* BADGE */
+
+        .badge{
+
+            width:54px;
+            height:54px;
+
+            border-radius:16px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #c89b2d,
+                #f5de87
+            );
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            margin-bottom:18px;
+
+            position:relative;
+            z-index:2;
+        }
+
+        .badge i{
+
+            font-size:22px;
+
+            color:black;
+        }
+
+        /* LEFT TITLE */
+
+        .left-side h1{
+
+            font-size:28px;
+
+            color:white;
+
+            line-height:1.25;
+
+            margin-bottom:12px;
+
+            position:relative;
+            z-index:2;
+        }
+
+        /* LEFT DESCRIPTION */
+
+        .left-side p{
+
+            color:#d1d1d1;
+
+            font-size:13px;
+
+            line-height:1.7;
+
+            margin-bottom:20px;
+
+            position:relative;
+            z-index:2;
+        }
+
+        /* FEATURE */
+
+        .feature-box{
+
+            display:flex;
+
+            gap:10px;
+
+            margin-bottom:16px;
+
+            position:relative;
+            z-index:2;
+        }
+
+        .feature-icon{
+
+            width:42px;
+            height:42px;
+
+            border-radius:12px;
+
+            background:
+            rgba(255,255,255,0.05);
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            flex-shrink:0;
+        }
+
+        .feature-icon i{
+
+            color:#f5d76e;
+
+            font-size:15px;
+        }
+
+        .feature-box h3{
+
+            color:white;
+
+            font-size:16px;
+
+            margin-bottom:2px;
+        }
+
+        .feature-box p{
+
+            margin:0;
+
+            font-size:12px;
+
+            line-height:1.5;
+        }
+
+        /* RIGHT SIDE */
+
+        .right-side{
+
+            width:57%;
+
+            padding:20px;
+
+            background:
+            rgba(0,0,0,0.92);
+        }
+
+        /* LOGO */
+
+        .logo{
+
+            display:flex;
+            justify-content:center;
+
+            margin-bottom:10px;
+        }
+
+        .logo img{
+
+            width:clamp(170px,19vw,210px);
+
+            object-fit:contain;
+        }
+
+        /* TITLE */
+
+        .title{
+
+            text-align:center;
+
+            color:white;
+
+            font-size:24px;
+
+            font-weight:800;
+
+            margin-bottom:2px;
+        }
+
+        .subtitle{
+
+            text-align:center;
+
+            color:#bdbdbd;
+
+            font-size:12px;
+
+            margin-bottom:18px;
+        }
+
+        /* INPUT */
+
+        .input-box{
+
+            margin-bottom:13px;
+        }
+
+        .input-box label{
+
+            display:block;
+
+            margin-bottom:5px;
+
+            color:#f5d76e;
+
+            font-size:12px;
+
+            font-weight:600;
+        }
+
+        .input-field{
+
+            position:relative;
+        }
+
+        .input-field .left-icon{
+
+            position:absolute;
+
+            left:14px;
+            top:50%;
+
+            transform:translateY(-50%);
+
+            color:#d4af37;
+
+            font-size:14px;
+        }
+
+        .input-field input{
+
+            width:100%;
+
+            height:46px;
+
+            border-radius:12px;
+
+            border:1px solid rgba(212,175,55,0.18);
+
+            background:
+            rgba(255,255,255,0.02);
+
+            color:white;
+
+            font-size:13px;
+
+            padding-left:45px;
+            padding-right:40px;
+
+            outline:none;
+
+            transition:0.3s;
+        }
+
+        .input-field input::placeholder{
+            color:#9d9d9d;
+        }
+
+        .input-field input:focus{
+
+            border-color:#f5d76e;
+
+            box-shadow:
+            0 0 10px rgba(212,175,55,0.08);
+        }
+
+        /* CUSTOM DROPDOWN */
+
+        .custom-select{
+            position:relative;
+        }
+
+        .select-btn{
+
+            width:100%;
+
+            height:46px;
+
+            border-radius:12px;
+
+            border:1px solid rgba(212,175,55,0.18);
+
+            background:
+            rgba(255,255,255,0.02);
+
+            padding:0 16px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:space-between;
+
+            cursor:pointer;
+
+            transition:0.3s;
+        }
+
+        .select-btn:hover{
+
+            border-color:#f5d76e;
+
+            box-shadow:
+            0 0 10px rgba(212,175,55,0.08);
+        }
+
+        .select-left{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:12px;
+        }
+
+        .select-left i{
+
+            color:#d4af37;
+
+            font-size:14px;
+        }
+
+        .select-left span{
+
+            color:white;
+
+            font-size:13px;
+        }
+
+        .arrow{
+
+            color:#d4af37;
+
+            font-size:12px;
+
+            transition:0.3s;
+        }
+
+        .custom-select.active .arrow{
+
+            transform:rotate(180deg);
+        }
+
+        /* OPTIONS */
+
+        .select-options{
+
+            position:absolute;
+
+            top:54px;
+
+            left:0;
+
+            width:100%;
+
+            background:#111;
+
+            border:1px solid rgba(212,175,55,0.18);
+
+            border-radius:12px;
+
+            overflow:hidden;
+
+            display:none;
+
+            z-index:100;
+
+            box-shadow:
+            0 10px 20px rgba(0,0,0,0.35);
+        }
+
+        .custom-select.active .select-options{
+            display:block;
+        }
+
+        /* OPTION */
+
+        .option{
+
+            padding:13px 16px;
+
+            color:#f5d76e;
+
+            font-size:13px;
+
+            cursor:pointer;
+
+            transition:0.25s;
+        }
+
+        .option:hover{
+
+            background:#c89b2d;
+
+            color:#000;
+        }
+
+        /* EYE */
+
+        .eye-btn{
+
+            position:absolute;
+
+            right:14px;
+            top:50%;
+
+            transform:translateY(-50%);
+
+            color:#d4af37;
+
+            cursor:pointer;
+
+            font-size:14px;
+        }
+
+        /* BUTTON */
+
+        .signup-btn{
+
+            width:100%;
+
+            height:48px;
+
+            border:none;
+
+            border-radius:12px;
+
+            margin-top:6px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #c89b2d,
+                #f5de87
+            );
+
+            color:black;
+
+            font-size:14px;
+
+            font-weight:700;
+
+            cursor:pointer;
+
+            transition:0.3s;
+        }
+
+        .signup-btn:hover{
+
+            transform:translateY(-2px);
+
+            box-shadow:
+            0 8px 16px rgba(212,175,55,0.12);
+        }
+
+        /* FOOTER */
+
+        .footer{
+
+            text-align:center;
+
+            margin-top:14px;
+
+            color:#bdbdbd;
+
+            font-size:13px;
+        }
+
+        .footer a{
+
+            color:#f5d76e;
+
+            text-decoration:none;
+
+            font-weight:600;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:850px){
+
+            .signup-container{
+
+                flex-direction:column;
+            }
+
+            .left-side,
+            .right-side{
+
+                width:100%;
+            }
+
+            .left-side{
+
+                padding:20px 18px;
+            }
+
+            .right-side{
+
+                padding:18px;
+            }
+
+            .left-side h1{
+
+                font-size:24px;
+            }
+
+            .title{
+
+                font-size:18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="signup-container">
+
+        <!-- LEFT SIDE -->
+
+        <div class="left-side">
+
+            <div class="badge">
+
+                <i class="fa-solid fa-scale-balanced"></i>
+
+            </div>
+
+            <h1>
+
+                Trusted Legal Services For Modern Clients
+
+            </h1>
+
+            <p>
+
+                Join our secure legal platform to manage
+                consultations, client records and legal
+                documents professionally.
+
+            </p>
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-scale-balanced"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Legal Consultation</h3>
+
+                    <p>
+                        Professional legal advice and support.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-file-contract"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Case Management</h3>
+
+                    <p>
+                        Manage documents and records easily.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- FEATURE -->
+
+            <div class="feature-box">
+
+                <div class="feature-icon">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>Secure Access</h3>
+
+                    <p>
+                        Safe dashboard for Admin and Client.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="right-side">
+
+            <!-- LOGO -->
+
+            <div class="logo">
+
+                <a href="sign.html">
+
+                    <img src="./src/logo.webp"
+                        alt="Stackly Logo">
+
+                </a>
+
+            </div>
+
+            <!-- TITLE -->
+
+            <h1 class="title">
+
+                Create Account
+
+            </h1>
+
+            <p class="subtitle">
+
+                Sign up to continue
+
+            </p>
+
+            <!-- ROLE -->
+
+            <div class="input-box">
+
+                <label>Select Role</label>
+
+                <div class="custom-select">
+
+                    <!-- BUTTON -->
+
+                    <div class="select-btn"
+                        id="selectBtn">
+
+                        <div class="select-left">
+
+                            <i class="fa-solid fa-user-shield"></i>
+
+                            <span id="selectedText">
+
+                                Choose Role
+
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down arrow"></i>
+
+                    </div>
+
+                    <!-- OPTIONS -->
+
+                    <div class="select-options"
+                        id="selectOptions">
+
+                        <div class="option"
+                            data-value="Admin">
+
+                            Admin
+
+                        </div>
+
+                        <div class="option"
+                            data-value="Client">
+
+                            Client
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- NAME -->
+
+            <div class="input-box">
+
+                <label>Full Name</label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-user left-icon"></i>
+
+                    <input type="text"
+                        id="name"
+                        placeholder="Enter your full name">
+
+                </div>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="input-box">
+
+                <label>Email Address</label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-envelope left-icon"></i>
+
+                    <input type="email"
+                        id="email"
+                        placeholder="Enter your email">
+
+                </div>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="input-box">
+
+                <label>Password</label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-lock left-icon"></i>
+
+                    <input type="password"
+                        id="password"
+                        placeholder="Create password">
+
+                    <span class="eye-btn"
+                        id="togglePassword1">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="input-box">
+
+                <label>Confirm Password</label>
+
+                <div class="input-field">
+
+                    <i class="fa-solid fa-lock left-icon"></i>
+
+                    <input type="password"
+                        id="confirmPassword"
+                        placeholder="Confirm password">
+
+                    <span class="eye-btn"
+                        id="togglePassword2">
+
+                        <i class="fa-solid fa-eye"></i>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button class="signup-btn"
+                id="signupBtn">
+
+                Create Account
+
+            </button>
+
+            <!-- FOOTER -->
+
+            <div class="footer">
+
+                Already have an account?
+
+                <a href="login.html">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script>
+
+/* CUSTOM DROPDOWN */
+
+const customSelect =
+    document.querySelector(".custom-select");
+
+const selectBtn =
+    document.getElementById("selectBtn");
+
+const selectedText =
+    document.getElementById("selectedText");
+
+const options =
+    document.querySelectorAll(".option");
+
+let selectedRole = "";
+
+/* OPEN */
+
+selectBtn.addEventListener("click", () => {
+
+    customSelect.classList.toggle("active");
+
+});
+
+/* SELECT */
+
+options.forEach((option) => {
+
+    option.addEventListener("click", () => {
+
+        selectedText.innerText =
+            option.innerText;
+
+        selectedRole =
+            option.dataset.value;
+
+        customSelect.classList.remove("active");
+
+    });
+
+});
+
+/* OUTSIDE CLICK */
+
+document.addEventListener("click", (e) => {
+
+    if(!customSelect.contains(e.target)){
+
+        customSelect.classList.remove("active");
+
+    }
+
+});
+
+
+/* PASSWORD TOGGLE */
+
+const togglePassword1 =
+    document.getElementById("togglePassword1");
+
+const password1 =
+    document.getElementById("password");
+
+togglePassword1.addEventListener("click", () => {
+
+    const type =
+        password1.type === "password"
+        ? "text"
+        : "password";
+
+    password1.type = type;
+
+    togglePassword1.innerHTML =
+        type === "password"
+        ? '<i class="fa-solid fa-eye"></i>'
+        : '<i class="fa-solid fa-eye-slash"></i>';
+
+});
+
+
+const togglePassword2 =
+    document.getElementById("togglePassword2");
+
+const password2 =
+    document.getElementById("confirmPassword");
+
+togglePassword2.addEventListener("click", () => {
+
+    const type =
+        password2.type === "password"
+        ? "text"
+        : "password";
+
+    password2.type = type;
+
+    togglePassword2.innerHTML =
+        type === "password"
+        ? '<i class="fa-solid fa-eye"></i>'
+        : '<i class="fa-solid fa-eye-slash"></i>';
+
+});
+
+
+/* NAME INPUT RESTRICTION */
+
+const nameField =
+    document.getElementById("name");
+
+nameField.addEventListener("input", () => {
+
+    nameField.value =
+        nameField.value.replace(/[^A-Za-z ]/g, '');
+
+});
+
+
+/* VALIDATION */
+
+const signupBtn =
+    document.getElementById("signupBtn");
+
+signupBtn.addEventListener("click", () => {
+
+    const role =
+        selectedRole;
+
+    const name =
+        document.getElementById("name").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value.trim();
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value.trim();
+
+    /* ROLE */
+
+    if(role === ""){
+
+        alert("Please select role");
+
+        return;
+    }
+
+    /* NAME */
+
+    if(name === ""){
+
+        alert("Please enter full name");
+
+        return;
+    }
+
+    const namePattern =
+        /^[A-Za-z ]+$/;
+
+    if(!namePattern.test(name)){
+
+        alert("Name should contain only letters");
+
+        return;
+    }
+
+    /* EMAIL */
+
+    if(email === ""){
+
+        alert("Please enter email");
+
+        return;
+    }
+
+    const emailPattern =
+        /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if(!email.match(emailPattern)){
+
+        alert("Please enter valid email");
+
+        return;
+    }
+
+    /* PASSWORD */
+
+    if(password.length < 6){
+
+        alert("Password must be minimum 6 characters");
+
+        return;
+    }
+
+    /* CONFIRM PASSWORD */
+
+    if(password !== confirmPassword){
+
+        alert("Passwords do not match");
+
+        return;
+    }
+
+    alert("Account Created Successfully");
+
+    window.location.href =
+        "login.html";
+
+});
+
+</script>
+
+</body>
+
+</html>

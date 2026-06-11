@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Firm Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0d0d0d;
+            display: flex;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            width: 260px;
+            background: #111;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .logo img {
+            width: 160px;
+        }
+
+        .close-btn {
+            display: none;
+            font-size: 22px;
+            color: #f5d76e;
+            cursor: pointer;
+        }
+
+        .menu {
+            list-style: none;
+        }
+
+        .menu li {
+            margin-bottom: 8px;
+        }
+
+        .menu li a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #d1d1d1;
+            transition: 0.3s;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .menu li a:hover,
+        .menu li.active a {
+            background: rgba(212, 175, 55, 0.15);
+            color: #f5d76e;
+        }
+
+        .main {
+            flex: 1;
+            overflow: auto;
+        }
+
+        .topbar {
+            height: 70px;
+            background: #121212;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 24px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-btn {
+            display: none;
+            color: #f5d76e;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .topbar h2 {
+            color: white;
+            font-size: 18px;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c89b2d, #f5de87);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: black;
+            font-size: 18px;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .card {
+            background: #151515;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .gold {
+            background: rgba(212, 175, 55, 0.15);
+            color: #f5d76e;
+        }
+
+        .blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+        }
+
+        .green {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .red {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+        }
+
+        .purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+        }
+
+        .orange {
+            background: rgba(249, 115, 22, 0.15);
+            color: #fb923c;
+        }
+
+        .card h2 {
+            color: white;
+            margin-bottom: 4px;
+            font-size: 22px;
+        }
+
+        .card p {
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        .table-box {
+            background: #151515;
+            border-radius: 18px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            overflow: auto;
+            margin-bottom: 20px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .table-header h2 {
+            color: white;
+            font-size: 16px;
+        }
+
+        .btn-gold {
+            border: none;
+            background: #d4af37;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            background: transparent;
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 13px;
+            color: #f5d76e;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 550px;
+        }
+
+        table th {
+            text-align: left;
+            padding: 12px;
+            color: #f5d76e;
+            font-size: 13px;
+        }
+
+        table td {
+            padding: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #d1d1d1;
+            font-size: 13px;
+        }
+
+        .status {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .s-active {
+            background: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+        }
+
+        .s-pending {
+            background: rgba(245, 158, 11, 0.15);
+            color: #facc15;
+        }
+
+        .s-closed {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+        }
+
+        .s-blue {
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+        }
+
+        .s-purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+        }
+
+        .page-title {
+            color: white;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .page-sub {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 22px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .info-box {
+            background: #151515;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-box h3 {
+            color: #f5d76e;
+            font-size: 14px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #888;
+            font-size: 13px;
+        }
+
+        .info-value {
+            color: #d1d1d1;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .client-card {
+            background: #151515;
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .client-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c89b2d, #f5de87);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            color: black;
+            font-size: 17px;
+            flex-shrink: 0;
+        }
+
+        .client-name {
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .client-case {
+            color: #888;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: auto;
+        }
+
+        .setting-section {
+            background: #151515;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 18px;
+        }
+
+        .setting-section h3 {
+            color: #f5d76e;
+            font-size: 15px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            color: #d1d1d1;
+            font-size: 14px;
+        }
+
+        .setting-desc {
+            color: #666;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .toggle {
+            width: 44px;
+            height: 24px;
+            border-radius: 20px;
+            background: #333;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+
+        .toggle.on {
+            background: rgba(212, 175, 55, 0.6);
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: white;
+            top: 3px;
+            left: 3px;
+            transition: 0.3s;
+        }
+
+        .toggle.on::after {
+            left: 23px;
+        }
+
+        .input-field {
+            background: #1a1a1a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: #d1d1d1;
+            font-size: 13px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+            input[type="password"]{
+            display: flex;
+            align-items: center;
+        }
+        .input-field:focus {
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .meeting-card {
+            background: #151515;
+            border-radius: 16px;
+            padding: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 14px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .meeting-date {
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 12px;
+            padding: 12px 14px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .meeting-day {
+            color: #f5d76e;
+            font-size: 22px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .meeting-month {
+            color: #c89b2d;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .meeting-title {
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .meeting-meta {
+            color: #888;
+            font-size: 12px;
+            margin-top: 5px;
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .report-card {
+            background: #151515;
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 14px;
+        }
+
+        .report-title {
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            height: 8px;
+            margin: 8px 0 4px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 20px;
+            background: linear-gradient(90deg, #c89b2d, #f5d76e);
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 12px;
+        }
+
+        @media(max-width:768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .close-btn {
+                display: block;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -270px;
+                top: 0;
+                width: 260px;
+                height: 100vh;
+                z-index: 999;
+            }
+
+            .sidebar.showSidebar {
+                left: 0;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+          
+        }
+
+        @media(max-width:500px) {
+
+            .admin-info h4,
+            .admin-info p {
+                display: none;
+            }
+
+            .meeting-card {
+                flex-direction: column;
+
+            }
+
+              .avatar {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+
+            <a href="admin.html"><img src="./src/logo.webp" alt="company logo"></a>
+
+            <span class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <ul class="menu">
+            <li class="active" data-page="dashboard"><a><i class="fa-solid fa-chart-line"></i> Legal Overview</a></li>
+            <li data-page="clients"><a><i class="fa-solid fa-users"></i> Client Portal</a></li>
+            <li data-page="projects"><a><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
+            <li data-page="meetings"><a><i class="fa-solid fa-calendar-check"></i> Court Schedule</a></li>
+            <li data-page="reports"><a><i class="fa-solid fa-chart-pie"></i> Legal Analytics</a></li>
+            <li data-page="settings"><a><i class="fa-solid fa-gear"></i>Settings</a></li>
+            <li id="logoutItem"><a><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="topbar">
+            <div class="topbar-left">
+                <div class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></div>
+                <h2 id="pageTitle">Legal Overview</h2>
+            </div>
+            <div class="admin-info">
+                <div class="avatar" id="avatarEl">A</div>
+                <div>
+                    <h4 id="adminEmail">client@lexcorp.com</h4>
+                    <p style="color:#888;font-size:12px;">Legal client</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== DASHBOARD ===== -->
+        <div class="content active" id="page-dashboard">
+            <div style="padding:22px 22px 0;">
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-icon gold"><i class="fa-solid fa-users"></i></div>
+                        <div>
+                            <h2>1,245</h2>
+                            <p>Total Client Portal</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon blue"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <div>
+                            <h2>325</h2>
+                            <p>Ongoing Cases</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon green"><i class="fa-solid fa-gavel"></i></div>
+                        <div>
+                            <h2>98</h2>
+                            <p>Successful Verdicts</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon red"><i class="fa-solid fa-money-bill-wave"></i></div>
+                        <div>
+                            <h2>$54,500</h2>
+                            <p>Legal Revenue</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards">
+                    <div class="card">
+                        <div class="card-icon gold"><i class="fa-solid fa-user-plus"></i></div>
+                        <div>
+                            <h2>54</h2>
+                            <p>New Client Portal</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div>
+                            <h2>12</h2>
+                            <p>Today's Court Schedule</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon green"><i class="fa-solid fa-file-signature"></i></div>
+                        <div>
+                            <h2>220</h2>
+                            <p>Case Documents</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-icon red"><i class="fa-solid fa-briefcase"></i></div>
+                        <div>
+                            <h2>145</h2>
+                            <p>Resolved Cases</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="padding:0 22px 22px;">
+                <div class="table-box">
+                    <div class="table-header">
+                        <h2>Advocate Team</h2><button class="btn-gold errorpage">+ Add Lawyer</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Specialization</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Smith</td>
+                                <td>Criminal Lawyer</td>
+                                <td>john@lexcorp.com</td>
+                                <td><span class="status s-active">Available</span></td>
+                            </tr>
+                            <tr>
+                                <td>David Lee</td>
+                                <td>Corporate Lawyer</td>
+                                <td>david@lexcorp.com</td>
+                                <td><span class="status s-pending">In Court</span></td>
+                            </tr>
+                            <tr>
+                                <td>Alex Kumar</td>
+                                <td>Family Lawyer</td>
+                                <td>alex@lexcorp.com</td>
+                                <td><span class="status s-closed">On Leave</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-box">
+                    <div class="table-header">
+                        <h2>Recent Cases</h2><button class="btn-gold errorpage">+ Add Case</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Case Type</th>
+                                <th>Status</th>
+                                <th>Hearing Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Michael Raj</td>
+                                <td>Property Dispute</td>
+                                <td><span class="status s-active">Active</span></td>
+                                <td>15 Jun 2026</td>
+                            </tr>
+                            <tr>
+                                <td>Robert Singh</td>
+                                <td>Divorce Case</td>
+                                <td><span class="status s-pending">Pending</span></td>
+                                <td>18 Jun 2026</td>
+                            </tr>
+                            <tr>
+                                <td>James Nair</td>
+                                <td>Cyber Crime</td>
+                                <td><span class="status s-closed">Closed</span></td>
+                                <td>05 Jun 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== CLIENTS ===== -->
+        <div class="content" id="page-clients" style="padding:22px;">
+            <div class="page-title">Client Portal</div>
+            <div class="page-sub">Manage all registered clients and their case details</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon gold"><i class="fa-solid fa-users"></i></div>
+                    <div>
+                        <h2>1,245</h2>
+                        <p>Total Client Portal</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-user-check"></i></div>
+                    <div>
+                        <h2>987</h2>
+                        <p>Active Client Portal</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon blue"><i class="fa-solid fa-user-plus"></i></div>
+                    <div>
+                        <h2>54</h2>
+                        <p>New This Month</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon red"><i class="fa-solid fa-user-xmark"></i></div>
+                    <div>
+                        <h2>204</h2>
+                        <p>Inactive Client Portal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="table-header">
+                    <h2>All Client Portal</h2>
+                    <div style="display:flex;gap:10px;"><button class="btn-outline errorpage">Export</button><button
+                            class="btn-gold errorpage">+ Add Client</button></div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Client Name</th>
+                            <th>Phone</th>
+                            <th>Case Type</th>
+                            <th>Assigned Lawyer</th>
+                            <th>Status</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Michael Raj</td>
+                            <td>+91 98765 43210</td>
+                            <td>Property Dispute</td>
+                            <td>John Smith</td>
+                            <td><span class="status s-active">Active</span></td>
+                            <td>01 Jan 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Priya Sharma</td>
+                            <td>+91 87654 32109</td>
+                            <td>Divorce Case</td>
+                            <td>Alex Kumar</td>
+                            <td><span class="status s-active">Active</span></td>
+                            <td>10 Feb 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Robert Singh</td>
+                            <td>+91 76543 21098</td>
+                            <td>Criminal Defense</td>
+                            <td>John Smith</td>
+                            <td><span class="status s-pending">Pending</span></td>
+                            <td>15 Mar 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Anita Verma</td>
+                            <td>+91 65432 10987</td>
+                            <td>Corporate Law</td>
+                            <td>David Lee</td>
+                            <td><span class="status s-active">Active</span></td>
+                            <td>20 Apr 2026</td>
+                        </tr>
+                        <tr>
+                            <td>James Nair</td>
+                            <td>+91 54321 09876</td>
+                            <td>Cyber Crime</td>
+                            <td>David Lee</td>
+                            <td><span class="status s-closed">Closed</span></td>
+                            <td>05 May 2026</td>
+                        </tr>
+                        <tr>
+                            <td>Sunita Pillai</td>
+                            <td>+91 43210 98765</td>
+                            <td>Labour Dispute</td>
+                            <td>Alex Kumar</td>
+                            <td><span class="status s-pending">Pending</span></td>
+                            <td>12 May 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="grid-2">
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-user-tie"></i> Top Client Portal by Cases</h3>
+                    <div class="client-card">
+                        <div class="client-avatar">M</div>
+                        <div>
+                            <div class="client-name">Michael Raj</div>
+                            <div class="client-case">Property Dispute • Active</div>
+                        </div><span class="badge s-active">3 Cases</span>
+                    </div>
+                    <div class="client-card">
+                        <div class="client-avatar">P</div>
+                        <div>
+                            <div class="client-name">Priya Sharma</div>
+                            <div class="client-case">Divorce Case • Active</div>
+                        </div><span class="badge s-blue">2 Cases</span>
+                    </div>
+                    <div class="client-card">
+                        <div class="client-avatar">A</div>
+                        <div>
+                            <div class="client-name">Anita Verma</div>
+                            <div class="client-case">Corporate Law • Active</div>
+                        </div><span class="badge s-active">2 Cases</span>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-circle-info"></i> Client Info Summary</h3>
+                    <div class="info-row"><span class="info-label">Walk-in Client Portal</span><span
+                            class="info-value">320</span></div>
+                    <div class="info-row"><span class="info-label">Referral Client Portal</span><span
+                            class="info-value">580</span></div>
+                    <div class="info-row"><span class="info-label">Online Client Portal</span><span
+                            class="info-value">345</span></div>
+                    <div class="info-row"><span class="info-label">Avg. Case Duration</span><span class="info-value">4.2
+                            months</span></div>
+                    <div class="info-row"><span class="info-label">Client Retention Rate</span><span
+                            class="info-value">78%</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PROJECTS (CASES) ===== -->
+        <div class="content" id="page-projects" style="padding:22px;">
+            <div class="page-title">Projects</div>
+            <div class="page-sub">Track all legal cases and their progress</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon blue"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <div>
+                        <h2>325</h2>
+                        <p>Ongoing Cases</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon gold"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <div>
+                        <h2>88</h2>
+                        <p>Under Review</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-gavel"></i></div>
+                    <div>
+                        <h2>98</h2>
+                        <p>Won Cases</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon red"><i class="fa-solid fa-briefcase"></i></div>
+                    <div>
+                        <h2>145</h2>
+                        <p>Resolved Cases</p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="table-header">
+                    <h2>All Cases</h2>
+                    <div style="display:flex;gap:10px;"><button class="btn-outline errorpage">Filter</button><button
+                            class="btn-gold errorpage">+ New Case</button></div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Case ID</th>
+                            <th>Client</th>
+                            <th>Case Type</th>
+                            <th>Lawyer</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Next Hearing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#C-1024</td>
+                            <td>Michael Raj</td>
+                            <td>Property Dispute</td>
+                            <td>John Smith</td>
+                            <td><span class="status s-closed">High</span></td>
+                            <td><span class="status s-active">Active</span></td>
+                            <td>15 Jun 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#C-1023</td>
+                            <td>Priya Sharma</td>
+                            <td>Divorce Case</td>
+                            <td>Alex Kumar</td>
+                            <td><span class="status s-pending">Medium</span></td>
+                            <td><span class="status s-pending">Pending</span></td>
+                            <td>18 Jun 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#C-1022</td>
+                            <td>Robert Singh</td>
+                            <td>Criminal Defense</td>
+                            <td>John Smith</td>
+                            <td><span class="status s-closed">High</span></td>
+                            <td><span class="status s-active">Active</span></td>
+                            <td>22 Jun 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#C-1021</td>
+                            <td>Anita Verma</td>
+                            <td>Corporate Law</td>
+                            <td>David Lee</td>
+                            <td><span class="status s-blue">Low</span></td>
+                            <td><span class="status s-active">Active</span></td>
+                            <td>25 Jun 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#C-1020</td>
+                            <td>James Nair</td>
+                            <td>Cyber Crime</td>
+                            <td>David Lee</td>
+                            <td><span class="status s-pending">Medium</span></td>
+                            <td><span class="status s-closed">Closed</span></td>
+                            <td>05 Jun 2026</td>
+                        </tr>
+                        <tr>
+                            <td>#C-1019</td>
+                            <td>Sunita Pillai</td>
+                            <td>Labour Dispute</td>
+                            <td>Alex Kumar</td>
+                            <td><span class="status s-blue">Low</span></td>
+                            <td><span class="status s-pending">Review</span></td>
+                            <td>30 Jun 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="grid-2">
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-folder-open"></i> Case Type Breakdown</h3>
+                    <div class="info-row"><span class="info-label">Criminal Cases</span><span
+                            class="info-value">120</span></div>
+                    <div class="info-row"><span class="info-label">Civil Cases</span><span class="info-value">95</span>
+                    </div>
+                    <div class="info-row"><span class="info-label">Family Law</span><span class="info-value">72</span>
+                    </div>
+                    <div class="info-row"><span class="info-label">Corporate Law</span><span
+                            class="info-value">58</span></div>
+                    <div class="info-row"><span class="info-label">Cyber Crime</span><span class="info-value">35</span>
+                    </div>
+                    <div class="info-row"><span class="info-label">Property Disputes</span><span
+                            class="info-value">45</span></div>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-file-alt"></i> Recent Documents</h3>
+                    <div class="info-row"><span class="info-label">📄 Affidavit_Michael.pdf</span><span
+                            class="info-value errorpage" style="color:#60a5fa;font-size:12px;">View</span></div>
+                    <div class="info-row"><span class="info-label">📄 Divorce_Petition_Priya.pdf</span><span
+                            class="info-value errorpage" style="color:#60a5fa;font-size:12px;">View</span></div>
+                    <div class="info-row"><span class="info-label">📄 Evidence_Robert.pdf</span><span class="info-value errorpage"
+                            style="color:#60a5fa;font-size:12px;">View</span></div>
+                    <div class="info-row"><span class="info-label">📄 Contract_Anita.pdf</span><span class="info-value errorpage"
+                            style="color:#60a5fa;font-size:12px;">View</span></div>
+                    <div class="info-row"><span class="info-label">📄 CyberReport_James.pdf</span><span
+                            class="info-value errorpage" style="color:#60a5fa;font-size:12px;">View</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MEETINGS ===== -->
+        <div class="content" id="page-meetings" style="padding:22px;">
+            <div class="page-title">Court Schedule</div>
+            <div class="page-sub">Schedule and manage all court hearings, client meetings & consultations</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div>
+                        <h2>12</h2>
+                        <p>Today's Court Schedule</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon gold"><i class="fa-solid fa-calendar-week"></i></div>
+                    <div>
+                        <h2>34</h2>
+                        <p>This Week</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-handshake"></i></div>
+                    <div>
+                        <h2>8</h2>
+                        <p>Client Meetings</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon red"><i class="fa-solid fa-calendar-xmark"></i></div>
+                    <div>
+                        <h2>3</h2>
+                        <p>Rescheduled</p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="table-header">
+                    <h2>Upcoming Schedule</h2><button class="btn-gold errorpage">+ Schedule Meeting</button>
+                </div>
+                <div style="padding:0 0 10px;">
+                    <div class="meeting-card">
+                        <div class="meeting-date">
+                            <div class="meeting-day">10</div>
+                            <div class="meeting-month">JUN</div>
+                        </div>
+                        <div>
+                            <div class="meeting-title">Property Dispute Hearing – Michael Raj</div>
+                            <div class="meeting-meta"><span><i class="fa-solid fa-clock"></i> 10:00 AM</span><span><i
+                                        class="fa-solid fa-location-dot"></i> City Civil Court, Room 4</span><span><i
+                                        class="fa-solid fa-user-tie"></i> John Smith</span></div>
+                        </div>
+                        <span class="badge s-active" style="margin-left:auto;white-space:nowrap;">Confirmed</span>
+                    </div>
+                    <div class="meeting-card">
+                        <div class="meeting-date">
+                            <div class="meeting-day">12</div>
+                            <div class="meeting-month">JUN</div>
+                        </div>
+                        <div>
+                            <div class="meeting-title">Client Consultation – Priya Sharma</div>
+                            <div class="meeting-meta"><span><i class="fa-solid fa-clock"></i> 02:30 PM</span><span><i
+                                        class="fa-solid fa-location-dot"></i> Office – Conf Room B</span><span><i
+                                        class="fa-solid fa-user-tie"></i> Alex Kumar</span></div>
+                        </div>
+                        <span class="badge s-blue" style="margin-left:auto;white-space:nowrap;">Scheduled</span>
+                    </div>
+                    <div class="meeting-card">
+                        <div class="meeting-date">
+                            <div class="meeting-day">15</div>
+                            <div class="meeting-month">JUN</div>
+                        </div>
+                        <div>
+                            <div class="meeting-title">Criminal Case Hearing – Robert Singh</div>
+                            <div class="meeting-meta"><span><i class="fa-solid fa-clock"></i> 11:00 AM</span><span><i
+                                        class="fa-solid fa-location-dot"></i> High Court, Hall 2</span><span><i
+                                        class="fa-solid fa-user-tie"></i> John Smith</span></div>
+                        </div>
+                        <span class="badge s-active" style="margin-left:auto;white-space:nowrap;">Confirmed</span>
+                    </div>
+                    <div class="meeting-card">
+                        <div class="meeting-date">
+                            <div class="meeting-day">18</div>
+                            <div class="meeting-month">JUN</div>
+                        </div>
+                        <div>
+                            <div class="meeting-title">Divorce Mediation – Robert & Priya</div>
+                            <div class="meeting-meta"><span><i class="fa-solid fa-clock"></i> 03:00 PM</span><span><i
+                                        class="fa-solid fa-location-dot"></i> Family Court, Room 1</span><span><i
+                                        class="fa-solid fa-user-tie"></i> Alex Kumar</span></div>
+                        </div>
+                        <span class="badge s-pending" style="margin-left:auto;white-space:nowrap;">Pending</span>
+                    </div>
+                    <div class="meeting-card">
+                        <div class="meeting-date">
+                            <div class="meeting-day">22</div>
+                            <div class="meeting-month">JUN</div>
+                        </div>
+                        <div>
+                            <div class="meeting-title">Corporate Contract Review – Anita Verma</div>
+                            <div class="meeting-meta"><span><i class="fa-solid fa-clock"></i> 12:00 PM</span><span><i
+                                        class="fa-solid fa-location-dot"></i> Office – Conf Room A</span><span><i
+                                        class="fa-solid fa-user-tie"></i> David Lee</span></div>
+                        </div>
+                        <span class="badge s-blue" style="margin-left:auto;white-space:nowrap;">Scheduled</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== REPORTS ===== -->
+        <div class="content" id="page-reports" style="padding:22px;">
+            <div class="page-title">Legal Analytics</div>
+            <div class="page-sub">Firm performance overview and financial summary</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon green"><i class="fa-solid fa-money-bill-wave"></i></div>
+                    <div>
+                        <h2>$54,500</h2>
+                        <p>Legal Revenue</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon blue"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <div>
+                        <h2>+18%</h2>
+                        <p>Growth This Month</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon gold"><i class="fa-solid fa-percent"></i></div>
+                    <div>
+                        <h2>67%</h2>
+                        <p>Case Win Rate</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon red"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+                    <div>
+                        <h2>$8,200</h2>
+                        <p>Pending Fees</p>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-2">
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-chart-bar"></i> Revenue by Case Type</h3>
+                    <div class="report-card" style="background:#1a1a1a;border:none;">
+                        <div class="report-title">Criminal Cases</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:80%"></div>
+                        </div>
+                        <div class="progress-label"><span>$18,400</span><span>80%</span></div>
+                    </div>
+                    <div class="report-card" style="background:#1a1a1a;border:none;">
+                        <div class="report-title">Corporate Law</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:65%"></div>
+                        </div>
+                        <div class="progress-label"><span>$14,900</span><span>65%</span></div>
+                    </div>
+                    <div class="report-card" style="background:#1a1a1a;border:none;">
+                        <div class="report-title">Family Law</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:45%"></div>
+                        </div>
+                        <div class="progress-label"><span>$10,300</span><span>45%</span></div>
+                    </div>
+                    <div class="report-card" style="background:#1a1a1a;border:none;">
+                        <div class="report-title">Property & Civil</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:35%"></div>
+                        </div>
+                        <div class="progress-label"><span>$10,900</span><span>35%</span></div>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <h3><i class="fa-solid fa-trophy"></i> Lawyer Performance</h3>
+                    <div style="margin-bottom:14px;">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span
+                                style="color:#d1d1d1;font-size:13px;">John Smith</span><span
+                                style="color:#f5d76e;font-size:13px;">42 cases • 78% win</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:78%"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:14px;">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span
+                                style="color:#d1d1d1;font-size:13px;">David Lee</span><span
+                                style="color:#f5d76e;font-size:13px;">35 cases • 71% win</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:71%"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom:14px;">
+                        <div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span
+                                style="color:#d1d1d1;font-size:13px;">Alex Kumar</span><span
+                                style="color:#f5d76e;font-size:13px;">28 cases • 60% win</span></div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width:60%"></div>
+                        </div>
+                    </div>
+                    <div class="info-row" style="margin-top:12px;"><span class="info-label">Monthly Target</span><span
+                            class="info-value" style="color:#4ade80;">$60,000</span></div>
+                    <div class="info-row"><span class="info-label">Achieved</span><span class="info-value"
+                            style="color:#f5d76e;">$54,500 (91%)</span></div>
+                    <div class="info-row"><span class="info-label">Outstanding Invoices</span><span class="info-value"
+                            style="color:#f87171;">$8,200</span></div>
+                </div>
+            </div>
+            <div class="table-box">
+                <div class="table-header">
+                    <h2>Monthly Revenue Summary</h2><button class="btn-outline errorpage">Download Report</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>New Cases</th>
+                            <th>Resolved Cases</th>
+                            <th>Revenue</th>
+                            <th>Outstanding</th>
+                            <th>Growth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>January 2026</td>
+                            <td>32</td>
+                            <td>25</td>
+                            <td>$8,200</td>
+                            <td>$1,200</td>
+                            <td><span class="status s-active">+12%</span></td>
+                        </tr>
+                        <tr>
+                            <td>February 2026</td>
+                            <td>28</td>
+                            <td>22</td>
+                            <td>$7,400</td>
+                            <td>$900</td>
+                            <td><span class="status s-closed">-5%</span></td>
+                        </tr>
+                        <tr>
+                            <td>March 2026</td>
+                            <td>41</td>
+                            <td>30</td>
+                            <td>$10,100</td>
+                            <td>$1,500</td>
+                            <td><span class="status s-active">+24%</span></td>
+                        </tr>
+                        <tr>
+                            <td>April 2026</td>
+                            <td>38</td>
+                            <td>28</td>
+                            <td>$9,600</td>
+                            <td>$1,100</td>
+                            <td><span class="status s-pending">+8%</span></td>
+                        </tr>
+                        <tr>
+                            <td>May 2026</td>
+                            <td>45</td>
+                            <td>35</td>
+                            <td>$11,200</td>
+                            <td>$1,800</td>
+                            <td><span class="status s-active">+18%</span></td>
+                        </tr>
+                        <tr>
+                            <td>June 2026 (YTD)</td>
+                            <td>12</td>
+                            <td>5</td>
+                            <td>$8,000</td>
+                            <td>$1,700</td>
+                            <td><span class="status s-active">+18%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS ===== -->
+        <div class="content" id="page-settings" style="padding:22px;">
+            <div class="page-title">Settings</div>
+            <div class="page-sub">Manage your firm profile, preferences and account settings</div>
+            <div class="grid-2">
+                <div>
+                    <div class="setting-section">
+                        <h3><i class="fa-solid fa-building-columns"></i> Law Firm Profile</h3>
+                        <label style="color:#888;font-size:12px;">Firm Name</label>
+                        <input class="input-field" value="LexCorp Law Associates">
+                        <label style="color:#888;font-size:12px;">Email Address</label>
+                        <input class="input-field" value="client@lexcorp.com">
+                        <label style="color:#888;font-size:12px;">Phone Number</label>
+                        <input class="input-field" value="+91 98765 43210">
+                        <label style="color:#888;font-size:12px;">Office Address</label>
+                        <input class="input-field" value="123, Law Street, Chennai – 600001">
+                        <button class="btn-gold" style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">Save
+                            Changes</button>
+                    </div>
+                    <div class="setting-section">
+                        <h3><i class="fa-solid fa-lock"></i> Account Security</h3>
+                        <label style="color:#888;font-size:12px;">Current Password</label>
+                        <input class="input-field" type="password" placeholder="Enter Current Password">
+                        <label style="color:#888;font-size:12px;">New Password</label>
+                        <input class="input-field" type="password" placeholder="Enter New Password">
+                        <button class="btn-gold"
+                            style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">Change Password</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="setting-section">
+                        <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Hearing Reminders</div>
+                                <div class="setting-desc">Get alerts before court hearings</div>
+                            </div>
+                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">New Client Alerts</div>
+                                <div class="setting-desc">Notify when a new client registers</div>
+                            </div>
+                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Payment Received</div>
+                                <div class="setting-desc">Alert on fee payment confirmation</div>
+                            </div>
+                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Case Status Updates</div>
+                                <div class="setting-desc">Notify on case milestone changes</div>
+                            </div>
+                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Email Digests</div>
+                                <div class="setting-desc">Weekly summary via email</div>
+                            </div>
+                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                    </div>
+                    <div class="setting-section">
+                        <h3><i class="fa-solid fa-palette"></i> System Preferences</h3>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Dark Mode</div>
+                                <div class="setting-desc">Use dark theme (enabled)</div>
+                            </div>
+                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Auto-save Documents</div>
+                                <div class="setting-desc">Save drafts automatically</div>
+                            </div>
+                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                        <div class="setting-row">
+                            <div>
+                                <div class="setting-label">Two-Factor Auth</div>
+                                <div class="setting-desc">Extra login security</div>
+                            </div>
+                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
+                        </div>
+                    </div>
+                    <div class="setting-section">
+                        <h3><i class="fa-solid fa-users-gear"></i> Lawyer Access Control</h3>
+                        <div class="info-row"><span class="info-label">John Smith</span><span
+                                class="status s-active">Admin</span></div>
+                        <div class="info-row"><span class="info-label">David Lee</span><span
+                                class="status s-blue">Editor</span></div>
+                        <div class="info-row"><span class="info-label">Alex Kumar</span><span
+                                class="status s-pending">Viewer</span></div>
+                        <button class="btn-outline errorpage" style="width:100%;margin-top:14px;padding:10px;">Manage
+                            Roles</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu li[data-page]');
+        const pages = document.querySelectorAll('.content');
+        const pageTitle = document.getElementById('pageTitle');
+        const pageTitles = { dashboard: 'Legal Overview', clients: 'Client Portal', projects: 'projects', meetings: 'Court Schedule', reports: 'Legal Analytics', settings: 'Settings' };
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                menuItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                const page = item.dataset.page;
+                pages.forEach(p => p.classList.remove('active'));
+                document.getElementById('page-' + page).classList.add('active');
+                pageTitle.textContent = pageTitles[page] || page;
+                document.getElementById('sidebar').classList.remove('showSidebar');
+            });
+        });
+
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.add('showSidebar');
+        });
+        document.getElementById('closeBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.remove('showSidebar');
+        });
+        /* REPLACE LOGOUT CODE WITH THIS */
+
+        document.getElementById('logoutItem').addEventListener('click', () => {
+
+            localStorage.removeItem('adminEmail');
+
+            window.location.href = 'index.html';
+
+        });
+        const savedEmail = localStorage.getItem('adminEmail');
+        if (savedEmail) {
+            document.getElementById('adminEmail').innerText = savedEmail;
+            document.getElementById('avatarEl').innerText = savedEmail.charAt(0).toUpperCase();
+        }
+
+        /* ===== PASSWORD EYE ICON ===== */
+
+const passwordFields = document.querySelectorAll(
+  'input[type="password"]'
+);
+
+passwordFields.forEach((input) => {
+
+  const wrapper = document.createElement("div");
+  wrapper.style.position = "relative";
+
+  input.parentNode.insertBefore(wrapper, input);
+  wrapper.appendChild(input);
+
+  input.style.paddingRight = "45px";
+
+  const eye = document.createElement("i");
+  eye.className = "fa-solid fa-eye";
+  eye.style.position = "absolute";
+  eye.style.right = "15px";
+  eye.style.top = "50%";
+  eye.style.transform = "translateY(-50%)";
+  eye.style.color = "#888";
+  eye.style.cursor = "pointer";
+
+  wrapper.appendChild(eye);
+
+  eye.addEventListener("click", () => {
+
+    if (input.type === "password") {
+      input.type = "text";
+      eye.classList.remove("fa-eye");
+      eye.classList.add("fa-eye-slash");
+    } else {
+      input.type = "password";
+      eye.classList.remove("fa-eye-slash");
+      eye.classList.add("fa-eye");
+    }
+
+  });
+
+});
+
+
+/* ===== INPUT VALIDATION ===== */
+const firmName = document.querySelector('input[value="LexCorp Law Associates"]');
+const emailField = document.querySelector('input[value="client@lexcorp.com"]');
+const phoneField = document.querySelector('input[value="+91 98765 43210"]');
+const addressField = document.querySelector('input[value="123, Law Street, Chennai – 600001"]');
+
+const currentPassword = document.querySelector('input[placeholder="Enter Current Password"]');
+const newPassword = document.querySelector('input[placeholder="Enter New Password"]');
+
+
+/* NAME FIELD -> NO NUMBERS */
+
+firmName.addEventListener("input", () => {
+
+  firmName.value = firmName.value.replace(/[^a-zA-Z\s.&]/g, '');
+
+});
+
+
+/* PHONE FIELD -> ONLY NUMBERS */
+
+phoneField.addEventListener("input", () => {
+
+  phoneField.value = phoneField.value.replace(/[^0-9+ ]/g, '');
+
+});
+
+
+/* EMAIL VALIDATION */
+
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+/* ===== SAVE CHANGES VALIDATION ===== */
+
+const saveBtn = document.querySelector('.setting-section .btn-gold');
+
+saveBtn.addEventListener("click", () => {
+
+  if (
+    firmName.value.trim() === "" ||
+    emailField.value.trim() === "" ||
+    phoneField.value.trim() === "" ||
+    addressField.value.trim() === ""
+  ) {
+
+    alert("Please fill all fields");
+    return;
+
+  }
+
+  /* CHECK EMAIL FORMAT */
+
+  if (!emailPattern.test(emailField.value)) {
+
+    alert("Please enter valid email");
+    return;
+
+  }
+
+  alert("Profile Updated Successfully");
+
+});
+
+
+/* ===== CHANGE PASSWORD VALIDATION ===== */
+
+const passwordBtn = document.querySelectorAll('.setting-section .btn-gold')[1];
+
+passwordBtn.addEventListener("click", () => {
+
+  if (
+    currentPassword.value.trim() === "" ||
+    newPassword.value.trim() === ""
+  ) {
+
+    alert("Please fill all password fields");
+    return;
+
+  }
+
+  /* PASSWORD LENGTH */
+
+  if (newPassword.value.length < 6) {
+
+    alert("New Password must be at least 6 characters");
+    return;
+
+  }
+
+
+  alert("Password Changed Successfully");
+
+  /* CLEAR PASSWORD FIELDS */
+
+  currentPassword.value = "";
+  newPassword.value = "";
+
+});
+
+/* ===== ERROR PAGE REDIRECT ===== */
+
+const errorPages = document.querySelectorAll('.errorpage');
+
+errorPages.forEach((item) => {
+
+  item.addEventListener('click', () => {
+
+    window.location.href = "404.html";
+
+  });
+
+});
+    </script>
+</body>
+
+</html>
