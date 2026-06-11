@@ -7,68 +7,1759 @@
   <title>MediCore Pharma</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="style.css">
 </head>
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* ========================= HERO ========================= */
+.hero{
+  width:100%;
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  padding-block: 90px;
+  background-image:
+  linear-gradient(
+    rgba(13,92,85,.65),
+    rgba(8,72,65,.65)
+  ),
+  url("./src/home1.webp");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-5%;
+  left:-5%;
+  width:110%;
+  height:110%;
+  background:
+    radial-gradient(circle at 15% 25%, rgba(0,180,216,.18), transparent 35%),
+    radial-gradient(circle at 85% 70%, rgba(0,119,182,.22), transparent 35%),
+    radial-gradient(circle at 50% 90%, rgba(72,202,228,.12), transparent 30%);
+  z-index:0;
+  pointer-events:none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ========================= NAVBAR ========================= */
+.navbar {
+  width: 100%;
+  padding: 14px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: 0.4s ease;
+  animation: navFade 1s ease;
+}
+
+.navbar.active {
+  border-bottom: 1px solid rgba(0, 180, 216, 0.35);
+  background:rgba(13,92,85,.95);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: 0.4s ease;
+}
+
+.navbar.active::before {
+  opacity: 1;
+  animation: navGlow 4s linear infinite;
+}
+
+@keyframes navGlow {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.logo img{
+  width: clamp(140px,16vw,190px);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  font-size: 14.5px;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #48cae4, #0077b6);
+  transition: 0.4s;
+}
+
+.nav-links a:hover { color: #48cae4; }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-btn {
+  padding: 12px 36px;
+  border: none;
+  border-radius: 10px;
+  background:linear-gradient(135deg,#0D5C55,#198754);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s ease;
+  box-shadow: 0 0 18px rgba(0, 216, 115, 0.45), 0 0 12px rgba(0, 182, 91, 0.25);
+}
+
+.nav-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(72, 202, 228, 0.5);
+  background:linear-gradient(135deg,#084841,#0D5C55);
+}
+
+.menu-toggle {
+  display: none;
+  font-size: clamp(20px, 2.5vw, 26px);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ========================= HERO CONTENT ========================= */
+.hero-content {
+  width: 100%;
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  padding: 30px 20px 10px;
+}
+
+.tag {
+  padding: 10px 20px;
+  font-size: 14px;
+  margin-bottom: 26px;
+  border-radius: 50px;
+  color: #ffffff;
+  border:1px solid rgba(134,239,172,.4);
+  background:rgba(134,239,172,.1);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 18px rgba(72, 202, 228, 0.2);
+  opacity: 0;
+  transform: translateY(40px);
+  animation: heroFadeUp 0.8s ease 0.2s forwards;
+}
+
+.tag i { color: #48cae4; }
+
+.hero-content h1 {
+  max-width: 860px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(25px, 4.5vw, 66px);
+  line-height: 1.12;
+  font-weight: 800;
+  margin-bottom: 24px;
+  color: white;
+  position: relative;
+  transform: translateY(70px);
+  animation: heroFadeUp 1s ease 0.4s forwards;
+  transition: opacity 0.4s;
+}
+
+.hero-content p {
+  max-width: 660px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.9;
+  margin-bottom: 30px;
+  font-size: 15.5px;
+  opacity: 0;
+  transform: translateY(60px);
+  animation: heroFadeUp 1s ease 0.65s forwards;
+  transition: opacity 0.4s;
+}
+
+.stats-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 36px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(72, 202, 228, 0.2);
+  border-radius: 16px;
+  padding: 14px 32px;
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform: translateY(50px);
+  animation: heroFadeUp 1s ease 0.85s forwards;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 24px;
+}
+
+.stat-number {
+  font-size: clamp(18px, 2.2vw, 26px);
+  color:#106755;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 11.5px;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: rgba(72, 202, 228, 0.25);
+  flex-shrink: 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(60px);
+  animation: heroFadeUp 1s ease 1.05s forwards;
+}
+
+.btn {
+  padding: 14px 32px;
+  border: none;
+  border-radius: 50px;
+  font-size: 14.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-primary {
+  background:linear-gradient(135deg,#0D5C55,#198754);
+  color: #fff;
+  box-shadow: 0 8px 28px rgba(0, 119, 182, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-5px) scale(1.04);
+  background:linear-gradient(135deg,#084841,#0D5C55);
+  box-shadow: 0 14px 36px rgba(72, 202, 228, 0.5);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #caf0f8;
+  border: 1.5px solid rgba(72, 228, 168, 0.65);
+  box-shadow: 0 0 18px rgba(1, 143, 107, 0.25);
+}
+
+.btn-outline:hover {
+  transform: translateY(-5px) scale(1.04);
+  background: linear-gradient(135deg, #0077b6, #48cae4);
+  color: #fff;
+  box-shadow: 0 14px 36px rgba(72, 202, 228, 0.45);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  transition: 0.7s;
+}
+
+.btn:hover::before { left: 120%; }
+
+.slider-buttons {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 clamp(10px, 6vw, 80px);
+  z-index: 100;
+  pointer-events: none;
+  animation: fadeButtons 1.2s ease;
+}
+
+.slide-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(72, 202, 228, 0.5);
+  cursor: pointer;
+  font-size: 16px;
+  color: white;
+  background: rgba(0, 20, 50, 0.45);
+  backdrop-filter: blur(10px);
+  transition: 0.4s ease;
+  pointer-events: auto;
+}
+
+.slide-btn:hover {
+  transform: scale(1.12);
+  background: linear-gradient(135deg, rgba(0,119,182,0.9), rgba(72,202,228,0.9));
+  box-shadow: 0 0 28px rgba(72, 202, 228, 0.5);
+  border-color: transparent;
+}
+
+.slide-dots {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 20;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(72, 202, 228, 0.3);
+  cursor: pointer;
+  transition: 0.35s ease;
+  padding: 0;
+}
+
+.dot.active {
+  background: #48cae4;
+  width: 28px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(72, 202, 228, 0.6);
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(60px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes navFade {
+  from { opacity: 0; transform: translateX(-50%) translateY(-40px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes fadeButtons {
+  from { opacity: 0; transform: translateY(-50%) scale(0.7); }
+  to   { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+/* ========================= SHARED SECTION STYLES ========================= */
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+.section-tag.green {
+  background: rgba(13,92,85,.1);
+  color: #0D5C55;
+  border: 1px solid rgba(13,92,85,.25);
+}
+
+.section-title {
+  font-size: clamp(26px, 3.5vw, 44px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: #0f2a27;
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  font-size: 15.5px;
+  color: #5a7a76;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ========================= 1. ABOUT US ========================= */
+
+.about-section {
+  padding: 100px 6%;
+  background: #f8fffe;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(13,92,85,.07), transparent 70%);
+  pointer-events: none;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-image-wrap {
+  position: relative;
+}
+
+.about-image-wrap img {
+  width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  height: 440px;
+  display: block;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+}
+
+.about-img-placeholder {
+  width: 100%;
+  height: 460px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0D5C55 0%, #198754 50%, #48cae4 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-img-placeholder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.about-img-placeholder i {
+  font-size: 80px;
+  color: rgba(255,255,255,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.about-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 24px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 190px;
+}
+
+.about-badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.about-badge-text p:first-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0D5C55;
+  line-height: 1;
+}
+
+.about-badge-text p:last-child {
+  font-size: 12px;
+  color: #7a9e9b;
+  margin-top: 3px;
+}
+
+.about-content .section-tag { margin-bottom: 18px; }
+.about-content .section-title { text-align: left; }
+.about-content .section-subtitle { text-align: left; margin-bottom: 30px; }
+
+.about-points {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 36px;
+}
+
+.about-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.about-point-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: rgba(13,92,85,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0D5C55;
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.about-point-text h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #0f2a27;
+  margin-bottom: 3px;
+}
+
+.about-point-text p {
+  font-size: 13.5px;
+  color: #5a7a76;
+  line-height: 1.6;
+}
+
+.about-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-green {
+  padding: 13px 30px;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-green:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(13,92,85,0.4);
+}
+
+.btn-ghost {
+  padding: 13px 30px;
+  background: transparent;
+  color: #0D5C55;
+  border: 1.5px solid rgba(13,92,85,.35);
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-ghost:hover {
+  background: rgba(13,92,85,.06);
+  transform: translateY(-3px);
+}
+
+/* ========================= 2. SERVICES ========================= */
+
+.services-section {
+  padding: 100px 6%;
+  background: #fff;
+  position: relative;
+}
+
+.services-section::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, rgba(13,92,85,.2), transparent);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  padding: 36px 30px;
+  border-radius: 20px;
+  background: #f8fffe;
+  border: 1px solid rgba(13,92,85,.1);
+  transition: 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #0D5C55, #48cae4);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: 0.4s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(13,92,85,.12);
+  border-color: rgba(13,92,85,.2);
+}
+
+.service-card:hover::before { transform: scaleY(1); }
+
+.service-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(13,92,85,.12), rgba(72,202,228,.12));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0D5C55;
+  font-size: 28px;
+  margin-bottom: 22px;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f2a27;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #5a7a76;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #0D5C55;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.service-link:hover { gap: 10px; color: #198754; }
+
+/* ========================= 3. PRODUCTS ========================= */
+
+.products-section {
+  padding: 100px 6%;
+  background: #f0faf8;
+  position: relative;
+}
+
+.products-filter {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.filter-btn {
+  padding: 9px 22px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(13,92,85,.2);
+  background: transparent;
+  color: #5a7a76;
+  font-size: 13.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  color: #fff;
+  border-color: transparent;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 28px 24px;
+  border: 1px solid rgba(13,92,85,.08);
+  transition: 0.35s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(13,92,85,.1);
+  border-color: rgba(13,92,85,.18);
+}
+
+.product-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-new { background: rgba(72,202,228,.15); color: #0077b6; }
+.badge-popular { background: rgba(25,135,84,.15); color: #0D5C55; }
+.badge-certified { background: rgba(13,92,85,.1); color: #0D5C55; }
+
+.product-icon-wrap {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 18px;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f2a27;
+  margin-bottom: 6px;
+}
+
+.product-card .prod-category {
+  font-size: 12px;
+  color: #0D5C55;
+  font-weight: 500;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.product-card p {
+  font-size: 13px;
+  color: #5a7a76;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(13,92,85,.08);
+  padding-top: 14px;
+}
+
+.product-footer span {
+  font-size: 12.5px;
+  color: #7a9e9b;
+}
+
+.product-footer a {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0D5C55;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+}
+
+.product-footer a:hover { color: #198754; gap: 8px; }
+
+/* ========================= 4. RESEARCH & DEVELOPMENT ========================= */
+
+.research-section {
+  padding: 100px 6%;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.research-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(72,202,228,.06), transparent 70%);
+  pointer-events: none;
+}
+
+.research-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.research-content .section-title { text-align: left; }
+.research-content .section-subtitle { text-align: left; margin-bottom: 40px; }
+
+.pipeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.pipeline-item {
+  background: #f8fffe;
+  border: 1px solid rgba(13,92,85,.1);
+  border-radius: 14px;
+  padding: 20px 22px;
+  transition: 0.3s;
+}
+
+.pipeline-item:hover {
+  border-color: rgba(13,92,85,.25);
+  box-shadow: 0 8px 24px rgba(13,92,85,.07);
+}
+
+.pipeline-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.pipeline-item-header h4 {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #0f2a27;
+}
+
+.phase-pill {
+  padding: 3px 12px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.phase-1 { background: rgba(255,160,0,.12); color: #b36200; }
+.phase-2 { background: rgba(0,119,182,.12); color: #005b8e; }
+.phase-3 { background: rgba(13,92,85,.12); color: #0D5C55; }
+.approved { background: rgba(25,135,84,.15); color: #0a5c30; }
+
+.pipeline-progress {
+  width: 100%;
+  height: 6px;
+  background: rgba(13,92,85,.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.pipeline-bar {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #0D5C55, #48cae4);
+  transition: width 0.8s ease;
+}
+
+.pipeline-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #7a9e9b;
+}
+
+.research-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.r-stat-card {
+  padding: 30px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+
+}
+
+.r-stat-card::after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+}
+
+.r-stat-card .r-number {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 6px;
+  color: #86EFAC;
+}
+
+.r-stat-card .r-label {
+  font-size: 14px;
+  color: rgba(255,255,255,.8);
+}
+
+.r-stat-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 26px;
+}
+
+.r-mini-card {
+  padding: 22px 20px;
+  border-radius: 14px;
+  background: #f0faf8;
+  border: 1px solid rgba(13,92,85,.1);
+}
+
+.r-mini-card .r-number {
+  font-size: 28px;
+  font-weight: 800;
+  color: #0D5C55;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.r-mini-card .r-label {
+  font-size: 12.5px;
+  color: #5a7a76;
+}
+
+/* ========================= 5. WHY CHOOSE US ========================= */
+
+.why-section {
+  padding: 100px 6%;
+  background: linear-gradient(135deg, #0D5C55 0%, #084841 60%, #0a3d35 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.why-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.why-section .section-title { color: #fff; }
+.why-section .section-subtitle { color: rgba(255,255,255,.72); }
+.why-section .section-tag { background: rgba(134,239,172,.12); color: #86EFAC; border: 1px solid rgba(134,239,172,.3); }
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-card {
+  padding: 36px 28px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  transition: 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+
+.why-card:hover {
+  background: rgba(255,255,255,.1);
+  transform: translateY(-6px);
+  border-color: rgba(72,202,228,.3);
+}
+
+.why-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(72,202,228,.06), transparent 60%);
+  opacity: 0;
+  transition: 0.35s;
+}
+
+.why-card:hover::before { opacity: 1; }
+
+.why-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
+  background: rgba(134,239,172,.12);
+  border: 1px solid rgba(134,239,172,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #86EFAC;
+  font-size: 30px;
+  margin: 0 auto 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.why-card h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.why-card p {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.68);
+  line-height: 1.8;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========================= 6. TESTIMONIALS ========================= */
+
+.testimonials-section {
+  padding: 100px 6%;
+  background: #f8fffe;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 34px 30px;
+  border: 1px solid rgba(13,92,85,.08);
+  transition: 0.35s;
+  position: relative;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(13,92,85,.08);
+  border-color: rgba(13,92,85,.15);
+}
+
+.quote-icon {
+  font-size: 40px;
+  color: rgba(13,92,85,.12);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.stars i { color: #f0a500; font-size: 14px; }
+
+.testimonial-card p {
+  font-size: 14px;
+  color: #3d6461;
+  line-height: 1.85;
+  margin-bottom: 28px;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(13,92,85,.08);
+  padding-top: 20px;
+}
+
+.author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.author-info h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #0f2a27;
+}
+
+.author-info span {
+  font-size: 12.5px;
+  color: #7a9e9b;
+}
+
+/* ========================= 7. CONTACT & FOOTER ========================= */
+
+.contact-section {
+  padding: 100px 6% 0;
+  background: #fff;
+}
+
+.contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 70px;
+  align-items: start;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(13,92,85,.1);
+}
+
+.contact-left .section-title { text-align: left; }
+.contact-left .section-subtitle { text-align: left; margin-bottom: 36px; }
+
+.contact-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+      min-width:0;  
+}
+
+.contact-info-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: rgba(13,92,85,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0D5C55;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-info-text{
+    flex:1;
+    min-width:0;
+}
+
+.contact-info-text h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #0f2a27;
+  margin-bottom: 3px;
+     word-wrap:break-word;
+    overflow-wrap:break-word;
+}
+
+.contact-info-text p {
+  font-size: 13.5px;
+  color: #5a7a76;
+  line-height: 1.6;
+     word-wrap:break-word;
+    overflow-wrap:break-word;
+}
+
+@media (max-width:768px){
+
+    .contact-inner{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .contact-info-item{
+        gap:12px;
+    }
+
+    .contact-info-icon{
+        width:42px;
+        height:42px;
+        flex-shrink:0;
+    }
+
+    .contact-info-text{
+        width:calc(100% - 54px);
+    }
+
+    .contact-info-text p{
+        font-size:13px;
+        line-height:1.6;
+        overflow-wrap:anywhere;
+    }
+}
+
+.contact-form {
+  background: #f8fffe;
+  border-radius: 20px;
+  padding: 40px 36px;
+  border: 1px solid rgba(13,92,85,.1);
+}
+
+.contact-form h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f2a27;
+  margin-bottom: 28px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3d5c59;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(13,92,85,.15);
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  color: #0f2a27;
+  background: #fff;
+  outline: none;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0D5C55;
+  box-shadow: 0 0 0 3px rgba(13,92,85,.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.form-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(13,92,85,.35);
+}
+
+/* ========================= FOOTER ========================= */
+
+.footer {
+  background: #0a2421;
+  padding: 70px 6% 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.8;
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.65);
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  background: rgba(72,202,228,.2);
+  color: #48cae4;
+  border-color: rgba(72,202,228,.3);
+}
+
+.footer-col h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer-col h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 32px;
+  height: 2px;
+  background: linear-gradient(90deg, #0D5C55, #48cae4);
+  border-radius: 2px;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer-links a {
+  font-size: 13.5px;
+  color: rgba(255,255,255,.5);
+  text-decoration: none;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-links a:hover { color: #48cae4; gap: 12px; }
+.footer-links a::before { content: "→"; font-size: 12px; }
+
+.footer-newsletter input {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-size: 13.5px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.footer-newsletter input::placeholder { color: rgba(255,255,255,.3); }
+
+.footer-newsletter input:focus {
+  border-color: rgba(72,202,228,.4);
+}
+
+.footer-newsletter button {
+  width: 100%;
+  padding: 11px;
+  background: linear-gradient(135deg, #0D5C55, #198754);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+}
+
+.footer-newsletter button:hover {
+  box-shadow: 0 8px 20px rgba(13,92,85,.4);
+  transform: translateY(-2px);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 22px;
+}
+
+.footer-bottom-links a {
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-bottom-links a:hover { color: #48cae4; }
+
+/* ========================= SCROLL REVEAL ========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================= RESPONSIVE ========================= */
+
+@media (max-width: 1100px) {
+  .navbar {
+    width: 100%;
+    top: 0;
+    border-radius: 0;
+    overflow: visible;
+    padding: 14px 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+    z-index: 10001;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(8, 28, 60, 0.98), rgba(4, 15, 40, 0.98));
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 30px 50px;
+    gap: 32px;
+    list-style: none;
+    transition: 0.5s ease;
+    z-index: 9999;
+  }
+
+  .nav-links.active { right: 0; }
+  .nav-links a { font-size: 20px; }
+
+  .about-grid,
+  .research-inner,
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-image-wrap {
+    order: -1;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    padding: 12px 20px;
+    gap: 0;
+  }
+
+  .stat-item { padding: 4px 14px; }
+  .stat-divider { display: none; }
+
+  .about-badge {
+    bottom: -10px;
+    right: 10px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .r-stat-row {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar { padding: 10px 20px; }
+  .hero-content { padding-top: 0; }
+  .hero-content h1 { margin-bottom: 6px; line-height: 1.2; min-height: auto; }
+  .hero-content p { margin-bottom: 16px; font-size: 13.5px; min-height: auto; }
+  .stats-row { width: 100%; border-radius: 12px; margin-bottom: 24px; }
+  .hero-buttons { width: 100%; flex-direction: column; align-items: center; margin-bottom: 20px; }
+  .btn { width: 90%; max-width: 290px; padding: 12px 20px; }
+  .slide-btn { width: 36px; height: 36px; font-size: 13px; }
+  .tag { font-size: 12.5px; padding: 8px 14px; margin-bottom: 14px; text-align: center; }
+
+  .about-section,
+  .services-section,
+  .products-section,
+  .research-section,
+  .why-section,
+  .testimonials-section,
+  .contact-section { padding: 70px 5%; }
+
+  .contact-form { padding: 28px 22px; }
+
+  .footer { padding: 50px 5% 24px; }
+
+  .about-cta { flex-direction: column; }
+  .about-cta button { width: 100%; justify-content: center; }
+
+  .section-title { font-size: clamp(22px, 6vw, 32px); }
+}
+
+
+</style>
 
 <body>
 
+  <!-- ========================= HERO ========================= -->
   <section class="hero">
 
-    <!-- NAVBAR -->
     <nav class="navbar">
-
       <div class="logo">
-        <img src="./src/logo.webp" alt="Stackly Logo">
+        <img src="./src/logo.webp" alt="MediCore Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        
       </div>
 
       <ul class="nav-links" id="navLinks">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Research</a></li>
-        <li><a href="#">Hospitals</a></li>
-        <li><a href="#">Contact</a></li>
-        <button class="nav-btn login-btn">
-          <span>Login</span>
-        </button>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#testimonials">Hospitals</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <button class="nav-btn login-btn"><span>Login</span></button>
       </ul>
 
       <div class="menu-toggle" id="menuToggle">
         <i class="fa-solid fa-bars"></i>
       </div>
-
     </nav>
 
-    <!-- HERO CONTENT -->
     <div class="hero-content">
-
-      <!-- SLIDER BUTTONS -->
       <div class="slider-buttons">
-        <button id="prevBtn" class="slide-btn">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <button id="nextBtn" class="slide-btn">
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
+        <button id="prevBtn" class="slide-btn"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="nextBtn" class="slide-btn"><i class="fa-solid fa-arrow-right"></i></button>
       </div>
 
-      <!-- TAG -->
       <div class="tag homta">
         Trusted by 5,000+ Healthcare Professionals
         <i class="fa-solid fa-arrow-right"></i>
       </div>
 
-      <!-- TITLE -->
-      <h1 id="heroTitle">
-        Advancing Health With Science-Driven Pharmaceutical Solutions.
-      </h1>
+      <h1 id="heroTitle">Advancing Health With Science-Driven Pharmaceutical Solutions.</h1>
 
-      <!-- TEXT -->
-      <p id="heroText">
-        We develop safe, effective, and affordable medicines to improve lives across communities worldwide.
-      </p>
+      <p id="heroText">We develop safe, effective, and affordable medicines to improve lives across communities worldwide.</p>
 
-      <!-- STATS ROW -->
       <div class="stats-row">
         <div class="stat-item">
           <span class="stat-number">200+</span>
@@ -91,25 +1782,638 @@
         </div>
       </div>
 
-      <!-- BUTTONS -->
       <div class="hero-buttons">
         <button class="btn btn-outline">
-          <span>
-            <i class="fa-solid fa-play"></i>
-            Our Research
-          </span>
+          <span><i class="fa-solid fa-play"></i> Our Research</span>
         </button>
         <button class="btn btn-primary">
           <span>Browse Products</span>
         </button>
       </div>
+    </div>
+
+    <div class="slide-dots" id="slideDots"></div>
+  </section>
+
+  <!-- ========================= 1. ABOUT US ========================= -->
+  <section class="about-section" id="about">
+    <div class="about-grid">
+
+      <div class="about-image-wrap reveal">
+        <div class="about-img-placeholder">
+          <i class="fa-solid fa-flask-vial"></i>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-icon">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div class="about-badge-text">
+            <p>ISO 9001:2015</p>
+            <p>Certified Company</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="section-tag green"><i class="fa-solid fa-circle-info"></i> About MediCore</div>
+        <h2 class="section-title">Three Decades of Healing, Innovating & Caring</h2>
+        <p class="section-subtitle">Founded in 1994, MediCore Pharma has grown from a regional manufacturer into a globally trusted pharmaceutical leader — guided by one mission: better health for all.</p>
+
+        <div class="about-points">
+          <div class="about-point">
+            <div class="about-point-icon"><i class="fa-solid fa-microscope"></i></div>
+            <div class="about-point-text">
+              <h4>Science-First R&D</h4>
+              <p>Our 400+ researchers work in state-of-the-art labs to discover therapies that address unmet medical needs.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon"><i class="fa-solid fa-earth-asia"></i></div>
+            <div class="about-point-text">
+              <h4>Global Distribution Network</h4>
+              <p>We reach patients in 50+ countries through a robust supply chain built for reliability and speed.</p>
+            </div>
+          </div>
+          <div class="about-point">
+            <div class="about-point-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="about-point-text">
+              <h4>Uncompromising Quality</h4>
+              <p>Every batch is tested against international pharmacopoeial standards before leaving our facilities.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-cta">
+          <button class="btn-green"><i class="fa-solid fa-book-open"></i> Our Story</button>
+          <button class="btn-ghost"><i class="fa-solid fa-users"></i> Meet the Team</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================= 2. SERVICES ========================= -->
+  <section class="services-section" id="services">
+    <div class="section-header reveal">
+      <div class="section-tag green"><i class="fa-solid fa-stethoscope"></i> What We Do</div>
+      <h2 class="section-title">End-to-End Pharmaceutical Services</h2>
+      <p class="section-subtitle">From molecule to medicine, we handle every stage — so healthcare providers can focus on what matters most.</p>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-dna"></i></div>
+        <h3>Drug Discovery & Development</h3>
+        <p>Systematic identification of novel compounds using AI-assisted screening and biological validation across disease targets.</p>
+        <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
+        <h3>Contract Manufacturing</h3>
+        <p>cGMP-compliant manufacturing of oral solids, injectables, topicals and biologics at scale for global pharma partners.</p>
+        <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-vials"></i></div>
+        <h3>Quality Control & Testing</h3>
+        <p>Comprehensive analytical testing including stability studies, microbial testing, and release testing per ICH guidelines.</p>
+        <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-truck-medical"></i></div>
+        <h3>Cold-Chain Logistics</h3>
+        <p>Temperature-controlled distribution networks ensuring product integrity from our facilities to the patient's bedside.</p>
+        <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-file-medical"></i></div>
+        <h3>Regulatory Affairs</h3>
+        <p>Expert guidance on FDA, EMA, and WHO regulatory submissions, ensuring timely approvals in target markets.</p>
+        <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="fa-solid fa-hospital-user"></i></div>
+        <h3>Medical Affairs & Education</h3>
+        <p>Scientific liaison programs, CME initiatives, and evidence-based resources that support healthcare professionals.</p>
+        <a href="#" class="service-link">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 3. PRODUCTS ========================= -->
+  <section class="products-section" id="products">
+    <div class="section-header reveal">
+      <div class="section-tag green"><i class="fa-solid fa-capsules"></i> Our Portfolio</div>
+      <h2 class="section-title">200+ Medicines Across Therapeutic Areas</h2>
+      <p class="section-subtitle">A wide-ranging portfolio developed to address the most critical health challenges of our time.</p>
+    </div>
+
+    <div class="products-filter reveal">
+      <button class="filter-btn active" onclick="filterProducts(this, 'all')">All Products</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'cardio')">Cardiology</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'onco')">Oncology</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'neuro')">Neurology</button>
+      <button class="filter-btn" onclick="filterProducts(this, 'anti')">Anti-infective</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+<div class="product-card reveal" data-cat="cardio">
+    <span class="product-badge badge-popular">Best Seller</span>
+    <div class="product-icon-wrap">
+        <i class="fa-solid fa-heart-pulse"></i>
+    </div>
+    <h3>CardioCare Plus</h3>
+    <p class="prod-category">Cardiology</p>
+    <p>
+        Advanced cardiovascular therapy designed to support heart health
+        and help manage cholesterol and blood pressure levels.
+    </p>
+    <div class="product-footer">
+        <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
+        <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</div>
+
+<div class="product-card reveal" data-cat="diabetes">
+    <span class="product-badge badge-new">New Launch</span>
+    <div class="product-icon-wrap">
+        <i class="fa-solid fa-syringe"></i>
+    </div>
+    <h3>GlucoSafe XR</h3>
+    <p class="prod-category">Diabetes Care</p>
+    <p>
+        Innovative diabetes management solution formulated to support
+        stable blood glucose levels and improve patient well-being.
+    </p>
+    <div class="product-footer">
+        <span><i class="fa-solid fa-capsules"></i> Extended Release</span>
+        <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+</div>
+
+         <div class="product-card reveal" data-cat="cardio">
+        <span class="product-badge badge-popular">Popular</span>
+        <div class="product-icon-wrap"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>CardioMax 40mg</h3>
+        <p class="prod-category">Cardiology</p>
+        <p>High-efficacy statin for LDL reduction with proven cardiovascular outcome benefits.</p>
+        <div class="product-footer">
+          <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
+          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="onco">
+        <span class="product-badge badge-new">New</span>
+        <div class="product-icon-wrap"><i class="fa-solid fa-ribbon"></i></div>
+        <h3>OncoClear 100mg</h3>
+        <p class="prod-category">Oncology</p>
+        <p>Targeted kinase inhibitor for non-small cell lung cancer with minimal systemic toxicity.</p>
+        <div class="product-footer">
+          <span><i class="fa-solid fa-syringe"></i> Injection</span>
+          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="neuro">
+        <span class="product-badge badge-certified">Certified</span>
+        <div class="product-icon-wrap"><i class="fa-solid fa-brain"></i></div>
+        <h3>NeuroCalm 25mg</h3>
+        <p class="prod-category">Neurology</p>
+        <p>Second-generation antidepressant with improved tolerability for major depressive disorder.</p>
+        <div class="product-footer">
+          <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
+          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="anti">
+        <span class="product-badge badge-popular">Popular</span>
+        <div class="product-icon-wrap"><i class="fa-solid fa-bacterium"></i></div>
+        <h3>AmoxiPlus 500mg</h3>
+        <p class="prod-category">Anti-infective</p>
+        <p>Broad-spectrum amoxicillin-clavulanate combination effective against resistant pathogens.</p>
+        <div class="product-footer">
+          <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
+          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="cardio">
+        <span class="product-badge badge-new">New</span>
+        <div class="product-icon-wrap"><i class="fa-solid fa-droplet"></i></div>
+        <h3>HyperControl XR</h3>
+        <p class="prod-category">Cardiology</p>
+        <p>Extended-release antihypertensive for once-daily dosing with 24-hour blood pressure control.</p>
+        <div class="product-footer">
+          <span><i class="fa-solid fa-tablets"></i> Extended Release</span>
+          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="neuro">
+        <span class="product-badge badge-certified">Certified</span>
+        <div class="product-icon-wrap"><i class="fa-solid fa-bolt"></i></div>
+        <h3>EpiGuard 200mg</h3>
+        <p class="prod-category">Neurology</p>
+        <p>Next-generation anti-epileptic with low drug-drug interaction profile for polypharmacy patients.</p>
+        <div class="product-footer">
+          <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
+          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 4. RESEARCH & DEVELOPMENT ========================= -->
+  <section class="research-section" id="research">
+    <div class="research-inner">
+
+      <div class="research-content reveal">
+        <div class="section-tag green"><i class="fa-solid fa-flask"></i> R&D Pipeline</div>
+        <h2 class="section-title">Investing in Tomorrow's Cures Today</h2>
+        <p class="section-subtitle">Our research pipeline spans 18 active clinical programs. We invest 22% of annual revenue back into R&D — well above the industry average.</p>
+
+        <div class="pipeline-list">
+          <div class="pipeline-item">
+            <div class="pipeline-item-header">
+              <h4>MC-401 (Alzheimer's)</h4>
+              <span class="phase-pill phase-3">Phase III</span>
+            </div>
+            <div class="pipeline-progress"><div class="pipeline-bar" style="width:78%"></div></div>
+            <div class="pipeline-meta"><span>NDA Filing: Q3 2026</span><span>78% complete</span></div>
+          </div>
+
+          <div class="pipeline-item">
+            <div class="pipeline-item-header">
+              <h4>MC-318 (Type 2 Diabetes)</h4>
+              <span class="phase-pill phase-2">Phase II</span>
+            </div>
+            <div class="pipeline-progress"><div class="pipeline-bar" style="width:52%"></div></div>
+            <div class="pipeline-meta"><span>Enrollment ongoing</span><span>52% complete</span></div>
+          </div>
+
+          <div class="pipeline-item">
+            <div class="pipeline-item-header">
+              <h4>MC-220 (Pancreatic Cancer)</h4>
+              <span class="phase-pill phase-1">Phase I</span>
+            </div>
+            <div class="pipeline-progress"><div class="pipeline-bar" style="width:28%"></div></div>
+            <div class="pipeline-meta"><span>Dose escalation</span><span>28% complete</span></div>
+          </div>
+
+          <div class="pipeline-item">
+            <div class="pipeline-item-header">
+              <h4>CardioMax XR (Hypertension)</h4>
+              <span class="phase-pill approved">Approved</span>
+            </div>
+            <div class="pipeline-progress"><div class="pipeline-bar" style="width:100%"></div></div>
+            <div class="pipeline-meta"><span>Launch: January 2026</span><span>Approved</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="research-stats reveal">
+        <div class="r-stat-card">
+          <div class="r-number">₹1,200Cr</div>
+          <div class="r-label">Annual R&D Investment (2025)</div>
+        </div>
+
+        <div class="r-stat-row">
+          <div class="r-mini-card">
+            <div class="r-number">18</div>
+            <div class="r-label">Active Clinical Trials</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">400+</div>
+            <div class="r-label">Scientists & Researchers</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">120+</div>
+            <div class="r-label">Patents Filed</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">7</div>
+            <div class="r-label">R&D Centers Globally</div>
+          </div>
+
+              <div class="r-mini-card">
+            <div class="r-number">18</div>
+            <div class="r-label">Active Clinical Trials</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">400+</div>
+            <div class="r-label">Scientists & Researchers</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">120+</div>
+            <div class="r-label">Patents Filed</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">7</div>
+            <div class="r-label">R&D Centers Globally</div>
+          </div>
+
+           <div class="r-mini-card">
+            <div class="r-number">120+</div>
+            <div class="r-label">Patents Filed</div>
+          </div>
+          <div class="r-mini-card">
+            <div class="r-number">7</div>
+            <div class="r-label">R&D Centers Globally</div>
+          </div>
+      </div>
+
+      
+
+    </div>
+  </section>
+
+  <!-- ========================= 5. WHY CHOOSE US ========================= -->
+  <section class="why-section">
+    <div class="section-header reveal">
+      <div class="section-tag green"><i class="fa-solid fa-star"></i> Why MediCore</div>
+      <h2 class="section-title">What Sets Us Apart</h2>
+      <p class="section-subtitle">A reputation built over three decades cannot be rushed. Here is why hospitals, pharmacies, and patients trust us.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-certificate"></i></div>
+        <h3>WHO-GMP Certified</h3>
+        <p>All manufacturing facilities are WHO-GMP certified and regularly audited by international regulatory bodies.</p>
+      </div>
+<div class="why-card reveal">
+    <div class="why-icon">
+        <i class="fa-solid fa-flask-vial"></i>
+    </div>
+    <h3>Advanced Research & Development</h3>
+    <p>
+        Our dedicated R&D team develops innovative pharmaceutical solutions,
+        ensuring safe, effective, and high-quality medicines for global healthcare needs.
+    </p>
+</div>
+
+<div class="why-card reveal">
+    <div class="why-icon">
+        <i class="fa-solid fa-pills"></i>
+    </div>
+    <h3>Quality Assured Medicines</h3>
+    <p>
+        Every product undergoes rigorous quality testing and compliance checks
+        to meet international pharmaceutical standards and patient safety requirements.
+    </p>
+</div>  
+
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+        <h3>30 Years of Trust</h3>
+        <p>Three decades of delivering consistent quality has made us the preferred supplier for 1,200+ hospitals across India.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-wallet"></i></div>
+        <h3>Affordable Pricing</h3>
+        <p>We believe access to medicine is a right. Our pricing models ensure life-saving drugs reach every income level.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>24/7 Medical Support</h3>
+        <p>Dedicated medical affairs team available round the clock for pharmacovigilance queries and clinical guidance.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-leaf"></i></div>
+        <h3>Sustainable Practices</h3>
+        <p>Carbon-neutral manufacturing by 2027. Our green pharma initiative reduces chemical waste by 60% year-on-year.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon"><i class="fa-solid fa-handshake"></i></div>
+        <h3>Global Partnerships</h3>
+        <p>Strategic alliances with leading research institutions in USA, Europe, and Japan accelerate our innovation pipeline.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 6. TESTIMONIALS ========================= -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-header reveal">
+      <div class="section-tag green"><i class="fa-solid fa-comment-medical"></i> Testimonials</div>
+      <h2 class="section-title">Trusted by Medical Professionals</h2>
+      <p class="section-subtitle">Hear what leading doctors and hospital administrators say about partnering with MediCore Pharma.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p>MediCore's CardioMax has dramatically improved patient adherence in our cardiology ward. The consistent quality and on-time delivery make them our go-to pharmaceutical partner.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">DR</div>
+          <div class="author-info">
+            <h4>Dr. Ramesh Krishnamurthy</h4>
+            <span>Chief Cardiologist, Apollo Hospitals Chennai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p>The OncoClear range has given our oncology patients renewed hope. MediCore's rigorous quality control and responsive medical team make them an invaluable partner in cancer care.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SP</div>
+          <div class="author-info">
+            <h4>Dr. Suchitra Pillai</h4>
+            <span>Head of Oncology, Fortis Healthcare Mumbai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal">
+        <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
+        <p>As a procurement officer, I value reliability above all else. MediCore has maintained 99.8% on-time delivery rate over four years of partnership. That is simply unmatched in this industry.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AK</div>
+          <div class="author-info">
+            <h4>Anjali Kapoor</h4>
+            <span>Procurement Director, AIIMS New Delhi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= 7. CONTACT ========================= -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+
+      <div class="contact-left reveal">
+        <div class="section-tag green"><i class="fa-solid fa-envelope-open-text"></i> Get in Touch</div>
+        <h2 class="section-title">Let's Build a Healthier Future Together</h2>
+        <p class="section-subtitle">Whether you're a hospital, distributor, or research partner — we'd love to hear from you.</p>
+
+        <div class="contact-info-list">
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="contact-info-text">
+              <h4>Headquarters</h4>
+              <p>MediCore Pharma Ltd., 14 Research Corridor,<br>Genome Valley, Hyderabad – 500 078, India</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="contact-info-text">
+              <h4>Phone</h4>
+              <p>+91 40 6800 1234 (General)<br>1800 100 4321 (Medical Helpline, 24/7)</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="contact-info-text">
+              <h4>Email</h4>
+              <p>info@medicorephalma.com<br>medicalaffairs@medicorepharma.com</p>
+            </div>
+          </div>
+
+          <div class="contact-info-item">
+            <div class="contact-info-icon"><i class="fa-solid fa-clock"></i></div>
+            <div class="contact-info-text">
+              <h4>Business Hours</h4>
+              <p>Mon – Fri: 9:00 AM – 6:00 PM IST<br>Medical helpline available 24/7</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <h3>Send Us a Message</h3>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Dr. Anand"  id="fname">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Sharma" id="lname" >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="you@hospital.com" id="email">
+        </div>
+
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210" id="phone">
+        </div>
+
+        <div class="form-group">
+          <label>Enquiry Type</label>
+          <select id="enquiry">
+            <option value="">Select enquiry type</option>
+            <option>Product Information</option>
+            <option>Bulk / Hospital Order</option>
+            <option>Research Partnership</option>
+            <option>Regulatory / Licensing</option>
+            <option>Medical Affairs</option>
+            <option>General Enquiry</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us how we can help you..." id="message"></textarea>
+        </div>
+
+        <button class="form-submit" id="sendBtn">
+          <i class="fa-solid fa-paper-plane"></i> Send Message
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="footer">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+       <div class="logo"><img src="./src/logo.webp" alt=""></div>
+        <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries. Advancing human health through innovation since 1994.</p>
+        <div class="footer-socials">
+          <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
+          <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
+          <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#">Leadership Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press Room</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">CSR Initiatives</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Products & Services</h4>
+        <ul class="footer-links">
+          <li><a href="#products">Product Portfolio</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#research">R&D Pipeline</a></li>
+          <li><a href="#">Generic Medicines</a></li>
+          <li><a href="#">Biologics</a></li>
+          <li><a href="#">OTC Products</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Newsletter</h4>
+        <p style="font-size:13px; color:rgba(255,255,255,.45); line-height:1.7; margin-bottom:16px;">Stay updated with our latest research, product launches, and health insights.</p>
+        <div class="footer-newsletter">
+          <input type="email" placeholder="Enter your email address" id="footermail">
+          <button class="footerbtn">Subscribe Now</button>
+        </div>
+      </div>
 
     </div>
 
-    <!-- SLIDE DOTS -->
-    <div class="slide-dots" id="slideDots"></div>
-
-  </section>
+    <div class="footer-bottom">
+      <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>>
+      </div>
+    </div>
+  </footer>
 
   <script>
     // NAVBAR SCROLL
@@ -147,27 +2451,12 @@
     const nextBtn = document.getElementById("nextBtn");
     const dotsContainer = document.getElementById("slideDots");
 
+    const slides = [
+      { image:"./src/home1.webp", title:"Advancing Health With Science-Driven Pharmaceutical Solutions.", text:"We develop safe, effective, and affordable medicines." },
+      { image:"./src/home2.webp", title:"Pioneering Research For a Healthier Tomorrow.", text:"Our R&D teams work tirelessly to discover breakthrough therapies." },
+      { image:"./src/home3.webp", title:"Trusted Medicines. Certified Quality. Global Reach.", text:"From manufacturing to delivery, every step meets international standards." }
+    ];
 
-//linear-gradient(rgba(13,92,85,.85),rgba(8,72,65,.85))
-const slides = [
-{
-image:"./src/home1.webp",
-title:"Advancing Health With Science-Driven Pharmaceutical Solutions.",
-text:"We develop safe, effective, and affordable medicines."
-},
-{
-image:"./src/home2.webp",
-title:"Pioneering Research For a Healthier Tomorrow.",
-text:"Our R&D teams work tirelessly to discover breakthrough therapies."
-},
-{
-image:"./src/home3.webp",
-title:"Trusted Medicines. Certified Quality. Global Reach.",
-text:"From manufacturing to delivery, every step meets international standards."
-}
-];
-
-    // Create dots
     slides.forEach((_, i) => {
       const dot = document.createElement("button");
       dot.className = "dot" + (i === 0 ? " active" : "");
@@ -176,71 +2465,211 @@ text:"From manufacturing to delivery, every step meets international standards."
     });
 
     const dots = document.querySelectorAll(".dot");
-
     let index = 0;
 
-    function goTo(n) {
-      index = n;
-      updateSlide();
+    function goTo(n) { index = n; updateSlide(); }
+
+    function updateSlide() {
+      hero.style.backgroundImage = `linear-gradient(rgba(13,92,85,.45),rgba(8,72,65,.45)), url('${slides[index].image}')`;
+      hero.style.backgroundSize = "cover";
+      hero.style.backgroundPosition = "center center";
+      hero.style.backgroundRepeat = "no-repeat";
+      heroTitle.style.opacity = 0;
+      heroText.style.opacity = 0;
+      setTimeout(() => {
+        heroTitle.innerText = slides[index].title;
+        heroText.innerText = slides[index].text;
+        heroTitle.style.opacity = 1;
+        heroText.style.opacity = 1;
+      }, 300);
+      dots.forEach((d, i) => d.classList.toggle("active", i === index));
     }
 
-function updateSlide() {
-
-  hero.style.backgroundImage =
-  `linear-gradient(
-    rgba(13,92,85,.45),
-    rgba(8,72,65,.45)
-  ),
-  url('${slides[index].image}')`;
-
-  hero.style.backgroundSize = "cover";
-  hero.style.backgroundPosition = "center center";
-  hero.style.backgroundRepeat = "no-repeat";
-
-  heroTitle.style.opacity = 0;
-  heroText.style.opacity = 0;
-
-  setTimeout(() => {
-    heroTitle.innerText = slides[index].title;
-    heroText.innerText = slides[index].text;
-
-    heroTitle.style.opacity = 1;
-    heroText.style.opacity = 1;
-  }, 300);
-
-  dots.forEach((d, i) =>
-    d.classList.toggle("active", i === index)
-  );
-}
-    // Set initial bg
     hero.style.background = slides[0].bg;
+    let autoSlide = setInterval(() => { index = (index + 1) % slides.length; updateSlide(); }, 4000);
+    nextBtn.addEventListener("click", () => { clearInterval(autoSlide); index = (index + 1) % slides.length; updateSlide(); });
+    prevBtn.addEventListener("click", () => { clearInterval(autoSlide); index = (index - 1 + slides.length) % slides.length; updateSlide(); });
 
-    let autoSlide = setInterval(() => {
-      index = (index + 1) % slides.length;
-      updateSlide();
-    }, 4000);
-
-    nextBtn.addEventListener("click", () => {
-      clearInterval(autoSlide);
-      index = (index + 1) % slides.length;
-      updateSlide();
-    });
-
-    prevBtn.addEventListener("click", () => {
-      clearInterval(autoSlide);
-      index = (index - 1 + slides.length) % slides.length;
-      updateSlide();
-    });
-
-    // Close mobile menu on link click
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("active");
         menuToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
       });
     });
+
+    // PRODUCTS FILTER
+    function filterProducts(btn, cat) {
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      document.querySelectorAll(".product-card").forEach(card => {
+        card.style.display = (cat === "all" || card.dataset.cat === cat) ? "block" : "none";
+      });
+    }
+
+    // SCROLL REVEAL
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add("visible"), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", e => {
+        const target = document.querySelector(a.getAttribute("href"));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth", block: "start" }); }
+      });
+    });
+
+    // PIPELINE BAR ANIMATION
+    const pipelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll(".pipeline-bar").forEach(bar => {
+            const w = bar.style.width;
+            bar.style.width = "0";
+            setTimeout(() => { bar.style.width = w; }, 200);
+          });
+          pipelineObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll(".pipeline-list").forEach(el => pipelineObserver.observe(el));
+
+    //form
+
+    // ===== Contact Form Validation =====
+
+const fname = document.getElementById("fname");
+const lname = document.getElementById("lname");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+const enquiry = document.getElementById("enquiry");
+const message = document.getElementById("message");
+const sendBtn = document.getElementById("sendBtn");
+
+// Name fields - Letters only
+fname.addEventListener("input", () => {
+    fname.value = fname.value.replace(/[^a-zA-Z\s]/g, "");
+});
+
+lname.addEventListener("input", () => {
+    lname.value = lname.value.replace(/[^a-zA-Z\s]/g, "");
+});
+
+// Phone field - Numbers only
+phone.addEventListener("input", () => {
+    phone.value = phone.value.replace(/[^0-9]/g, "");
+});
+
+// Form Submit Validation
+sendBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const firstName = fname.value.trim();
+    const lastName = lname.value.trim();
+    const emailValue = email.value.trim();
+    const phoneValue = phone.value.trim();
+    const enquiryValue = enquiry.value;
+    const messageValue = message.value.trim();
+
+    // First Name
+    if (firstName === "") {
+        alert("Please enter your first name.");
+        fname.focus();
+        return;
+    }
+
+    // Last Name
+    if (lastName === "") {
+        alert("Please enter your last name.");
+        lname.focus();
+        return;
+    }
+
+    // Email
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailValue === "") {
+        alert("Please enter your email address.");
+        email.focus();
+        return;
+    }
+
+    if (!emailPattern.test(emailValue)) {
+        alert("Please enter a valid email address.");
+        email.focus();
+        return;
+    }
+
+    // Phone
+    if (phoneValue === "") {
+        alert("Please enter your phone number.");
+        phone.focus();
+        return;
+    }
+
+    if (phoneValue.length < 10) {
+        alert("Please enter a valid phone number.");
+        phone.focus();
+        return;
+    }
+
+    // Enquiry
+    if (enquiryValue === "") {
+        alert("Please select an enquiry type.");
+        enquiry.focus();
+        return;
+    }
+
+    // Message
+    if (messageValue === "") {
+        alert("Please enter your message.");
+        message.focus();
+        return;
+    }
+
+    alert("Message sent successfully!");
+
+    // Reset Form
+    fname.value = "";
+    lname.value = "";
+    email.value = "";
+    phone.value = "";
+    enquiry.selectedIndex = 0;
+    message.value = "";
+});
+
+    //footer
+
+    const emailInput = document.getElementById("footermail");
+const subscribeBtn = document.querySelector(".footerbtn");
+
+subscribeBtn.addEventListener("click", () => {
+
+    const email = emailInput.value.trim();
+
+    if(email === ""){
+        alert("Please enter your email address.");
+        return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(!emailPattern.test(email)){
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    alert("Thank you for subscribing!");
+    emailInput.value = "";
+});
   </script>
 
 </body>
-
 </html>
