@@ -1,552 +1,1328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services — MedCore Pharma</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-        body { background:var(--off-white); color:var(--text-dark); overflow-x:hidden; }
-        :root {
-            --green-dark:#1a4a3a; --green-mid:#1e6b52; --green-brand:#2d8a68;
-            --green-light:#4aab86; --green-pale:#e8f5f0; --green-mist:#f0faf6;
-            --off-white:#f7fbf9; --white:#ffffff;
-            --text-dark:#0d2b20; --text-mid:#3a5a4e; --text-muted:#6b8f82; --border:#d0e8df;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        html { scroll-behavior:smooth; }
+
+        body {
+            background: var(--off-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        :root {
+            --green-dark: #1a4a3a;
+            --green-mid: #1e6b52;
+            --green-brand: #2d8a68;
+            --green-light: #4aab86;
+            --green-pale: #e8f5f0;
+            --green-mist: #f0faf6;
+            --off-white: #f7fbf9;
+            --white: #ffffff;
+            --text-dark: #0d2b20;
+            --text-mid: #3a5a4e;
+            --text-muted: #6b8f82;
+            --border: #d0e8df;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         /* ── NAVBAR ── */
-        .navbar { width:100%; padding:14px 40px; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; left:50%; transform:translateX(-50%); z-index:9999; background:transparent; border-bottom:1px solid transparent; transition:0.4s ease; animation:navFade 1s ease; }
-        .navbar.active { background:rgba(13,92,85,.95); backdrop-filter:blur(15px); border-bottom:1px solid rgba(255,255,255,.1); }
-        .navbar.active .nav-links a, .navbar.active .menu-toggle { color:#fff; }
-        .navbar::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent); transform:translateX(-100%); opacity:0; transition:0.4s ease; }
-        .navbar.active::before { opacity:1; animation:navGlow 4s linear infinite; }
-        @keyframes navGlow { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
-        @keyframes navFade { from{opacity:0;transform:translate(-50%,-20px)} to{opacity:1;transform:translate(-50%,0)} }
-        .logo img { width:clamp(140px,16vw,190px); }
-        .logo-fallback { display:none; font-weight:700; font-size:20px; color:var(--green-dark); }
-        .navbar.active .logo-fallback { color:#fff; }
-        .nav-links { display:flex; gap:32px; align-items:center; list-style:none; }
-        .nav-links a { color:black; text-decoration:none; font-size:14.5px; transition:0.3s; position:relative; }
-        .nav-links a::after { content:""; position:absolute; left:0; bottom:-5px; width:0%; height:2px; background:linear-gradient(90deg,#48cae4,#0077b6); transition:0.4s; }
-        .nav-links a:hover { color:#48cae4; }
-        .nav-links a:hover::after { width:100%; }
-        .nav-btn { padding:12px 36px; border:none; border-radius:10px; background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:0.4s; box-shadow:0 0 18px rgba(0,216,115,.45); }
-        .nav-btn:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 10px 30px rgba(72,202,228,.5); }
-        .menu-toggle { display:none; font-size:clamp(20px,2.5vw,26px); color:black; cursor:pointer; }
+        .navbar {
+            width: 100%;
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: 0.4s ease;
+            animation: navFade 1s ease;
+        }
+
+        .navbar.active {
+            background: rgba(13, 92, 85, .95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        .navbar.active .nav-links a,
+        .navbar.active .menu-toggle {
+            color: #fff;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .06), transparent);
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .navbar.active::before {
+            opacity: 1;
+            animation: navGlow 4s linear infinite;
+        }
+
+        @keyframes navGlow {
+            0% {
+                transform: translateX(-100%)
+            }
+
+            100% {
+                transform: translateX(100%)
+            }
+        }
+
+        @keyframes navFade {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0)
+            }
+        }
+
+        .logo img {
+            width: clamp(140px, 16vw, 190px);
+        }
+
+        .logo-fallback {
+            display: none;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--green-dark);
+        }
+
+        .navbar.active .logo-fallback {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #48cae4, #0077b6);
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover {
+            color: #48cae4;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            padding: 12px 36px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.4s;
+            box-shadow: 0 0 18px rgba(0, 216, 115, .45);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(72, 202, 228, .5);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: clamp(20px, 2.5vw, 26px);
+            color: black;
+            cursor: pointer;
+        }
 
         /* ── SHARED ── */
-        section { padding:90px 6%; max-width:1200px; margin:0 auto; }
-        .tag { display:inline-block; background:var(--green-pale); color:var(--green-mid); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:8px 18px; border-radius:30px; margin-bottom:18px; }
-        .section-title { font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); line-height:1.25; margin-bottom:18px; }
-        .section-sub { font-size:15px; color:var(--text-muted); line-height:1.8; max-width:620px; }
-        .center { text-align:center; margin:0 auto; }
-        .read-more { display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:var(--green-brand); text-decoration:none; transition:0.3s; }
-        .read-more i { transition:0.3s; }
-        .read-more:hover i { transform:translateX(5px); }
+        section {
+            padding: 90px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--green-pale);
+            color: var(--green-mid);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.25;
+            margin-bottom: 18px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 620px;
+        }
+
+        .center {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--green-brand);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .read-more i {
+            transition: 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
 
         /* ── SECTION 1: HERO ── */
-        .service-hero { background:linear-gradient(135deg,var(--green-dark) 0%,var(--green-mid) 60%,var(--green-brand) 100%); padding-top:170px; padding-bottom:70px; text-align:center; position:relative; overflow:hidden; max-width:100%; }
-        .service-hero::before { content:""; position:absolute; top:-100px; right:-100px; width:320px; height:320px; background:radial-gradient(circle,rgba(72,202,228,.18),transparent 70%); border-radius:50%; }
-        .service-hero::after { content:""; position:absolute; bottom:-120px; left:-80px; width:280px; height:280px; background:radial-gradient(circle,rgba(74,171,134,.25),transparent 70%); border-radius:50%; }
-        .service-hero .tag { background:rgba(255,255,255,.12); color:#d8fff0; }
-        .service-hero h1 { font-size:clamp(32px,5vw,52px); font-weight:700; color:#fff; margin-bottom:16px; position:relative; z-index:1; }
-        .service-hero p { font-size:15.5px; color:rgba(255,255,255,.75); max-width:600px; margin:0 auto; line-height:1.8; position:relative; z-index:1; }
-        .service-search { max-width:480px; margin:34px auto 0; position:relative; z-index:1; }
-        .service-search input { width:100%; padding:15px 50px 15px 22px; border-radius:50px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.12); color:#fff; font-size:14px; font-family:'Poppins',sans-serif; outline:none; backdrop-filter:blur(6px); }
-        .service-search input::placeholder { color:rgba(255,255,255,.55); }
-        .service-search input:focus { border-color:#48cae4; }
-        .service-search i { position:absolute; right:22px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,.6); }
+        .service-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-brand) 100%);
+            padding-top: 170px;
+            padding-bottom: 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .service-hero::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(72, 202, 228, .18), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .service-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -120px;
+            left: -80px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(74, 171, 134, .25), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .service-hero .tag {
+            background: rgba(255, 255, 255, .12);
+            color: #d8fff0;
+        }
+
+        .service-hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-hero p {
+            font-size: 15.5px;
+            color: rgba(255, 255, 255, .75);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-search {
+            max-width: 480px;
+            margin: 34px auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-search input {
+            width: 100%;
+            padding: 15px 50px 15px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            background: rgba(255, 255, 255, .12);
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            backdrop-filter: blur(6px);
+        }
+
+        .service-search input::placeholder {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .service-search input:focus {
+            border-color: #48cae4;
+        }
+
+        .service-search i {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, .6);
+        }
 
         /* ── SECTION 3: SERVICES GRID ── */
-        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:50px; }
-        .service-card { background:var(--white); border:1px solid var(--border); border-radius:18px; overflow:hidden; transition:0.35s; display:flex; flex-direction:column; }
-        .service-card:hover { transform:translateY(-8px); box-shadow:0 18px 40px rgba(26,74,58,.12); border-color:var(--green-light); }
-        .card-img { height:180px; background:linear-gradient(135deg,var(--green-pale),var(--green-mist)); display:flex; align-items:center; justify-content:center; color:var(--green-light); font-size:40px; position:relative; }
-        .card-cat { position:absolute; top:16px; left:16px; background:rgba(255,255,255,.92); color:var(--green-mid); font-size:11.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:6px 14px; border-radius:20px; }
-        .card-body { padding:26px; display:flex; flex-direction:column; flex:1; }
-        .card-body .svc-meta { display:flex; align-items:center; gap:8px; margin-bottom:12px; font-size:13px; color:var(--text-muted); }
-        .card-body h3 { font-size:17px; font-weight:600; color:var(--text-dark); line-height:1.4; margin-bottom:12px; }
-        .card-body p { font-size:13.5px; color:var(--text-muted); line-height:1.7; margin-bottom:18px; flex:1; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 50px;
+        }
 
-        .load-more-wrap { text-align:center; margin-top:50px; }
-        .load-more-btn { padding:14px 40px; border:1px solid var(--green-brand); border-radius:30px; background:transparent; color:var(--green-brand); font-size:14px; font-weight:600; cursor:pointer; transition:0.35s; }
-        .load-more-btn:hover { background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; border-color:transparent; box-shadow:0 10px 28px rgba(45,138,104,.3); }
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.35s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(26, 74, 58, .12);
+            border-color: var(--green-light);
+        }
+
+        .card-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--green-pale), var(--green-mist));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-light);
+            font-size: 40px;
+            position: relative;
+        }
+
+      .card-img img{
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+        .card-cat {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, .92);
+            color: var(--green-mid);
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-body .svc-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .card-body h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .card-body p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .load-more-wrap {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .load-more-btn {
+            padding: 14px 40px;
+            border: 1px solid var(--green-brand);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--green-brand);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.35s;
+        }
+
+        .load-more-btn:hover {
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 28px rgba(45, 138, 104, .3);
+        }
 
         /* ── SECTION 4: INDUSTRIES WE SERVE ── */
-        .industries-section { background:var(--green-pale); max-width:100%; }
-        .industries-section .inner { max-width:1200px; margin:0 auto; }
-        .industries-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:50px; }
-        .industry-card { background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s; cursor:pointer; }
-        .industry-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(26,74,58,.1); border-color:var(--green-light); }
-        .ind-icon { width:50px; height:50px; border-radius:12px; background:var(--green-pale); color:var(--green-brand); display:flex; align-items:center; justify-content:center; font-size:19px; margin:0 auto 16px; }
-        .industry-card h4 { font-size:15px; font-weight:600; color:var(--text-dark); margin-bottom:8px; }
-        .industry-card p { font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:0; }
+        .industries-section {
+            background: var(--green-pale);
+            max-width: 100%;
+        }
+
+        .industries-section .inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+        }
+
+        .industry-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: 0.35s;
+            cursor: pointer;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(26, 74, 58, .1);
+            border-color: var(--green-light);
+        }
+
+        .ind-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: var(--green-pale);
+            color: var(--green-brand);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+            margin: 0 auto 16px;
+        }
+
+        .industry-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .industry-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
 
         /* ── SECTION 5: PARTNER CTA ── */
-        .partner-cta { background:linear-gradient(135deg,var(--green-dark),var(--green-mid)); border-radius:24px; padding:60px; text-align:center; position:relative; overflow:hidden; }
-        .partner-cta::before { content:""; position:absolute; top:-80px; right:-60px; width:240px; height:240px; background:radial-gradient(circle,rgba(72,202,228,.18),transparent 70%); border-radius:50%; }
-        .partner-cta .tag { background:rgba(255,255,255,.12); color:#d8fff0; }
-        .partner-cta h2 { font-size:clamp(24px,4vw,36px); font-weight:700; color:#fff; margin-bottom:14px; position:relative; z-index:1; }
-        .partner-cta p { font-size:14.5px; color:rgba(255,255,255,.75); max-width:520px; margin:0 auto 32px; line-height:1.8; position:relative; z-index:1; }
-        .cta-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
-        .btn-primary { padding:15px 36px; border-radius:50px; border:none; background:#fff; color:var(--green-dark); font-size:14px; font-weight:700; cursor:pointer; transition:0.35s; }
-        .btn-primary:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.2); }
-        .btn-outline { padding:15px 36px; border-radius:50px; border:1.5px solid rgba(255,255,255,.35); background:transparent; color:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:0.35s; }
-        .btn-outline:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.7); transform:translateY(-3px); }
-        .trust-row { display:flex; align-items:center; gap:24px; justify-content:center; margin-top:32px; flex-wrap:wrap; position:relative; z-index:1; }
-        .trust-item { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.55); font-size:13px; }
-        .trust-item i { color:#4aab86; }
+        .partner-cta {
+            background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partner-cta::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(72, 202, 228, .18), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .partner-cta .tag {
+            background: rgba(255, 255, 255, .12);
+            color: #d8fff0;
+        }
+
+        .partner-cta h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .partner-cta p {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, .75);
+            max-width: 520px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            padding: 15px 36px;
+            border-radius: 50px;
+            border: none;
+            background: #fff;
+            color: var(--green-dark);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.35s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, .2);
+        }
+
+        .btn-outline {
+            padding: 15px 36px;
+            border-radius: 50px;
+            border: 1.5px solid rgba(255, 255, 255, .35);
+            background: transparent;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.35s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, .1);
+            border-color: rgba(255, 255, 255, .7);
+            transform: translateY(-3px);
+        }
+
+        .trust-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            justify-content: center;
+            margin-top: 32px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, .55);
+            font-size: 13px;
+        }
+
+        .trust-item i {
+            color: #4aab86;
+        }
 
         /* ── REVEAL ── */
-        .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
-        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
         /* ── FOOTER ── */
-        .footer { background:#0a2421; padding:70px 6% 30px; }
-        .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto 50px; }
-        .footer-brand p { font-size:14px; color:rgba(255,255,255,.55); line-height:1.8; margin-top:18px; margin-bottom:24px; }
-        .footer-socials { display:flex; gap:12px; }
-        .social-icon { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65); font-size:15px; cursor:pointer; transition:0.3s; }
-        .social-icon:hover { background:rgba(72,202,228,.2); color:#48cae4; border-color:rgba(72,202,228,.3); }
-        .footer-col h4 { font-size:14.5px; font-weight:700; color:#fff; margin-bottom:20px; position:relative; padding-bottom:12px; }
-        .footer-col h4::after { content:""; position:absolute; bottom:0; left:0; width:32px; height:2px; background:linear-gradient(90deg,#0D5C55,#48cae4); border-radius:2px; }
-        .footer-links { list-style:none; display:flex; flex-direction:column; gap:11px; }
-        .footer-links a { font-size:13.5px; color:rgba(255,255,255,.5); text-decoration:none; transition:0.3s; display:flex; align-items:center; gap:8px; }
-        .footer-links a:hover { color:#48cae4; gap:12px; }
-        .footer-links a::before { content:"→"; font-size:12px; }
-        .footer-newsletter input { width:100%; padding:11px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.06); color:#fff; font-size:13.5px; font-family:'Poppins',sans-serif; outline:none; margin-bottom:10px; transition:0.3s; }
-        .footer-newsletter input::placeholder { color:rgba(255,255,255,.3); }
-        .footer-newsletter input:focus { border-color:rgba(72,202,228,.4); }
-        .footer-newsletter button { width:100%; padding:11px; background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; border:none; border-radius:10px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:'Poppins',sans-serif; transition:0.3s; }
-        .footer-newsletter button:hover { box-shadow:0 8px 20px rgba(13,92,85,.4); transform:translateY(-2px); }
-        .footer-bottom { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding-top:26px; border-top:1px solid rgba(255,255,255,.07); flex-wrap:wrap; gap:12px; }
-        .footer-bottom p { font-size:13px; color:rgba(255,255,255,.35); }
-        .footer-bottom-links { display:flex; gap:22px; }
-        .footer-bottom-links a { font-size:13px; color:rgba(255,255,255,.35); text-decoration:none; transition:0.3s; }
-        .footer-bottom-links a:hover { color:#48cae4; }
+        .footer {
+            background: #0a2421;
+            padding: 70px 6% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.8;
+            margin-top: 18px;
+            margin-bottom: 24px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .65);
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: rgba(72, 202, 228, .2);
+            color: #48cae4;
+            border-color: rgba(72, 202, 228, .3);
+        }
+
+        .footer-col h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, #0D5C55, #48cae4);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-links a {
+            font-size: 13.5px;
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #48cae4;
+            gap: 12px;
+        }
+
+        .footer-links a::before {
+            content: "→";
+            font-size: 12px;
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 11px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, .1);
+            background: rgba(255, 255, 255, .06);
+            color: #fff;
+            font-size: 13.5px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, .3);
+        }
+
+        .footer-newsletter input:focus {
+            border-color: rgba(72, 202, 228, .4);
+        }
+
+        .footer-newsletter button {
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+        }
+
+        .footer-newsletter button:hover {
+            box-shadow: 0 8px 20px rgba(13, 92, 85, .4);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 26px;
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .35);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .35);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #48cae4;
+        }
 
         /* ── RESPONSIVE ── */
         @media (max-width:1100px) {
-            .navbar { width:100%; top:0; border-radius:0; overflow:visible; padding:14px 20px; }
-            .menu-toggle { display:block; z-index:10001; }
-        
-  .nav-links {
-  position: fixed;
-  top: 0;
-  right: -100%;
+            .navbar {
+                width: 100%;
+                top: 0;
+                border-radius: 0;
+                overflow: visible;
+                padding: 14px 20px;
+            }
 
-  width: 70%;
-  height: 100vh;
+            .menu-toggle {
+                display: block;
+                z-index: 10001;
+            }
 
-  background: linear-gradient(
-    135deg,
-    rgba(18, 78, 60, 0.98),
-    rgba(10, 45, 35, 0.98)
-  );
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
 
-  backdrop-filter: blur(20px);
+                width: 70%;
+                height: 100vh;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+                background: linear-gradient(135deg,
+                        rgba(18, 78, 60, 0.98),
+                        rgba(10, 45, 35, 0.98));
 
-  padding: 23px 30px;
-  gap: 32px;
+                backdrop-filter: blur(20px);
 
-  list-style: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
 
-  border-left: 1px solid rgba(143, 188, 143, 0.15);
+                padding: 23px 30px;
+                gap: 32px;
 
-  box-shadow:
-    -15px 0 40px rgba(0, 0, 0, 0.25),
-    0 0 30px rgba(46, 139, 87, 0.12);
+                list-style: none;
 
-  transition: 0.5s ease;
-  z-index: 9999;
-}
+                border-left: 1px solid rgba(143, 188, 143, 0.15);
 
-.nav-links.active {
-  right: 0;
-}
+                box-shadow:
+                    -15px 0 40px rgba(0, 0, 0, 0.25),
+                    0 0 30px rgba(46, 139, 87, 0.12);
 
-.nav-links a {
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.35s ease;
-}
+                transition: 0.5s ease;
+                z-index: 9999;
+            }
 
-.nav-links a:hover {
-  color: #8fbc8f;
-  transform: translateX(8px);
-}
+            .nav-links.active {
+                right: 0;
+            }
 
-.nav-btn {
-  padding: 10px 36px;
-  border: none;
-  border-radius: 12px;
+            .nav-links a {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.35s ease;
+            }
 
-  background: linear-gradient(
-    135deg,
-    #1f6f54,
-    #2e8b57
-  );
+            .nav-links a:hover {
+                color: #8fbc8f;
+                transform: translateX(8px);
+            }
 
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
+            .nav-btn {
+                padding: 10px 36px;
+                border: none;
+                border-radius: 12px;
 
-  cursor: pointer;
-  transition: all 0.4s ease;
+                background: linear-gradient(135deg,
+                        #1f6f54,
+                        #2e8b57);
 
-  box-shadow:
-    0 8px 24px rgba(46, 139, 87, 0.30),
-    0 0 18px rgba(60, 163, 112, 0.20);
-}
+                color: #fff;
+                font-size: 14px;
+                font-weight: 600;
 
-.nav-btn:hover {
-  transform: translateY(-3px) scale(1.04);
+                cursor: pointer;
+                transition: all 0.4s ease;
 
-  background: linear-gradient(
-    135deg,
-    #2e8b57,
-    #3ca370
-  );
+                box-shadow:
+                    0 8px 24px rgba(46, 139, 87, 0.30),
+                    0 0 18px rgba(60, 163, 112, 0.20);
+            }
 
-  box-shadow:
-    0 15px 35px rgba(46, 139, 87, 0.40),
-    0 0 25px rgba(60, 163, 112, 0.25);
-}
+            .nav-btn:hover {
+                transform: translateY(-3px) scale(1.04);
 
-.nav-btn:active {
-  transform: scale(0.97);
-}
-            .featured-service { grid-template-columns:1fr; gap:30px; padding:30px; }
-            .featured-img { height:240px; }
-            .services-grid { grid-template-columns:repeat(2,1fr); }
-            .industries-grid { grid-template-columns:repeat(2,1fr); }
-            .footer-grid { grid-template-columns:1fr 1fr; }
+                background: linear-gradient(135deg,
+                        #2e8b57,
+                        #3ca370);
+
+                box-shadow:
+                    0 15px 35px rgba(46, 139, 87, 0.40),
+                    0 0 25px rgba(60, 163, 112, 0.25);
+            }
+
+            .nav-btn:active {
+                transform: scale(0.97);
+            }
+
+            .featured-service {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .featured-img {
+                height: 240px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
         }
+
         @media (max-width:768px) {
-            .services-grid { grid-template-columns:1fr; }
-            .industries-grid { grid-template-columns:1fr 1fr; }
-            .partner-cta { padding:40px 26px; }
-            .cta-buttons { flex-direction:column; align-items:center; }
-            .btn-primary, .btn-outline { width:100%; max-width:280px; }
-            .footer-grid { grid-template-columns:1fr; gap:36px; }
-            .footer-bottom { flex-direction:column; text-align:center; }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .industries-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .partner-cta {
+                padding: 40px 26px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
         }
+
         @media (max-width:600px) {
-            .navbar { padding:10px 20px; }
-            section { padding:70px 5%; }
-            .service-hero { padding-top:130px; padding-bottom:50px; }
-            .cat-btn { white-space:nowrap; }
-            .industries-grid { grid-template-columns:1fr; }
-            .footer { padding:50px 5% 24px; }
-            .section-title { font-size:clamp(22px,6vw,32px); }
+            .navbar {
+                padding: 10px 20px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .service-hero {
+                padding-top: 130px;
+                padding-bottom: 50px;
+            }
+
+            .cat-btn {
+                white-space: nowrap;
+            }
+
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer {
+                padding: 50px 5% 24px;
+            }
+
+            .section-title {
+                font-size: clamp(22px, 6vw, 32px);
+            }
         }
-        @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
+
+        @media (prefers-reduced-motion:reduce) {
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-    <div class="logo">
-        <img src="./src/logo.webp" alt="MediCore Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-        <span class="logo-fallback">MedCore Pharma</span>
-    </div>
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="service.html">Services</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <button class="nav-btn login-btn"><span>Login</span></button>
-    </ul>
-    <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
-</nav>
-
-<!-- ═══════════ SECTION 1: HERO ═══════════ -->
-<section class="service-hero">
-    <span class="tag">OUR SERVICES</span>
-    <h1>End-to-End Pharmaceutical Solutions</h1>
-    <p>From molecule to market — comprehensive services designed for efficiency, safety, and scale across the entire pharmaceutical value chain.</p>
-
-</section>
-
-
-<!-- ═══════════ SECTION 3: SERVICES GRID ═══════════ -->
-<section>
-    <div class="center" style="max-width:640px;">
-        <span class="tag">ALL SERVICES</span>
-        <h2 class="section-title">What We Offer</h2>
-        <p class="section-sub center">Comprehensive solutions covering every stage of the pharmaceutical lifecycle — built for reliability and scale.</p>
-    </div>
-
-    <div class="services-grid" id="servicesGrid">
-        <div class="service-card reveal" data-category="quality">
-            <div class="card-img">
-                <span class="card-cat">Quality</span>
-                <i class="fa-solid fa-flask-vial"></i>
-            </div>
-            <div class="card-body">
-                <div class="svc-meta"><i class="fa-solid fa-shield-halved"></i> NABL Accredited</div>
-                <h3>Quality Assurance & Testing</h3>
-                <p>Analytical testing, stability studies, and batch release services from our NABL-accredited laboratories. Full pharmacopoeial compliance with ICH Q guidelines.</p>
-                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <img src="./src/logo.webp" alt="MediCore Logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <span class="logo-fallback">MedCore Pharma</span>
         </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <button class="nav-btn login-btn"><span>Login</span></button>
+        </ul>
+        <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+    </nav>
 
-        <div class="service-card reveal" data-category="logistics">
-            <div class="card-img">
-                <span class="card-cat">Logistics</span>
-                <i class="fa-solid fa-globe"></i>
-            </div>
-            <div class="card-body">
-                <div class="svc-meta"><i class="fa-solid fa-truck-fast"></i> 42 Countries</div>
-                <h3>Global Supply Chain & Logistics</h3>
-                <p>Cold-chain logistics, serialisation, and last-mile delivery across 42 countries. Real-time track-and-trace with 99.4% on-time delivery performance.</p>
-                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
+    <!-- ═══════════ SECTION 1: HERO ═══════════ -->
+    <section class="service-hero">
+        <span class="tag">OUR SERVICES</span>
+        <h1>End-to-End Pharmaceutical Solutions</h1>
+        <p>From molecule to market — comprehensive services designed for efficiency, safety, and scale across the entire
+            pharmaceutical value chain.</p>
 
-        <div class="service-card reveal" data-category="rd">
-            <div class="card-img">
-                <span class="card-cat">R&D</span>
-                <i class="fa-solid fa-microscope"></i>
-            </div>
-            <div class="card-body">
-                <div class="svc-meta"><i class="fa-solid fa-dna"></i> 14 Active Phase III Trials</div>
-                <h3>Research & Drug Development</h3>
-                <p>Full-service drug discovery from molecule screening to IND filing. AI-assisted formulation development reducing time-to-candidate by 42%.</p>
-                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
+    </section>
 
-        <div class="service-card reveal" data-category="regulatory">
-            <div class="card-img">
-                <span class="card-cat">Regulatory</span>
-                <i class="fa-solid fa-file-shield"></i>
-            </div>
-            <div class="card-body">
-                <div class="svc-meta"><i class="fa-solid fa-check-circle"></i> 6 Major Jurisdictions</div>
-                <h3>Regulatory Affairs & Submissions</h3>
-                <p>End-to-end dossier preparation and regulatory submissions for FDA, EMA, CDSCO, TGA, and PMDA. 94% first-cycle approval rate over five years.</p>
-                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
 
-        <div class="service-card reveal" data-category="manufacturing">
-            <div class="card-img">
-                <span class="card-cat">Manufacturing</span>
-                <i class="fa-solid fa-syringe"></i>
-            </div>
-            <div class="card-body">
-                <div class="svc-meta"><i class="fa-solid fa-vial"></i> Sterile Fill-Finish</div>
-                <h3>Injectable & Biologics Manufacturing</h3>
-                <p>ISO Class 5 cleanroom facilities for sterile injectables, lyophilised products, and biosimilar drug substance manufacturing under USP/EP standards.</p>
-                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-
-        <div class="service-card reveal" data-category="quality">
-            <div class="card-img">
-                <span class="card-cat">Quality</span>
-                <i class="fa-solid fa-clipboard-check"></i>
-            </div>
-            <div class="card-body">
-                <div class="svc-meta"><i class="fa-solid fa-eye"></i> Third-Party Auditing</div>
-                <h3>Pharmacovigilance & Safety Monitoring</h3>
-                <p>Post-market surveillance, adverse event reporting, and PSUR preparation across all product lines. Dedicated signal detection and risk management teams.</p>
-                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-
-    <div class="load-more-wrap">
-        <button class="load-more-btn" id="loadMoreBtn">View All Services</button>
-    </div>
-</section>
-
-<!-- ═══════════ SECTION 4: INDUSTRIES WE SERVE ═══════════ -->
-<section class="industries-section">
-    <div class="inner">
+    <!-- ═══════════ SECTION 3: SERVICES GRID ═══════════ -->
+    <section>
         <div class="center" style="max-width:640px;">
-            <span class="tag">INDUSTRIES WE SERVE</span>
-            <h2 class="section-title">Who We Work With</h2>
-            <p class="section-sub center">Our services are trusted by a diverse range of organisations across the global healthcare ecosystem.</p>
+            <span class="tag">ALL SERVICES</span>
+            <h2 class="section-title">What We Offer</h2>
+            <p class="section-sub center">Comprehensive solutions covering every stage of the pharmaceutical lifecycle —
+                built for reliability and scale.</p>
         </div>
-        <div class="industries-grid">
-            <div class="industry-card reveal">
-                <div class="ind-icon"><i class="fa-solid fa-hospital"></i></div>
-                <h4>Hospitals & Health Systems</h4>
-                <p>Reliable bulk supply of generics, injectables, and critical care medicines to public and private hospital networks.</p>
+
+        <div class="services-grid" id="servicesGrid">
+            <div class="service-card reveal" data-category="quality">
+                <div class="card-img">
+                     <img src="./src/service6.webp" alt="">
+                    <span class="card-cat">Quality</span>
+                </div>
+                <div class="card-body">
+                    <div class="svc-meta"><i class="fa-solid fa-shield-halved"></i> NABL Accredited</div>
+                    <h3>Quality Assurance & Testing</h3>
+                    <p>Analytical testing, stability studies, and batch release services from our NABL-accredited
+                        laboratories. Full pharmacopoeial compliance with ICH Q guidelines.</p>
+                    <a href="404.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
-            <div class="industry-card reveal">
-                <div class="ind-icon"><i class="fa-solid fa-pills"></i></div>
-                <h4>Retail Pharmacy Chains</h4>
-                <p>Branded and white-label OTC products with consistent supply chain support and regulatory documentation.</p>
-            </div>
-            <div class="industry-card reveal">
-                <div class="ind-icon"><i class="fa-solid fa-earth-americas"></i></div>
-                <h4>Government & NGOs</h4>
-                <p>WHO prequalified essential medicines for government health programmes and international development organisations.</p>
-            </div>
-            <div class="industry-card reveal">
-                <div class="ind-icon"><i class="fa-solid fa-flask"></i></div>
-                <h4>Biotech & Pharma Partners</h4>
-                <p>Contract development and manufacturing services for emerging biotech companies scaling from clinical to commercial stage.</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- ═══════════ SECTION 5: PARTNER CTA ═══════════ -->
-<section>
-    <div class="partner-cta reveal">
-        <span class="tag">PARTNER WITH US</span>
-        <h2>Ready to Build Something Better Together?</h2>
-        <p>Whether you need a manufacturing partner, regulatory support, or end-to-end supply chain solutions — our team is ready to scope a solution for you.</p>
-        <div class="cta-buttons">
-            <button class="btn-primary" onclick="window.location.href='contact.html'">Get a Free Consultation</button>
-            <button class="btn-outline" onclick="window.location.href='contact.html'">Download Service Brochure</button>
-        </div>
-        <div class="trust-row">
-            <div class="trust-item"><i class="fa-solid fa-check-circle"></i> No commitment required</div>
-            <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Response within 48 hours</div>
-            <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Dedicated account manager</div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-grid">
-        <div class="footer-brand">
-            <div class="logo"><img src="./src/logo.webp" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
-            <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries. Advancing human health through innovation since 1994.</p>
-            <div class="footer-socials">
-                <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
-                <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
-                <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
+            <div class="service-card reveal" data-category="logistics">
+                <div class="card-img">
+                    <span class="card-cat">Logistics</span>
+                       <img src="./src/service3.webp" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="svc-meta"><i class="fa-solid fa-truck-fast"></i> 42 Countries</div>
+                    <h3>Global Supply Chain & Logistics</h3>
+                    <p>Cold-chain logistics, serialisation, and last-mile delivery across 42 countries. Real-time
+                        track-and-trace with 99.4% on-time delivery performance.</p>
+                    <a href="404.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
-        </div>
-        <div class="footer-col">
-            <h4>Company</h4>
-            <ul class="footer-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#">Leadership Team</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press Room</a></li>
-                <li><a href="#">Investor Relations</a></li>
-                <li><a href="#">CSR Initiatives</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Products & Services</h4>
-            <ul class="footer-links">
-                <li><a href="service.html">Product Portfolio</a></li>
-                <li><a href="service.html">Services</a></li>
-                <li><a href="#">R&D Pipeline</a></li>
-                <li><a href="#">Generic Medicines</a></li>
-                <li><a href="#">Biologics</a></li>
-                <li><a href="#">OTC Products</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Newsletter</h4>
-            <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:16px;">Stay updated with our latest research, product launches, and health insights.</p>
-            <div class="footer-newsletter">
-                <input type="email" placeholder="Enter your email address" id="footermail">
-                <button class="footerbtn">Subscribe Now</button>
+
+            <div class="service-card reveal" data-category="rd">
+                <div class="card-img">
+                    <span class="card-cat">R&D</span>
+                        <img src="./src/service2.webp" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="svc-meta"><i class="fa-solid fa-dna"></i> 14 Active Phase III Trials</div>
+                    <h3>Research & Drug Development</h3>
+                    <p>Full-service drug discovery from molecule screening to IND filing. AI-assisted formulation
+                        development reducing time-to-candidate by 42%.</p>
+                    <a href="404.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-card reveal" data-category="regulatory">
+                <div class="card-img">
+                    <span class="card-cat">Regulatory</span>
+                       <img src="./src/service1.webp" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="svc-meta"><i class="fa-solid fa-check-circle"></i> 6 Major Jurisdictions</div>
+                    <h3>Regulatory Affairs & Submissions</h3>
+                    <p>End-to-end dossier preparation and regulatory submissions for FDA, EMA, CDSCO, TGA, and PMDA. 94%
+                        first-cycle approval rate over five years.</p>
+                    <a href="404.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-card reveal" data-category="manufacturing">
+                <div class="card-img">
+                    <span class="card-cat">Manufacturing</span>
+                        <img src="./src/service5.webp" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="svc-meta"><i class="fa-solid fa-vial"></i> Sterile Fill-Finish</div>
+                    <h3>Injectable & Biologics Manufacturing</h3>
+                    <p>ISO Class 5 cleanroom facilities for sterile injectables, lyophilised products, and biosimilar
+                        drug substance manufacturing under USP/EP standards.</p>
+                    <a href="404.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="service-card reveal" data-category="quality">
+                <div class="card-img">
+                    <span class="card-cat">Quality</span>
+                        <img src="./src/service4.webp" alt="">
+                </div>
+                <div class="card-body">
+                    <div class="svc-meta"><i class="fa-solid fa-eye"></i> Third-Party Auditing</div>
+                    <h3>Pharmacovigilance & Safety Monitoring</h3>
+                    <p>Post-market surveillance, adverse event reporting, and PSUR preparation across all product lines.
+                        Dedicated signal detection and risk management teams.</p>
+                    <a href="404.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
-        <div class="footer-bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Use</a>
+
+        <div class="load-more-wrap">
+            <button class="load-more-btn errorpage" id="loadMoreBtn ">View All Services</button>
         </div>
-    </div>
-</footer>
+    </section>
 
-<script>
-    // Navbar scroll
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => navbar.classList.toggle('active', window.scrollY > 50));
+    <!-- ═══════════ SECTION 4: INDUSTRIES WE SERVE ═══════════ -->
+    <section class="industries-section">
+        <div class="inner">
+            <div class="center" style="max-width:640px;">
+                <span class="tag">INDUSTRIES WE SERVE</span>
+                <h2 class="section-title">Who We Work With</h2>
+                <p class="section-sub center">Our services are trusted by a diverse range of organisations across the
+                    global healthcare ecosystem.</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card reveal">
+                    <div class="ind-icon"><i class="fa-solid fa-hospital"></i></div>
+                    <h4>Hospitals & Health Systems</h4>
+                    <p>Reliable bulk supply of generics, injectables, and critical care medicines to public and private
+                        hospital networks.</p>
+                </div>
+                <div class="industry-card reveal">
+                    <div class="ind-icon"><i class="fa-solid fa-pills"></i></div>
+                    <h4>Retail Pharmacy Chains</h4>
+                    <p>Branded and white-label OTC products with consistent supply chain support and regulatory
+                        documentation.</p>
+                </div>
+                <div class="industry-card reveal">
+                    <div class="ind-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <h4>Government & NGOs</h4>
+                    <p>WHO prequalified essential medicines for government health programmes and international
+                        development organisations.</p>
+                </div>
+                <div class="industry-card reveal">
+                    <div class="ind-icon"><i class="fa-solid fa-flask"></i></div>
+                    <h4>Biotech & Pharma Partners</h4>
+                    <p>Contract development and manufacturing services for emerging biotech companies scaling from
+                        clinical to commercial stage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        menuToggle.innerHTML = navLinks.classList.contains('active')
-            ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
-    });
+    <!-- ═══════════ SECTION 5: PARTNER CTA ═══════════ -->
+    <section>
+        <div class="partner-cta reveal">
+            <span class="tag">PARTNER WITH US</span>
+            <h2>Ready to Build Something Better Together?</h2>
+            <p>Whether you need a manufacturing partner, regulatory support, or end-to-end supply chain solutions — our
+                team is ready to scope a solution for you.</p>
+            <div class="cta-buttons">
+                <button class="btn-primary" onclick="window.location.href='404.html'">Get a Free Consultation</button>
+                <button class="btn-outline" onclick="window.location.href='404.html'">Download Service Brochure</button>
+            </div>
+            <div class="trust-row">
+                <div class="trust-item"><i class="fa-solid fa-check-circle"></i> No commitment required</div>
+                <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Response within 48 hours</div>
+                <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Dedicated account manager</div>
+            </div>
+        </div>
+    </section>
 
-    // Login btn placement
-    const loginBtn = document.querySelector('.login-btn');
-    function checkMobileMenu() {
-        if (window.innerWidth <= 1100) { navLinks.appendChild(loginBtn); }
-        else { document.querySelector('.navbar').insertBefore(loginBtn, menuToggle); }
-    }
-    checkMobileMenu();
-    window.addEventListener('resize', checkMobileMenu);
-    document.querySelector('.nav-btn').addEventListener('click', () => window.location.href = 'login.html');
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo"><img src="./src/logo.webp" alt=""
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span
+                        class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
+                <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
+                    Advancing human health through innovation since 1994.</p>
+                <div class="footer-socials">
+                    <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-youtube"></i></div>
+                </div>
+            </div>
 
-    // Scroll reveal
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="blog.html">Researchs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="404.html">Investor Relations</a></li>
+                    <li><a href="404.html">CSR Initiatives</a></li>
+                </ul>
+            </div>
 
-    // Category filter
-    document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            document.querySelectorAll('.service-card').forEach(card => {
-                const match = filter === 'all' || card.dataset.category === filter;
-                card.style.display = match ? 'flex' : 'none';
+            <div class="footer-col">
+                <h4>Products & Services</h4>
+                <ul class="footer-links">
+                    <li><a href="404.html">Product Portfolio</a></li>
+                    <li><a href="404.html">Services</a></li>
+                    <li><a href="404.html">R&D Pipeline</a></li>
+                    <li><a href="404.html">Generic Medicines</a></li>
+                    <li><a href="404.html">Biologics</a></li>
+                    <li><a href="404.html">OTC Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:16px;">Stay updated
+                    with our latest research, product launches, and health insights.</p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Enter your email address" id="footermail">
+                    <button class="footerbtn">Subscribe Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => navbar.classList.toggle('active', window.scrollY > 50));
+
+        // Mobile menu
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        // Login btn placement
+        const loginBtn = document.querySelector('.login-btn');
+        function checkMobileMenu() {
+            if (window.innerWidth <= 1100) { navLinks.appendChild(loginBtn); }
+            else { document.querySelector('.navbar').insertBefore(loginBtn, menuToggle); }
+        }
+        checkMobileMenu();
+        window.addEventListener('resize', checkMobileMenu);
+        document.querySelector('.nav-btn').addEventListener('click', () => window.location.href = 'login.html');
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Category filter
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.service-card').forEach(card => {
+                    const match = filter === 'all' || card.dataset.category === filter;
+                    card.style.display = match ? 'flex' : 'none';
+                });
             });
         });
-    });
 
-    // Search
-    document.getElementById('serviceSearch').addEventListener('input', function () {
-        const q = this.value.toLowerCase();
-        document.querySelectorAll('.service-card').forEach(card => {
-            const text = card.innerText.toLowerCase();
-            card.style.display = text.includes(q) ? 'flex' : 'none';
+        // Search
+        document.getElementById('serviceSearch').addEventListener('input', function () {
+            const q = this.value.toLowerCase();
+            document.querySelectorAll('.service-card').forEach(card => {
+                const text = card.innerText.toLowerCase();
+                card.style.display = text.includes(q) ? 'flex' : 'none';
+            });
         });
-    });
 
-    // Load more (demo)
-    document.getElementById('loadMoreBtn').addEventListener('click', function () {
-        this.textContent = 'All Services Shown';
-        this.disabled = true;
-        this.style.opacity = '0.6';
-        this.style.cursor = 'not-allowed';
-    });
+        // Load more (demo)
+        document.getElementById('loadMoreBtn').addEventListener('click', function () {
+            this.textContent = 'All Services Shown';
+            this.disabled = true;
+            this.style.opacity = '0.6';
+            this.style.cursor = 'not-allowed';
+        });
 
-    // Footer subscribe
-    const emailInput = document.getElementById('footermail');
-    document.querySelector('.footerbtn').addEventListener('click', () => {
-        const email = emailInput.value.trim();
-        if (!email) { alert('Please enter your email address.'); return; }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
-        alert('Thank you for subscribing!');
-        emailInput.value = '';
-    });
-</script>
+        // Footer subscribe
+        const emailInput = document.getElementById('footermail');
+        document.querySelector('.footerbtn').addEventListener('click', () => {
+            const email = emailInput.value.trim();
+            if (!email) { alert('Please enter your email address.'); return; }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+            alert('Thank you for subscribing!');
+            emailInput.value = '';
+        });
+        document.querySelectorAll(".errorpage").forEach(item => {
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = "404.html";
+            });
+        });
+    </script>
 </body>
+
 </html>

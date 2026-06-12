@@ -1224,37 +1224,37 @@
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
                 <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
                     Advancing human health through innovation since 1994.</p>
-                <div class="footer-socials">
-                    <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
-                </div>
-            </div>
+                    <div class="footer-socials">
+          <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
+          <div class="social-icon errorpage"><i class="fa-brands fa-x-twitter"></i></div>
+          <div class="social-icon errorpage"><i class="fa-brands fa-facebook-f"></i></div>
+          <div class="social-icon errorpage"><i class="fa-brands fa-youtube"></i></div>
+        </div>
+      </div>
 
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul class="footer-links">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="#">Leadership Team</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press Room</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">CSR Initiatives</a></li>
-                </ul>
-            </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="blog.html">Researchs</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="404.html">Investor Relations</a></li>
+          <li><a href="404.html">CSR Initiatives</a></li>
+        </ul>
+      </div>
 
-            <div class="footer-col">
-                <h4>Products & Services</h4>
-                <ul class="footer-links">
-                    <li><a href="service.html">Product Portfolio</a></li>
-                    <li><a href="service.html">Services</a></li>
-                    <li><a href="#">R&D Pipeline</a></li>
-                    <li><a href="#">Generic Medicines</a></li>
-                    <li><a href="#">Biologics</a></li>
-                    <li><a href="#">OTC Products</a></li>
-                </ul>
-            </div>
+      <div class="footer-col">
+        <h4>Products & Services</h4>
+        <ul class="footer-links">
+          <li><a href="404.html">Product Portfolio</a></li>
+          <li><a href="404.html">Services</a></li>
+          <li><a href="404.html">R&D Pipeline</a></li>
+          <li><a href="404.html">Generic Medicines</a></li>
+          <li><a href="404.html">Biologics</a></li>
+          <li><a href="404.html">OTC Products</a></li>
+        </ul>
+      </div>
 
             <div class="footer-col">
                 <h4>Newsletter</h4>
@@ -1394,6 +1394,13 @@ contactForm.addEventListener("submit", (e) => {
                 item.classList.toggle("open");
             });
         });
+
+        document.querySelectorAll(".errorpage").forEach(item => {
+    item.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.location.href = "404.html";
+    });
+});
     </script>
 </body>
 
