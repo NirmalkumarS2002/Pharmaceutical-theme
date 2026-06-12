@@ -880,33 +880,100 @@
                 z-index: 10001;
             }
 
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: linear-gradient(135deg, rgba(8, 28, 60, 0.98), rgba(4, 15, 40, 0.98));
-                backdrop-filter: blur(20px);
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 30px 50px;
-                gap: 32px;
-                list-style: none;
-                transition: 0.5s ease;
-                z-index: 9999;
-            }
+            
+  .nav-links {
+  position: fixed;
+  top: 0;
+  right: -100%;
 
-            .nav-links.active {
-                right: 0;
-            }
+  width: 70%;
+  height: 100vh;
 
-            .nav-links a {
-                font-size: 20px;
-                color: #fff;
-            }
+  background: linear-gradient(
+    135deg,
+    rgba(18, 78, 60, 0.98),
+    rgba(10, 45, 35, 0.98)
+  );
+
+  backdrop-filter: blur(20px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  padding: 23px 30px;
+  gap: 32px;
+
+  list-style: none;
+
+  border-left: 1px solid rgba(143, 188, 143, 0.15);
+
+  box-shadow:
+    -15px 0 40px rgba(0, 0, 0, 0.25),
+    0 0 30px rgba(46, 139, 87, 0.12);
+
+  transition: 0.5s ease;
+  z-index: 9999;
+}
+
+.nav-links.active {
+  right: 0;
+}
+
+.nav-links a {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.35s ease;
+}
+
+.nav-links a:hover {
+  color: #8fbc8f;
+  transform: translateX(8px);
+}
+
+.nav-btn {
+  padding: 10px 36px;
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(
+    135deg,
+    #1f6f54,
+    #2e8b57
+  );
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  box-shadow:
+    0 8px 24px rgba(46, 139, 87, 0.30),
+    0 0 18px rgba(60, 163, 112, 0.20);
+}
+
+.nav-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+
+  background: linear-gradient(
+    135deg,
+    #2e8b57,
+    #3ca370
+  );
+
+  box-shadow:
+    0 15px 35px rgba(46, 139, 87, 0.40),
+    0 0 25px rgba(60, 163, 112, 0.25);
+}
+
+.nav-btn:active {
+  transform: scale(0.97);
+}
 
             .featured-post {
                 grid-template-columns: 1fr;
@@ -1043,10 +1110,6 @@
         <span class="tag">OUR BLOG</span>
         <h1>Insights from the Lab & Beyond</h1>
         <p>Explore the latest research updates, health tips, industry news, and stories from our team of scientists and healthcare experts.</p>
-        <div class="blog-search">
-            <input type="text" placeholder="Search articles...">
-            <i class="fa-solid fa-magnifying-glass"></i>
-        </div>
     </section>
 
     <!-- ========================= 2. CATEGORY FILTER + FEATURED POST ========================= -->
