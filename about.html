@@ -1,1288 +1,516 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us — MedCore Pharma</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: var(--off-white);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
         :root {
-            --green-dark: #1a4a3a;
-            --green-mid: #1e6b52;
-            --green-brand: #2d8a68;
-            --green-light: #4aab86;
-            --green-pale: #e8f5f0;
-            --green-mist: #f0faf6;
-            --off-white: #f7fbf9;
-            --white: #ffffff;
-            --text-dark: #0d2b20;
-            --text-mid: #3a5a4e;
-            --text-muted: #6b8f82;
-            --border: #d0e8df;
-            --font-display: 'Sora', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --green-dark: #1a4a3a; --green-mid: #1e6b52; --green-brand: #2d8a68;
+            --green-light: #4aab86; --green-pale: #e8f5f0; --green-mist: #f0faf6;
+            --off-white: #f7fbf9; --white: #ffffff;
+            --text-dark: #0d2b20; --text-mid: #3a5a4e; --text-muted: #6b8f82; --border: #d0e8df;
         }
+        html { scroll-behavior: smooth; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-
-        /* ========================= HERO ========================= */
-        .hero {
-            width: 100%;
-            min-height: 100vh;
-            position: relative;
-            overflow: hidden;
-            padding-block: 90px;
-            background-image:
-                linear-gradient(rgba(13, 92, 85, .65),
-                    rgba(8, 72, 65, .65)),
-                url("./src/home1.webp");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: -5%;
-            left: -5%;
-            width: 110%;
-            height: 110%;
-            background:
-                radial-gradient(circle at 15% 25%, rgba(0, 180, 216, .18), transparent 35%),
-                radial-gradient(circle at 85% 70%, rgba(0, 119, 182, .22), transparent 35%),
-                radial-gradient(circle at 50% 90%, rgba(72, 202, 228, .12), transparent 30%);
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-            background-size: 36px 36px;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* ========================= NAVBAR ========================= */
+        /* ── NAVBAR ── */
         .navbar {
-            width: 100%;
-            padding: 14px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            background: transparent;
-            border-bottom: 1px solid transparent;
-            transition: 0.4s ease;
+            width: 100%; padding: 14px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+            position: fixed; top: 0; left: 50%; transform: translateX(-50%);
+            z-index: 9999; background: transparent;
+            border-bottom: 1px solid transparent; transition: 0.4s ease;
             animation: navFade 1s ease;
         }
-
         .navbar.active {
-            border-bottom: 1px solid rgba(0, 180, 216, 0.35);
-            background: rgba(13, 92, 85, .95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
-        }
-
-
-
-        .navbar::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-            transform: translateX(-100%);
-            opacity: 0;
-            transition: 0.4s ease;
-        }
-
-        .navbar.active::before {
-            opacity: 1;
-            animation: navGlow 4s linear infinite;
-        }
-
-        @keyframes navGlow {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        .logo img {
-            width: clamp(140px, 16vw, 190px);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            justify-content: space-around;
-            align-items: center;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: black;
-            text-decoration: none;
-            font-size: 14.5px;
-            transition: 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, #48cae4, #0077b6);
-            transition: 0.4s;
-        }
-
-        .nav-links a:hover {
-            color: #48cae4;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-btn {
-            padding: 12px 36px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #0D5C55, #198754);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.4s ease;
-            box-shadow: 0 0 18px rgba(0, 216, 115, 0.45), 0 0 12px rgba(0, 182, 91, 0.25);
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(72, 202, 228, 0.5);
-            background: linear-gradient(135deg, #084841, #0D5C55);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: clamp(20px, 2.5vw, 26px);
-            color: black;
-            cursor: pointer;
-        }
-
-
-
-
-        /* ── SECTION SHARED ── */
-        section {
-            padding: 100px 5vw;
-        }
-
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: var(--green-pale);
-            color: var(--green-brand);
-            font-family: var(--font-display);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 50px;
-            margin-bottom: 1.2rem;
-        }
-
-        .eyebrow svg {
-            width: 13px;
-            height: 13px;
-        }
-
-        h2.section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 800;
-            line-height: 1.15;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        h2.section-title span {
-            color: var(--green-brand);
-        }
-
-        .section-sub {
-            font-size: 1rem;
-            color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 520px;
-        }
-
-
-
-
-
-        /* ── 3. TIMELINE ── */
-        #timeline {
-            background: var(--green-mist);
-        }
-
-        .timeline-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .timeline-header .section-sub {
-            margin: 0 auto;
-        }
-
-        .timeline-track {
-            position: relative;
-            max-width: 860px;
-            margin: 0 auto;
-        }
-
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--green-light), var(--green-dark));
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-            align-items: center;
-        }
-
-        .timeline-item:nth-child(even) .ti-content {
-            order: 2;
-        }
-
-        .timeline-item:nth-child(even) .ti-year-block {
-            order: 1;
-            text-align: right;
-        }
-
-        .ti-content {
-            background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem 1.8rem;
-            border: 1px solid var(--border);
-            box-shadow: 0 4px 16px rgba(26, 74, 58, 0.07);
-        }
-
-        .ti-content h4 {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 0.98rem;
-            color: var(--text-dark);
-            margin-bottom: 0.4rem;
-        }
-
-        .ti-content p {
-            font-size: 0.83rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        .ti-year-block {}
-
-        .ti-year {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: var(--green-brand);
-            display: block;
-        }
-
-        .ti-milestone {
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .ti-dot {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 14px;
-            height: 14px;
-            background: var(--green-brand);
-            border: 3px solid #fff;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            box-shadow: 0 0 0 4px rgba(45, 138, 104, 0.2);
-        }
-
-        /* ── 4. TEAM ── */
-        #team {
-            background: var(--white);
-        }
-
-        .team-header {
-            text-align: center;
-            margin-bottom: 3.5rem;
-        }
-
-        .team-header .section-sub {
-            margin: 0 auto;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .team-card {
-            background: var(--off-white);
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .team-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 40px rgba(26, 74, 58, 0.12);
-        }
-
-        .team-avatar {
-            width: 100%;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .team-avatar.a1 {
-            background: linear-gradient(135deg, #1a4a3a, #2d8a68);
-        }
-
-        .team-avatar.a2 {
-            background: linear-gradient(135deg, #1e6b52, #4aab86);
-        }
-
-        .team-avatar.a3 {
-            background: linear-gradient(135deg, #0d2b20, #1e6b52);
-        }
-
-        .team-avatar.a4 {
-            background: linear-gradient(135deg, #2d8a68, #6dccaa);
-        }
-
-        .team-info {
-            padding: 1.4rem 1.6rem;
-        }
-
-        .team-name {
-            font-family: var(--font-display);
-            font-weight: 700;
-            font-size: 1rem;
-            color: var(--text-dark);
-        }
-
-        .team-role {
-            font-size: 0.78rem;
-            color: var(--green-brand);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin: 4px 0 10px;
-        }
-
-        .team-bio {
-            font-size: 0.82rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* ── 5. CTA ── */
-        #cta {
-            background: var(--green-dark);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #cta::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -100px;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(74, 171, 134, 0.15) 0%, transparent 60%);
-            transform: translateX(-50%);
-            border-radius: 50%;
-        }
-
-        .cta-inner {
-            position: relative;
-            z-index: 2;
-            max-width: 680px;
-            margin: 0 auto;
-        }
-
-        .cta-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--green-light);
-            font-family: var(--font-display);
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 50px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .cta-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 800;
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 1.2rem;
-        }
-
-        .cta-title span {
-            color: var(--green-light);
-        }
-
-        .cta-sub {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.65);
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-        }
-
-        .cta-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn-white {
-            background: #fff;
-            color: var(--green-dark);
-            padding: 0.9rem 2.2rem;
-            border-radius: 10px;
-            font-size: 0.92rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-white:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
-        }
-
-        .btn-ghost {
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            color: #fff;
-            padding: 0.88rem 2rem;
-            border-radius: 10px;
-            font-size: 0.92rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .btn-ghost:hover {
-            border-color: rgba(255, 255, 255, 0.7);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* FOOTER */
-
-        /* RESPONSIVE */
-        @media (max-width: 800px) {
-            #hero {
-                grid-template-columns: 1fr;
-                padding-top: 88px;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .mission-inner {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .timeline-line {
-                left: 20px;
-            }
-
-            .ti-dot {
-                left: 20px;
-            }
-
-            .timeline-item:nth-child(even) .ti-content,
-            .timeline-item:nth-child(even) .ti-year-block {
-                order: unset;
-                text-align: left;
-            }
-
-            .ti-year-block {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-            }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .fade-up {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        /* ========================= FOOTER ========================= */
-
-        .footer {
-            background: #0a2421;
-            padding: 70px 6% 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto 50px;
-        }
-
-        .footer-brand p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, .55);
-            line-height: 1.8;
-            margin-top: 18px;
-            margin-bottom: 24px;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, .07);
-            border: 1px solid rgba(255, 255, 255, .1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, .65);
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .social-icon:hover {
-            background: rgba(72, 202, 228, .2);
-            color: #48cae4;
-            border-color: rgba(72, 202, 228, .3);
-        }
-
-        .footer-col h4 {
-            font-size: 14.5px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 12px;
-        }
-
-        .footer-col h4::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 32px;
-            height: 2px;
-            background: linear-gradient(90deg, #0D5C55, #48cae4);
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 11px;
-        }
-
-        .footer-links a {
-            font-size: 13.5px;
-            color: rgba(255, 255, 255, .5);
-            text-decoration: none;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: #48cae4;
-            gap: 12px;
-        }
-
-        .footer-links a::before {
-            content: "→";
-            font-size: 12px;
-        }
-
-        .footer-newsletter input {
-            width: 100%;
-            padding: 11px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, .1);
-            background: rgba(255, 255, 255, .06);
-            color: #fff;
-            font-size: 13.5px;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            margin-bottom: 10px;
-            transition: 0.3s;
-        }
-
-        .footer-newsletter input::placeholder {
-            color: rgba(255, 255, 255, .3);
-        }
-
-        .footer-newsletter input:focus {
-            border-color: rgba(72, 202, 228, .4);
-        }
-
-        .footer-newsletter button {
-            width: 100%;
-            padding: 11px;
-            background: linear-gradient(135deg, #0D5C55, #198754);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
-        }
-
-        .footer-newsletter button:hover {
-            box-shadow: 0 8px 20px rgba(13, 92, 85, .4);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 26px;
-            border-top: 1px solid rgba(255, 255, 255, .07);
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .footer-bottom p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .35);
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 22px;
-        }
-
-        .footer-bottom-links a {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .35);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #48cae4;
-        }
-
-        /* ========================= SCROLL REVEAL ========================= */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========================= RESPONSIVE ========================= */
-
-        @media (max-width: 1100px) {
-            .navbar {
-                width: 100%;
-                top: 0;
-                border-radius: 0;
-                overflow: visible;
-                padding: 14px 20px;
-            }
-
-            .menu-toggle {
-                display: block;
-                z-index: 10001;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: linear-gradient(135deg, rgba(8, 28, 60, 0.98), rgba(4, 15, 40, 0.98));
-                backdrop-filter: blur(20px);
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 30px 50px;
-                gap: 32px;
-                list-style: none;
-                transition: 0.5s ease;
-                z-index: 9999;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links a {
-                font-size: 20px;
-            }
-
-            .about-grid,
-            .research-inner,
-            .contact-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-image-wrap {
-                order: -1;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .stats-row {
-                padding: 12px 20px;
-                gap: 0;
-            }
-
-            .stat-item {
-                padding: 4px 14px;
-            }
-
-            .stat-divider {
-                display: none;
-            }
-
-            .about-badge {
-                bottom: -10px;
-                right: 10px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .r-stat-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .navbar {
-                padding: 10px 20px;
-            }
-
-            .hero-content {
-                padding-top: 0;
-            }
-
-            .hero-content h1 {
-                margin-bottom: 6px;
-                line-height: 1.2;
-                min-height: auto;
-            }
-
-            .hero-content p {
-                margin-bottom: 16px;
-                font-size: 13.5px;
-                min-height: auto;
-            }
-
-            .stats-row {
-                width: 100%;
-                border-radius: 12px;
-                margin-bottom: 24px;
-            }
-
-            .hero-buttons {
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-
-            .btn {
-                width: 90%;
-                max-width: 290px;
-                padding: 12px 20px;
-            }
-
-            .slide-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 13px;
-            }
-
-            .tag {
-                font-size: 12.5px;
-                padding: 8px 14px;
-                margin-bottom: 14px;
-                text-align: center;
-            }
-
-            .about-section,
-            .services-section,
-            .products-section,
-            .research-section,
-            .why-section,
-            .testimonials-section,
-            .contact-section {
-                padding: 70px 5%;
-            }
-
-            .contact-form {
-                padding: 28px 22px;
-            }
-
-            .footer {
-                padding: 50px 5% 24px;
-            }
-
-            .about-cta {
-                flex-direction: column;
-            }
-
-            .about-cta button {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: clamp(22px, 6vw, 32px);
-            }
-        }
+            background: rgba(13,92,85,.95); backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+        .navbar.active .nav-links a, .navbar.active .menu-toggle { color: #fff; }
+        .navbar::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent); transform:translateX(-100%); opacity:0; transition:0.4s ease; }
+        .navbar.active::before { opacity:1; animation:navGlow 4s linear infinite; }
+        @keyframes navGlow { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+        @keyframes navFade { from{opacity:0;transform:translate(-50%,-20px)} to{opacity:1;transform:translate(-50%,0)} }
+        .logo img { width: clamp(140px,16vw,190px); }
+        .logo-fallback { display:none; font-weight:700; font-size:20px; color:var(--green-dark); }
+        .navbar.active .logo-fallback { color:#fff; }
+        .nav-links { display:flex; gap:32px; align-items:center; list-style:none; }
+        .nav-links a { color:black; text-decoration:none; font-size:14.5px; transition:0.3s; position:relative; }
+        .nav-links a::after { content:""; position:absolute; left:0; bottom:-5px; width:0%; height:2px; background:linear-gradient(90deg,#48cae4,#0077b6); transition:0.4s; }
+        .nav-links a:hover { color:#48cae4; }
+        .nav-links a:hover::after { width:100%; }
+        .nav-btn { padding:12px 36px; border:none; border-radius:10px; background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:0.4s; box-shadow:0 0 18px rgba(0,216,115,.45); }
+        .nav-btn:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 10px 30px rgba(72,202,228,.5); }
+        .menu-toggle { display:none; font-size:clamp(20px,2.5vw,26px); color:black; cursor:pointer; }
+
+        /* ── SHARED ── */
+        section { padding: 90px 6%; max-width: 1200px; margin: 0 auto; }
+        .tag { display:inline-block; background:var(--green-pale); color:var(--green-mid); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:8px 18px; border-radius:30px; margin-bottom:18px; }
+        .section-title { font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); line-height:1.25; margin-bottom:18px; }
+        .section-sub { font-size:15px; color:var(--text-muted); line-height:1.8; max-width:620px; }
+        .center { text-align:center; margin:0 auto; }
+
+        /* ── SECTION 1: HERO ── */
+        .about-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-brand) 100%);
+            padding-top: 170px; padding-bottom: 80px;
+            text-align: center; position: relative; overflow: hidden; max-width: 100%;
+        }
+        .about-hero::before { content:""; position:absolute; top:-100px; right:-100px; width:320px; height:320px; background:radial-gradient(circle,rgba(72,202,228,.18),transparent 70%); border-radius:50%; }
+        .about-hero::after { content:""; position:absolute; bottom:-120px; left:-80px; width:280px; height:280px; background:radial-gradient(circle,rgba(74,171,134,.25),transparent 70%); border-radius:50%; }
+        .about-hero .tag { background:rgba(255,255,255,.12); color:#d8fff0; }
+        .about-hero h1 { font-size:clamp(32px,5vw,52px); font-weight:700; color:#fff; margin-bottom:16px; position:relative; z-index:1; }
+        .about-hero h1 span { color:#7ddcb5; }
+        .about-hero p { font-size:15.5px; color:rgba(255,255,255,.75); max-width:600px; margin:0 auto; line-height:1.8; position:relative; z-index:1; }
+
+        /* ── SECTION 2: STATS CARDS (like info-cards) ── */
+        .stat-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding-top:60px; }
+        .stat-card { background:var(--white); border:1px solid var(--border); border-radius:16px; padding:32px 26px; text-align:center; transition:0.35s ease; }
+        .stat-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(26,74,58,.12); border-color:var(--green-light); }
+        .stat-icon { width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg,var(--green-mid),var(--green-brand)); display:flex; align-items:center; justify-content:center; font-size:20px; color:#fff; margin:0 auto 18px; }
+        .stat-card strong { display:block; font-size:30px; font-weight:700; color:var(--green-brand); margin-bottom:6px; }
+        .stat-card h4 { font-size:15px; font-weight:600; margin-bottom:8px; color:var(--text-dark); }
+        .stat-card p { font-size:13.5px; color:var(--text-muted); line-height:1.7; }
+
+        /* ── SECTION 3: MISSION + VISUAL (like form+map) ── */
+        .mission-main { display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:stretch; }
+        .mission-wrap { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:44px; }
+        .mission-wrap h3 { font-size:24px; font-weight:700; color:var(--text-dark); margin-bottom:8px; }
+        .mission-wrap > p { font-size:14px; color:var(--text-muted); margin-bottom:28px; line-height:1.8; }
+        .mission-values { display:flex; flex-direction:column; gap:22px; }
+        .mv-item { display:flex; gap:18px; align-items:flex-start; padding:18px; background:var(--green-mist); border-radius:12px; border:1px solid var(--border); transition:0.3s; }
+        .mv-item:hover { border-color:var(--green-light); box-shadow:0 6px 20px rgba(45,138,104,.1); }
+        .mv-icon { width:42px; height:42px; min-width:42px; border-radius:10px; background:linear-gradient(135deg,var(--green-mid),var(--green-brand)); display:flex; align-items:center; justify-content:center; color:#fff; font-size:16px; }
+        .mv-item h4 { font-size:14.5px; font-weight:600; color:var(--text-dark); margin-bottom:4px; }
+        .mv-item p { font-size:13px; color:var(--text-muted); line-height:1.7; }
+
+        .mission-side { display:flex; flex-direction:column; gap:24px; }
+        .vision-card { border-radius:20px; overflow:hidden; border:1px solid var(--border); flex:1; background:linear-gradient(135deg,var(--green-dark),var(--green-mid)); padding:36px; color:#fff; }
+        .vision-card h4 { font-size:18px; font-weight:700; margin-bottom:18px; display:flex; align-items:center; gap:10px; }
+        .vision-card p { font-size:14px; color:rgba(255,255,255,.75); line-height:1.8; margin-bottom:20px; }
+        .vision-card blockquote { font-size:15px; font-style:italic; color:#aef1cf; border-left:3px solid #4aab86; padding-left:16px; line-height:1.7; }
+
+        .metrics-card { background:var(--white); border:1px solid var(--border); border-radius:20px; padding:28px; }
+        .metrics-card h4 { font-size:15px; font-weight:700; color:var(--text-dark); margin-bottom:16px; display:flex; align-items:center; gap:8px; }
+        .metrics-card h4 i { color:var(--green-brand); }
+        .metric-row { display:flex; justify-content:space-between; align-items:center; font-size:13.5px; padding:10px 0; border-bottom:1px solid var(--border); color:var(--text-muted); }
+        .metric-row:last-child { border-bottom:none; }
+        .metric-row span:last-child { color:var(--green-brand); font-weight:700; font-size:15px; }
+
+        /* ── SECTION 4: LEADERSHIP (like dept-grid) ── */
+        .leadership-section { background:var(--green-pale); max-width:100%; }
+        .leadership-section .inner { max-width:1200px; margin:0 auto; }
+        .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:50px; }
+        .team-card { background:var(--white); border-radius:16px; padding:30px; border:1px solid var(--border); transition:0.35s ease; }
+        .team-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(26,74,58,.1); }
+        .team-icon { width:50px; height:50px; border-radius:12px; background:var(--green-pale); color:var(--green-brand); display:flex; align-items:center; justify-content:center; font-size:19px; margin-bottom:16px; }
+        .team-card h4 { font-size:17px; font-weight:600; color:var(--text-dark); margin-bottom:4px; }
+        .team-card .role { font-size:12.5px; color:var(--green-brand); font-weight:600; margin-bottom:10px; letter-spacing:.5px; text-transform:uppercase; }
+        .team-card p { font-size:13.5px; color:var(--text-muted); line-height:1.7; margin-bottom:14px; }
+        .team-card a { font-size:13.5px; font-weight:600; color:var(--green-mid); text-decoration:none; }
+        .team-card a i { margin-left:6px; transition:0.3s; }
+        .team-card a:hover i { margin-left:10px; }
+
+        /* ── SECTION 5: WHY US ACCORDION (like FAQ) ── */
+        .whyus-list { max-width:800px; margin:50px auto 0; display:flex; flex-direction:column; gap:16px; }
+        .whyus-item { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
+        .whyus-question { display:flex; justify-content:space-between; align-items:center; padding:20px 26px; cursor:pointer; font-size:15px; font-weight:600; color:var(--text-dark); gap:16px; }
+        .whyus-question i { color:var(--green-brand); transition:0.3s; flex-shrink:0; }
+        .whyus-item.open .whyus-question i { transform:rotate(45deg); }
+        .whyus-answer { max-height:0; overflow:hidden; transition:max-height 0.35s ease,padding 0.35s ease; padding:0 26px; }
+        .whyus-item.open .whyus-answer { max-height:200px; padding:0 26px 22px; }
+        .whyus-answer p { font-size:13.5px; color:var(--text-muted); line-height:1.8; }
+        .whyus-badge { display:inline-block; background:var(--green-pale); color:var(--green-brand); font-size:11px; font-weight:600; border-radius:50px; padding:3px 12px; margin-right:10px; }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        /* ── FOOTER ── */
+        .footer { background:#0a2421; padding:70px 6% 30px; }
+        .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto 50px; }
+        .footer-brand p { font-size:14px; color:rgba(255,255,255,.55); line-height:1.8; margin-top:18px; margin-bottom:24px; }
+        .footer-socials { display:flex; gap:12px; }
+        .social-icon { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65); font-size:15px; cursor:pointer; transition:0.3s; }
+        .social-icon:hover { background:rgba(72,202,228,.2); color:#48cae4; border-color:rgba(72,202,228,.3); }
+        .footer-col h4 { font-size:14.5px; font-weight:700; color:#fff; margin-bottom:20px; position:relative; padding-bottom:12px; }
+        .footer-col h4::after { content:""; position:absolute; bottom:0; left:0; width:32px; height:2px; background:linear-gradient(90deg,#0D5C55,#48cae4); border-radius:2px; }
+        .footer-links { list-style:none; display:flex; flex-direction:column; gap:11px; }
+        .footer-links a { font-size:13.5px; color:rgba(255,255,255,.5); text-decoration:none; transition:0.3s; display:flex; align-items:center; gap:8px; }
+        .footer-links a:hover { color:#48cae4; gap:12px; }
+        .footer-links a::before { content:"→"; font-size:12px; }
+        .footer-newsletter input { width:100%; padding:11px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.06); color:#fff; font-size:13.5px; font-family:'Poppins',sans-serif; outline:none; margin-bottom:10px; transition:0.3s; }
+        .footer-newsletter input::placeholder { color:rgba(255,255,255,.3); }
+        .footer-newsletter input:focus { border-color:rgba(72,202,228,.4); }
+        .footer-newsletter button { width:100%; padding:11px; background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; border:none; border-radius:10px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:'Poppins',sans-serif; transition:0.3s; }
+        .footer-newsletter button:hover { box-shadow:0 8px 20px rgba(13,92,85,.4); transform:translateY(-2px); }
+        .footer-bottom { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding-top:26px; border-top:1px solid rgba(255,255,255,.07); flex-wrap:wrap; gap:12px; }
+        .footer-bottom p { font-size:13px; color:rgba(255,255,255,.35); }
+        .footer-bottom-links { display:flex; gap:22px; }
+        .footer-bottom-links a { font-size:13px; color:rgba(255,255,255,.35); text-decoration:none; transition:0.3s; }
+        .footer-bottom-links a:hover { color:#48cae4; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:1100px) {
+            .navbar { width:100%; top:0; border-radius:0; overflow:visible; padding:14px 20px; }
+            .menu-toggle { display:block; z-index:10001; }
+            .nav-links { position:fixed; top:0; right:-100%; width:70%; height:100vh; background:linear-gradient(135deg,rgba(8,28,60,.98),rgba(4,15,40,.98)); backdrop-filter:blur(20px); flex-direction:column; justify-content:flex-start; align-items:flex-start; padding:30px 50px; gap:32px; transition:0.5s; z-index:9999; }
+            .nav-links.active { right:0; }
+            .nav-links a { font-size:20px; color:#fff; }
+            .stat-cards { grid-template-columns:repeat(2,1fr); }
+            .mission-main { grid-template-columns:1fr; }
+            .team-grid { grid-template-columns:repeat(2,1fr); }
+            .footer-grid { grid-template-columns:1fr 1fr; }
+        }
+        @media (max-width:768px) {
+            .stat-cards { grid-template-columns:1fr; }
+            .team-grid { grid-template-columns:1fr; }
+            .footer-grid { grid-template-columns:1fr; gap:36px; }
+            .footer-bottom { flex-direction:column; text-align:center; }
+        }
+        @media (max-width:600px) {
+            .navbar { padding:10px 20px; }
+            section { padding:70px 5%; }
+            .about-hero { padding-top:130px; padding-bottom:60px; }
+            .mission-wrap { padding:28px 22px; }
+            .footer { padding:50px 5% 24px; }
+            .section-title { font-size:clamp(22px,6vw,32px); }
+        }
+        @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
     </style>
 </head>
-
 <body>
 
-    <nav class="navbar">
-        <div class="logo">
-            <img src="./src/logo.webp" alt="MediCore Logo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="./src/logo.webp" alt="MediCore Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-fallback">MedCore Pharma</span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="blog.html">Blogs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <button class="nav-btn login-btn"><span>Login</span></button>
+    </ul>
+    <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+</nav>
 
+<!-- ═══════════ SECTION 1: HERO ═══════════ -->
+<section class="about-hero">
+    <span class="tag">ABOUT MEDCORE PHARMA</span>
+    <h1>Pioneering Health.<br><span>Transforming Lives.</span></h1>
+    <p>For over 30 years, we've combined rigorous science with compassionate purpose — delivering pharmaceutical solutions that reach patients in every corner of the world.</p>
+</section>
+
+<!-- ═══════════ SECTION 2: STATS CARDS ═══════════ -->
+<section>
+    <div class="stat-cards">
+        <div class="stat-card reveal">
+            <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+            <strong>30+</strong>
+            <h4>Years of Excellence</h4>
+            <p>Founded in 1994, three decades of uninterrupted pharmaceutical innovation.</p>
         </div>
-
-        
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="blog.html">blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <button class="nav-btn login-btn"><span>Login</span></button>
-        </ul>
-
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fa-solid fa-bars"></i>
+        <div class="stat-card reveal">
+            <div class="stat-icon"><i class="fa-solid fa-globe"></i></div>
+            <strong>50+</strong>
+            <h4>Countries Served</h4>
+            <p>Medicines trusted by healthcare professionals across every continent.</p>
         </div>
-    </nav>
-
-
-    <!-- ── SECTION 3: TIMELINE ── -->
-    <section id="timeline">
-        <div class="timeline-header fade-up">
-            <span class="eyebrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                </svg>
-                Our Journey
-            </span>
-            <h2 class="section-title">25 Years of <span>Breakthroughs</span></h2>
-            <p class="section-sub">From a small research lab in Chennai to a global pharmaceutical leader — our story is
-                written in milestones.</p>
+        <div class="stat-card reveal">
+            <div class="stat-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <strong>1.2B</strong>
+            <h4>Patients Annually</h4>
+            <p>Over a billion patient treatments delivered every year around the globe.</p>
         </div>
+        <div class="stat-card reveal">
+            <div class="stat-icon"><i class="fa-solid fa-flask"></i></div>
+            <strong>340+</strong>
+            <h4>Approved Molecules</h4>
+            <p>A diversified portfolio spanning generics, biologics, and OTC formulations.</p>
+        </div>
+    </div>
+</section>
 
-        <div class="timeline-track">
-            <div class="timeline-line"></div>
-
-            <div class="timeline-item fade-up">
-                <div class="ti-content">
-                    <h4>Founded in Chennai</h4>
-                    <p>Dr. Ananya Krishnan establishes MedCore from a 3-person research team, focused on affordable
-                        cardiovascular drugs for the Indian market.</p>
+<!-- ═══════════ SECTION 3: MISSION + SIDE PANEL ═══════════ -->
+<section>
+    <div class="mission-main">
+        <!-- Left: Mission values (like contact form) -->
+        <div class="mission-wrap reveal">
+            <h3>Our Mission & Core Values</h3>
+            <p>Every compound we develop, every clinical trial we run, every medicine we ship — begins and ends with one question: does this make a patient's life measurably better?</p>
+            <div class="mission-values">
+                <div class="mv-item">
+                    <div class="mv-icon"><i class="fa-solid fa-microscope"></i></div>
+                    <div>
+                        <h4>Evidence-First Research</h4>
+                        <p>All decisions grounded in peer-reviewed data and rigorous clinical validation — no shortcuts, no compromises.</p>
+                    </div>
                 </div>
-                <div class="ti-year-block">
-                    <span class="ti-year">1998</span>
-                    <span class="ti-milestone">Founding</span>
+                <div class="mv-item">
+                    <div class="mv-icon"><i class="fa-solid fa-shield-heart"></i></div>
+                    <div>
+                        <h4>Patient Safety Above All</h4>
+                        <p>GMP-certified processes and multi-stage quality gates ensure every unit shipped meets the highest pharmacopoeial standards.</p>
+                    </div>
                 </div>
-                <div class="ti-dot"></div>
+                <div class="mv-item">
+                    <div class="mv-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <div>
+                        <h4>Global Access & Equity</h4>
+                        <p>Access programs that bring essential medicines to underserved communities across 18 developing nations.</p>
+                    </div>
+                </div>
+                <div class="mv-item">
+                    <div class="mv-icon"><i class="fa-solid fa-leaf"></i></div>
+                    <div>
+                        <h4>Sustainable Impact</h4>
+                        <p>Carbon-neutral manufacturing targets by 2028 with renewable energy across all three production facilities.</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="timeline-item fade-up">
-                <div class="ti-content">
-                    <h4>First FDA Approval</h4>
-                    <p>CardioCore-5 receives US FDA approval — our first internationally approved molecule, opening
-                        markets across North America and Europe.</p>
-                </div>
-                <div class="ti-year-block">
-                    <span class="ti-year">2006</span>
-                    <span class="ti-milestone">Global Expansion</span>
-                </div>
-                <div class="ti-dot"></div>
-            </div>
-
-            <div class="timeline-item fade-up">
-                <div class="ti-content">
-                    <h4>Oncology Division Launch</h4>
-                    <p>Expansion into targeted cancer therapies with a ₹800 crore R&D investment. First oncology
-                        pipeline candidate enters Phase II trials.</p>
-                </div>
-                <div class="ti-year-block">
-                    <span class="ti-year">2013</span>
-                    <span class="ti-milestone">New Vertical</span>
-                </div>
-                <div class="ti-dot"></div>
-            </div>
-
-            <div class="timeline-item fade-up">
-                <div class="ti-content">
-                    <h4>200th Medicine Milestone</h4>
-                    <p>OncoClear 100mg becomes our 200th approved medicine — marking a decade of growth from 42 products
-                        to a full therapeutic portfolio.</p>
-                </div>
-                <div class="ti-year-block">
-                    <span class="ti-year">2023</span>
-                    <span class="ti-milestone">Portfolio Milestone</span>
-                </div>
-                <div class="ti-dot"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── SECTION 4: TEAM ── -->
-    <section id="team">
-        <div class="team-header fade-up">
-            <span class="eyebrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-                The People Behind the Science
-            </span>
-            <h2 class="section-title">Leadership <span>Team</span></h2>
-            <p class="section-sub">Decades of expertise across pharmacology, clinical research, regulatory affairs, and
-                global health policy.</p>
         </div>
 
+        <!-- Right: Vision card + metrics (like map + hours) -->
+        <div class="mission-side">
+            <div class="vision-card reveal">
+                <h4><i class="fa-solid fa-eye"></i> Our Vision</h4>
+                <p>To be the most trusted pharmaceutical partner for healthcare providers worldwide — known not just for what we make, but for why we make it.</p>
+                <blockquote>"Our mission is not just to treat disease — it is to restore dignity, independence, and possibility to every patient we reach."</blockquote>
+            </div>
+            <div class="metrics-card reveal">
+                <h4><i class="fa-solid fa-chart-line"></i> Key Performance Metrics</h4>
+                <div class="metric-row"><span>Batch Pass Rate (2024)</span><span>98.7%</span></div>
+                <div class="metric-row"><span>Annual R&D Investment</span><span>₹4.2B</span></div>
+                <div class="metric-row"><span>Ongoing Phase III Trials</span><span>14</span></div>
+                <div class="metric-row"><span>Regulatory Recalls (5 yr)</span><span>Zero</span></div>
+                <div class="metric-row"><span>On-Time Delivery Rate</span><span>99.4%</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ SECTION 4: LEADERSHIP (like dept-grid) ═══════════ -->
+<section class="leadership-section">
+    <div class="inner">
+        <div class="center" style="max-width:640px;">
+            <span class="tag">LEADERSHIP TEAM</span>
+            <h2 class="section-title">The Minds Behind the Mission</h2>
+            <p class="section-sub center">Our leadership brings together world-class expertise in pharmaceutical science, global health policy, and operational excellence.</p>
+        </div>
         <div class="team-grid">
-            <div class="team-card fade-up">
-                <div class="team-avatar a1">AK</div>
-                <div class="team-info">
-                    <div class="team-name">Dr. Ananya Krishnan</div>
-                    <div class="team-role">Founder & Chief Scientific Officer</div>
-                    <div class="team-bio">PhD in Medicinal Chemistry from IIT Bombay. Former WHO advisory board member
-                        with 30+ patents in cardiovascular pharmacology.</div>
-                </div>
+            <div class="team-card reveal">
+                <div class="team-icon"><i class="fa-solid fa-user-tie"></i></div>
+                <h4>Dr. Ramesh Iyer</h4>
+                <div class="role">Chairman & CEO</div>
+                <p>30+ years in pharmaceutical R&D. Former WHO Advisory Committee member. Pioneer of India's first biosimilar NDA filing.</p>
+                <a href="mailto:ceo@medcorepharma.com">Connect <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="team-card fade-up" style="transition-delay:0.1s">
-                <div class="team-avatar a2">RM</div>
-                <div class="team-info">
-                    <div class="team-name">Rajiv Mehta</div>
-                    <div class="team-role">Chief Executive Officer</div>
-                    <div class="team-bio">Former VP at Cipla and GSK India. Led MedCore's international expansion into
-                        42 markets over 12 years at the helm.</div>
-                </div>
+            <div class="team-card reveal">
+                <div class="team-icon"><i class="fa-solid fa-microscope"></i></div>
+                <h4>Dr. Sunita Pillai</h4>
+                <div class="role">Chief Scientific Officer</div>
+                <p>PhD in Medicinal Chemistry (MIT). Led development of 6 approved oncology molecules. 80+ peer-reviewed publications.</p>
+                <a href="mailto:cso@medcorepharma.com">Connect <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="team-card fade-up" style="transition-delay:0.2s">
-                <div class="team-avatar a3">PS</div>
-                <div class="team-info">
-                    <div class="team-name">Dr. Priya Shankar</div>
-                    <div class="team-role">VP, Clinical Research</div>
-                    <div class="team-bio">Led over 60 Phase II and III clinical trials. Specialist in adaptive trial
-                        design and real-world evidence generation.</div>
-                </div>
+            <div class="team-card reveal">
+                <div class="team-icon"><i class="fa-solid fa-gears"></i></div>
+                <h4>Arjun Kapoor</h4>
+                <div class="role">Chief Operating Officer</div>
+                <p>Scaled manufacturing from 200M to 500M units annually. Oversees 3 GMP-certified facilities and 6,000+ operations staff.</p>
+                <a href="mailto:coo@medcorepharma.com">Connect <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-            <div class="team-card fade-up" style="transition-delay:0.3s">
-                <div class="team-avatar a4">NK</div>
-                <div class="team-info">
-                    <div class="team-name">Nikhil Kapoor</div>
-                    <div class="team-role">Chief Regulatory Officer</div>
-                    <div class="team-bio">Expert in FDA, EMA, and CDSCO regulatory frameworks. Secured 80+ approvals
-                        across global markets over his career.</div>
-                </div>
+            <div class="team-card reveal">
+                <div class="team-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4>Priya Mehta</h4>
+                <div class="role">Chief Regulatory Officer</div>
+                <p>20 years in global regulatory strategy. Successfully navigated approvals across FDA, EMA, CDSCO, and TGA jurisdictions.</p>
+                <a href="mailto:regulatory@medcorepharma.com">Connect <i class="fa-solid fa-arrow-right"></i></a>
             </div>
-        </div>
-    </section>
-
-    <!-- ── SECTION 5: CTA ── -->
-    <section id="cta">
-        <div class="cta-inner fade-up">
-            <span class="cta-eyebrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="13" height="13">
-                    <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 17z" />
-                </svg>
-                Work With Us
-            </span>
-            <h2 class="cta-title">Ready to Partner in <span>Better Healthcare?</span></h2>
-            <p class="cta-sub">Whether you're a distributor, healthcare provider, research institution, or investor —
-                we'd love to explore what we can build together for patients everywhere.</p>
-            <div class="cta-actions">
-                <a href="mailto:partnerships@medcorepharma.com" class="btn-white">Get in Touch →</a>
-                <a href="#mission" class="btn-ghost">Learn Our Story</a>
+            <div class="team-card reveal">
+                <div class="team-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                <h4>Vikram Nair</h4>
+                <div class="role">Chief Financial Officer</div>
+                <p>Former Goldman Sachs VP. Managed ₹12B capital raise for biologics campus expansion and strategic global acquisitions.</p>
+                <a href="mailto:cfo@medcorepharma.com">Connect <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="team-card reveal">
+                <div class="team-icon"><i class="fa-solid fa-globe"></i></div>
+                <h4>Dr. Aisha Okonkwo</h4>
+                <div class="role">Head of Global Access</div>
+                <p>Leads access medicine programs across 18 developing nations. Former UNICEF Health Advisor with 15 years in global health.</p>
+                <a href="mailto:access@medcorepharma.com">Connect <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- ========================= FOOTER ========================= -->
-    <footer class="footer">
-        <div class="footer-grid">
-
-            <div class="footer-brand">
-                <div class="logo"><img src="./src/logo.webp" alt=""></div>
-                <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
-                    Advancing human health through innovation since 1994.</p>
-                <div class="footer-socials">
-                    <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
-                </div>
+<!-- ═══════════ SECTION 5: WHY CHOOSE US (like FAQ accordion) ═══════════ -->
+<section>
+    <div class="center" style="max-width:640px;">
+        <span class="tag">WHY MEDCORE</span>
+        <h2 class="section-title">Why Healthcare Providers Choose Us</h2>
+        <p class="section-sub center">The reasons thousands of hospitals, distributors, and governments partner with MedCore — in their own words.</p>
+    </div>
+    <div class="whyus-list">
+        <div class="whyus-item reveal">
+            <div class="whyus-question">
+                <span><span class="whyus-badge">Quality</span>Uncompromising GMP-certified manufacturing</span>
+                <i class="fa-solid fa-plus"></i>
             </div>
-
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul class="footer-links">
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#">Leadership Team</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press Room</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">CSR Initiatives</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Products & Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#products">Product Portfolio</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#research">R&D Pipeline</a></li>
-                    <li><a href="#">Generic Medicines</a></li>
-                    <li><a href="#">Biologics</a></li>
-                    <li><a href="#">OTC Products</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Newsletter</h4>
-                <p style="font-size:13px; color:rgba(255,255,255,.45); line-height:1.7; margin-bottom:16px;">Stay
-                    updated with our latest research, product launches, and health insights.</p>
-                <div class="footer-newsletter">
-                    <input type="email" placeholder="Enter your email address" id="footermail">
-                    <button class="footerbtn">Subscribe Now</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>>
+            <div class="whyus-answer">
+                <p>All three of our production facilities operate under WHO Good Manufacturing Practice guidelines with zero major regulatory recalls in the past five years. Every batch undergoes 14-stage quality testing before release — from raw material identity to finished product stability.</p>
             </div>
         </div>
-    </footer>
+        <div class="whyus-item reveal">
+            <div class="whyus-question">
+                <span><span class="whyus-badge">Innovation</span>AI-driven drug discovery since 2021</span>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="whyus-answer">
+                <p>Our proprietary AI platform has reduced drug discovery timelines by 42% and shortlisted 7 new molecular candidates for clinical trials since launch. We hold 214 active patents and consistently invest 12–14% of annual revenue back into R&D.</p>
+            </div>
+        </div>
+        <div class="whyus-item reveal">
+            <div class="whyus-question">
+                <span><span class="whyus-badge">Reliability</span>99.4% on-time delivery across 50+ countries</span>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="whyus-answer">
+                <p>Our cold-chain logistics network and real-time serialisation system ensures that medicines reach hospitals and pharmacies on schedule. We operate dedicated distribution hubs in 12 countries with 24/7 supply chain monitoring.</p>
+            </div>
+        </div>
+        <div class="whyus-item reveal">
+            <div class="whyus-question">
+                <span><span class="whyus-badge">Compliance</span>Approved in 6 major regulatory jurisdictions</span>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="whyus-answer">
+                <p>MedCore holds active approvals from the US FDA, European Medicines Agency, CDSCO, TGA (Australia), Health Canada, and PMDA (Japan). Our regulatory team maintains a 94% first-cycle approval rate — among the highest in the industry.</p>
+            </div>
+        </div>
+        <div class="whyus-item reveal">
+            <div class="whyus-question">
+                <span><span class="whyus-badge">Sustainability</span>Carbon-neutral target by 2028</span>
+                <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="whyus-answer">
+                <p>We've reduced manufacturing emissions by 38% since 2019 through renewable energy installations and process optimisation. Our EcoVadis Gold Rating places us in the top 5% of pharmaceutical companies globally for environmental and social governance.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo"><img src="./src/logo.webp" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
+            <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries. Advancing human health through innovation since 1994.</p>
+            <div class="footer-socials">
+                <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
+                <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
+                <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
+            </div>
+        </div>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#">Leadership Team</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press Room</a></li>
+                <li><a href="#">Investor Relations</a></li>
+                <li><a href="#">CSR Initiatives</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Products & Services</h4>
+            <ul class="footer-links">
+                <li><a href="service.html">Product Portfolio</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="#">R&D Pipeline</a></li>
+                <li><a href="#">Generic Medicines</a></li>
+                <li><a href="#">Biologics</a></li>
+                <li><a href="#">OTC Products</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:16px;">Stay updated with our latest research, product launches, and health insights.</p>
+            <div class="footer-newsletter">
+                <input type="email" placeholder="Enter your email address" id="footermail">
+                <button class="footerbtn">Subscribe Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+        </div>
+    </div>
+</footer>
 
-    <script>
-        // Intersection Observer for fade-up animations
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
+<script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('active', window.scrollY > 50));
 
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.innerHTML = navLinks.classList.contains('active')
+            ? '<i class="fa-solid fa-xmark"></i>'
+            : '<i class="fa-solid fa-bars"></i>';
+    });
 
+    // Login btn placement
+    const loginBtn = document.querySelector('.login-btn');
+    function checkMobileMenu() {
+        if (window.innerWidth <= 1100) { navLinks.appendChild(loginBtn); }
+        else { document.querySelector('.navbar').insertBefore(loginBtn, menuToggle); }
+    }
+    checkMobileMenu();
+    window.addEventListener('resize', checkMobileMenu);
 
-        //nav
+    // Login redirect
+    document.querySelector('.nav-btn').addEventListener('click', () => window.location.href = 'login.html');
 
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // login
-        const navBtn = document.querySelector(".nav-btn");
-
-        navBtn.addEventListener("click", () => {
-            window.location.href = "login.html";
+    // Why Us accordion
+    document.querySelectorAll('.whyus-item').forEach(item => {
+        item.querySelector('.whyus-question').addEventListener('click', () => {
+            document.querySelectorAll('.whyus-item').forEach(other => { if (other !== item) other.classList.remove('open'); });
+            item.classList.toggle('open');
         });
-        // NAVBAR SCROLL
-        const navbar = document.querySelector(".navbar");
-        window.addEventListener("scroll", () => {
-            navbar.classList.toggle("active", window.scrollY > 50);
-        });
+    });
 
-        // MOBILE MENU
-        const menuToggle = document.getElementById("menuToggle");
-        const navLinks = document.getElementById("navLinks");
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            menuToggle.innerHTML = navLinks.classList.contains("active")
-                ? '<i class="fa-solid fa-xmark"></i>'
-                : '<i class="fa-solid fa-bars"></i>';
-        });
-
-        const loginBtn = document.querySelector(".login-btn");
-        function checkMobileMenu() {
-            if (window.innerWidth <= 1100) {
-                navLinks.appendChild(loginBtn);
-            } else {
-                document.querySelector(".navbar").insertBefore(loginBtn, menuToggle);
-            }
-        }
-        checkMobileMenu();
-        window.addEventListener("resize", checkMobileMenu);
-
-        //footer
-
-        const emailInput = document.getElementById("footermail");
-        const subscribeBtn = document.querySelector(".footerbtn");
-
-        subscribeBtn.addEventListener("click", () => {
-
-            const email = emailInput.value.trim();
-
-            if (email === "") {
-                alert("Please enter your email address.");
-                return;
-            }
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
-
-            alert("Thank you for subscribing!");
-            emailInput.value = "";
-        });
-
-    </script>
+    // Footer subscribe
+    const emailInput = document.getElementById('footermail');
+    document.querySelector('.footerbtn').addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        if (!email) { alert('Please enter your email address.'); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+        alert('Thank you for subscribing!');
+        emailInput.value = '';
+    });
+</script>
 </body>
-
 </html>

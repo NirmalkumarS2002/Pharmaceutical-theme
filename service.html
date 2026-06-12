@@ -1,1350 +1,464 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us — MedCore Pharma</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <title>Services — MedCore Pharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: var(--off-white);
-            color: var(--text-dark);
-            overflow-x: hidden;
-        }
-
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+        body { background:var(--off-white); color:var(--text-dark); overflow-x:hidden; }
         :root {
-            --green-dark: #1a4a3a;
-            --green-mid: #1e6b52;
-            --green-brand: #2d8a68;
-            --green-light: #4aab86;
-            --green-pale: #e8f5f0;
-            --green-mist: #f0faf6;
-            --off-white: #f7fbf9;
-            --white: #ffffff;
-            --text-dark: #0d2b20;
-            --text-mid: #3a5a4e;
-            --text-muted: #6b8f82;
-            --border: #d0e8df;
-            --font-display: 'Sora', sans-serif;
-            --font-body: 'Inter', sans-serif;
+            --green-dark:#1a4a3a; --green-mid:#1e6b52; --green-brand:#2d8a68;
+            --green-light:#4aab86; --green-pale:#e8f5f0; --green-mist:#f0faf6;
+            --off-white:#f7fbf9; --white:#ffffff;
+            --text-dark:#0d2b20; --text-mid:#3a5a4e; --text-muted:#6b8f82; --border:#d0e8df;
         }
+        html { scroll-behavior:smooth; }
 
-        html {
-            scroll-behavior: smooth;
+        /* ── NAVBAR ── */
+        .navbar { width:100%; padding:14px 40px; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; left:50%; transform:translateX(-50%); z-index:9999; background:transparent; border-bottom:1px solid transparent; transition:0.4s ease; animation:navFade 1s ease; }
+        .navbar.active { background:rgba(13,92,85,.95); backdrop-filter:blur(15px); border-bottom:1px solid rgba(255,255,255,.1); }
+        .navbar.active .nav-links a, .navbar.active .menu-toggle { color:#fff; }
+        .navbar::before { content:""; position:absolute; inset:0; background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent); transform:translateX(-100%); opacity:0; transition:0.4s ease; }
+        .navbar.active::before { opacity:1; animation:navGlow 4s linear infinite; }
+        @keyframes navGlow { 0%{transform:translateX(-100%)} 100%{transform:translateX(100%)} }
+        @keyframes navFade { from{opacity:0;transform:translate(-50%,-20px)} to{opacity:1;transform:translate(-50%,0)} }
+        .logo img { width:clamp(140px,16vw,190px); }
+        .logo-fallback { display:none; font-weight:700; font-size:20px; color:var(--green-dark); }
+        .navbar.active .logo-fallback { color:#fff; }
+        .nav-links { display:flex; gap:32px; align-items:center; list-style:none; }
+        .nav-links a { color:black; text-decoration:none; font-size:14.5px; transition:0.3s; position:relative; }
+        .nav-links a::after { content:""; position:absolute; left:0; bottom:-5px; width:0%; height:2px; background:linear-gradient(90deg,#48cae4,#0077b6); transition:0.4s; }
+        .nav-links a:hover { color:#48cae4; }
+        .nav-links a:hover::after { width:100%; }
+        .nav-btn { padding:12px 36px; border:none; border-radius:10px; background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:0.4s; box-shadow:0 0 18px rgba(0,216,115,.45); }
+        .nav-btn:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 10px 30px rgba(72,202,228,.5); }
+        .menu-toggle { display:none; font-size:clamp(20px,2.5vw,26px); color:black; cursor:pointer; }
+
+        /* ── SHARED ── */
+        section { padding:90px 6%; max-width:1200px; margin:0 auto; }
+        .tag { display:inline-block; background:var(--green-pale); color:var(--green-mid); font-size:13px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; padding:8px 18px; border-radius:30px; margin-bottom:18px; }
+        .section-title { font-size:clamp(28px,4vw,42px); font-weight:700; color:var(--text-dark); line-height:1.25; margin-bottom:18px; }
+        .section-sub { font-size:15px; color:var(--text-muted); line-height:1.8; max-width:620px; }
+        .center { text-align:center; margin:0 auto; }
+        .read-more { display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; color:var(--green-brand); text-decoration:none; transition:0.3s; }
+        .read-more i { transition:0.3s; }
+        .read-more:hover i { transform:translateX(5px); }
+
+        /* ── SECTION 1: HERO ── */
+        .service-hero { background:linear-gradient(135deg,var(--green-dark) 0%,var(--green-mid) 60%,var(--green-brand) 100%); padding-top:170px; padding-bottom:70px; text-align:center; position:relative; overflow:hidden; max-width:100%; }
+        .service-hero::before { content:""; position:absolute; top:-100px; right:-100px; width:320px; height:320px; background:radial-gradient(circle,rgba(72,202,228,.18),transparent 70%); border-radius:50%; }
+        .service-hero::after { content:""; position:absolute; bottom:-120px; left:-80px; width:280px; height:280px; background:radial-gradient(circle,rgba(74,171,134,.25),transparent 70%); border-radius:50%; }
+        .service-hero .tag { background:rgba(255,255,255,.12); color:#d8fff0; }
+        .service-hero h1 { font-size:clamp(32px,5vw,52px); font-weight:700; color:#fff; margin-bottom:16px; position:relative; z-index:1; }
+        .service-hero p { font-size:15.5px; color:rgba(255,255,255,.75); max-width:600px; margin:0 auto; line-height:1.8; position:relative; z-index:1; }
+        .service-search { max-width:480px; margin:34px auto 0; position:relative; z-index:1; }
+        .service-search input { width:100%; padding:15px 50px 15px 22px; border-radius:50px; border:1px solid rgba(255,255,255,.2); background:rgba(255,255,255,.12); color:#fff; font-size:14px; font-family:'Poppins',sans-serif; outline:none; backdrop-filter:blur(6px); }
+        .service-search input::placeholder { color:rgba(255,255,255,.55); }
+        .service-search input:focus { border-color:#48cae4; }
+        .service-search i { position:absolute; right:22px; top:50%; transform:translateY(-50%); color:rgba(255,255,255,.6); }
+
+        /* ── SECTION 3: SERVICES GRID ── */
+        .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:50px; }
+        .service-card { background:var(--white); border:1px solid var(--border); border-radius:18px; overflow:hidden; transition:0.35s; display:flex; flex-direction:column; }
+        .service-card:hover { transform:translateY(-8px); box-shadow:0 18px 40px rgba(26,74,58,.12); border-color:var(--green-light); }
+        .card-img { height:180px; background:linear-gradient(135deg,var(--green-pale),var(--green-mist)); display:flex; align-items:center; justify-content:center; color:var(--green-light); font-size:40px; position:relative; }
+        .card-cat { position:absolute; top:16px; left:16px; background:rgba(255,255,255,.92); color:var(--green-mid); font-size:11.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:6px 14px; border-radius:20px; }
+        .card-body { padding:26px; display:flex; flex-direction:column; flex:1; }
+        .card-body .svc-meta { display:flex; align-items:center; gap:8px; margin-bottom:12px; font-size:13px; color:var(--text-muted); }
+        .card-body h3 { font-size:17px; font-weight:600; color:var(--text-dark); line-height:1.4; margin-bottom:12px; }
+        .card-body p { font-size:13.5px; color:var(--text-muted); line-height:1.7; margin-bottom:18px; flex:1; }
+
+        .load-more-wrap { text-align:center; margin-top:50px; }
+        .load-more-btn { padding:14px 40px; border:1px solid var(--green-brand); border-radius:30px; background:transparent; color:var(--green-brand); font-size:14px; font-weight:600; cursor:pointer; transition:0.35s; }
+        .load-more-btn:hover { background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; border-color:transparent; box-shadow:0 10px 28px rgba(45,138,104,.3); }
+
+        /* ── SECTION 4: INDUSTRIES WE SERVE ── */
+        .industries-section { background:var(--green-pale); max-width:100%; }
+        .industries-section .inner { max-width:1200px; margin:0 auto; }
+        .industries-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:50px; }
+        .industry-card { background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s; cursor:pointer; }
+        .industry-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(26,74,58,.1); border-color:var(--green-light); }
+        .ind-icon { width:50px; height:50px; border-radius:12px; background:var(--green-pale); color:var(--green-brand); display:flex; align-items:center; justify-content:center; font-size:19px; margin:0 auto 16px; }
+        .industry-card h4 { font-size:15px; font-weight:600; color:var(--text-dark); margin-bottom:8px; }
+        .industry-card p { font-size:13px; color:var(--text-muted); line-height:1.6; margin-bottom:0; }
+
+        /* ── SECTION 5: PARTNER CTA ── */
+        .partner-cta { background:linear-gradient(135deg,var(--green-dark),var(--green-mid)); border-radius:24px; padding:60px; text-align:center; position:relative; overflow:hidden; }
+        .partner-cta::before { content:""; position:absolute; top:-80px; right:-60px; width:240px; height:240px; background:radial-gradient(circle,rgba(72,202,228,.18),transparent 70%); border-radius:50%; }
+        .partner-cta .tag { background:rgba(255,255,255,.12); color:#d8fff0; }
+        .partner-cta h2 { font-size:clamp(24px,4vw,36px); font-weight:700; color:#fff; margin-bottom:14px; position:relative; z-index:1; }
+        .partner-cta p { font-size:14.5px; color:rgba(255,255,255,.75); max-width:520px; margin:0 auto 32px; line-height:1.8; position:relative; z-index:1; }
+        .cta-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative; z-index:1; }
+        .btn-primary { padding:15px 36px; border-radius:50px; border:none; background:#fff; color:var(--green-dark); font-size:14px; font-weight:700; cursor:pointer; transition:0.35s; }
+        .btn-primary:hover { transform:translateY(-3px); box-shadow:0 10px 28px rgba(0,0,0,.2); }
+        .btn-outline { padding:15px 36px; border-radius:50px; border:1.5px solid rgba(255,255,255,.35); background:transparent; color:#fff; font-size:14px; font-weight:600; cursor:pointer; transition:0.35s; }
+        .btn-outline:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.7); transform:translateY(-3px); }
+        .trust-row { display:flex; align-items:center; gap:24px; justify-content:center; margin-top:32px; flex-wrap:wrap; position:relative; z-index:1; }
+        .trust-item { display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.55); font-size:13px; }
+        .trust-item i { color:#4aab86; }
+
+        /* ── REVEAL ── */
+        .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease,transform 0.7s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        /* ── FOOTER ── */
+        .footer { background:#0a2421; padding:70px 6% 30px; }
+        .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:50px; max-width:1200px; margin:0 auto 50px; }
+        .footer-brand p { font-size:14px; color:rgba(255,255,255,.55); line-height:1.8; margin-top:18px; margin-bottom:24px; }
+        .footer-socials { display:flex; gap:12px; }
+        .social-icon { width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,.65); font-size:15px; cursor:pointer; transition:0.3s; }
+        .social-icon:hover { background:rgba(72,202,228,.2); color:#48cae4; border-color:rgba(72,202,228,.3); }
+        .footer-col h4 { font-size:14.5px; font-weight:700; color:#fff; margin-bottom:20px; position:relative; padding-bottom:12px; }
+        .footer-col h4::after { content:""; position:absolute; bottom:0; left:0; width:32px; height:2px; background:linear-gradient(90deg,#0D5C55,#48cae4); border-radius:2px; }
+        .footer-links { list-style:none; display:flex; flex-direction:column; gap:11px; }
+        .footer-links a { font-size:13.5px; color:rgba(255,255,255,.5); text-decoration:none; transition:0.3s; display:flex; align-items:center; gap:8px; }
+        .footer-links a:hover { color:#48cae4; gap:12px; }
+        .footer-links a::before { content:"→"; font-size:12px; }
+        .footer-newsletter input { width:100%; padding:11px 16px; border-radius:10px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.06); color:#fff; font-size:13.5px; font-family:'Poppins',sans-serif; outline:none; margin-bottom:10px; transition:0.3s; }
+        .footer-newsletter input::placeholder { color:rgba(255,255,255,.3); }
+        .footer-newsletter input:focus { border-color:rgba(72,202,228,.4); }
+        .footer-newsletter button { width:100%; padding:11px; background:linear-gradient(135deg,#0D5C55,#198754); color:#fff; border:none; border-radius:10px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:'Poppins',sans-serif; transition:0.3s; }
+        .footer-newsletter button:hover { box-shadow:0 8px 20px rgba(13,92,85,.4); transform:translateY(-2px); }
+        .footer-bottom { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding-top:26px; border-top:1px solid rgba(255,255,255,.07); flex-wrap:wrap; gap:12px; }
+        .footer-bottom p { font-size:13px; color:rgba(255,255,255,.35); }
+        .footer-bottom-links { display:flex; gap:22px; }
+        .footer-bottom-links a { font-size:13px; color:rgba(255,255,255,.35); text-decoration:none; transition:0.3s; }
+        .footer-bottom-links a:hover { color:#48cae4; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width:1100px) {
+            .navbar { width:100%; top:0; border-radius:0; overflow:visible; padding:14px 20px; }
+            .menu-toggle { display:block; z-index:10001; }
+            .nav-links { position:fixed; top:0; right:-100%; width:70%; height:100vh; background:linear-gradient(135deg,rgba(8,28,60,.98),rgba(4,15,40,.98)); backdrop-filter:blur(20px); flex-direction:column; justify-content:flex-start; align-items:flex-start; padding:30px 50px; gap:32px; transition:0.5s; z-index:9999; }
+            .nav-links.active { right:0; }
+            .nav-links a { font-size:20px; color:#fff; }
+            .featured-service { grid-template-columns:1fr; gap:30px; padding:30px; }
+            .featured-img { height:240px; }
+            .services-grid { grid-template-columns:repeat(2,1fr); }
+            .industries-grid { grid-template-columns:repeat(2,1fr); }
+            .footer-grid { grid-template-columns:1fr 1fr; }
         }
-
-
-        /* ========================= NAVBAR ========================= */
-        .navbar {
-            width: 100%;
-            padding: 14px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 9999;
-            background: transparent;
-            border-bottom: 1px solid transparent;
-            transition: 0.4s ease;
-            animation: navFade 1s ease;
+        @media (max-width:768px) {
+            .services-grid { grid-template-columns:1fr; }
+            .industries-grid { grid-template-columns:1fr 1fr; }
+            .partner-cta { padding:40px 26px; }
+            .cta-buttons { flex-direction:column; align-items:center; }
+            .btn-primary, .btn-outline { width:100%; max-width:280px; }
+            .footer-grid { grid-template-columns:1fr; gap:36px; }
+            .footer-bottom { flex-direction:column; text-align:center; }
         }
-
-        .navbar.active {
-            border-bottom: 1px solid rgba(0, 180, 216, 0.35);
-            background: rgba(13, 92, 85, .95);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        @media (max-width:600px) {
+            .navbar { padding:10px 20px; }
+            section { padding:70px 5%; }
+            .service-hero { padding-top:130px; padding-bottom:50px; }
+            .cat-btn { white-space:nowrap; }
+            .industries-grid { grid-template-columns:1fr; }
+            .footer { padding:50px 5% 24px; }
+            .section-title { font-size:clamp(22px,6vw,32px); }
         }
-
-
-
-        .navbar::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
-            transform: translateX(-100%);
-            opacity: 0;
-            transition: 0.4s ease;
-        }
-
-        .navbar.active::before {
-            opacity: 1;
-            animation: navGlow 4s linear infinite;
-        }
-
-        @keyframes navGlow {
-            0% {
-                transform: translateX(-100%);
-            }
-
-            100% {
-                transform: translateX(100%);
-            }
-        }
-
-        .logo img {
-            width: clamp(140px, 16vw, 190px);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            justify-content: space-around;
-            align-items: center;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: black;
-            text-decoration: none;
-            font-size: 14.5px;
-            transition: 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 0%;
-            height: 2px;
-            background: linear-gradient(90deg, #48cae4, #0077b6);
-            transition: 0.4s;
-        }
-
-        .nav-links a:hover {
-            color: #48cae4;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-btn {
-            padding: 12px 36px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #0D5C55, #198754);
-            color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.4s ease;
-            box-shadow: 0 0 18px rgba(0, 216, 115, 0.45), 0 0 12px rgba(0, 182, 91, 0.25);
-        }
-
-        .nav-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(72, 202, 228, 0.5);
-            background: linear-gradient(135deg, #084841, #0D5C55);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: clamp(20px, 2.5vw, 26px);
-            color: black;
-            cursor: pointer;
-        }
-
-        /* FOOTER */
-
-        /* RESPONSIVE */
-        @media (max-width: 800px) {
-            #hero {
-                grid-template-columns: 1fr;
-                padding-top: 88px;
-            }
-
-            .hero-visual {
-                display: none;
-            }
-
-            .mission-inner {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .timeline-line {
-                left: 20px;
-            }
-
-            .ti-dot {
-                left: 20px;
-            }
-
-            .timeline-item:nth-child(even) .ti-content,
-            .timeline-item:nth-child(even) .ti-year-block {
-                order: unset;
-                text-align: left;
-            }
-
-            .ti-year-block {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-            }
-
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .fade-up {
-                opacity: 1;
-                transform: none;
-                transition: none;
-            }
-        }
-
-        /*added section*/
-
-        
-  /* ── SHARED ── */
-  section { padding: 100px 5vw; }
-  .eyebrow {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: var(--green-pale); color: var(--green-brand);
-    font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase;
-    padding: 6px 14px; border-radius: 50px; margin-bottom: 1.2rem;
-  }
-  h2.section-title {
-    font-family: var(--font-display); font-size: clamp(1.9rem, 3.8vw, 2.75rem);
-    font-weight: 800; line-height: 1.15; color: var(--text-dark); margin-bottom: 1rem;
-  }
-  h2.section-title span { color: var(--green-brand); }
-  .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.75; max-width: 520px; }
-
-  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
-  .fade-up.visible { opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce) { .fade-up { opacity: 1; transform: none; transition: none; } }
-
-
-
-  /* ── 2. SERVICES GRID ── */
-  #services { background: var(--white); }
-  .services-header { text-align: center; margin-bottom: 4rem; }
-  .services-header .section-sub { margin: 0 auto; }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 1120px; margin: 0 auto;
-  }
-  .svc-card {
-    background: var(--off-white); border: 1px solid var(--border);
-    border-radius: 20px; padding: 2rem;
-    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    cursor: default; position: relative; overflow: hidden;
-  }
-  .svc-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--green-brand), var(--green-light));
-    transform: scaleX(0); transform-origin: left;
-    transition: transform 0.35s ease;
-  }
-  .svc-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(26,74,58,0.12); border-color: var(--green-brand); }
-  .svc-card:hover::after { transform: scaleX(1); }
-  .svc-card.featured {
-    background: var(--green-dark); border-color: var(--green-dark);
-    color: #fff;
-  }
-  .svc-card.featured .svc-title { color: #fff; }
-  .svc-card.featured .svc-text { color: rgba(255,255,255,0.7); }
-  .svc-card.featured .svc-tag { background: rgba(255,255,255,0.12); color: var(--green-light); }
-  .svc-card.featured .svc-link { color: var(--green-light); }
-  .svc-card.featured::after { background: linear-gradient(90deg, var(--green-light), #fff); }
-
-  .svc-icon {
-    width: 48px; height: 48px; background: var(--green-pale);
-    border-radius: 13px; display: grid; place-items: center; margin-bottom: 1.3rem;
-  }
-  .svc-card.featured .svc-icon { background: rgba(255,255,255,0.15); }
-  .svc-tag {
-    display: inline-block; background: var(--green-pale); color: var(--green-brand);
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; padding: 3px 9px; border-radius: 50px; margin-bottom: 0.9rem;
-  }
-  .svc-title {
-    font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
-    color: var(--text-dark); margin-bottom: 0.6rem;
-  }
-  .svc-text { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 1.2rem; }
-  .svc-link {
-    font-size: 0.82rem; font-weight: 600; color: var(--green-brand);
-    text-decoration: none; display: inline-flex; align-items: center; gap: 5px;
-    transition: gap 0.2s;
-  }
-  .svc-link:hover { gap: 9px; }
-
-  /* ── 3. PROCESS ── */
-  #process { background: var(--green-mist); }
-  .process-inner {
-    display: grid; grid-template-columns: 1fr 1.2fr;
-    gap: 5rem; align-items: center; max-width: 1120px; margin: 0 auto;
-  }
-  .process-steps { display: flex; flex-direction: column; gap: 0; }
-  .pstep {
-    display: flex; gap: 1.4rem; align-items: flex-start;
-    padding: 1.4rem 0; border-bottom: 1px solid var(--border);
-    cursor: pointer; transition: background 0.2s; border-radius: 12px;
-    padding-left: 1rem; padding-right: 1rem;
-    position: relative;
-  }
-  .pstep:last-child { border-bottom: none; }
-  .pstep.active { background: #fff; box-shadow: 0 4px 20px rgba(26,74,58,0.08); }
-  .pstep-num {
-    width: 40px; height: 40px; min-width: 40px;
-    background: var(--border); border-radius: 10px;
-    display: grid; place-items: center;
-    font-family: var(--font-display); font-size: 0.82rem; font-weight: 700;
-    color: var(--text-muted); transition: background 0.3s, color 0.3s;
-  }
-  .pstep.active .pstep-num { background: var(--green-dark); color: #fff; }
-  .pstep-body {}
-  .pstep-title { font-family: var(--font-display); font-weight: 700; font-size: 0.95rem; color: var(--text-dark); margin-bottom: 3px; }
-  .pstep-text { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, opacity 0.4s; opacity: 0; }
-  .pstep.active .pstep-text { max-height: 80px; opacity: 1; }
-
-  .process-visual {
-    background: #fff; border-radius: 24px; border: 1px solid var(--border);
-    padding: 2.5rem; box-shadow: 0 8px 32px rgba(26,74,58,0.08);
-    min-height: 360px; display: flex; flex-direction: column; justify-content: center;
-  }
-  .pv-panel { display: none; animation: fadeIn 0.4s ease; }
-  .pv-panel.active { display: flex; flex-direction: column; gap: 1.2rem; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  .pv-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--green-pale); color: var(--green-brand);
-    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.07em;
-    text-transform: uppercase; padding: 5px 12px; border-radius: 50px;
-  }
-  .pv-heading { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; color: var(--text-dark); line-height: 1.3; }
-  .pv-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
-  .pv-items { display: flex; flex-direction: column; gap: 0.7rem; }
-  .pv-item {
-    display: flex; align-items: center; gap: 0.8rem;
-    background: var(--green-mist); border-radius: 10px; padding: 0.75rem 1rem;
-    font-size: 0.83rem; color: var(--text-mid); font-weight: 500;
-  }
-  .pv-item-dot { width: 8px; height: 8px; background: var(--green-brand); border-radius: 50%; min-width: 8px; }
-  .pv-metric { margin-top: 0.5rem; }
-  .pv-metric-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--green-dark); }
-  .pv-metric-label { font-size: 0.8rem; color: var(--text-muted); }
-
-  /* ── 4. SPECIALTIES ── */
-  #specialties { background: var(--white); }
-  .spec-header { text-align: center; margin-bottom: 3.5rem; }
-  .spec-header .section-sub { margin: 0 auto; }
-
-  .spec-tabs { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
-  .spec-tab {
-    background: var(--green-pale); border: 1.5px solid transparent;
-    color: var(--green-brand); font-family: var(--font-display);
-    font-size: 0.84rem; font-weight: 600;
-    padding: 0.55rem 1.3rem; border-radius: 50px; cursor: pointer;
-    transition: all 0.2s;
-  }
-  .spec-tab.active { background: var(--green-dark); color: #fff; border-color: var(--green-dark); }
-  .spec-tab:hover:not(.active) { border-color: var(--green-brand); }
-
-  .spec-panels {}
-  .spec-panel { display: none; }
-  .spec-panel.active { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; animation: fadeIn 0.35s ease; }
-  .spec-info {}
-  .spec-icon-big {
-    width: 64px; height: 64px; background: var(--green-dark);
-    border-radius: 18px; display: grid; place-items: center; margin-bottom: 1.5rem;
-  }
-  .spec-title { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.8rem; }
-  .spec-desc { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
-  .spec-feats { display: flex; flex-direction: column; gap: 0.65rem; }
-  .spec-feat { display: flex; align-items: center; gap: 0.7rem; font-size: 0.86rem; color: var(--text-mid); font-weight: 500; }
-  .spec-feat-check { width: 20px; height: 20px; min-width: 20px; background: var(--green-pale); border-radius: 6px; display: grid; place-items: center; }
-
-  .spec-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .spec-stat-card {
-    background: var(--green-mist); border-radius: 16px; border: 1px solid var(--border);
-    padding: 1.3rem; text-align: center;
-    transition: transform 0.3s;
-  }
-  .spec-stat-card:hover { transform: scale(1.04); }
-  .spec-stat-card.dark { background: var(--green-dark); border-color: var(--green-dark); }
-  .spec-stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--green-brand); }
-  .spec-stat-card.dark .spec-stat-num { color: var(--green-light); }
-  .spec-stat-label { font-size: 0.75rem; color: var(--text-muted); font-weight: 500; margin-top: 4px; }
-  .spec-stat-card.dark .spec-stat-label { color: rgba(255,255,255,0.6); }
-
-  /* ── 5. CTA ── */
-  #cta { background: var(--green-dark); text-align: center; position: relative; overflow: hidden; }
-  #cta::before {
-    content: ''; position: absolute; left: 50%; top: -80px;
-    width: 650px; height: 650px;
-    background: radial-gradient(circle, rgba(74,171,134,0.18) 0%, transparent 60%);
-    transform: translateX(-50%); border-radius: 50%;
-  }
-  .cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
-  .cta-eyebrow {
-    display: inline-flex; align-items: center; gap: 7px;
-    background: rgba(255,255,255,0.1); color: var(--green-light);
-    font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
-    letter-spacing: 0.09em; text-transform: uppercase;
-    padding: 6px 14px; border-radius: 50px; margin-bottom: 1.5rem;
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .cta-title { font-family: var(--font-display); font-size: clamp(2rem, 4vw, 2.9rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 1.2rem; }
-  .cta-title span { color: var(--green-light); }
-  .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2.8rem; }
-  .cta-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 3rem; }
-  .cta-card {
-    background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px; padding: 1.4rem; text-align: left;
-    transition: background 0.2s;
-  }
-  .cta-card:hover { background: rgba(255,255,255,0.12); }
-  .cta-card-icon { font-size: 1.5rem; margin-bottom: 0.7rem; }
-  .cta-card-title { font-family: var(--font-display); font-weight: 700; font-size: 0.88rem; color: #fff; margin-bottom: 0.3rem; }
-  .cta-card-text { font-size: 0.78rem; color: rgba(255,255,255,0.5); line-height: 1.55; }
-  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .btn-white {
-    background: #fff; color: var(--green-dark);
-    padding: 0.9rem 2.2rem; border-radius: 10px;
-    font-size: 0.92rem; font-weight: 700; text-decoration: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.3); }
-  .btn-ghost {
-    border: 2px solid rgba(255,255,255,0.3); color: #fff;
-    padding: 0.88rem 2rem; border-radius: 10px;
-    font-size: 0.92rem; font-weight: 600; text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-ghost:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.07); }
-
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    .services-grid { grid-template-columns: 1fr 1fr; }
-    .process-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .spec-panel.active { grid-template-columns: 1fr; }
-    .cta-cards { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-  }
-  @media (max-width: 580px) {
-    .services-grid { grid-template-columns: 1fr; }
-  }
-        /* ========================= FOOTER ========================= */
-
-        .footer {
-            background: #0a2421;
-            padding: 70px 6% 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto 50px;
-        }
-
-        .footer-brand p {
-            font-size: 14px;
-            color: rgba(255, 255, 255, .55);
-            line-height: 1.8;
-            margin-top: 18px;
-            margin-bottom: 24px;
-        }
-
-        .footer-socials {
-            display: flex;
-            gap: 12px;
-        }
-
-        .social-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, .07);
-            border: 1px solid rgba(255, 255, 255, .1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, .65);
-            font-size: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .social-icon:hover {
-            background: rgba(72, 202, 228, .2);
-            color: #48cae4;
-            border-color: rgba(72, 202, 228, .3);
-        }
-
-        .footer-col h4 {
-            font-size: 14.5px;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 12px;
-        }
-
-        .footer-col h4::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 32px;
-            height: 2px;
-            background: linear-gradient(90deg, #0D5C55, #48cae4);
-            border-radius: 2px;
-        }
-
-        .footer-links {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 11px;
-        }
-
-        .footer-links a {
-            font-size: 13.5px;
-            color: rgba(255, 255, 255, .5);
-            text-decoration: none;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .footer-links a:hover {
-            color: #48cae4;
-            gap: 12px;
-        }
-
-        .footer-links a::before {
-            content: "→";
-            font-size: 12px;
-        }
-
-        .footer-newsletter input {
-            width: 100%;
-            padding: 11px 16px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, .1);
-            background: rgba(255, 255, 255, .06);
-            color: #fff;
-            font-size: 13.5px;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            margin-bottom: 10px;
-            transition: 0.3s;
-        }
-
-        .footer-newsletter input::placeholder {
-            color: rgba(255, 255, 255, .3);
-        }
-
-        .footer-newsletter input:focus {
-            border-color: rgba(72, 202, 228, .4);
-        }
-
-        .footer-newsletter button {
-            width: 100%;
-            padding: 11px;
-            background: linear-gradient(135deg, #0D5C55, #198754);
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-size: 13.5px;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            transition: 0.3s;
-        }
-
-        .footer-newsletter button:hover {
-            box-shadow: 0 8px 20px rgba(13, 92, 85, .4);
-            transform: translateY(-2px);
-        }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-top: 26px;
-            border-top: 1px solid rgba(255, 255, 255, .07);
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .footer-bottom p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .35);
-        }
-
-        .footer-bottom-links {
-            display: flex;
-            gap: 22px;
-        }
-
-        .footer-bottom-links a {
-            font-size: 13px;
-            color: rgba(255, 255, 255, .35);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #48cae4;
-        }
-
-        /* ========================= SCROLL REVEAL ========================= */
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ========================= RESPONSIVE ========================= */
-
-        @media (max-width: 1100px) {
-            .navbar {
-                width: 100%;
-                top: 0;
-                border-radius: 0;
-                overflow: visible;
-                padding: 14px 20px;
-            }
-
-            .menu-toggle {
-                display: block;
-                z-index: 10001;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: linear-gradient(135deg, rgba(8, 28, 60, 0.98), rgba(4, 15, 40, 0.98));
-                backdrop-filter: blur(20px);
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                padding: 30px 50px;
-                gap: 32px;
-                list-style: none;
-                transition: 0.5s ease;
-                z-index: 9999;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links a {
-                font-size: 20px;
-            }
-
-            .about-grid,
-            .research-inner,
-            .contact-inner {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .about-image-wrap {
-                order: -1;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .stats-row {
-                padding: 12px 20px;
-                gap: 0;
-            }
-
-            .stat-item {
-                padding: 4px 14px;
-            }
-
-            .stat-divider {
-                display: none;
-            }
-
-            .about-badge {
-                bottom: -10px;
-                right: 10px;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .r-stat-row {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 36px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .navbar {
-                padding: 10px 20px;
-            }
-
-            .hero-content {
-                padding-top: 0;
-            }
-
-            .hero-content h1 {
-                margin-bottom: 6px;
-                line-height: 1.2;
-                min-height: auto;
-            }
-
-            .hero-content p {
-                margin-bottom: 16px;
-                font-size: 13.5px;
-                min-height: auto;
-            }
-
-            .stats-row {
-                width: 100%;
-                border-radius: 12px;
-                margin-bottom: 24px;
-            }
-
-            .hero-buttons {
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-
-            .btn {
-                width: 90%;
-                max-width: 290px;
-                padding: 12px 20px;
-            }
-
-            .slide-btn {
-                width: 36px;
-                height: 36px;
-                font-size: 13px;
-            }
-
-            .tag {
-                font-size: 12.5px;
-                padding: 8px 14px;
-                margin-bottom: 14px;
-                text-align: center;
-            }
-
-            .about-section,
-            .services-section,
-            .products-section,
-            .research-section,
-            .why-section,
-            .testimonials-section,
-            .contact-section {
-                padding: 70px 5%;
-            }
-
-            .contact-form {
-                padding: 28px 22px;
-            }
-
-            .footer {
-                padding: 50px 5% 24px;
-            }
-
-            .about-cta {
-                flex-direction: column;
-            }
-
-            .about-cta button {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .section-title {
-                font-size: clamp(22px, 6vw, 32px);
-            }
-        }
+        @media (prefers-reduced-motion:reduce) { .reveal { opacity:1; transform:none; transition:none; } }
     </style>
 </head>
-
 <body>
 
-    <nav class="navbar">
-        <div class="logo">
-            <img src="./src/logo.webp" alt="MediCore Logo"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-
-        </div>
-
-        <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="service.html">Services</a></li>
-            <li><a href="blog.html">blogs</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <button class="nav-btn login-btn"><span>Login</span></button>
-        </ul>
-
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </nav>
-
-<!-- ── SECTION 2: SERVICES GRID ── -->
-<section id="services">
-  <div class="services-header fade-up">
-    <span class="eyebrow">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-  Our Services
-    </span>
-    <h2 class="section-title">Our Core <span>Service Areas</span></h2>
-    <p class="section-sub">Comprehensive solutions across the entire pharmaceutical value chain — designed for efficiency, safety, and scale.</p>
-  </div>
-
-  <div class="services-grid">
-  
-
-    <!-- Card 4 -->
-    <div class="svc-card fade-up" style="transition-delay:0.24s">
-      <div class="svc-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      </div>
-      <span class="svc-tag">Manufacturing</span>
-      <div class="svc-title">Contract Manufacturing</div>
-      <div class="svc-text">GMP-certified manufacturing for oral solids, injectables, and extended-release formulations. Capacity of 500 million units annually across our three production facilities.</div>
-      <a href="#cta" class="svc-link">Learn more →</a>
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="logo">
+        <img src="./src/logo.webp" alt="MediCore Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-fallback">MedCore Pharma</span>
     </div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="blog.html">Blogs</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <button class="nav-btn login-btn"><span>Login</span></button>
+    </ul>
+    <div class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></div>
+</nav>
 
-    <!-- Card 5 -->
-    <div class="svc-card fade-up" style="transition-delay:0.32s">
-      <div class="svc-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="2" stroke-linecap="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <span class="svc-tag">Quality</span>
-      <div class="svc-title">Quality Assurance & Testing</div>
-      <div class="svc-text">Analytical testing, stability studies, and batch release services from our NABL-accredited laboratories. Full pharmacopoeial compliance with ICH Q guidelines.</div>
-      <a href="#cta" class="svc-link">Learn more →</a>
+<!-- ═══════════ SECTION 1: HERO ═══════════ -->
+<section class="service-hero">
+    <span class="tag">OUR SERVICES</span>
+    <h1>End-to-End Pharmaceutical Solutions</h1>
+    <p>From molecule to market — comprehensive services designed for efficiency, safety, and scale across the entire pharmaceutical value chain.</p>
+    <div class="service-search">
+        <input type="text" id="serviceSearch" placeholder="Search services...">
+        <i class="fa-solid fa-magnifying-glass"></i>
     </div>
-
-    <!-- Card 6 -->
-    <div class="svc-card fade-up" style="transition-delay:0.4s">
-      <div class="svc-icon">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      </div>
-      <span class="svc-tag">Logistics</span>
-      <div class="svc-title">Global Supply Chain</div>
-      <div class="svc-text">Cold-chain logistics, serialisation, and last-mile delivery across 42 countries. Real-time track-and-trace with 99.4% on-time delivery performance.</div>
-      <a href="#cta" class="svc-link">Learn more →</a>
-    </div>
-  </div>
 </section>
 
-<!-- ── SECTION 3: PROCESS ── -->
-<section id="process">
-  <div class="process-inner">
-    <div class="fade-up">
-      <span class="eyebrow">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        How We Work
-      </span>
-      <h2 class="section-title">Our Service <span>Delivery Process</span></h2>
-      <p class="section-sub" style="margin-bottom:2rem">Every engagement follows a structured, transparent process — so you always know where your project stands.</p>
 
-      <div class="process-steps">
-        <div class="pstep active" data-panel="0">
-          <div class="pstep-num">01</div>
-          <div class="pstep-body">
-            <div class="pstep-title">Discovery & Scoping</div>
-            <div class="pstep-text">We begin with a deep-dive consultation to map your therapeutic goals, regulatory landscape, and timeline — building a shared project blueprint.</div>
-          </div>
-        </div>
-        <div class="pstep" data-panel="1">
-          <div class="pstep-num">02</div>
-          <div class="pstep-body">
-            <div class="pstep-title">Research & Development</div>
-            <div class="pstep-text">Our scientists execute compound screening, formulation studies, and pre-clinical research with weekly progress reporting.</div>
-          </div>
-        </div>
-        <div class="pstep" data-panel="2">
-          <div class="pstep-num">03</div>
-          <div class="pstep-body">
-            <div class="pstep-title">Clinical Execution</div>
-            <div class="pstep-text">Protocol design, site selection, patient recruitment, and data management — all under one roof for streamlined Phase I–IV execution.</div>
-          </div>
-        </div>
-        <div class="pstep" data-panel="3">
-          <div class="pstep-num">04</div>
-          <div class="pstep-body">
-            <div class="pstep-title">Regulatory Submission</div>
-            <div class="pstep-text">Our regulatory team prepares, submits, and defends dossiers before global health authorities until approval is secured.</div>
-          </div>
-        </div>
-        <div class="pstep" data-panel="4">
-          <div class="pstep-num">05</div>
-          <div class="pstep-body">
-            <div class="pstep-title">Launch & Scale</div>
-            <div class="pstep-text">Manufacturing scale-up, supply chain integration, and pharmacovigilance to bring your product to market — and keep it there.</div>
-          </div>
-        </div>
-      </div>
+<!-- ═══════════ SECTION 3: SERVICES GRID ═══════════ -->
+<section>
+    <div class="center" style="max-width:640px;">
+        <span class="tag">ALL SERVICES</span>
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-sub center">Comprehensive solutions covering every stage of the pharmaceutical lifecycle — built for reliability and scale.</p>
     </div>
 
-    <div class="process-visual fade-up" style="transition-delay:0.2s">
-      <!-- Panel 0 -->
-      <div class="pv-panel active">
-        <span class="pv-tag">Step 01 — Discovery</span>
-        <div class="pv-heading">Understanding Your<br>Therapeutic Ambition</div>
-        <div class="pv-desc">A structured kickoff where our scientific and regulatory leads align with your team on product vision, market strategy, and risk profile.</div>
-        <div class="pv-items">
-          <div class="pv-item"><div class="pv-item-dot"></div>Stakeholder alignment workshop</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Regulatory pathway mapping</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Feasibility & risk assessment</div>
+    <div class="services-grid" id="servicesGrid">
+        <div class="service-card reveal" data-category="quality">
+            <div class="card-img">
+                <span class="card-cat">Quality</span>
+                <i class="fa-solid fa-flask-vial"></i>
+            </div>
+            <div class="card-body">
+                <div class="svc-meta"><i class="fa-solid fa-shield-halved"></i> NABL Accredited</div>
+                <h3>Quality Assurance & Testing</h3>
+                <p>Analytical testing, stability studies, and batch release services from our NABL-accredited laboratories. Full pharmacopoeial compliance with ICH Q guidelines.</p>
+                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </div>
-        <div class="pv-metric"><div class="pv-metric-num">2–4</div><div class="pv-metric-label">Weeks to complete scoping</div></div>
-      </div>
-      <!-- Panel 1 -->
-      <div class="pv-panel">
-        <span class="pv-tag">Step 02 — R&D</span>
-        <div class="pv-heading">From Molecule to<br>Stable Formulation</div>
-        <div class="pv-desc">Our medicinal chemistry team runs high-throughput screening followed by lead optimisation, using AI-assisted ADMET prediction to accelerate timelines.</div>
-        <div class="pv-items">
-          <div class="pv-item"><div class="pv-item-dot"></div>10,000+ compound library screening</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Formulation & stability studies</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Pre-clinical safety package</div>
+
+        <div class="service-card reveal" data-category="logistics">
+            <div class="card-img">
+                <span class="card-cat">Logistics</span>
+                <i class="fa-solid fa-globe"></i>
+            </div>
+            <div class="card-body">
+                <div class="svc-meta"><i class="fa-solid fa-truck-fast"></i> 42 Countries</div>
+                <h3>Global Supply Chain & Logistics</h3>
+                <p>Cold-chain logistics, serialisation, and last-mile delivery across 42 countries. Real-time track-and-trace with 99.4% on-time delivery performance.</p>
+                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </div>
-        <div class="pv-metric"><div class="pv-metric-num">18mo</div><div class="pv-metric-label">Average pre-clinical timeline</div></div>
-      </div>
-      <!-- Panel 2 -->
-      <div class="pv-panel">
-        <span class="pv-tag">Step 03 — Clinical</span>
-        <div class="pv-heading">Rigorous Trials,<br>Real-World Results</div>
-        <div class="pv-desc">200+ active clinical sites across India, Southeast Asia, and Africa — enabling diverse patient populations and faster enrolment for statistically robust outcomes.</div>
-        <div class="pv-items">
-          <div class="pv-item"><div class="pv-item-dot"></div>Adaptive Phase I–IV design</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Real-time CTMS data access</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Independent safety monitoring</div>
+
+        <div class="service-card reveal" data-category="rd">
+            <div class="card-img">
+                <span class="card-cat">R&D</span>
+                <i class="fa-solid fa-microscope"></i>
+            </div>
+            <div class="card-body">
+                <div class="svc-meta"><i class="fa-solid fa-dna"></i> 14 Active Phase III Trials</div>
+                <h3>Research & Drug Development</h3>
+                <p>Full-service drug discovery from molecule screening to IND filing. AI-assisted formulation development reducing time-to-candidate by 42%.</p>
+                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </div>
-        <div class="pv-metric"><div class="pv-metric-num">60+</div><div class="pv-metric-label">Completed trials to date</div></div>
-      </div>
-      <!-- Panel 3 -->
-      <div class="pv-panel">
-        <span class="pv-tag">Step 04 — Regulatory</span>
-        <div class="pv-heading">Approval-Ready<br>Dossiers, Every Time</div>
-        <div class="pv-desc">Our regulatory affairs team has secured approvals across FDA, EMA, CDSCO, and PMDA. Average first-cycle approval rate of 87% — far above industry norms.</div>
-        <div class="pv-items">
-          <div class="pv-item"><div class="pv-item-dot"></div>CTD / eCTD dossier preparation</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Pre-submission agency meetings</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Post-approval change management</div>
+
+        <div class="service-card reveal" data-category="regulatory">
+            <div class="card-img">
+                <span class="card-cat">Regulatory</span>
+                <i class="fa-solid fa-file-shield"></i>
+            </div>
+            <div class="card-body">
+                <div class="svc-meta"><i class="fa-solid fa-check-circle"></i> 6 Major Jurisdictions</div>
+                <h3>Regulatory Affairs & Submissions</h3>
+                <p>End-to-end dossier preparation and regulatory submissions for FDA, EMA, CDSCO, TGA, and PMDA. 94% first-cycle approval rate over five years.</p>
+                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </div>
-        <div class="pv-metric"><div class="pv-metric-num">87%</div><div class="pv-metric-label">First-cycle approval rate</div></div>
-      </div>
-      <!-- Panel 4 -->
-      <div class="pv-panel">
-        <span class="pv-tag">Step 05 — Launch</span>
-        <div class="pv-heading">Scale Fast,<br>Without Compromise</div>
-        <div class="pv-desc">GMP-certified scale-up manufacturing combined with cold-chain logistics ensures your product reaches patients on time — every time.</div>
-        <div class="pv-items">
-          <div class="pv-item"><div class="pv-item-dot"></div>500M unit annual capacity</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>42-country distribution network</div>
-          <div class="pv-item"><div class="pv-item-dot"></div>Ongoing pharmacovigilance</div>
+
+        <div class="service-card reveal" data-category="manufacturing">
+            <div class="card-img">
+                <span class="card-cat">Manufacturing</span>
+                <i class="fa-solid fa-syringe"></i>
+            </div>
+            <div class="card-body">
+                <div class="svc-meta"><i class="fa-solid fa-vial"></i> Sterile Fill-Finish</div>
+                <h3>Injectable & Biologics Manufacturing</h3>
+                <p>ISO Class 5 cleanroom facilities for sterile injectables, lyophilised products, and biosimilar drug substance manufacturing under USP/EP standards.</p>
+                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
         </div>
-        <div class="pv-metric"><div class="pv-metric-num">99.4%</div><div class="pv-metric-label">On-time delivery rate</div></div>
-      </div>
+
+        <div class="service-card reveal" data-category="quality">
+            <div class="card-img">
+                <span class="card-cat">Quality</span>
+                <i class="fa-solid fa-clipboard-check"></i>
+            </div>
+            <div class="card-body">
+                <div class="svc-meta"><i class="fa-solid fa-eye"></i> Third-Party Auditing</div>
+                <h3>Pharmacovigilance & Safety Monitoring</h3>
+                <p>Post-market surveillance, adverse event reporting, and PSUR preparation across all product lines. Dedicated signal detection and risk management teams.</p>
+                <a href="contact.html" class="read-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="load-more-wrap">
+        <button class="load-more-btn" id="loadMoreBtn">View All Services</button>
+    </div>
 </section>
 
-<!-- ── SECTION 4: SPECIALTIES ── -->
-<section id="specialties">
-  <div class="spec-header fade-up">
-    <span class="eyebrow">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-      Therapeutic Specialties
-    </span>
-    <h2 class="section-title">Deep Expertise in <span>Key Areas</span></h2>
-    <p class="section-sub">Decades of focused research and clinical work in the therapy areas that matter most.</p>
-  </div>
-
-  <div class="spec-tabs fade-up">
-    <button class="spec-tab active" data-spec="cardiology">Cardiology</button>
-    <button class="spec-tab" data-spec="oncology">Oncology</button>
-    <button class="spec-tab" data-spec="neurology">Neurology</button>
-    <button class="spec-tab" data-spec="anti-infective">Anti-Infective</button>
-  </div>
-
-  <div class="spec-panels">
-    <!-- Cardiology -->
-    <div class="spec-panel active" id="spec-cardiology">
-      <div class="spec-info fade-up">
-        <div class="spec-icon-big">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+<!-- ═══════════ SECTION 4: INDUSTRIES WE SERVE ═══════════ -->
+<section class="industries-section">
+    <div class="inner">
+        <div class="center" style="max-width:640px;">
+            <span class="tag">INDUSTRIES WE SERVE</span>
+            <h2 class="section-title">Who We Work With</h2>
+            <p class="section-sub center">Our services are trusted by a diverse range of organisations across the global healthcare ecosystem.</p>
         </div>
-        <div class="spec-title">Cardiology Services</div>
-        <div class="spec-desc">From statins to novel angiotensin inhibitors, our cardiology portfolio covers the full spectrum of cardiovascular disease management — hypertension, heart failure, arrhythmia, and dyslipidaemia.</div>
-        <div class="spec-feats">
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>48 approved cardiovascular products</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Outcomes data from 120,000+ patients</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Dedicated cardiac biomarker testing lab</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>AHA & ESC guideline-aligned protocols</div>
+        <div class="industries-grid">
+            <div class="industry-card reveal">
+                <div class="ind-icon"><i class="fa-solid fa-hospital"></i></div>
+                <h4>Hospitals & Health Systems</h4>
+                <p>Reliable bulk supply of generics, injectables, and critical care medicines to public and private hospital networks.</p>
+            </div>
+            <div class="industry-card reveal">
+                <div class="ind-icon"><i class="fa-solid fa-pills"></i></div>
+                <h4>Retail Pharmacy Chains</h4>
+                <p>Branded and white-label OTC products with consistent supply chain support and regulatory documentation.</p>
+            </div>
+            <div class="industry-card reveal">
+                <div class="ind-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                <h4>Government & NGOs</h4>
+                <p>WHO prequalified essential medicines for government health programmes and international development organisations.</p>
+            </div>
+            <div class="industry-card reveal">
+                <div class="ind-icon"><i class="fa-solid fa-flask"></i></div>
+                <h4>Biotech & Pharma Partners</h4>
+                <p>Contract development and manufacturing services for emerging biotech companies scaling from clinical to commercial stage.</p>
+            </div>
         </div>
-      </div>
-      <div class="spec-visual">
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">48</div>
-          <div class="spec-stat-label">Cardiac Products</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">120K+</div>
-          <div class="spec-stat-label">Patient Records</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">25yr</div>
-          <div class="spec-stat-label">R&D Experience</div>
-        </div>
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">12</div>
-          <div class="spec-stat-label">Pipeline Molecules</div>
-        </div>
-      </div>
     </div>
-
-    <!-- Oncology -->
-    <div class="spec-panel" id="spec-oncology">
-      <div class="spec-info fade-up">
-        <div class="spec-icon-big">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M3 12h3m12 0h3M12 3v3m0 12v3M5.64 5.64l2.12 2.12M16.24 16.24l2.12 2.12M5.64 18.36l2.12-2.12M16.24 7.76l2.12-2.12"/></svg>
-        </div>
-        <div class="spec-title">Oncology Services</div>
-        <div class="spec-desc">Targeted kinase inhibitors, immunotherapy adjuvants, and companion diagnostics — our oncology pipeline is built around precision medicine and minimal systemic toxicity.</div>
-        <div class="spec-feats">
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>32 approved oncology molecules</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Biomarker-driven patient stratification</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Basket & umbrella trial design capability</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>ESMO & ASCO poster-level evidence</div>
-        </div>
-      </div>
-      <div class="spec-visual">
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">32</div>
-          <div class="spec-stat-label">Oncology Products</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">8</div>
-          <div class="spec-stat-label">Tumour Types</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">18</div>
-          <div class="spec-stat-label">Active Trials</div>
-        </div>
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">↓62%</div>
-          <div class="spec-stat-label">Toxicity vs Standard of Care</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Neurology -->
-    <div class="spec-panel" id="spec-neurology">
-      <div class="spec-info fade-up">
-        <div class="spec-icon-big">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/><circle cx="12" cy="12" r="10"/></svg>
-        </div>
-        <div class="spec-title">Neurology Services</div>
-        <div class="spec-desc">Innovative CNS therapies targeting epilepsy, Parkinson's, Alzheimer's, and rare neurological disorders — developed through partnerships with leading neuroscience research centres.</div>
-        <div class="spec-feats">
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>27 approved neurology treatments</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>BBB-penetrant formulation expertise</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Neurobiomarker & imaging endpoints</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Rare disease orphan designation support</div>
-        </div>
-      </div>
-      <div class="spec-visual">
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">27</div>
-          <div class="spec-stat-label">Neuro Products</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">6</div>
-          <div class="spec-stat-label">CNS Indications</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">4</div>
-          <div class="spec-stat-label">Rare Diseases</div>
-        </div>
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">11</div>
-          <div class="spec-stat-label">Pipeline Assets</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Anti-Infective -->
-    <div class="spec-panel" id="spec-anti-infective">
-      <div class="spec-info fade-up">
-        <div class="spec-icon-big">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-        </div>
-        <div class="spec-title">Anti-Infective Services</div>
-        <div class="spec-desc">Novel antibiotics, antivirals, and antifungals developed to combat drug-resistant pathogens — an urgent priority aligned with WHO's global AMR action plan.</div>
-        <div class="spec-feats">
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>40+ anti-infective products</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>AMR-focused stewardship programs</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Tropical & neglected disease pipeline</div>
-          <div class="spec-feat"><div class="spec-feat-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--green-brand)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>LMIC pricing & access programmes</div>
-        </div>
-      </div>
-      <div class="spec-visual">
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">40+</div>
-          <div class="spec-stat-label">Anti-infective Products</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">15</div>
-          <div class="spec-stat-label">Pathogens Targeted</div>
-        </div>
-        <div class="spec-stat-card">
-          <div class="spec-stat-num">9</div>
-          <div class="spec-stat-label">Novel Mechanisms</div>
-        </div>
-        <div class="spec-stat-card dark">
-          <div class="spec-stat-num">42</div>
-          <div class="spec-stat-label">Countries Distributed</div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
 
-<!-- ── SECTION 5: CTA ── -->
-<section id="cta">
-  <div class="cta-inner fade-up">
-    <span class="cta-eyebrow">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 14a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 3.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 10.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
-      Request a Consultation
-    </span>
-    <h2 class="cta-title">Ready to Bring Your <span>Drug to Market?</span></h2>
-    <p class="cta-sub">Whether you're at discovery stage or ready to scale manufacturing, our team has the expertise and infrastructure to move your programme forward — quickly and compliantly.</p>
-
-    <div class="cta-cards">
-      <div class="cta-card">
-        <div class="cta-card-icon">🧬</div>
-        <div class="cta-card-title">Early-Stage Projects</div>
-        <div class="cta-card-text">Target validation to IND-enabling studies. We accelerate the lab-to-clinic journey.</div>
-      </div>
-      <div class="cta-card">
-        <div class="cta-card-icon">📋</div>
-        <div class="cta-card-title">Regulatory Support</div>
-        <div class="cta-card-text">Approval strategy, dossier writing, and agency interactions across any market.</div>
-      </div>
-      <div class="cta-card">
-        <div class="cta-card-icon">🚀</div>
-        <div class="cta-card-title">Launch & Scale</div>
-        <div class="cta-card-text">Commercial manufacturing and 42-country distribution from day one of approval.</div>
-      </div>
+<!-- ═══════════ SECTION 5: PARTNER CTA ═══════════ -->
+<section>
+    <div class="partner-cta reveal">
+        <span class="tag">PARTNER WITH US</span>
+        <h2>Ready to Build Something Better Together?</h2>
+        <p>Whether you need a manufacturing partner, regulatory support, or end-to-end supply chain solutions — our team is ready to scope a solution for you.</p>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="window.location.href='contact.html'">Get a Free Consultation</button>
+            <button class="btn-outline" onclick="window.location.href='contact.html'">Download Service Brochure</button>
+        </div>
+        <div class="trust-row">
+            <div class="trust-item"><i class="fa-solid fa-check-circle"></i> No commitment required</div>
+            <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Response within 48 hours</div>
+            <div class="trust-item"><i class="fa-solid fa-check-circle"></i> Dedicated account manager</div>
+        </div>
     </div>
-
-    <div class="cta-btns">
-      <a href="mailto:services@medcorepharma.com" class="btn-white">Request a Consultation →</a>
-      <a href="#services" class="btn-ghost">View All Services</a>
-    </div>
-  </div>
 </section>
 
-   
-
-    <!-- ========================= FOOTER ========================= -->
-    <footer class="footer">
-        <div class="footer-grid">
-
-            <div class="footer-brand">
-                <div class="logo"><img src="./src/logo.webp" alt=""></div>
-                <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
-                    Advancing human health through innovation since 1994.</p>
-                <div class="footer-socials">
-                    <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
-                    <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul class="footer-links">
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#">Leadership Team</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">Press Room</a></li>
-                    <li><a href="#">Investor Relations</a></li>
-                    <li><a href="#">CSR Initiatives</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Products & Services</h4>
-                <ul class="footer-links">
-                    <li><a href="#products">Product Portfolio</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#research">R&D Pipeline</a></li>
-                    <li><a href="#">Generic Medicines</a></li>
-                    <li><a href="#">Biologics</a></li>
-                    <li><a href="#">OTC Products</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>Newsletter</h4>
-                <p style="font-size:13px; color:rgba(255,255,255,.45); line-height:1.7; margin-bottom:16px;">Stay
-                    updated with our latest research, product launches, and health insights.</p>
-                <div class="footer-newsletter">
-                    <input type="email" placeholder="Enter your email address" id="footermail">
-                    <button class="footerbtn">Subscribe Now</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
-            <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>>
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <div class="logo"><img src="./src/logo.webp" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
+            <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries. Advancing human health through innovation since 1994.</p>
+            <div class="footer-socials">
+                <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
+                <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
+                <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
             </div>
         </div>
-    </footer>
+        <div class="footer-col">
+            <h4>Company</h4>
+            <ul class="footer-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="#">Leadership Team</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Press Room</a></li>
+                <li><a href="#">Investor Relations</a></li>
+                <li><a href="#">CSR Initiatives</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Products & Services</h4>
+            <ul class="footer-links">
+                <li><a href="service.html">Product Portfolio</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="#">R&D Pipeline</a></li>
+                <li><a href="#">Generic Medicines</a></li>
+                <li><a href="#">Biologics</a></li>
+                <li><a href="#">OTC Products</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Newsletter</h4>
+            <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:16px;">Stay updated with our latest research, product launches, and health insights.</p>
+            <div class="footer-newsletter">
+                <input type="email" placeholder="Enter your email address" id="footermail">
+                <button class="footerbtn">Subscribe Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
+        <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+        </div>
+    </div>
+</footer>
 
+<script>
+    // Navbar scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => navbar.classList.toggle('active', window.scrollY > 50));
 
-    <script>
-        // Intersection Observer for fade-up animations
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        menuToggle.innerHTML = navLinks.classList.contains('active')
+            ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Login btn placement
+    const loginBtn = document.querySelector('.login-btn');
+    function checkMobileMenu() {
+        if (window.innerWidth <= 1100) { navLinks.appendChild(loginBtn); }
+        else { document.querySelector('.navbar').insertBefore(loginBtn, menuToggle); }
+    }
+    checkMobileMenu();
+    window.addEventListener('resize', checkMobileMenu);
+    document.querySelector('.nav-btn').addEventListener('click', () => window.location.href = 'login.html');
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Category filter
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            document.querySelectorAll('.service-card').forEach(card => {
+                const match = filter === 'all' || card.dataset.category === filter;
+                card.style.display = match ? 'flex' : 'none';
             });
-        }, { threshold: 0.12 });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-
-        //nav
-
-
-        // login
-        const navBtn = document.querySelector(".nav-btn");
-
-        navBtn.addEventListener("click", () => {
-            window.location.href = "login.html";
         });
-        // NAVBAR SCROLL
-        const navbar = document.querySelector(".navbar");
-        window.addEventListener("scroll", () => {
-            navbar.classList.toggle("active", window.scrollY > 50);
+    });
+
+    // Search
+    document.getElementById('serviceSearch').addEventListener('input', function () {
+        const q = this.value.toLowerCase();
+        document.querySelectorAll('.service-card').forEach(card => {
+            const text = card.innerText.toLowerCase();
+            card.style.display = text.includes(q) ? 'flex' : 'none';
         });
+    });
 
-        // MOBILE MENU
-        const menuToggle = document.getElementById("menuToggle");
-        const navLinks = document.getElementById("navLinks");
-        menuToggle.addEventListener("click", () => {
-            navLinks.classList.toggle("active");
-            menuToggle.innerHTML = navLinks.classList.contains("active")
-                ? '<i class="fa-solid fa-xmark"></i>'
-                : '<i class="fa-solid fa-bars"></i>';
-        });
+    // Load more (demo)
+    document.getElementById('loadMoreBtn').addEventListener('click', function () {
+        this.textContent = 'All Services Shown';
+        this.disabled = true;
+        this.style.opacity = '0.6';
+        this.style.cursor = 'not-allowed';
+    });
 
-        const loginBtn = document.querySelector(".login-btn");
-        function checkMobileMenu() {
-            if (window.innerWidth <= 1100) {
-                navLinks.appendChild(loginBtn);
-            } else {
-                document.querySelector(".navbar").insertBefore(loginBtn, menuToggle);
-            }
-        }
-        checkMobileMenu();
-        window.addEventListener("resize", checkMobileMenu);
-
-        //footer
-
-        const emailInput = document.getElementById("footermail");
-        const subscribeBtn = document.querySelector(".footerbtn");
-
-        subscribeBtn.addEventListener("click", () => {
-
-            const email = emailInput.value.trim();
-
-            if (email === "") {
-                alert("Please enter your email address.");
-                return;
-            }
-
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailPattern.test(email)) {
-                alert("Please enter a valid email address.");
-                return;
-            }
-
-            alert("Thank you for subscribing!");
-            emailInput.value = "";
-        });
-
-    </script>
+    // Footer subscribe
+    const emailInput = document.getElementById('footermail');
+    document.querySelector('.footerbtn').addEventListener('click', () => {
+        const email = emailInput.value.trim();
+        if (!email) { alert('Please enter your email address.'); return; }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Please enter a valid email address.'); return; }
+        alert('Thank you for subscribing!');
+        emailInput.value = '';
+    });
+</script>
 </body>
-
 </html>

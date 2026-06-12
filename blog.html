@@ -993,6 +993,25 @@
                 transition: none;
             }
         }
+
+     
+  
+
+        .dept-grid{
+       display:grid;
+        grid-template-columns:repeat(4,1fr);
+         gap:24px;
+          margin-top:50px;
+        }
+
+        @media (max-width:768px) {
+               .dept-grid{
+       display:grid;
+         gap:6px;
+        grid-template-columns:repeat(1,1fr);
+        }
+          
+        }
     </style>
 </head>
 
@@ -1032,14 +1051,7 @@
 
     <!-- ========================= 2. CATEGORY FILTER + FEATURED POST ========================= -->
     <section>
-        <div class="category-bar">
-            <button class="cat-btn active">All Posts</button>
-            <button class="cat-btn">Research</button>
-            <button class="cat-btn">Health Tips</button>
-            <button class="cat-btn">Industry News</button>
-            <button class="cat-btn">Company Updates</button>
-            <button class="cat-btn">Wellness</button>
-        </div>
+  
 
         <div class="featured-post reveal">
             <div class="featured-img">
@@ -1165,7 +1177,7 @@
                 <h2 class="section-title">Popular Topics</h2>
                 <p class="section-sub center">Browse articles organized by the subjects that matter most to our readers.</p>
             </div>
-            <div class="dept-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:50px;">
+            <div class="dept-grid">
                 <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
                     <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-flask"></i></div>
                     <h4>Clinical Research</h4>
