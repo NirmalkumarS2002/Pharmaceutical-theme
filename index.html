@@ -140,8 +140,23 @@ body {
   transition: 0.4s;
 }
 
-.nav-links a:hover { color: #48cae4; }
-.nav-links a:hover::after { width: 100%; }
+/* Hover Effect */
+.nav-links a:hover {
+  color: #48cae4;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Default Active Menu */
+.nav-links a.active {
+  color: #48cae4;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
 
 .nav-btn {
   padding: 12px 36px;
@@ -1852,7 +1867,7 @@ body {
 
    
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html" class="active">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="blog.html">blogs</a></li>
