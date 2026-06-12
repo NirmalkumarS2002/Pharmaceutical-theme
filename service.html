@@ -156,6 +156,14 @@
             width: 100%;
         }
 
+        .nav-links a.active {
+            color: #48cae4;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .nav-btn {
             padding: 12px 36px;
             border: none;
@@ -368,12 +376,12 @@
             position: relative;
         }
 
-      .card-img img{
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-}
+        .card-img img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
 
         .card-cat {
             position: absolute;
@@ -989,6 +997,14 @@
             .section-title {
                 font-size: clamp(22px, 6vw, 32px);
             }
+
+             .btn-primary,
+            .btn-outline {
+                width: 100%;
+                font-size: 13px;
+                padding: 10px 20px;
+                max-width: 280px;
+            }
         }
 
         @media (prefers-reduced-motion:reduce) {
@@ -1043,7 +1059,7 @@
         <div class="services-grid" id="servicesGrid">
             <div class="service-card reveal" data-category="quality">
                 <div class="card-img">
-                     <img src="./src/service6.webp" alt="">
+                    <img src="./src/service6.webp" alt="">
                     <span class="card-cat">Quality</span>
                 </div>
                 <div class="card-body">
@@ -1058,7 +1074,7 @@
             <div class="service-card reveal" data-category="logistics">
                 <div class="card-img">
                     <span class="card-cat">Logistics</span>
-                       <img src="./src/service3.webp" alt="">
+                    <img src="./src/service3.webp" alt="">
                 </div>
                 <div class="card-body">
                     <div class="svc-meta"><i class="fa-solid fa-truck-fast"></i> 42 Countries</div>
@@ -1072,7 +1088,7 @@
             <div class="service-card reveal" data-category="rd">
                 <div class="card-img">
                     <span class="card-cat">R&D</span>
-                        <img src="./src/service2.webp" alt="">
+                    <img src="./src/service2.webp" alt="">
                 </div>
                 <div class="card-body">
                     <div class="svc-meta"><i class="fa-solid fa-dna"></i> 14 Active Phase III Trials</div>
@@ -1086,7 +1102,7 @@
             <div class="service-card reveal" data-category="regulatory">
                 <div class="card-img">
                     <span class="card-cat">Regulatory</span>
-                       <img src="./src/service1.webp" alt="">
+                    <img src="./src/service1.webp" alt="">
                 </div>
                 <div class="card-body">
                     <div class="svc-meta"><i class="fa-solid fa-check-circle"></i> 6 Major Jurisdictions</div>
@@ -1100,7 +1116,7 @@
             <div class="service-card reveal" data-category="manufacturing">
                 <div class="card-img">
                     <span class="card-cat">Manufacturing</span>
-                        <img src="./src/service5.webp" alt="">
+                    <img src="./src/service5.webp" alt="">
                 </div>
                 <div class="card-body">
                     <div class="svc-meta"><i class="fa-solid fa-vial"></i> Sterile Fill-Finish</div>
@@ -1114,7 +1130,7 @@
             <div class="service-card reveal" data-category="quality">
                 <div class="card-img">
                     <span class="card-cat">Quality</span>
-                        <img src="./src/service4.webp" alt="">
+                    <img src="./src/service4.webp" alt="">
                 </div>
                 <div class="card-body">
                     <div class="svc-meta"><i class="fa-solid fa-eye"></i> Third-Party Auditing</div>
@@ -1296,9 +1312,9 @@
         // document.getElementById('loadMoreBtn').addEventListener('click', function () {
         //     this.textContent = 'All Services Shown';
         //     this.disabled = true;
-          //   this.style.opacity = '0.6';
+        //   this.style.opacity = '0.6';
         //     this.style.cursor = 'not-allowed';
-       //  });
+        //  });
 
         // Footer subscribe
         const emailInput = document.getElementById('footermail');
@@ -1317,11 +1333,11 @@
         });
 
         document.querySelectorAll(".homepage").forEach(item => {
-    item.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-    });
-});
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.location.href = "index.html";
+            });
+        });
     </script>
 </body>
 

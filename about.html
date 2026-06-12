@@ -156,6 +156,14 @@
             width: 100%;
         }
 
+        .nav-links a.active {
+            color: #48cae4;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .nav-btn {
             padding: 12px 36px;
             border: none;
@@ -844,101 +852,95 @@
                 z-index: 10001;
             }
 
-          
-  .nav-links {
-  position: fixed;
-  top: 0;
-  right: -100%;
 
-  width: 70%;
-  height: 100vh;
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
 
-  background: linear-gradient(
-    135deg,
-    rgba(18, 78, 60, 0.98),
-    rgba(10, 45, 35, 0.98)
-  );
+                width: 70%;
+                height: 100vh;
 
-  backdrop-filter: blur(20px);
+                background: linear-gradient(135deg,
+                        rgba(18, 78, 60, 0.98),
+                        rgba(10, 45, 35, 0.98));
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+                backdrop-filter: blur(20px);
 
-  padding: 23px 30px;
-  gap: 32px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
 
-  list-style: none;
+                padding: 23px 30px;
+                gap: 32px;
 
-  border-left: 1px solid rgba(143, 188, 143, 0.15);
+                list-style: none;
 
-  box-shadow:
-    -15px 0 40px rgba(0, 0, 0, 0.25),
-    0 0 30px rgba(46, 139, 87, 0.12);
+                border-left: 1px solid rgba(143, 188, 143, 0.15);
 
-  transition: 0.5s ease;
-  z-index: 9999;
-}
+                box-shadow:
+                    -15px 0 40px rgba(0, 0, 0, 0.25),
+                    0 0 30px rgba(46, 139, 87, 0.12);
 
-.nav-links.active {
-  right: 0;
-  
-}
+                transition: 0.5s ease;
+                z-index: 9999;
+            }
 
-.nav-links a {
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.35s ease;
-}
+            .nav-links.active {
+                right: 0;
 
-.nav-links a:hover {
-  color: #8fbc8f;
-  transform: translateX(8px);
-}
+            }
 
-.nav-btn {
-  padding: 10px 36px;
-  border: none;
-  border-radius: 12px;
+            .nav-links a {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.35s ease;
+            }
 
-  background: linear-gradient(
-    135deg,
-    #1f6f54,
-    #2e8b57
-  );
+            .nav-links a:hover {
+                color: #8fbc8f;
+                transform: translateX(8px);
+            }
 
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
+            .nav-btn {
+                padding: 10px 36px;
+                border: none;
+                border-radius: 12px;
 
-  cursor: pointer;
-  transition: all 0.4s ease;
+                background: linear-gradient(135deg,
+                        #1f6f54,
+                        #2e8b57);
 
-  box-shadow:
-    0 8px 24px rgba(46, 139, 87, 0.30),
-    0 0 18px rgba(60, 163, 112, 0.20);
-}
+                color: #fff;
+                font-size: 14px;
+                font-weight: 600;
 
-.nav-btn:hover {
-  transform: translateY(-3px) scale(1.04);
+                cursor: pointer;
+                transition: all 0.4s ease;
 
-  background: linear-gradient(
-    135deg,
-    #2e8b57,
-    #3ca370
-  );
+                box-shadow:
+                    0 8px 24px rgba(46, 139, 87, 0.30),
+                    0 0 18px rgba(60, 163, 112, 0.20);
+            }
 
-  box-shadow:
-    0 15px 35px rgba(46, 139, 87, 0.40),
-    0 0 25px rgba(60, 163, 112, 0.25);
-}
+            .nav-btn:hover {
+                transform: translateY(-3px) scale(1.04);
 
-.nav-btn:active {
-  transform: scale(0.97);
-}
+                background: linear-gradient(135deg,
+                        #2e8b57,
+                        #3ca370);
+
+                box-shadow:
+                    0 15px 35px rgba(46, 139, 87, 0.40),
+                    0 0 25px rgba(60, 163, 112, 0.25);
+            }
+
+            .nav-btn:active {
+                transform: scale(0.97);
+            }
 
             .stat-cards {
                 grid-template-columns: repeat(2, 1fr);
@@ -1169,7 +1171,7 @@
                     <div class="role">Chief Operating Officer</div>
                     <p>Scaled manufacturing from 200M to 500M units annually. Oversees 3 GMP-certified facilities and
                         6,000+ operations staff.</p>
-                            <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="team-card reveal">
                     <div class="team-icon"><i class="fa-solid fa-shield-halved"></i></div>
@@ -1177,7 +1179,7 @@
                     <div class="role">Chief Regulatory Officer</div>
                     <p>20 years in global regulatory strategy. Successfully navigated approvals across FDA, EMA, CDSCO,
                         and TGA jurisdictions.</p>
-                           <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="team-card reveal">
                     <div class="team-icon"><i class="fa-solid fa-chart-pie"></i></div>
@@ -1185,7 +1187,7 @@
                     <div class="role">Chief Financial Officer</div>
                     <p>Former Goldman Sachs VP. Managed ₹12B capital raise for biologics campus expansion and strategic
                         global acquisitions.</p>
-                           <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="team-card reveal">
                     <div class="team-icon"><i class="fa-solid fa-globe"></i></div>
@@ -1193,7 +1195,7 @@
                     <div class="role">Head of Global Access</div>
                     <p>Leads access medicine programs across 18 developing nations. Former UNICEF Health Advisor with 15
                         years in global health.</p>
-                            <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="404.html">Connect <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -1276,36 +1278,36 @@
                 <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
                     Advancing human health through innovation since 1994.</p>
                 <div class="footer-socials">
-          <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
-          <div class="social-icon errorpage"><i class="fa-brands fa-x-twitter"></i></div>
-          <div class="social-icon errorpage"><i class="fa-brands fa-facebook-f"></i></div>
-          <div class="social-icon errorpage"><i class="fa-brands fa-youtube"></i></div>
-        </div>
-      </div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-youtube"></i></div>
+                </div>
+            </div>
 
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul class="footer-links">
-          <li><a href="#about">About Us</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="blog.html">Researchs</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="404.html">Investor Relations</a></li>
-          <li><a href="404.html">CSR Initiatives</a></li>
-        </ul>
-      </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="blog.html">Researchs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="404.html">Investor Relations</a></li>
+                    <li><a href="404.html">CSR Initiatives</a></li>
+                </ul>
+            </div>
 
-      <div class="footer-col">
-        <h4>Products & Services</h4>
-        <ul class="footer-links">
-          <li><a href="404.html">Product Portfolio</a></li>
-          <li><a href="404.html">Services</a></li>
-          <li><a href="404.html">R&D Pipeline</a></li>
-          <li><a href="404.html">Generic Medicines</a></li>
-          <li><a href="404.html">Biologics</a></li>
-          <li><a href="404.html">OTC Products</a></li>
-        </ul>
-      </div>
+            <div class="footer-col">
+                <h4>Products & Services</h4>
+                <ul class="footer-links">
+                    <li><a href="404.html">Product Portfolio</a></li>
+                    <li><a href="404.html">Services</a></li>
+                    <li><a href="404.html">R&D Pipeline</a></li>
+                    <li><a href="404.html">Generic Medicines</a></li>
+                    <li><a href="404.html">Biologics</a></li>
+                    <li><a href="404.html">OTC Products</a></li>
+                </ul>
+            </div>
             <div class="footer-col">
                 <h4>Newsletter</h4>
                 <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:16px;">Stay updated
@@ -1377,18 +1379,18 @@
         });
 
         document.querySelectorAll(".errorpage").forEach(item => {
-    item.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = "404.html";
-    });
-});
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = "404.html";
+            });
+        });
 
-document.querySelectorAll(".homepage").forEach(item => {
-    item.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-    });
-});
+        document.querySelectorAll(".homepage").forEach(item => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.location.href = "index.html";
+            });
+        });
 
 
     </script>

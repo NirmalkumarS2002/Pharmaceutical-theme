@@ -161,6 +161,14 @@
             width: 100%;
         }
 
+        .nav-links a.active {
+            color: #48cae4;
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
         .nav-btn {
             padding: 12px 36px;
             border: none;
@@ -383,11 +391,11 @@
             overflow: hidden;
         }
 
-        .featured-img img{
+        .featured-img img {
             width: 100%;
-    height: 320px;
-    object-fit: cover;
-    display: block;
+            height: 320px;
+            object-fit: cover;
+            display: block;
         }
 
         .featured-img::after {
@@ -524,11 +532,11 @@
             position: relative;
         }
 
-        .card-img img{
-         width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
+        .card-img img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
         }
 
         .card-cat {
@@ -894,100 +902,94 @@
                 z-index: 10001;
             }
 
-            
-  .nav-links {
-  position: fixed;
-  top: 0;
-  right: -100%;
 
-  width: 70%;
-  height: 100vh;
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
 
-  background: linear-gradient(
-    135deg,
-    rgba(18, 78, 60, 0.98),
-    rgba(10, 45, 35, 0.98)
-  );
+                width: 70%;
+                height: 100vh;
 
-  backdrop-filter: blur(20px);
+                background: linear-gradient(135deg,
+                        rgba(18, 78, 60, 0.98),
+                        rgba(10, 45, 35, 0.98));
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+                backdrop-filter: blur(20px);
 
-  padding: 23px 30px;
-  gap: 32px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
 
-  list-style: none;
+                padding: 23px 30px;
+                gap: 32px;
 
-  border-left: 1px solid rgba(143, 188, 143, 0.15);
+                list-style: none;
 
-  box-shadow:
-    -15px 0 40px rgba(0, 0, 0, 0.25),
-    0 0 30px rgba(46, 139, 87, 0.12);
+                border-left: 1px solid rgba(143, 188, 143, 0.15);
 
-  transition: 0.5s ease;
-  z-index: 9999;
-}
+                box-shadow:
+                    -15px 0 40px rgba(0, 0, 0, 0.25),
+                    0 0 30px rgba(46, 139, 87, 0.12);
 
-.nav-links.active {
-  right: 0;
-}
+                transition: 0.5s ease;
+                z-index: 9999;
+            }
 
-.nav-links a {
-  font-size: 16px;
-  color: #ffffff;
-  font-weight: 500;
-  text-decoration: none;
-  transition: all 0.35s ease;
-}
+            .nav-links.active {
+                right: 0;
+            }
 
-.nav-links a:hover {
-  color: #8fbc8f;
-  transform: translateX(8px);
-}
+            .nav-links a {
+                font-size: 16px;
+                color: #ffffff;
+                font-weight: 500;
+                text-decoration: none;
+                transition: all 0.35s ease;
+            }
 
-.nav-btn {
-  padding: 10px 36px;
-  border: none;
-  border-radius: 12px;
+            .nav-links a:hover {
+                color: #8fbc8f;
+                transform: translateX(8px);
+            }
 
-  background: linear-gradient(
-    135deg,
-    #1f6f54,
-    #2e8b57
-  );
+            .nav-btn {
+                padding: 10px 36px;
+                border: none;
+                border-radius: 12px;
 
-  color: #fff;
-  font-size: 14px;
-  font-weight: 600;
+                background: linear-gradient(135deg,
+                        #1f6f54,
+                        #2e8b57);
 
-  cursor: pointer;
-  transition: all 0.4s ease;
+                color: #fff;
+                font-size: 14px;
+                font-weight: 600;
 
-  box-shadow:
-    0 8px 24px rgba(46, 139, 87, 0.30),
-    0 0 18px rgba(60, 163, 112, 0.20);
-}
+                cursor: pointer;
+                transition: all 0.4s ease;
 
-.nav-btn:hover {
-  transform: translateY(-3px) scale(1.04);
+                box-shadow:
+                    0 8px 24px rgba(46, 139, 87, 0.30),
+                    0 0 18px rgba(60, 163, 112, 0.20);
+            }
 
-  background: linear-gradient(
-    135deg,
-    #2e8b57,
-    #3ca370
-  );
+            .nav-btn:hover {
+                transform: translateY(-3px) scale(1.04);
 
-  box-shadow:
-    0 15px 35px rgba(46, 139, 87, 0.40),
-    0 0 25px rgba(60, 163, 112, 0.25);
-}
+                background: linear-gradient(135deg,
+                        #2e8b57,
+                        #3ca370);
 
-.nav-btn:active {
-  transform: scale(0.97);
-}
+                box-shadow:
+                    0 15px 35px rgba(46, 139, 87, 0.40),
+                    0 0 25px rgba(60, 163, 112, 0.25);
+            }
+
+            .nav-btn:active {
+                transform: scale(0.97);
+            }
 
             .featured-post {
                 grid-template-columns: 1fr;
@@ -1067,6 +1069,7 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             .fade-up,
             .reveal {
                 opacity: 1;
@@ -1075,23 +1078,23 @@
             }
         }
 
-     
-  
 
-        .dept-grid{
-       display:grid;
-        grid-template-columns:repeat(4,1fr);
-         gap:24px;
-          margin-top:50px;
+
+
+        .dept-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
         }
 
         @media (max-width:768px) {
-               .dept-grid{
-       display:grid;
-         gap:6px;
-        grid-template-columns:repeat(1,1fr);
-        }
-          
+            .dept-grid {
+                display: grid;
+                gap: 6px;
+                grid-template-columns: repeat(1, 1fr);
+            }
+
         }
     </style>
 </head>
@@ -1122,16 +1125,17 @@
     <section class="blog-hero">
         <span class="tag">OUR BLOG</span>
         <h1>Insights from the Lab & Beyond</h1>
-        <p>Explore the latest research updates, health tips, industry news, and stories from our team of scientists and healthcare experts.</p>
+        <p>Explore the latest research updates, health tips, industry news, and stories from our team of scientists and
+            healthcare experts.</p>
     </section>
 
     <!-- ========================= 2. CATEGORY FILTER + FEATURED POST ========================= -->
     <section>
-  
+
 
         <div class="featured-post reveal">
             <div class="featured-img">
-               <img src="./src/blog5.webp" alt="">
+                <img src="./src/blog5.webp" alt="">
             </div>
             <div class="featured-content">
                 <div class="post-meta">
@@ -1139,7 +1143,8 @@
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> March 18, 2026</span>
                 </div>
                 <h2>Breakthrough in mRNA Delivery: What It Means for Future Vaccines</h2>
-                <p>Our R&D team shares findings from a recent study on lipid nanoparticle formulations that could significantly improve vaccine stability and reduce cold-chain dependency in developing regions.</p>
+                <p>Our R&D team shares findings from a recent study on lipid nanoparticle formulations that could
+                    significantly improve vaccine stability and reduce cold-chain dependency in developing regions.</p>
                 <a href="404.html" class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
                 <div class="author-row">
                     <div class="author-avatar">RK</div>
@@ -1157,19 +1162,21 @@
         <div class="center" style="max-width:640px;">
             <span class="tag">RECENT ARTICLES</span>
             <h2 class="section-title">Latest from Our Team</h2>
-            <p class="section-sub center">Fresh perspectives on pharmaceutical research, patient care, and industry developments.</p>
+            <p class="section-sub center">Fresh perspectives on pharmaceutical research, patient care, and industry
+                developments.</p>
         </div>
 
         <div class="blog-grid">
             <div class="blog-card reveal">
                 <div class="card-img">
                     <span class="card-cat">Health Tips</span>
-                     <img src="./src/blog1.webp" alt="">
+                    <img src="./src/blog1.webp" alt="">
                 </div>
                 <div class="card-body">
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> March 12, 2026</span>
                     <h3>5 Ways to Strengthen Immunity During Seasonal Changes</h3>
-                    <p>Simple, science-backed habits that help your immune system adapt to changing weather and reduce seasonal illness risk.</p>
+                    <p>Simple, science-backed habits that help your immune system adapt to changing weather and reduce
+                        seasonal illness risk.</p>
                     <a href="404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1182,7 +1189,8 @@
                 <div class="card-body">
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> March 8, 2026</span>
                     <h3>New Regulatory Guidelines for Generic Drug Approvals in 2026</h3>
-                    <p>A breakdown of recent changes to bioequivalence requirements and what they mean for manufacturers and patients alike.</p>
+                    <p>A breakdown of recent changes to bioequivalence requirements and what they mean for manufacturers
+                        and patients alike.</p>
                     <a href="404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1195,7 +1203,8 @@
                 <div class="card-body">
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> March 2, 2026</span>
                     <h3>MedCore Pharma Expands Manufacturing Facility in Pune</h3>
-                    <p>Our new 120,000 sq. ft. facility increases production capacity by 40% and creates over 500 new jobs in the region.</p>
+                    <p>Our new 120,000 sq. ft. facility increases production capacity by 40% and creates over 500 new
+                        jobs in the region.</p>
                     <a href="404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1208,7 +1217,8 @@
                 <div class="card-body">
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> February 24, 2026</span>
                     <h3>Understanding Sleep and Its Impact on Long-Term Health</h3>
-                    <p>What recent studies reveal about the connection between sleep quality, chronic disease prevention, and mental wellbeing.</p>
+                    <p>What recent studies reveal about the connection between sleep quality, chronic disease
+                        prevention, and mental wellbeing.</p>
                     <a href="404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1221,7 +1231,8 @@
                 <div class="card-body">
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> February 18, 2026</span>
                     <h3>Phase II Trial Results for Our Cardiovascular Therapy</h3>
-                    <p>Early results show promising reductions in key biomarkers, paving the way for expanded Phase III trials later this year.</p>
+                    <p>Early results show promising reductions in key biomarkers, paving the way for expanded Phase III
+                        trials later this year.</p>
                     <a href="404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1229,12 +1240,13 @@
             <div class="blog-card reveal">
                 <div class="card-img">
                     <span class="card-cat">Health Tips</span>
-                  <img src="./src/blog7.webp" alt="">
+                    <img src="./src/blog7.webp" alt="">
                 </div>
                 <div class="card-body">
                     <span class="post-date"><i class="fa-regular fa-calendar"></i> February 10, 2026</span>
                     <h3>Medication Adherence: Why It Matters and How to Improve It</h3>
-                    <p>Practical strategies for patients and caregivers to stay consistent with prescribed treatment plans.</p>
+                    <p>Practical strategies for patients and caregivers to stay consistent with prescribed treatment
+                        plans.</p>
                     <a href="404.html" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -1251,25 +1263,30 @@
             <div class="center" style="max-width:640px;">
                 <span class="tag">EXPLORE BY TOPIC</span>
                 <h2 class="section-title">Popular Topics</h2>
-                <p class="section-sub center">Browse articles organized by the subjects that matter most to our readers.</p>
+                <p class="section-sub center">Browse articles organized by the subjects that matter most to our readers.
+                </p>
             </div>
             <div class="dept-grid">
-                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                <div class="dept-card reveal"
+                    style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
                     <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-flask"></i></div>
                     <h4>Clinical Research</h4>
                     <p style="margin-bottom:0;">42 articles</p>
                 </div>
-                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                <div class="dept-card reveal"
+                    style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
                     <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-heart-pulse"></i></div>
                     <h4>Patient Wellness</h4>
                     <p style="margin-bottom:0;">38 articles</p>
                 </div>
-                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                <div class="dept-card reveal"
+                    style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
                     <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-gavel"></i></div>
                     <h4>Regulatory Affairs</h4>
                     <p style="margin-bottom:0;">27 articles</p>
                 </div>
-                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                <div class="dept-card reveal"
+                    style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
                     <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-globe"></i></div>
                     <h4>Global Health</h4>
                     <p style="margin-bottom:0;">19 articles</p>
@@ -1283,7 +1300,8 @@
         <div class="newsletter-cta reveal">
             <span class="tag">STAY UPDATED</span>
             <h2>Never Miss an Update</h2>
-            <p>Subscribe to our newsletter for the latest research breakthroughs, health insights, and company news delivered straight to your inbox.</p>
+            <p>Subscribe to our newsletter for the latest research breakthroughs, health insights, and company news
+                delivered straight to your inbox.</p>
             <form class="newsletter-form" id="newsletterForm">
                 <input type="email" placeholder="Enter your email address" required>
                 <button type="submit">Subscribe</button>
@@ -1298,40 +1316,41 @@
 
             <div class="footer-brand">
                 <div class="logo"><img src="./src/logo.webp" class="homepage" alt=""
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span
+                        class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
                 <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
                     Advancing human health through innovation since 1994.</p>
-                 <div class="footer-socials">
-          <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
-          <div class="social-icon errorpage"><i class="fa-brands fa-x-twitter"></i></div>
-          <div class="social-icon errorpage"><i class="fa-brands fa-facebook-f"></i></div>
-          <div class="social-icon errorpage"><i class="fa-brands fa-youtube"></i></div>
-        </div>
-      </div>
+                <div class="footer-socials">
+                    <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="social-icon errorpage"><i class="fa-brands fa-youtube"></i></div>
+                </div>
+            </div>
 
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul class="footer-links">
-          <li><a href="#about">About Us</a></li>
-          <li><a href="service.html">Services</a></li>
-          <li><a href="blog.html">Researchs</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="404.html">Investor Relations</a></li>
-          <li><a href="404.html">CSR Initiatives</a></li>
-        </ul>
-      </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="blog.html">Researchs</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="404.html">Investor Relations</a></li>
+                    <li><a href="404.html">CSR Initiatives</a></li>
+                </ul>
+            </div>
 
-      <div class="footer-col">
-        <h4>Products & Services</h4>
-        <ul class="footer-links">
-          <li><a href="404.html">Product Portfolio</a></li>
-          <li><a href="404.html">Services</a></li>
-          <li><a href="404.html">R&D Pipeline</a></li>
-          <li><a href="404.html">Generic Medicines</a></li>
-          <li><a href="404.html">Biologics</a></li>
-          <li><a href="404.html">OTC Products</a></li>
-        </ul>
-      </div>
+            <div class="footer-col">
+                <h4>Products & Services</h4>
+                <ul class="footer-links">
+                    <li><a href="404.html">Product Portfolio</a></li>
+                    <li><a href="404.html">Services</a></li>
+                    <li><a href="404.html">R&D Pipeline</a></li>
+                    <li><a href="404.html">Generic Medicines</a></li>
+                    <li><a href="404.html">Biologics</a></li>
+                    <li><a href="404.html">OTC Products</a></li>
+                </ul>
+            </div>
 
             <div class="footer-col">
                 <h4>Newsletter</h4>
@@ -1444,18 +1463,18 @@
         });
 
         document.querySelectorAll(".errorpage").forEach(item => {
-    item.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.location.href = "404.html";
-    });
-});
+            item.addEventListener("click", (e) => {
+                e.preventDefault();
+                window.location.href = "404.html";
+            });
+        });
 
-document.querySelectorAll(".homepage").forEach(item => {
-    item.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-    });
-});
+        document.querySelectorAll(".homepage").forEach(item => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.location.href = "index.html";
+            });
+        });
     </script>
 </body>
 

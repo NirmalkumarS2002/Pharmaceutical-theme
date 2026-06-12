@@ -140,22 +140,12 @@ body {
   transition: 0.4s;
 }
 
-/* Hover Effect */
-.nav-links a:hover {
-  color: #48cae4;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-/* Default Active Menu */
 .nav-links a.active {
-  color: #48cae4;
+    color: #48cae4;
 }
 
 .nav-links a.active::after {
-  width: 100%;
+    width: 100%;
 }
 
 .nav-btn {
@@ -1232,7 +1222,7 @@ body {
 
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 28px;
   max-width: 1200px;
   margin: 0 auto;
@@ -1730,6 +1720,14 @@ body {
   transform: translateX(8px);
 }
 
+.nav-links a.active {
+    color: #48cae4;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
 .nav-btn {
   padding: 10px 36px;
   border: none;
@@ -1867,7 +1865,7 @@ body {
 
    
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html"  class="active">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="service.html">Services</a></li>
             <li><a href="blog.html">blogs</a></li>
@@ -2819,11 +2817,12 @@ document.querySelectorAll(".errorpage").forEach(item => {
     });
 });
 
-document.querySelectorAll(".homepage").forEach(item => {
-    item.addEventListener("click", function (e) {
-        e.preventDefault();
-        window.location.href = "index.html";
-    });
+const currentPage = location.pathname.split("/").pop();
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+    if(link.getAttribute("href") === currentPage){
+        link.classList.add("active");
+    }
 });
   </script>
 
