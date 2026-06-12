@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — MedCore Pharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--off-white);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        :root {
+            --green-dark: #1a4a3a;
+            --green-mid: #1e6b52;
+            --green-brand: #2d8a68;
+            --green-light: #4aab86;
+            --green-pale: #e8f5f0;
+            --green-mist: #f0faf6;
+            --off-white: #f7fbf9;
+            --white: #ffffff;
+            --text-dark: #0d2b20;
+            --text-mid: #3a5a4e;
+            --text-muted: #6b8f82;
+            --border: #d0e8df;
+            --font-display: 'Sora', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ========================= NAVBAR ========================= */
+        .navbar {
+            width: 100%;
+            padding: 14px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 9999;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: 0.4s ease;
+            animation: navFade 1s ease;
+        }
+
+        .navbar.active {
+            border-bottom: 1px solid rgba(0, 180, 216, 0.35);
+            background: rgba(13, 92, 85, .95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+        }
+
+        .navbar.active .nav-links a,
+        .navbar.active .menu-toggle {
+            color: #fff;
+        }
+
+        .navbar::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+            transform: translateX(-100%);
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .navbar.active::before {
+            opacity: 1;
+            animation: navGlow 4s linear infinite;
+        }
+
+        @keyframes navGlow {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes navFade {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .logo img {
+            width: clamp(140px, 16vw, 190px);
+        }
+
+        .logo-fallback {
+            display: none;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--green-dark);
+        }
+
+        .navbar.active .logo-fallback {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            justify-content: space-around;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-size: 14.5px;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #48cae4, #0077b6);
+            transition: 0.4s;
+        }
+
+        .nav-links a:hover {
+            color: #48cae4;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            padding: 12px 36px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.4s ease;
+            box-shadow: 0 0 18px rgba(0, 216, 115, 0.45), 0 0 12px rgba(0, 182, 91, 0.25);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(72, 202, 228, 0.5);
+            background: linear-gradient(135deg, #084841, #0D5C55);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: clamp(20px, 2.5vw, 26px);
+            color: black;
+            cursor: pointer;
+        }
+
+        /* ========================= GENERAL SECTION STYLES ========================= */
+        section {
+            padding: 90px 6%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--green-pale);
+            color: var(--green-mid);
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border-radius: 30px;
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.25;
+            margin-bottom: 18px;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 620px;
+        }
+
+        .center {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        /* ========================= 1. HERO ========================= */
+        .blog-hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 60%, var(--green-brand) 100%);
+            padding-top: 170px;
+            padding-bottom: 70px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .blog-hero::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(72, 202, 228, 0.18), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .blog-hero::after {
+            content: "";
+            position: absolute;
+            bottom: -120px;
+            left: -80px;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(74, 171, 134, 0.25), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .blog-hero .tag {
+            background: rgba(255, 255, 255, .12);
+            color: #d8fff0;
+        }
+
+        .blog-hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-hero p {
+            font-size: 15.5px;
+            color: rgba(255, 255, 255, .75);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-search {
+            max-width: 480px;
+            margin: 34px auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .blog-search input {
+            width: 100%;
+            padding: 15px 50px 15px 22px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .2);
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            backdrop-filter: blur(6px);
+        }
+
+        .blog-search input::placeholder {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .blog-search input:focus {
+            border-color: #48cae4;
+        }
+
+        .blog-search i {
+            position: absolute;
+            right: 22px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, .6);
+        }
+
+        /* ========================= 2. CATEGORY FILTER ========================= */
+        .category-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            padding: 36px 6% 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cat-btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            color: var(--text-mid);
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .cat-btn:hover {
+            border-color: var(--green-brand);
+            color: var(--green-brand);
+        }
+
+        .cat-btn.active {
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 8px 20px rgba(45, 138, 104, 0.25);
+        }
+
+        /* ========================= 3. FEATURED POST ========================= */
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 44px;
+            margin-top: 50px;
+        }
+
+        .featured-img {
+            width: 100%;
+            height: 320px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--green-pale), var(--green-mist));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-light);
+            font-size: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .featured-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(72, 202, 228, 0.18), transparent 60%);
+        }
+
+        .featured-content .post-meta {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .post-cat {
+            background: var(--green-pale);
+            color: var(--green-mid);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .post-date {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .featured-content h2 {
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.35;
+            margin-bottom: 14px;
+        }
+
+        .featured-content p {
+            font-size: 14.5px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--green-brand);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .read-more i {
+            transition: 0.3s;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        .author-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .author-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green-mid), var(--green-brand));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .author-info p {
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .author-role {
+            color: var(--text-muted);
+        }
+
+        /* ========================= 4. BLOG GRID ========================= */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 50px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.35s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 40px rgba(26, 74, 58, 0.12);
+            border-color: var(--green-light);
+        }
+
+        .card-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--green-pale), var(--green-mist));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-light);
+            font-size: 40px;
+            position: relative;
+        }
+
+        .card-cat {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(255, 255, 255, .92);
+            color: var(--green-mid);
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+        }
+
+        .card-body {
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .card-body .post-date {
+            margin-bottom: 12px;
+        }
+
+        .card-body h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .card-body p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        /* ========================= LOAD MORE ========================= */
+        .load-more-wrap {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .load-more-btn {
+            padding: 14px 40px;
+            border: 1px solid var(--green-brand);
+            border-radius: 30px;
+            background: transparent;
+            color: var(--green-brand);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.35s ease;
+        }
+
+        .load-more-btn:hover {
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            border-color: transparent;
+            box-shadow: 0 10px 28px rgba(45, 138, 104, 0.3);
+        }
+
+        /* ========================= 5. NEWSLETTER CTA ========================= */
+        .newsletter-cta {
+            background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+            border-radius: 24px;
+            padding: 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter-cta::before {
+            content: "";
+            position: absolute;
+            top: -80px;
+            right: -60px;
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle, rgba(72, 202, 228, 0.18), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .newsletter-cta .tag {
+            background: rgba(255, 255, 255, .12);
+            color: #d8fff0;
+        }
+
+        .newsletter-cta h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-cta p {
+            font-size: 14.5px;
+            color: rgba(255, 255, 255, .75);
+            max-width: 520px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 22px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, .2);
+            background: rgba(255, 255, 255, .1);
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .newsletter-form input:focus {
+            border-color: #48cae4;
+        }
+
+        .newsletter-form button {
+            padding: 15px 32px;
+            border: none;
+            border-radius: 50px;
+            background: #fff;
+            color: var(--green-dark);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.35s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+        }
+
+        .newsletter-msg {
+            margin-top: 16px;
+            font-size: 13.5px;
+            color: #aef1cf;
+            font-weight: 600;
+            min-height: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ========================= SCROLL REVEAL ========================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ========================= FOOTER ========================= */
+        .footer {
+            background: #0a2421;
+            padding: 70px 6% 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.8;
+            margin-top: 18px;
+            margin-bottom: 24px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, .65);
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            background: rgba(72, 202, 228, .2);
+            color: #48cae4;
+            border-color: rgba(72, 202, 228, .3);
+        }
+
+        .footer-col h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, #0D5C55, #48cae4);
+            border-radius: 2px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+
+        .footer-links a {
+            font-size: 13.5px;
+            color: rgba(255, 255, 255, .5);
+            text-decoration: none;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: #48cae4;
+            gap: 12px;
+        }
+
+        .footer-links a::before {
+            content: "→";
+            font-size: 12px;
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 11px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, .1);
+            background: rgba(255, 255, 255, .06);
+            color: #fff;
+            font-size: 13.5px;
+            font-family: 'Poppins', sans-serif;
+            outline: none;
+            margin-bottom: 10px;
+            transition: 0.3s;
+        }
+
+        .footer-newsletter input::placeholder {
+            color: rgba(255, 255, 255, .3);
+        }
+
+        .footer-newsletter input:focus {
+            border-color: rgba(72, 202, 228, .4);
+        }
+
+        .footer-newsletter button {
+            width: 100%;
+            padding: 11px;
+            background: linear-gradient(135deg, #0D5C55, #198754);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 13.5px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: 0.3s;
+        }
+
+        .footer-newsletter button:hover {
+            box-shadow: 0 8px 20px rgba(13, 92, 85, .4);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 26px;
+            border-top: 1px solid rgba(255, 255, 255, .07);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .35);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 22px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .35);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #48cae4;
+        }
+
+        /* ========================= RESPONSIVE ========================= */
+        @media (max-width: 1100px) {
+            .navbar {
+                width: 100%;
+                top: 0;
+                border-radius: 0;
+                overflow: visible;
+                padding: 14px 20px;
+            }
+
+            .menu-toggle {
+                display: block;
+                z-index: 10001;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: linear-gradient(135deg, rgba(8, 28, 60, 0.98), rgba(4, 15, 40, 0.98));
+                backdrop-filter: blur(20px);
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 30px 50px;
+                gap: 32px;
+                list-style: none;
+                transition: 0.5s ease;
+                z-index: 9999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 20px;
+                color: #fff;
+            }
+
+            .featured-post {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .featured-img {
+                height: 240px;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-cta {
+                padding: 40px 26px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 10px 20px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .blog-hero {
+                padding-top: 130px;
+                padding-bottom: 50px;
+            }
+
+            .category-bar {
+                padding-top: 26px;
+                justify-content: flex-start;
+                overflow-x: auto;
+                flex-wrap: nowrap;
+            }
+
+            .cat-btn {
+                white-space: nowrap;
+            }
+
+            .footer {
+                padding: 50px 5% 24px;
+            }
+
+            .section-title {
+                font-size: clamp(22px, 6vw, 32px);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fade-up,
+            .reveal {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="./src/logo.webp" alt="MediCore Logo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <span class="logo-fallback">MedCore Pharma</span>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <button class="nav-btn login-btn"><span>Login</span></button>
+        </ul>
+
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- ========================= 1. HERO ========================= -->
+    <section class="blog-hero">
+        <span class="tag">OUR BLOG</span>
+        <h1>Insights from the Lab & Beyond</h1>
+        <p>Explore the latest research updates, health tips, industry news, and stories from our team of scientists and healthcare experts.</p>
+        <div class="blog-search">
+            <input type="text" placeholder="Search articles...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+    </section>
+
+    <!-- ========================= 2. CATEGORY FILTER + FEATURED POST ========================= -->
+    <section>
+        <div class="category-bar">
+            <button class="cat-btn active">All Posts</button>
+            <button class="cat-btn">Research</button>
+            <button class="cat-btn">Health Tips</button>
+            <button class="cat-btn">Industry News</button>
+            <button class="cat-btn">Company Updates</button>
+            <button class="cat-btn">Wellness</button>
+        </div>
+
+        <div class="featured-post reveal">
+            <div class="featured-img">
+                <i class="fa-solid fa-dna"></i>
+            </div>
+            <div class="featured-content">
+                <div class="post-meta">
+                    <span class="post-cat">Research</span>
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> March 18, 2026</span>
+                </div>
+                <h2>Breakthrough in mRNA Delivery: What It Means for Future Vaccines</h2>
+                <p>Our R&D team shares findings from a recent study on lipid nanoparticle formulations that could significantly improve vaccine stability and reduce cold-chain dependency in developing regions.</p>
+                <a href="#" class="read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="author-row">
+                    <div class="author-avatar">RK</div>
+                    <div class="author-info">
+                        <p class="author-name">Dr. Rina Kapoor</p>
+                        <p class="author-role">Head of R&D, MedCore Pharma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= 3. RECENT ARTICLES GRID ========================= -->
+    <section>
+        <div class="center" style="max-width:640px;">
+            <span class="tag">RECENT ARTICLES</span>
+            <h2 class="section-title">Latest from Our Team</h2>
+            <p class="section-sub center">Fresh perspectives on pharmaceutical research, patient care, and industry developments.</p>
+        </div>
+
+        <div class="blog-grid">
+            <div class="blog-card reveal">
+                <div class="card-img">
+                    <span class="card-cat">Health Tips</span>
+                    <i class="fa-solid fa-heart-pulse"></i>
+                </div>
+                <div class="card-body">
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> March 12, 2026</span>
+                    <h3>5 Ways to Strengthen Immunity During Seasonal Changes</h3>
+                    <p>Simple, science-backed habits that help your immune system adapt to changing weather and reduce seasonal illness risk.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="card-img">
+                    <span class="card-cat">Industry News</span>
+                    <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div class="card-body">
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> March 8, 2026</span>
+                    <h3>New Regulatory Guidelines for Generic Drug Approvals in 2026</h3>
+                    <p>A breakdown of recent changes to bioequivalence requirements and what they mean for manufacturers and patients alike.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="card-img">
+                    <span class="card-cat">Company Updates</span>
+                    <i class="fa-solid fa-industry"></i>
+                </div>
+                <div class="card-body">
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> March 2, 2026</span>
+                    <h3>MedCore Pharma Expands Manufacturing Facility in Pune</h3>
+                    <p>Our new 120,000 sq. ft. facility increases production capacity by 40% and creates over 500 new jobs in the region.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="card-img">
+                    <span class="card-cat">Wellness</span>
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <div class="card-body">
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> February 24, 2026</span>
+                    <h3>Understanding Sleep and Its Impact on Long-Term Health</h3>
+                    <p>What recent studies reveal about the connection between sleep quality, chronic disease prevention, and mental wellbeing.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="card-img">
+                    <span class="card-cat">Research</span>
+                    <i class="fa-solid fa-microscope"></i>
+                </div>
+                <div class="card-body">
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> February 18, 2026</span>
+                    <h3>Phase II Trial Results for Our Cardiovascular Therapy</h3>
+                    <p>Early results show promising reductions in key biomarkers, paving the way for expanded Phase III trials later this year.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="blog-card reveal">
+                <div class="card-img">
+                    <span class="card-cat">Health Tips</span>
+                    <i class="fa-solid fa-pills"></i>
+                </div>
+                <div class="card-body">
+                    <span class="post-date"><i class="fa-regular fa-calendar"></i> February 10, 2026</span>
+                    <h3>Medication Adherence: Why It Matters and How to Improve It</h3>
+                    <p>Practical strategies for patients and caregivers to stay consistent with prescribed treatment plans.</p>
+                    <a href="#" class="read-more">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="load-more-wrap">
+            <button class="load-more-btn" id="loadMoreBtn">Load More Articles</button>
+        </div>
+    </section>
+
+    <!-- ========================= 4. POPULAR TOPICS ========================= -->
+    <section class="dept-section" style="background: var(--green-pale); max-width:100%;">
+        <div style="max-width:1200px; margin:0 auto;">
+            <div class="center" style="max-width:640px;">
+                <span class="tag">EXPLORE BY TOPIC</span>
+                <h2 class="section-title">Popular Topics</h2>
+                <p class="section-sub center">Browse articles organized by the subjects that matter most to our readers.</p>
+            </div>
+            <div class="dept-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:50px;">
+                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                    <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-flask"></i></div>
+                    <h4>Clinical Research</h4>
+                    <p style="margin-bottom:0;">42 articles</p>
+                </div>
+                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                    <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <h4>Patient Wellness</h4>
+                    <p style="margin-bottom:0;">38 articles</p>
+                </div>
+                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                    <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-gavel"></i></div>
+                    <h4>Regulatory Affairs</h4>
+                    <p style="margin-bottom:0;">27 articles</p>
+                </div>
+                <div class="dept-card reveal" style="background:var(--white); border-radius:16px; padding:28px; border:1px solid var(--border); text-align:center; transition:0.35s ease;">
+                    <div class="dept-icon" style="margin:0 auto 16px;"><i class="fa-solid fa-globe"></i></div>
+                    <h4>Global Health</h4>
+                    <p style="margin-bottom:0;">19 articles</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= 5. NEWSLETTER CTA ========================= -->
+    <section>
+        <div class="newsletter-cta reveal">
+            <span class="tag">STAY UPDATED</span>
+            <h2>Never Miss an Update</h2>
+            <p>Subscribe to our newsletter for the latest research breakthroughs, health insights, and company news delivered straight to your inbox.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-msg" id="newsletterMsg"></p>
+        </div>
+    </section>
+
+    <!-- ========================= FOOTER ========================= -->
+    <footer class="footer">
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <div class="logo"><img src="./src/logo.webp" alt=""
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
+                <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
+                    Advancing human health through innovation since 1994.</p>
+                <div class="footer-socials">
+                    <div class="social-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <div class="social-icon"><i class="fa-brands fa-x-twitter"></i></div>
+                    <div class="social-icon"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div class="social-icon"><i class="fa-brands fa-youtube"></i></div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="#">Leadership Team</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Room</a></li>
+                    <li><a href="#">Investor Relations</a></li>
+                    <li><a href="#">CSR Initiatives</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Products & Services</h4>
+                <ul class="footer-links">
+                    <li><a href="service.html">Product Portfolio</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="#">R&D Pipeline</a></li>
+                    <li><a href="#">Generic Medicines</a></li>
+                    <li><a href="#">Biologics</a></li>
+                    <li><a href="#">OTC Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="font-size:13px; color:rgba(255,255,255,.45); line-height:1.7; margin-bottom:16px;">Stay
+                    updated with our latest research, product launches, and health insights.</p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Enter your email address" id="footermail">
+                    <button class="footerbtn">Subscribe Now</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-up / reveal animations
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-up, .reveal').forEach(el => observer.observe(el));
+
+        // login
+        const navBtn = document.querySelector(".nav-btn");
+        navBtn.addEventListener("click", () => {
+            window.location.href = "login.html";
+        });
+
+        // NAVBAR SCROLL
+        const navbar = document.querySelector(".navbar");
+        window.addEventListener("scroll", () => {
+            navbar.classList.toggle("active", window.scrollY > 50);
+        });
+
+        // MOBILE MENU
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+        menuToggle.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            menuToggle.innerHTML = navLinks.classList.contains("active")
+                ? '<i class="fa-solid fa-xmark"></i>'
+                : '<i class="fa-solid fa-bars"></i>';
+        });
+
+        const loginBtn = document.querySelector(".login-btn");
+        function checkMobileMenu() {
+            if (window.innerWidth <= 1100) {
+                navLinks.appendChild(loginBtn);
+            } else {
+                document.querySelector(".navbar").insertBefore(loginBtn, menuToggle);
+            }
+        }
+        checkMobileMenu();
+        window.addEventListener("resize", checkMobileMenu);
+
+        // FOOTER NEWSLETTER
+        const emailInput = document.getElementById("footermail");
+        const subscribeBtn = document.querySelector(".footerbtn");
+        subscribeBtn.addEventListener("click", () => {
+            const email = emailInput.value.trim();
+            if (email === "") {
+                alert("Please enter your email address.");
+                return;
+            }
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+            alert("Thank you for subscribing!");
+            emailInput.value = "";
+        });
+
+        // CATEGORY FILTER
+        document.querySelectorAll(".cat-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+            });
+        });
+
+        // LOAD MORE (demo behavior)
+        document.getElementById("loadMoreBtn").addEventListener("click", function () {
+            this.textContent = "No More Articles";
+            this.disabled = true;
+            this.style.opacity = "0.6";
+            this.style.cursor = "not-allowed";
+        });
+
+        // NEWSLETTER CTA FORM
+        const newsletterForm = document.getElementById("newsletterForm");
+        const newsletterMsg = document.getElementById("newsletterMsg");
+        newsletterForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            newsletterMsg.textContent = "Thanks for subscribing! Check your inbox to confirm your email.";
+            newsletterForm.reset();
+        });
+    </script>
+</body>
+
+</html>
