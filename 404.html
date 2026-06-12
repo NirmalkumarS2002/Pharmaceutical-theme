@@ -24,26 +24,38 @@
       box-sizing: border-box;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      padding: 20px;
-      position: relative;
-      background:
-        radial-gradient(circle at top left,
-          rgba(255, 196, 0, 0.08),
-          transparent 35%),
+   body {
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
 
-        radial-gradient(circle at bottom right,
-          rgba(255, 196, 0, 0.08),
-          transparent 35%),
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-        #000;
-    }
+  overflow: hidden;
+  padding: 20px;
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(46, 139, 87, 0.12),
+      transparent 35%
+    ),
+
+    radial-gradient(
+      circle at bottom right,
+      rgba(76, 175, 80, 0.10),
+      transparent 35%
+    ),
+
+    linear-gradient(
+      135deg,
+      #0b1f18,
+      #102d24,
+      #0a1814
+    );
+}
 
     /* FLOATING ICONS */
 
@@ -92,52 +104,54 @@
 
     /* CONTAINER */
 
-    .container {
-      width: 100%;
-      max-width: 520px;
-      background: rgba(10, 10, 10, 0.96);
-      border: 1px solid rgba(255, 196, 0, 0.08);
-      border-radius: 26px;
-      padding: 40px 30px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
+ .container {
+  width: 100%;
+  max-width: 520px;
 
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.03),
-        0 20px 50px rgba(0, 0, 0, 0.7),
-        0 0 40px rgba(255, 196, 0, 0.06);
+  background: rgba(12, 45, 35, 0.96);
 
-      backdrop-filter: blur(14px);
-    }
+  border: 1px solid rgba(143, 188, 143, 0.12);
 
-    .container::before {
+  border-radius: 26px;
+  padding: 40px 30px;
+  text-align: center;
 
-      content: '';
+  position: relative;
+  z-index: 1;
 
-      position: absolute;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.03),
+    0 20px 50px rgba(0,0,0,0.6),
+    0 0 40px rgba(46,139,87,0.12);
 
-      inset: 0;
+  backdrop-filter: blur(14px);
+}
 
-      border-radius: 26px;
+.container::before {
+  content: '';
 
-      padding: 1px;
+  position: absolute;
+  inset: 0;
 
-      background: linear-gradient(135deg,
-          rgba(255, 196, 0, 0.25),
-          transparent,
-          rgba(255, 196, 0, 0.12));
+  border-radius: 26px;
+  padding: 1px;
 
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
+  background: linear-gradient(
+    135deg,
+    rgba(46,139,87,0.35),
+    transparent,
+    rgba(143,188,143,0.15)
+  );
 
-      -webkit-mask-composite: xor;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
 
-      mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 
-      pointer-events: none;
-    }
+  pointer-events: none;
+}
 
     /* LOGO */
 
@@ -152,22 +166,19 @@
 
     /* 404 */
 
-    .error-code {
+.error-code {
+  font-size: 5.5rem;
+  line-height: 1;
+  font-weight: 800;
 
-      font-size: 5.5rem;
+  color: #2e8b57;
 
-      line-height: 1;
+  text-shadow:
+    0 0 15px rgba(46, 139, 87, 0.35),
+    0 0 35px rgba(46, 139, 87, 0.15);
 
-      font-weight: 800;
-
-      color: #f7c948;
-
-      text-shadow:
-        0 0 15px rgba(255, 201, 72, 0.35),
-        0 0 35px rgba(255, 201, 72, 0.12);
-
-      margin-bottom: 10px;
-    }
+  margin-bottom: 10px;
+}
 
     .title {
 
@@ -244,42 +255,51 @@
     }
 
     /* PRIMARY */
+/* PRIMARY BUTTON */
 
-    .btn-primary {
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    #1f6f54,
+    #2e8b57
+  );
 
-      background: #f7c948;
+  color: #fff;
 
-      color: #000;
+  box-shadow:
+    0 0 20px rgba(46, 139, 87, 0.25);
+}
 
-      box-shadow:
-        0 0 20px rgba(247, 201, 72, 0.22);
-    }
+.btn-primary:hover {
+  transform: translateY(-3px);
 
-    .btn-primary:hover {
+  box-shadow:
+    0 0 30px rgba(46, 139, 87, 0.40),
+    0 8px 25px rgba(46, 139, 87, 0.25);
+}
 
-      transform: translateY(-3px);
+/* SECONDARY BUTTON */
 
-      box-shadow:
-        0 0 30px rgba(247, 201, 72, 0.35);
-    }
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
 
-    /* SECONDARY */
+  border: 1px solid rgba(143, 188, 143, 0.25);
 
-    .btn-secondary {
+  color: #ffffff;
 
-      background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+}
 
-      border: 1px solid rgba(255, 255, 255, 0.08);
+.btn-secondary:hover {
+  background: rgba(46, 139, 87, 0.12);
 
-      color: #fff;
-    }
+  border-color: rgba(143, 188, 143, 0.45);
 
-    .btn-secondary:hover {
+  transform: translateY(-3px);
 
-      background: rgba(255, 255, 255, 0.08);
-
-      transform: translateY(-3px);
-    }
+  box-shadow:
+    0 0 20px rgba(46, 139, 87, 0.18);
+}
 
     /* MOBILE */
 
@@ -347,13 +367,6 @@
 
 <body>
 
-  <!-- FLOATING ICONS -->
-
-  <i class="fa-solid fa-scale-balanced floating-icon icon1"></i>
-
-  <i class="fa-solid fa-gavel floating-icon icon2"></i>
-
-  <i class="fa-solid fa-book floating-icon icon3"></i>
 
   <!-- CONTAINER -->
 
@@ -361,7 +374,7 @@
 
     <!-- LOGO -->
 
-    <img src="./src/logo.webp"
+    <img src="./src/logo.webp" class="homepage"
       alt="Logo"
       class="logo">
 
@@ -378,13 +391,11 @@
     <!-- DESCRIPTION -->
 
     <p class="description">
+The page you are looking for may have been moved,
+removed, or is currently unavailable.
 
-      The legal page you are trying to access may have been moved,
-      removed, or temporarily unavailable.
-
-      Please return to the dashboard or continue browsing
-      our legal services.
-
+Please return to the homepage or continue exploring
+our pharmaceutical solutions and healthcare services.
     </p>
 
     <!-- BUTTONS -->

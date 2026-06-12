@@ -1006,7 +1006,7 @@
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="logo">
-            <img src="./src/logo.webp" alt="MediCore Logo"
+            <img src="./src/logo.webp" alt="MediCore Logo" class="homepage"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
             <span class="logo-fallback">MedCore Pharma</span>
         </div>
@@ -1192,7 +1192,7 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <div class="logo"><img src="./src/logo.webp" alt=""
+                <div class="logo"><img src="./src/logo.webp" alt="" class="homepage"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span
                         class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
                 <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
@@ -1290,22 +1290,15 @@
             });
         });
 
-        // Search
-        document.getElementById('serviceSearch').addEventListener('input', function () {
-            const q = this.value.toLowerCase();
-            document.querySelectorAll('.service-card').forEach(card => {
-                const text = card.innerText.toLowerCase();
-                card.style.display = text.includes(q) ? 'flex' : 'none';
-            });
-        });
+
 
         // Load more (demo)
-        document.getElementById('loadMoreBtn').addEventListener('click', function () {
-            this.textContent = 'All Services Shown';
-            this.disabled = true;
-            this.style.opacity = '0.6';
-            this.style.cursor = 'not-allowed';
-        });
+        // document.getElementById('loadMoreBtn').addEventListener('click', function () {
+        //     this.textContent = 'All Services Shown';
+        //     this.disabled = true;
+          //   this.style.opacity = '0.6';
+        //     this.style.cursor = 'not-allowed';
+       //  });
 
         // Footer subscribe
         const emailInput = document.getElementById('footermail');
@@ -1322,6 +1315,13 @@
                 window.location.href = "404.html";
             });
         });
+
+        document.querySelectorAll(".homepage").forEach(item => {
+    item.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "index.html";
+    });
+});
     </script>
 </body>
 

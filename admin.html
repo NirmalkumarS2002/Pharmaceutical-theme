@@ -661,9 +661,10 @@ background: linear-gradient(135deg, #026d4f, #12c03ea9);
         <ul class="menu">
             <li class="active" data-page="dashboard"><a><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
             <li data-page="clients"><a><i class="fa-solid fa-users"></i> Clients</a></li>
-            <li data-page="projects"><a><i class="fa-solid fa-diagram-project"></i> Projects</a></li>
-            <li data-page="meetings"><a><i class="fa-solid fa-calendar-check"></i> Hearings</a></li>
-            <li data-page="reports"><a><i class="fa-solid fa-chart-pie"></i> Reports</a></li>
+            <li data-page="projects"><a><i class="fa-solid fa-diagram-project"></i> Inventory</a></li>
+            <li data-page="meetings"><a><i class="fa-solid fa-calendar-check"></i> Orders & Deliveries</a></li>
+            <li data-page="reports"><a><i class="fa-solid fa-chart-pie"></i> Sales & Analytics
+</a></li>
             <li data-page="settings"><a><i class="fa-solid fa-gear"></i> Settings</a></li>
             <li id="logoutItem"><a><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
         </ul>
@@ -687,66 +688,89 @@ background: linear-gradient(135deg, #026d4f, #12c03ea9);
         <!-- ===== DASHBOARD ===== -->
         <div class="content active" id="page-dashboard">
             <div style="padding:22px 22px 0;">
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-icon gold"><i class="fa-solid fa-users"></i></div>
-                        <div>
-                            <h2>1,245</h2>
-                            <p>Total Clients</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon blue"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <div>
-                            <h2>325</h2>
-                            <p>Active Cases</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon green"><i class="fa-solid fa-gavel"></i></div>
-                        <div>
-                            <h2>98</h2>
-                            <p>Cases Won</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon red"><i class="fa-solid fa-money-bill-wave"></i></div>
-                        <div>
-                            <h2>$54,500</h2>
-                            <p>Total Revenue</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-icon gold"><i class="fa-solid fa-user-plus"></i></div>
-                        <div>
-                            <h2>54</h2>
-                            <p>New Clients</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
-                        <div>
-                            <h2>12</h2>
-                            <p>Today's Hearings</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon green"><i class="fa-solid fa-file-signature"></i></div>
-                        <div>
-                            <h2>220</h2>
-                            <p>Legal Documents</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon red"><i class="fa-solid fa-briefcase"></i></div>
-                        <div>
-                            <h2>145</h2>
-                            <p>Closed Cases</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="cards">
+    <div class="card">
+        <div class="card-icon gold">
+            <i class="fa-solid fa-hospital-user"></i>
+        </div>
+        <div>
+            <h2>12,450</h2>
+            <p>Total Patients</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-capsules"></i>
+        </div>
+        <div>
+            <h2>3,250</h2>
+            <p>Active Prescriptions</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-flask-vial"></i>
+        </div>
+        <div>
+            <h2>980</h2>
+            <p>Lab Tests Completed</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon red">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+        <div>
+            <h2>₹54.5L</h2>
+            <p>Total Revenue</p>
+        </div>
+    </div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="card-icon gold">
+            <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <div>
+            <h2>54</h2>
+            <p>New Patients</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-truck-medical"></i>
+        </div>
+        <div>
+            <h2>124</h2>
+            <p>Today's Orders</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-file-medical"></i>
+        </div>
+        <div>
+            <h2>220</h2>
+            <p>Medical Records</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon red">
+            <i class="fa-solid fa-pills"></i>
+        </div>
+        <div>
+            <h2>145</h2>
+            <p>Medicines Sold Today</p>
+        </div>
+    </div>
+</div>
             </div>
             <div style="padding:0 22px 22px;">
                 <div class="table-box">
@@ -1981,7 +2005,7 @@ background: linear-gradient(135deg, #026d4f, #12c03ea9);
         const menuItems = document.querySelectorAll('.menu li[data-page]');
         const pages = document.querySelectorAll('.content');
         const pageTitle = document.getElementById('pageTitle');
-        const pageTitles = { dashboard: 'Dashboard', clients: 'Clients', projects: 'Management', meetings: 'Hearings', reports: 'Reports', settings: 'Settings' };
+        const pageTitles = { dashboard: 'Dashboard', clients: 'Clients', projects: 'Inventory', meetings: 'Orders & Deliveries', reports: 'Sales & Analytics', settings: 'Settings' };
 
         menuItems.forEach(item => {
             item.addEventListener('click', () => {

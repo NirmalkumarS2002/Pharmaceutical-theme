@@ -567,6 +567,13 @@ body {
   overflow: hidden;
 }
 
+.about-img-placeholder{
+   width: 100%;
+    height: clamp(350px,40vw,440px);
+    object-fit: cover;
+    display: block;
+}
+
 .about-img-placeholder::after {
   content: "";
   position: absolute;
@@ -1839,7 +1846,7 @@ body {
 
     <nav class="navbar">
       <div class="logo">
-        <img src="./src/logo.webp" alt="MediCore Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <img src="./src/logo.webp" alt="MediCore Logo" class="homepage" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
         
       </div>
 
@@ -2048,7 +2055,7 @@ body {
     </p>
     <div class="product-footer">
         <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
-        <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </div>
 
@@ -2065,7 +2072,7 @@ body {
     </p>
     <div class="product-footer">
         <span><i class="fa-solid fa-capsules"></i> Extended Release</span>
-        <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 </div>
 
@@ -2077,7 +2084,7 @@ body {
         <p>High-efficacy statin for LDL reduction with proven cardiovascular outcome benefits.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
-          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -2089,7 +2096,7 @@ body {
         <p>Targeted kinase inhibitor for non-small cell lung cancer with minimal systemic toxicity.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-syringe"></i> Injection</span>
-          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -2101,7 +2108,7 @@ body {
         <p>Second-generation antidepressant with improved tolerability for major depressive disorder.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
-          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -2113,7 +2120,7 @@ body {
         <p>Broad-spectrum amoxicillin-clavulanate combination effective against resistant pathogens.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
-          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -2125,7 +2132,7 @@ body {
         <p>Extended-release antihypertensive for once-daily dosing with 24-hour blood pressure control.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Extended Release</span>
-          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
 
@@ -2137,7 +2144,7 @@ body {
         <p>Next-generation anti-epileptic with low drug-drug interaction profile for polypharmacy patients.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
-          <a href="#">Details <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -2474,7 +2481,7 @@ body {
     <div class="footer-grid">
 
       <div class="footer-brand">
-       <div class="logo"><img src="./src/logo.webp" alt=""></div>
+       <div class="logo "><img src="./src/logo.webp" alt="" class="homepage"></div>
         <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries. Advancing human health through innovation since 1994.</p>
         <div class="footer-socials">
           <div class="social-icon errorpage"><i class="fa-brands fa-linkedin-in"></i></div>
@@ -2794,6 +2801,13 @@ document.querySelectorAll(".errorpage").forEach(item => {
     item.addEventListener("click", (e) => {
         e.preventDefault();
         window.location.href = "404.html";
+    });
+});
+
+document.querySelectorAll(".homepage").forEach(item => {
+    item.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "index.html";
     });
 });
   </script>

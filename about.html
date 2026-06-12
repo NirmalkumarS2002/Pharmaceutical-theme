@@ -1018,7 +1018,7 @@
     <!-- NAVBAR -->
     <nav class="navbar" id="navbar">
         <div class="logo">
-            <img src="./src/logo.webp" alt="MediCore Logo"
+            <img src="./src/logo.webp" alt="MediCore Logo" class="homepage"
                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
             <span class="logo-fallback">MedCore Pharma</span>
         </div>
@@ -1269,7 +1269,7 @@
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-brand">
-                <div class="logo"><img src="./src/logo.webp" alt=""
+                <div class="logo"><img src="./src/logo.webp" class="homepage" alt=""
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block'"><span
                         class="logo-fallback" style="color:#fff;">MedCore Pharma</span></div>
                 <p>Science-driven pharmaceutical solutions trusted by healthcare professionals in 50+ countries.
@@ -1379,6 +1379,13 @@
     item.addEventListener("click", (e) => {
         e.preventDefault();
         window.location.href = "404.html";
+    });
+});
+
+document.querySelectorAll(".homepage").forEach(item => {
+    item.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.location.href = "index.html";
     });
 });
     </script>

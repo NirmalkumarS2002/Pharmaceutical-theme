@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MediCore Pharmaceutical Dashboard</title>
+    <title>MediCore Pharmaceutical Dashboard - Client</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -26,7 +26,7 @@
 
         .sidebar {
             width: 260px;
-            background: linear-gradient(180deg, #0f766e, #065f46);
+            background: linear-gradient(180deg,#0f766e,#065f46);
             border-right: 1px solid rgba(255, 255, 255, 0.05);
             padding: 20px;
             transition: 0.3s;
@@ -74,10 +74,10 @@
 
         .menu li a:hover,
         .menu li.active a {
-            background: rgba(255, 255, 255, 0.15);
-            color: #ffffff;
-            font-weight: 600;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+               background: rgba(255,255,255,0.15);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
         .main {
@@ -123,19 +123,19 @@
             color: #0f172a;
         }
 
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #026d4f, #12c03ea9);
-            color: #000;
-            font-weight: 700;
-            font-size: 18px;
-            box-shadow: 0 8px 25px rgba(15, 118, 110, .25);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+     .avatar{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+background: linear-gradient(135deg, #026d4f, #12c03ea9);
+    color:#000;
+    font-weight:700;
+    font-size:18px;
+    box-shadow:0 8px 25px rgba(15,118,110,.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
         .content {
             display: none;
@@ -238,26 +238,28 @@
         }
 
         .btn-gold {
-            background: linear-gradient(135deg,
-                    #0f766e,
-                    #14b8a6);
-            color: white;
-            border: none;
-            padding: 12px 18px;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: .3s;
-            box-shadow: 0 8px 20px rgba(15, 118, 110, .25);
+         background: linear-gradient(
+        135deg,
+        #0f766e,
+        #14b8a6
+    );
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 8px 20px rgba(15,118,110,.25);
         }
 
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(15, 118, 110, .35);
-        }
+        .btn-gold:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(15,118,110,.35);
+}
 
         .btn-outline {
-            border: 1px solid rgba(15, 118, 109, 0.726);
+           border: 1px solid rgba(15, 118, 109, 0.726);
             background: transparent;
             padding: 8px 14px;
             border-radius: 10px;
@@ -283,7 +285,7 @@
         table td {
             padding: 12px;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: #131212bd;
+                color: #131212bd;
 
             font-size: 13px;
         }
@@ -507,7 +509,7 @@
             margin-bottom: 12px;
         }
 
-        input[type="password"] {
+        input[type="password"]{
             display: flex;
             align-items: center;
         }
@@ -623,7 +625,7 @@
                 grid-template-columns: 1fr;
             }
 
-
+          
         }
 
         @media(max-width:500px) {
@@ -638,7 +640,7 @@
 
             }
 
-            .avatar {
+              .avatar {
                 width: 30px;
                 height: 30px;
                 font-size: 16px;
@@ -652,19 +654,18 @@
     <div class="sidebar" id="sidebar">
         <div class="logo">
 
-            <a href="admin.html"><img src="./src/logo.webp" alt="company logo"></a>
+            <a href="client.html"><img src="./src/logo.webp" alt="company logo"></a>
 
             <span class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark"></i></span>
         </div>
         <ul class="menu">
-
-            <li class="active" data-page="dashboard"><a><i class="fa-solid fa-house"></i> Dashboard</a></li>
-            <li data-page="clients"><a><i class="fa-solid fa-cart-shopping"></i> My Orders</a></li>
-            <li data-page="projects"><a><i class="fa-solid fa-capsules"></i> Medicines</a></li>
-            <li data-page="meetings"><a><i class="fa-solid fa-truck"></i> Track Orders</a></li>
-            <li data-page="reports"><a><i class="fa-solid fa-chart-line"></i> Reports</a></li>
+            <li class="active" data-page="dashboard"><a><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+            <li data-page="myorders"><a><i class="fa-solid fa-cart-shopping"></i> My Orders</a></li>
+            <li data-page="catalog"><a><i class="fa-solid fa-capsules"></i> Medicine Catalog</a></li>
+            <li data-page="deliveries"><a><i class="fa-solid fa-truck"></i> Deliveries</a></li>
+            <li data-page="invoices"><a><i class="fa-solid fa-file-invoice-dollar"></i> Invoices & Payments</a></li>
             <li data-page="settings"><a><i class="fa-solid fa-gear"></i> Settings</a></li>
-             <li id="logoutItem"><a><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+            <li id="logoutItem"><a><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
         </ul>
     </div>
 
@@ -677,8 +678,8 @@
             <div class="admin-info">
                 <div class="avatar" id="avatarEl">A</div>
                 <div>
-                    <h4 id="adminEmail">admin@lexcorp.com</h4>
-                    <p style="color:#888;font-size:12px;">Administrator</p>
+                    <h4 id="adminEmail">apollo@medicore.com</h4>
+                    <p style="color:#888;font-size:12px;">Client</p>
                 </div>
             </div>
         </div>
@@ -686,1279 +687,1333 @@
         <!-- ===== DASHBOARD ===== -->
         <div class="content active" id="page-dashboard">
             <div style="padding:22px 22px 0;">
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-icon gold"><i class="fa-solid fa-users"></i></div>
-                        <div>
-                            <h2>1,245</h2>
-                            <p>Total Clients</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon blue"><i class="fa-solid fa-scale-balanced"></i></div>
-                        <div>
-                            <h2>325</h2>
-                            <p>Active Cases</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon green"><i class="fa-solid fa-gavel"></i></div>
-                        <div>
-                            <h2>98</h2>
-                            <p>Cases Won</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon red"><i class="fa-solid fa-money-bill-wave"></i></div>
-                        <div>
-                            <h2>$54,500</h2>
-                            <p>Total Revenue</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="cards">
-                    <div class="card">
-                        <div class="card-icon gold"><i class="fa-solid fa-user-plus"></i></div>
-                        <div>
-                            <h2>54</h2>
-                            <p>New Clients</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon blue"><i class="fa-solid fa-calendar-check"></i></div>
-                        <div>
-                            <h2>12</h2>
-                            <p>Today's Hearings</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon green"><i class="fa-solid fa-file-signature"></i></div>
-                        <div>
-                            <h2>220</h2>
-                            <p>Legal Documents</p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-icon red"><i class="fa-solid fa-briefcase"></i></div>
-                        <div>
-                            <h2>145</h2>
-                            <p>Closed Cases</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="cards">
+    <div class="card">
+        <div class="card-icon gold">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+        <div>
+            <h2>18</h2>
+            <p>Total Orders</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-truck"></i>
+        </div>
+        <div>
+            <h2>3</h2>
+            <p>Orders In Transit</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-box-open"></i>
+        </div>
+        <div>
+            <h2>14</h2>
+            <p>Orders Delivered</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon red">
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+        </div>
+        <div>
+            <h2>₹2.4L</h2>
+            <p>Outstanding Balance</p>
+        </div>
+    </div>
+</div>
+
+<div class="cards">
+    <div class="card">
+        <div class="card-icon gold">
+            <i class="fa-solid fa-capsules"></i>
+        </div>
+        <div>
+            <h2>32</h2>
+            <p>Medicines Ordered</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <div>
+            <h2>1</h2>
+            <p>Order This Week</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-file-invoice"></i>
+        </div>
+        <div>
+            <h2>5</h2>
+            <p>Pending Invoices</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon red">
+            <i class="fa-solid fa-headset"></i>
+        </div>
+        <div>
+            <h2>2</h2>
+            <p>Open Support Tickets</p>
+        </div>
+    </div>
+</div>
             </div>
             <div style="padding:0 22px 22px;">
                 <div class="table-box">
-                    <div class="table-header">
-                        <h2>Pharmaceutical Team</h2>
-                        <button class="btn-gold errorpage">+ Add Employee</button>
-                    </div>
+    <div class="table-header">
+        <h2>My Recent Orders</h2>
+        <button class="btn-gold errorpage">+ Place New Order</button>
+    </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Department</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
 
-                        <tbody>
+        <tbody>
 
-                            <tr>
-                                <td>Dr. John Smith</td>
-                                <td>Quality Control</td>
-                                <td>john@medicore.com</td>
-                                <td>
-                                    <span class="status s-active">
-                                        Available
-                                    </span>
-                                </td>
-                            </tr>
+            <tr>
+                <td>#ORD-3045</td>
+                <td>CardioMax 40mg</td>
+                <td>500 units</td>
+                <td>
+                    <span class="status s-active">
+                        Delivered
+                    </span>
+                </td>
+                <td>05 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>David Lee</td>
-                                <td>Production Manager</td>
-                                <td>david@medicore.com</td>
-                                <td>
-                                    <span class="status s-pending">
-                                        In Production
-                                    </span>
-                                </td>
-                            </tr>
+            <tr>
+                <td>#ORD-3046</td>
+                <td>AmoxiPlus 500mg</td>
+                <td>300 units</td>
+                <td>
+                    <span class="status s-pending">
+                        Processing
+                    </span>
+                </td>
+                <td>08 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>Alex Kumar</td>
-                                <td>Inventory Manager</td>
-                                <td>alex@medicore.com</td>
-                                <td>
-                                    <span class="status s-active">
-                                        Available
-                                    </span>
-                                </td>
-                            </tr>
+            <tr>
+                <td>#ORD-3047</td>
+                <td>NeuroCalm 25mg</td>
+                <td>200 units</td>
+                <td>
+                    <span class="status s-blue">
+                        Shipped
+                    </span>
+                </td>
+                <td>10 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>Priya Sharma</td>
-                                <td>Research & Development</td>
-                                <td>priya@medicore.com</td>
-                                <td>
-                                    <span class="status s-active">
-                                        Active
-                                    </span>
-                                </td>
-                            </tr>
+            <tr>
+                <td>#ORD-3048</td>
+                <td>ImmunoBoost 500mg</td>
+                <td>150 units</td>
+                <td>
+                    <span class="status s-pending">
+                        Pending
+                    </span>
+                </td>
+                <td>11 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>Michael Raj</td>
-                                <td>Regulatory Affairs</td>
-                                <td>michael@medicore.com</td>
-                                <td>
-                                    <span class="status s-closed">
-                                        On Leave
-                                    </span>
-                                </td>
-                            </tr>
+            <tr>
+                <td>#ORD-3049</td>
+                <td>AntiFlu 250mg</td>
+                <td>100 units</td>
+                <td>
+                    <span class="status s-closed">
+                        Cancelled
+                    </span>
+                </td>
+                <td>02 Jun 2026</td>
+            </tr>
 
-                        </tbody>
-                    </table>
-                </div>
-                <div class="table-box">
-                    <div class="table-header">
-                        <h2>Recent Orders</h2>
-                        <button class="btn-gold errorpage">+ New Order</button>
-                    </div>
+        </tbody>
+    </table>
+</div>
+               <div class="table-box">
+    <div class="table-header">
+        <h2>Upcoming Deliveries</h2>
+        <button class="btn-gold errorpage">Track All</button>
+    </div>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Customer</th>
-                                <th>Medicine</th>
-                                <th>Status</th>
-                                <th>Delivery Date</th>
-                            </tr>
-                        </thead>
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Medicine</th>
+                <th>Status</th>
+                <th>Expected Delivery</th>
+            </tr>
+        </thead>
 
-                        <tbody>
+        <tbody>
 
-                            <tr>
-                                <td>Apollo Pharmacy</td>
-                                <td>CardioMax 40mg</td>
-                                <td>
-                                    <span class="status s-active">
-                                        Delivered
-                                    </span>
-                                </td>
-                                <td>15 Jun 2026</td>
-                            </tr>
+            <tr>
+                <td>#ORD-3046</td>
+                <td>AmoxiPlus 500mg</td>
+                <td>
+                    <span class="status s-pending">
+                        Processing
+                    </span>
+                </td>
+                <td>18 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>MedPlus Healthcare</td>
-                                <td>NeuroCalm 25mg</td>
-                                <td>
-                                    <span class="status s-pending">
-                                        Processing
-                                    </span>
-                                </td>
-                                <td>18 Jun 2026</td>
-                            </tr>
+            <tr>
+                <td>#ORD-3047</td>
+                <td>NeuroCalm 25mg</td>
+                <td>
+                    <span class="status s-blue">
+                        Shipped
+                    </span>
+                </td>
+                <td>20 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>Global Hospitals</td>
-                                <td>AmoxiPlus 500mg</td>
-                                <td>
-                                    <span class="status s-active">
-                                        Shipped
-                                    </span>
-                                </td>
-                                <td>20 Jun 2026</td>
-                            </tr>
+            <tr>
+                <td>#ORD-3048</td>
+                <td>ImmunoBoost 500mg</td>
+                <td>
+                    <span class="status s-pending">
+                        Pending
+                    </span>
+                </td>
+                <td>22 Jun 2026</td>
+            </tr>
 
-                            <tr>
-                                <td>Care Health Clinic</td>
-                                <td>OncoClear 100mg</td>
-                                <td>
-                                    <span class="status s-pending">
-                                        Pending
-                                    </span>
-                                </td>
-                                <td>22 Jun 2026</td>
-                            </tr>
-
-                            <tr>
-                                <td>City Medical Center</td>
-                                <td>AntiFlu 250mg</td>
-                                <td>
-                                    <span class="status s-closed">
-                                        Cancelled
-                                    </span>
-                                </td>
-                                <td>12 Jun 2026</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+        </tbody>
+    </table>
+</div>
             </div>
         </div>
 
-        <!-- ===== CLIENTS ===== -->
-        <div class="content" id="page-clients" style="padding:22px;">
-            <div class="page-title">Client Management</div>
-            <div class="page-sub">Manage all registered clients and their medical details</div>
+        <!-- ===== MY ORDERS ===== -->
+        <div class="content" id="page-myorders" style="padding:22px;">
+            <div class="page-title">My Orders</div>
+            <div class="page-sub">View and manage all your medicine orders</div>
             <div class="cards">
                 <div class="card">
-                    <div class="card-icon gold"><i class="fa-solid fa-users"></i></div>
+                    <div class="card-icon gold"><i class="fa-solid fa-cart-shopping"></i></div>
                     <div>
-                        <h2>1,245</h2>
-                        <p>Total Clients</p>
+                        <h2>18</h2>
+                        <p>Total Orders</p>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-icon green"><i class="fa-solid fa-user-check"></i></div>
+                    <div class="card-icon green"><i class="fa-solid fa-circle-check"></i></div>
                     <div>
-                        <h2>987</h2>
-                        <p>Active Clients</p>
+                        <h2>14</h2>
+                        <p>Completed</p>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-icon blue"><i class="fa-solid fa-user-plus"></i></div>
-                    <div>
-                        <h2>54</h2>
-                        <p>New This Month</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-icon red"><i class="fa-solid fa-user-xmark"></i></div>
-                    <div>
-                        <h2>204</h2>
-                        <p>Inactive Clients</p>
-                    </div>
-                </div>
-            </div>
-            <div class="table-box">
-                <div class="table-header">
-                    <h2>All Customers</h2>
-                    <div style="display:flex;gap:10px;">
-                        <button class="btn-outline errorpage">Export</button>
-                        <button class="btn-gold errorpage">+ Add Customer</button>
-                    </div>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Customer Name</th>
-                            <th>Phone</th>
-                            <th>Medicine</th>
-                            <th>Sales Executive</th>
-                            <th>Status</th>
-                            <th>Registered</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>Apollo Pharmacy</td>
-                            <td>+91 98765 43210</td>
-                            <td>CardioMax 40mg</td>
-                            <td>David Lee</td>
-                            <td><span class="status s-active">Active</span></td>
-                            <td>01 Jan 2026</td>
-                        </tr>
-
-                        <tr>
-                            <td>MedPlus Healthcare</td>
-                            <td>+91 87654 32109</td>
-                            <td>NeuroCalm 25mg</td>
-                            <td>Alex Kumar</td>
-                            <td><span class="status s-active">Active</span></td>
-                            <td>10 Feb 2026</td>
-                        </tr>
-
-                        <tr>
-                            <td>Global Hospitals</td>
-                            <td>+91 76543 21098</td>
-                            <td>OncoClear 100mg</td>
-                            <td>John Smith</td>
-                            <td><span class="status s-pending">Pending</span></td>
-                            <td>15 Mar 2026</td>
-                        </tr>
-
-                        <tr>
-                            <td>Care Medical Center</td>
-                            <td>+91 65432 10987</td>
-                            <td>AmoxiPlus 500mg</td>
-                            <td>David Lee</td>
-                            <td><span class="status s-active">Active</span></td>
-                            <td>20 Apr 2026</td>
-                        </tr>
-
-                        <tr>
-                            <td>LifeCare Clinic</td>
-                            <td>+91 54321 09876</td>
-                            <td>AntiFlu 250mg</td>
-                            <td>Priya Sharma</td>
-                            <td><span class="status s-closed">Inactive</span></td>
-                            <td>05 May 2026</td>
-                        </tr>
-
-                        <tr>
-                            <td>City Health Pharmacy</td>
-                            <td>+91 43210 98765</td>
-                            <td>ImmunoBoost 500mg</td>
-                            <td>Alex Kumar</td>
-                            <td><span class="status s-pending">Under Review</span></td>
-                            <td>12 May 2026</td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-            <div class="grid-2">
-
-                <div class="info-box">
-                    <h3>
-                        <i class="fa-solid fa-hospital-user"></i>
-                        Top Customers by Orders
-                    </h3>
-
-                    <div class="client-card">
-                        <div class="client-avatar">A</div>
-                        <div>
-                            <div class="client-name">Apollo Pharmacy</div>
-                            <div class="client-case">
-                                CardioMax 40mg • Active
-                            </div>
-                        </div>
-                        <span class="badge s-active">
-                            15 Orders
-                        </span>
-                    </div>
-
-                    <div class="client-card">
-                        <div class="client-avatar">M</div>
-                        <div>
-                            <div class="client-name">MedPlus Healthcare</div>
-                            <div class="client-case">
-                                NeuroCalm 25mg • Active
-                            </div>
-                        </div>
-                        <span class="badge s-blue">
-                            12 Orders
-                        </span>
-                    </div>
-
-                    <div class="client-card">
-                        <div class="client-avatar">G</div>
-                        <div>
-                            <div class="client-name">Global Hospitals</div>
-                            <div class="client-case">
-                                OncoClear 100mg • Active
-                            </div>
-                        </div>
-                        <span class="badge s-active">
-                            10 Orders
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="info-box">
-
-                    <h3>
-                        <i class="fa-solid fa-chart-line"></i>
-                        Sales Summary
-                    </h3>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            Retail Pharmacy Orders
-                        </span>
-                        <span class="info-value">
-                            420
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            Hospital Orders
-                        </span>
-                        <span class="info-value">
-                            680
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            Online Orders
-                        </span>
-                        <span class="info-value">
-                            390
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            Average Delivery Time
-                        </span>
-                        <span class="info-value">
-                            2.8 Days
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            Customer Retention Rate
-                        </span>
-                        <span class="info-value">
-                            92%
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ===== PROJECTS (CASES) ===== -->
-        <div class="content" id="page-projects" style="padding:22px;">
-
-            <div class="page-title">Inventory Management</div>
-            <div class="page-sub">
-                Monitor medicine stock, batch tracking and inventory status
-            </div>
-
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon blue">
-                        <i class="fa-solid fa-capsules"></i>
-                    </div>
-                    <div>
-                        <h2>325</h2>
-                        <p>Total Medicines</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon gold">
-                        <i class="fa-solid fa-boxes-stacked"></i>
-                    </div>
-                    <div>
-                        <h2>88</h2>
-                        <p>Low Stock Items</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon green">
-                        <i class="fa-solid fa-check-circle"></i>
-                    </div>
-                    <div>
-                        <h2>198</h2>
-                        <p>Available Products</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon red">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                    </div>
-                    <div>
-                        <h2>45</h2>
-                        <p>Expiring Soon</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="table-box">
-
-                <div class="table-header">
-                    <h2>Medicine Inventory</h2>
-
-                    <div style="display:flex;gap:10px;">
-                        <button class="btn-outline errorpage">
-                            Filter
-                        </button>
-
-                        <button class="btn-gold errorpage">
-                            + Add Medicine
-                        </button>
-                    </div>
-
-                </div>
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Medicine ID</th>
-                            <th>Medicine Name</th>
-                            <th>Category</th>
-                            <th>Supplier</th>
-                            <th>Stock</th>
-                            <th>Status</th>
-                            <th>Expiry Date</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>#MED-1024</td>
-                            <td>CardioMax 40mg</td>
-                            <td>Cardiology</td>
-                            <td>Sun Pharma</td>
-                            <td>1250</td>
-                            <td><span class="status s-active">Available</span></td>
-                            <td>15 Dec 2027</td>
-                        </tr>
-
-                        <tr>
-                            <td>#MED-1023</td>
-                            <td>NeuroCalm 25mg</td>
-                            <td>Neurology</td>
-                            <td>Cipla</td>
-                            <td>420</td>
-                            <td><span class="status s-pending">Low Stock</span></td>
-                            <td>20 Oct 2027</td>
-                        </tr>
-
-                        <tr>
-                            <td>#MED-1022</td>
-                            <td>AmoxiPlus 500mg</td>
-                            <td>Antibiotic</td>
-                            <td>Dr. Reddy's</td>
-                            <td>980</td>
-                            <td><span class="status s-active">Available</span></td>
-                            <td>11 Jan 2028</td>
-                        </tr>
-
-                        <tr>
-                            <td>#MED-1021</td>
-                            <td>OncoClear 100mg</td>
-                            <td>Oncology</td>
-                            <td>Pfizer</td>
-                            <td>160</td>
-                            <td><span class="status s-pending">Low Stock</span></td>
-                            <td>05 Aug 2027</td>
-                        </tr>
-
-                        <tr>
-                            <td>#MED-1020</td>
-                            <td>AntiFlu 250mg</td>
-                            <td>General Medicine</td>
-                            <td>GSK</td>
-                            <td>0</td>
-                            <td><span class="status s-closed">Out of Stock</span></td>
-                            <td>12 Jul 2027</td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-            <div class="grid-2">
-
-                <div class="info-box">
-
-                    <h3>
-                        <i class="fa-solid fa-chart-pie"></i>
-                        Medicine Category Breakdown
-                    </h3>
-
-                    <div class="info-row">
-                        <span class="info-label">Cardiology</span>
-                        <span class="info-value">120</span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">Neurology</span>
-                        <span class="info-value">95</span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">Oncology</span>
-                        <span class="info-value">72</span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">Antibiotics</span>
-                        <span class="info-value">58</span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">Vaccines</span>
-                        <span class="info-value">35</span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">General Medicine</span>
-                        <span class="info-value">45</span>
-                    </div>
-
-                </div>
-
-                <div class="info-box">
-
-                    <h3>
-                        <i class="fa-solid fa-file-medical"></i>
-                        Recent Inventory Reports
-                    </h3>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            📄 Stock_Report_June.pdf
-                        </span>
-                        <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
-                            View
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            📄 Expiry_Items.pdf
-                        </span>
-                        <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
-                            View
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            📄 Supplier_Report.pdf
-                        </span>
-                        <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
-                            View
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            📄 Batch_Tracking.pdf
-                        </span>
-                        <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
-                            View
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">
-                            📄 Medicine_Audit.pdf
-                        </span>
-                        <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
-                            View
-                        </span>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-        <!-- ===== MEETINGS ===== -->
-        <div class="content" id="page-meetings" style="padding:22px;">
-
-
-            <div class="page-title">Orders & Deliveries</div>
-
-            <div class="page-sub">
-                Manage medicine orders, deliveries and supplier schedules
-            </div>
-
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon blue">
-                        <i class="fa-solid fa-truck"></i>
-                    </div>
-                    <div>
-                        <h2>12</h2>
-                        <p>Today's Deliveries</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon gold">
-                        <i class="fa-solid fa-calendar-week"></i>
-                    </div>
-                    <div>
-                        <h2>34</h2>
-                        <p>This Week Orders</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon green">
-                        <i class="fa-solid fa-box-open"></i>
-                    </div>
-                    <div>
-                        <h2>8</h2>
-                        <p>Pending Shipments</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon red">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                    </div>
+                    <div class="card-icon blue"><i class="fa-solid fa-truck"></i></div>
                     <div>
                         <h2>3</h2>
-                        <p>Delayed Deliveries</p>
+                        <p>In Transit</p>
                     </div>
                 </div>
-
+                <div class="card">
+                    <div class="card-icon red"><i class="fa-solid fa-clock"></i></div>
+                    <div>
+                        <h2>1</h2>
+                        <p>Cancelled</p>
+                    </div>
+                </div>
             </div>
+           <div class="table-box">
+    <div class="table-header">
+        <h2>Order History</h2>
+        <div style="display:flex;gap:10px;">
+            <button class="btn-outline errorpage">Export</button>
+            <button class="btn-gold errorpage">+ Place New Order</button>
+        </div>
+    </div>
 
-            <div class="table-box">
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Medicine</th>
+                <th>Quantity</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Order Date</th>
+            </tr>
+        </thead>
 
-                <div class="table-header">
-                    <h2>Upcoming Deliveries</h2>
-                    <button class="btn-gold errorpage">
-                        + New Order
-                    </button>
+        <tbody>
+
+            <tr>
+                <td>#ORD-3045</td>
+                <td>CardioMax 40mg</td>
+                <td>500 units</td>
+                <td>₹85,000</td>
+                <td><span class="status s-active">Delivered</span></td>
+                <td>05 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#ORD-3046</td>
+                <td>AmoxiPlus 500mg</td>
+                <td>300 units</td>
+                <td>₹42,000</td>
+                <td><span class="status s-pending">Processing</span></td>
+                <td>08 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#ORD-3047</td>
+                <td>NeuroCalm 25mg</td>
+                <td>200 units</td>
+                <td>₹38,500</td>
+                <td><span class="status s-blue">Shipped</span></td>
+                <td>10 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#ORD-3048</td>
+                <td>ImmunoBoost 500mg</td>
+                <td>150 units</td>
+                <td>₹21,000</td>
+                <td><span class="status s-pending">Pending</span></td>
+                <td>11 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#ORD-3049</td>
+                <td>AntiFlu 250mg</td>
+                <td>100 units</td>
+                <td>₹9,500</td>
+                <td><span class="status s-closed">Cancelled</span></td>
+                <td>02 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#ORD-3044</td>
+                <td>OncoClear 100mg</td>
+                <td>50 units</td>
+                <td>₹62,000</td>
+                <td><span class="status s-active">Delivered</span></td>
+                <td>28 May 2026</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+         <div class="grid-2">
+
+    <div class="info-box">
+        <h3>
+            <i class="fa-solid fa-capsules"></i>
+            Most Ordered Medicines
+        </h3>
+
+        <div class="client-card">
+            <div class="client-avatar">C</div>
+            <div>
+                <div class="client-name">CardioMax 40mg</div>
+                <div class="client-case">
+                    Cardiology • Last ordered 05 Jun 2026
                 </div>
-
-                <div style="padding:0 0 10px;">
-
-                    <div class="meeting-card">
-
-                        <div class="meeting-date">
-                            <div class="meeting-day">10</div>
-                            <div class="meeting-month">JUN</div>
-                        </div>
-
-                        <div>
-                            <div class="meeting-title">
-                                CardioMax 40mg – Apollo Pharmacy
-                            </div>
-
-                            <div class="meeting-meta">
-                                <span>
-                                    <i class="fa-solid fa-clock"></i>
-                                    10:00 AM
-                                </span>
-
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    Chennai Warehouse
-                                </span>
-
-                                <span>
-                                    <i class="fa-solid fa-user"></i>
-                                    David Lee
-                                </span>
-                            </div>
-                        </div>
-
-                        <span class="badge s-active" style="margin-left:auto;white-space:nowrap;">
-                            Dispatched
-                        </span>
-
-                    </div>
-
-                    <div class="meeting-card">
-
-                        <div class="meeting-date">
-                            <div class="meeting-day">12</div>
-                            <div class="meeting-month">JUN</div>
-                        </div>
-
-                        <div>
-                            <div class="meeting-title">
-                                NeuroCalm 25mg – MedPlus Healthcare
-                            </div>
-
-                            <div class="meeting-meta">
-                                <span>
-                                    <i class="fa-solid fa-clock"></i>
-                                    02:30 PM
-                                </span>
-
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    Madurai Distribution Center
-                                </span>
-
-                                <span>
-                                    <i class="fa-solid fa-user"></i>
-                                    Alex Kumar
-                                </span>
-                            </div>
-                        </div>
-
-                        <span class="badge s-blue" style="margin-left:auto;white-space:nowrap;">
-                            Scheduled
-                        </span>
-
-                    </div>
-
-                    <div class="meeting-card">
-
-                        <div class="meeting-date">
-                            <div class="meeting-day">15</div>
-                            <div class="meeting-month">JUN</div>
-                        </div>
-
-                        <div>
-                            <div class="meeting-title">
-                                AmoxiPlus 500mg – Global Hospitals
-                            </div>
-
-                            <div class="meeting-meta">
-                                <span>
-                                    <i class="fa-solid fa-clock"></i>
-                                    11:00 AM
-                                </span>
-
-                                <span>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    Bangalore Logistics Hub
-                                </span>
-
-                                <span>
-                                    <i class="fa-solid fa-user"></i>
-                                    Priya Sharma
-                                </span>
-                            </div>
-                        </div>
-
-                        <span class="badge s-active" style="margin-left:auto;white-space:nowrap;">
-                            In Transit
-                        </span>
-
-                    </div>
-
-                </div>
-
             </div>
+            <span class="badge s-active">
+                6 Orders
+            </span>
+        </div>
 
+        <div class="client-card">
+            <div class="client-avatar">N</div>
+            <div>
+                <div class="client-name">NeuroCalm 25mg</div>
+                <div class="client-case">
+                    Neurology • Last ordered 10 Jun 2026
+                </div>
+            </div>
+            <span class="badge s-blue">
+                4 Orders
+            </span>
+        </div>
+
+        <div class="client-card">
+            <div class="client-avatar">A</div>
+            <div>
+                <div class="client-name">AmoxiPlus 500mg</div>
+                <div class="client-case">
+                    Antibiotic • Last ordered 08 Jun 2026
+                </div>
+            </div>
+            <span class="badge s-active">
+                3 Orders
+            </span>
+        </div>
+
+    </div>
+
+    <div class="info-box">
+
+        <h3>
+            <i class="fa-solid fa-chart-line"></i>
+            Order Summary
+        </h3>
+
+        <div class="info-row">
+            <span class="info-label">
+                Total Spend This Year
+            </span>
+            <span class="info-value">
+                ₹6,42,000
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">
+                Average Order Value
+            </span>
+            <span class="info-value">
+                ₹35,700
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">
+                Average Delivery Time
+            </span>
+            <span class="info-value">
+                2.8 Days
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">
+                Assigned Sales Executive
+            </span>
+            <span class="info-value">
+                David Lee
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">
+                Account Status
+            </span>
+            <span class="info-value">
+                Active
+            </span>
+        </div>
+
+    </div>
+
+</div>
+        </div>
+
+        <!-- ===== MEDICINE CATALOG ===== -->
+       <div class="content" id="page-catalog" style="padding:22px;">
+
+    <div class="page-title">Medicine Catalog</div>
+    <div class="page-sub">
+        Browse available medicines and check stock availability
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-icon blue">
+                <i class="fa-solid fa-capsules"></i>
+            </div>
+            <div>
+                <h2>325</h2>
+                <p>Total Medicines</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon green">
+                <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <div>
+                <h2>198</h2>
+                <p>Available Products</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon gold">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <div>
+                <h2>32</h2>
+                <p>Frequently Ordered</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon red">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div>
+                <h2>12</h2>
+                <p>Limited Stock</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="table-box">
+
+        <div class="table-header">
+            <h2>Available Medicines</h2>
+
+            <div style="display:flex;gap:10px;">
+                <button class="btn-outline errorpage">
+                    Filter
+                </button>
+
+                <button class="btn-gold errorpage">
+                    + Add to Cart
+                </button>
+            </div>
 
         </div>
 
+        <table>
 
-        <!-- ===== REPORTS ===== -->
-        <div class="content" id="page-reports" style="padding:22px;">
+            <thead>
+                <tr>
+                    <th>Medicine ID</th>
+                    <th>Medicine Name</th>
+                    <th>Category</th>
+                    <th>Price/Unit</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                    <th>Expiry Date</th>
+                </tr>
+            </thead>
 
-            <div class="page-title">Sales & Analytics</div>
+            <tbody>
 
-            <div class="page-sub">
-                Pharmaceutical business performance overview and sales insights
+                <tr>
+                    <td>#MED-1024</td>
+                    <td>CardioMax 40mg</td>
+                    <td>Cardiology</td>
+                    <td>₹170</td>
+                    <td>1250</td>
+                    <td><span class="status s-active">Available</span></td>
+                    <td>15 Dec 2027</td>
+                </tr>
+
+                <tr>
+                    <td>#MED-1023</td>
+                    <td>NeuroCalm 25mg</td>
+                    <td>Neurology</td>
+                    <td>₹192</td>
+                    <td>420</td>
+                    <td><span class="status s-pending">Low Stock</span></td>
+                    <td>20 Oct 2027</td>
+                </tr>
+
+                <tr>
+                    <td>#MED-1022</td>
+                    <td>AmoxiPlus 500mg</td>
+                    <td>Antibiotic</td>
+                    <td>₹140</td>
+                    <td>980</td>
+                    <td><span class="status s-active">Available</span></td>
+                    <td>11 Jan 2028</td>
+                </tr>
+
+                <tr>
+                    <td>#MED-1021</td>
+                    <td>OncoClear 100mg</td>
+                    <td>Oncology</td>
+                    <td>₹1,240</td>
+                    <td>160</td>
+                    <td><span class="status s-pending">Low Stock</span></td>
+                    <td>05 Aug 2027</td>
+                </tr>
+
+                <tr>
+                    <td>#MED-1020</td>
+                    <td>AntiFlu 250mg</td>
+                    <td>General Medicine</td>
+                    <td>₹95</td>
+                    <td>0</td>
+                    <td><span class="status s-closed">Out of Stock</span></td>
+                    <td>12 Jul 2027</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="grid-2">
+
+        <div class="info-box">
+
+            <h3>
+                <i class="fa-solid fa-chart-pie"></i>
+                Catalog by Category
+            </h3>
+
+            <div class="info-row">
+                <span class="info-label">Cardiology</span>
+                <span class="info-value">120</span>
             </div>
 
-            <div class="cards">
-
-                <div class="card">
-                    <div class="card-icon green">
-                        <i class="fa-solid fa-money-bill-wave"></i>
-                    </div>
-                    <div>
-                        <h2>$154,500</h2>
-                        <p>Total Sales Revenue</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon blue">
-                        <i class="fa-solid fa-arrow-trend-up"></i>
-                    </div>
-                    <div>
-                        <h2>+24%</h2>
-                        <p>Growth This Month</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon gold">
-                        <i class="fa-solid fa-capsules"></i>
-                    </div>
-                    <div>
-                        <h2>89%</h2>
-                        <p>Product Availability</p>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-icon red">
-                        <i class="fa-solid fa-file-invoice-dollar"></i>
-                    </div>
-                    <div>
-                        <h2>$12,800</h2>
-                        <p>Pending Payments</p>
-                    </div>
-                </div>
-
+            <div class="info-row">
+                <span class="info-label">Neurology</span>
+                <span class="info-value">95</span>
             </div>
 
-            <div class="grid-2">
-
-                <div class="info-box">
-
-                    <h3>
-                        <i class="fa-solid fa-chart-bar"></i>
-                        Revenue by Product Category
-                    </h3>
-
-                    <div class="report-card" style="background:#f3f3f3;border:none;">
-                        <div class="report-title">Cardiology Medicines</div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:80%"></div>
-                        </div>
-                        <div class="progress-label">
-                            <span>$48,400</span>
-                            <span>80%</span>
-                        </div>
-                    </div>
-
-                    <div class="report-card" style="background:#f3f3f3;border:none;">
-                        <div class="report-title">Neurology Products</div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:65%"></div>
-                        </div>
-                        <div class="progress-label">
-                            <span>$34,900</span>
-                            <span>65%</span>
-                        </div>
-                    </div>
-
-                    <div class="report-card" style="background:#f3f3f3;border:none;">
-                        <div class="report-title">Oncology Medicines</div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:55%"></div>
-                        </div>
-                        <div class="progress-label">
-                            <span>$28,300</span>
-                            <span>55%</span>
-                        </div>
-                    </div>
-
-                    <div class="report-card" style="background:#f3f3f3;border:none;">
-                        <div class="report-title">General Healthcare</div>
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:45%"></div>
-                        </div>
-                        <div class="progress-label">
-                            <span>$21,900</span>
-                            <span>45%</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="info-box">
-
-                    <h3>
-                        <i class="fa-solid fa-user-doctor"></i>
-                        Sales Team Performance
-                    </h3>
-
-                    <div style="margin-bottom:14px;">
-                        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                            <span style="color:#334155;font-size:13px;">
-                                David Lee
-                            </span>
-                            <span style="color:#0f766e;font-size:13px;">
-                                142 Orders • 88%
-                            </span>
-                        </div>
-
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:88%"></div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom:14px;">
-                        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                            <span style="color:#334155;font-size:13px;">
-                                Alex Kumar
-                            </span>
-                            <span style="color:#0f766e;font-size:13px;">
-                                121 Orders • 79%
-                            </span>
-                        </div>
-
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:79%"></div>
-                        </div>
-                    </div>
-
-                    <div style="margin-bottom:14px;">
-                        <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                            <span style="color:#334155;font-size:13px;">
-                                Priya Sharma
-                            </span>
-                            <span style="color:#0f766e;font-size:13px;">
-                                98 Orders • 72%
-                            </span>
-                        </div>
-
-                        <div class="progress-bar">
-                            <div class="progress-fill" style="width:72%"></div>
-                        </div>
-                    </div>
-
-                    <div class="info-row" style="margin-top:12px;">
-                        <span class="info-label">Monthly Sales Target</span>
-                        <span class="info-value" style="color:#4ade80;">
-                            $180,000
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">Achieved</span>
-                        <span class="info-value" style="color:#0f766e;">
-                            $154,500 (86%)
-                        </span>
-                    </div>
-
-                    <div class="info-row">
-                        <span class="info-label">Outstanding Payments</span>
-                        <span class="info-value" style="color:#f87171;">
-                            $12,800
-                        </span>
-                    </div>
-
-                </div>
-
+            <div class="info-row">
+                <span class="info-label">Oncology</span>
+                <span class="info-value">72</span>
             </div>
 
+            <div class="info-row">
+                <span class="info-label">Antibiotics</span>
+                <span class="info-value">58</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">Vaccines</span>
+                <span class="info-value">35</span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">General Medicine</span>
+                <span class="info-value">45</span>
+            </div>
 
         </div>
+
+        <div class="info-box">
+
+            <h3>
+                <i class="fa-solid fa-file-medical"></i>
+                Downloadable Resources
+            </h3>
+
+            <div class="info-row">
+                <span class="info-label">
+                    📄 Product_Catalog_June.pdf
+                </span>
+                <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
+                    View
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">
+                    📄 Price_List.pdf
+                </span>
+                <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
+                    View
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">
+                    📄 Discount_Offers.pdf
+                </span>
+                <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
+                    View
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">
+                    📄 New_Arrivals.pdf
+                </span>
+                <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
+                    View
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">
+                    📄 Product_Brochure.pdf
+                </span>
+                <span class="info-value errorpage" style="color:#60a5fa;font-size:12px;">
+                    View
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+        <!-- ===== DELIVERIES ===== -->
+      <div class="content" id="page-deliveries" style="padding:22px;">
+
+
+<div class="page-title">Deliveries</div>
+
+<div class="page-sub">
+    Track your order shipments and delivery schedules
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-truck"></i>
+        </div>
+        <div>
+            <h2>3</h2>
+            <p>In Transit</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon gold">
+            <i class="fa-solid fa-calendar-week"></i>
+        </div>
+        <div>
+            <h2>1</h2>
+            <p>This Week</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-box-open"></i>
+        </div>
+        <div>
+            <h2>14</h2>
+            <p>Delivered</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon red">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div>
+            <h2>0</h2>
+            <p>Delayed</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="table-box">
+
+    <div class="table-header">
+        <h2>Upcoming Deliveries</h2>
+        <button class="btn-gold errorpage">
+            Track Order
+        </button>
+    </div>
+
+    <div style="padding:0 0 10px;">
+
+        <div class="meeting-card">
+
+            <div class="meeting-date">
+                <div class="meeting-day">18</div>
+                <div class="meeting-month">JUN</div>
+            </div>
+
+            <div>
+                <div class="meeting-title">
+                    AmoxiPlus 500mg – Order #ORD-3046
+                </div>
+
+                <div class="meeting-meta">
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        10:00 AM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Chennai Warehouse
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-user"></i>
+                        David Lee
+                    </span>
+                </div>
+            </div>
+
+            <span class="badge s-pending"
+                style="margin-left:auto;white-space:nowrap;">
+                Processing
+            </span>
+
+        </div>
+
+        <div class="meeting-card">
+
+            <div class="meeting-date">
+                <div class="meeting-day">20</div>
+                <div class="meeting-month">JUN</div>
+            </div>
+
+            <div>
+                <div class="meeting-title">
+                    NeuroCalm 25mg – Order #ORD-3047
+                </div>
+
+                <div class="meeting-meta">
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        02:30 PM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Madurai Distribution Center
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-user"></i>
+                        Alex Kumar
+                    </span>
+                </div>
+            </div>
+
+            <span class="badge s-blue"
+                style="margin-left:auto;white-space:nowrap;">
+                Shipped
+            </span>
+
+        </div>
+
+        <div class="meeting-card">
+
+            <div class="meeting-date">
+                <div class="meeting-day">22</div>
+                <div class="meeting-month">JUN</div>
+            </div>
+
+            <div>
+                <div class="meeting-title">
+                    ImmunoBoost 500mg – Order #ORD-3048
+                </div>
+
+                <div class="meeting-meta">
+                    <span>
+                        <i class="fa-solid fa-clock"></i>
+                        11:00 AM
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-location-dot"></i>
+                        Bangalore Logistics Hub
+                    </span>
+
+                    <span>
+                        <i class="fa-solid fa-user"></i>
+                        Priya Sharma
+                    </span>
+                </div>
+            </div>
+
+            <span class="badge s-pending"
+                style="margin-left:auto;white-space:nowrap;">
+                Pending
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+        <!-- ===== INVOICES & PAYMENTS ===== -->
+       <div class="content" id="page-invoices" style="padding:22px;">
+
+<div class="page-title">Invoices & Payments</div>
+
+<div class="page-sub">
+    View invoices, payment history and outstanding balances
+</div>
+
+<div class="cards">
+
+    <div class="card">
+        <div class="card-icon green">
+            <i class="fa-solid fa-money-bill-wave"></i>
+        </div>
+        <div>
+            <h2>₹6,42,000</h2>
+            <p>Total Billed This Year</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon blue">
+            <i class="fa-solid fa-file-circle-check"></i>
+        </div>
+        <div>
+            <h2>13</h2>
+            <p>Paid Invoices</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon gold">
+            <i class="fa-solid fa-file-invoice"></i>
+        </div>
+        <div>
+            <h2>5</h2>
+            <p>Pending Invoices</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-icon red">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+        </div>
+        <div>
+            <h2>₹2,40,000</h2>
+            <p>Outstanding Balance</p>
+        </div>
+    </div>
+
+</div>
+
+<div class="table-box">
+
+    <div class="table-header">
+        <h2>Invoice History</h2>
+        <button class="btn-gold errorpage">Pay Now</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>Order ID</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Due Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>#INV-7001</td>
+                <td>#ORD-3045</td>
+                <td>₹85,000</td>
+                <td><span class="status s-active">Paid</span></td>
+                <td>10 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#INV-7002</td>
+                <td>#ORD-3046</td>
+                <td>₹42,000</td>
+                <td><span class="status s-pending">Pending</span></td>
+                <td>25 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#INV-7003</td>
+                <td>#ORD-3047</td>
+                <td>₹38,500</td>
+                <td><span class="status s-pending">Pending</span></td>
+                <td>27 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#INV-7004</td>
+                <td>#ORD-3048</td>
+                <td>₹21,000</td>
+                <td><span class="status s-pending">Pending</span></td>
+                <td>29 Jun 2026</td>
+            </tr>
+
+            <tr>
+                <td>#INV-6998</td>
+                <td>#ORD-3044</td>
+                <td>₹62,000</td>
+                <td><span class="status s-active">Paid</span></td>
+                <td>05 Jun 2026</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="grid-2">
+
+    <div class="info-box">
+
+        <h3>
+            <i class="fa-solid fa-chart-bar"></i>
+            Spend by Product Category
+        </h3>
+
+        <div class="report-card" style="background:#f3f3f3;border:none;">
+            <div class="report-title">Cardiology Medicines</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:80%"></div>
+            </div>
+            <div class="progress-label">
+                <span>₹2,56,000</span>
+                <span>80%</span>
+            </div>
+        </div>
+
+        <div class="report-card" style="background:#f3f3f3;border:none;">
+            <div class="report-title">Neurology Products</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:65%"></div>
+            </div>
+            <div class="progress-label">
+                <span>₹1,54,000</span>
+                <span>65%</span>
+            </div>
+        </div>
+
+        <div class="report-card" style="background:#f3f3f3;border:none;">
+            <div class="report-title">Oncology Medicines</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:55%"></div>
+            </div>
+            <div class="progress-label">
+                <span>₹1,24,000</span>
+                <span>55%</span>
+            </div>
+        </div>
+
+        <div class="report-card" style="background:#f3f3f3;border:none;">
+            <div class="report-title">General Healthcare</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width:45%"></div>
+            </div>
+            <div class="progress-label">
+                <span>₹1,08,000</span>
+                <span>45%</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="info-box">
+
+        <h3>
+            <i class="fa-solid fa-receipt"></i>
+            Payment Summary
+        </h3>
+
+        <div class="info-row">
+            <span class="info-label">Total Billed</span>
+            <span class="info-value" style="color:#0f766e;">
+                ₹6,42,000
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Total Paid</span>
+            <span class="info-value" style="color:#4ade80;">
+                ₹4,02,000
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Outstanding Balance</span>
+            <span class="info-value" style="color:#f87171;">
+                ₹2,40,000
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Next Payment Due</span>
+            <span class="info-value">
+                25 Jun 2026
+            </span>
+        </div>
+
+        <div class="info-row">
+            <span class="info-label">Preferred Payment Method</span>
+            <span class="info-value">
+                Bank Transfer
+            </span>
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
 
 
         <!-- ===== SETTINGS ===== -->
-        <div class="content" id="page-settings" style="padding:22px;">
+     <div class="content" id="page-settings" style="padding:22px;">
 
 
-            <div class="page-title">Settings</div>
+<div class="page-title">Settings</div>
 
-            <div class="page-sub">
-                Manage company profile, inventory preferences and account settings
+<div class="page-sub">
+    Manage your company profile, preferences and account settings
+</div>
+
+<div class="grid-2">
+
+    <div>
+
+        <div class="setting-section">
+
+            <h3>
+                <i class="fa-solid fa-building"></i>
+                Company Profile
+            </h3>
+
+            <label style="color:black;font-size:12px;">
+                Company Name
+            </label>
+
+            <input class="input-field"
+                value="Apollo Pharmacy">
+
+            <label style="color:black;font-size:12px;">
+                Email Address
+            </label>
+
+            <input class="input-field"
+                value="apollo@medicore.com">
+
+            <label style="color:black;font-size:12px;">
+                Contact Number
+            </label>
+
+            <input class="input-field"
+                value="+91 98765 43210">
+
+            <label style="color:black;font-size:12px;">
+                Delivery Address
+            </label>
+
+            <input class="input-field"
+                value="12 Anna Salai, Chennai - 600002">
+
+            <button class="btn-gold"
+                style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">
+                Save Changes
+            </button>
+
+        </div>
+
+        <div class="setting-section">
+
+            <h3>
+                <i class="fa-solid fa-lock"></i>
+                Security Settings
+            </h3>
+
+            <label style="color:black;font-size:12px;">
+                Current Password
+            </label>
+
+            <input class="input-field"
+                type="password"
+                placeholder="Enter Current Password">
+
+            <label style="color:black;font-size:12px;">
+                New Password
+            </label>
+
+            <input class="input-field"
+                type="password"
+                placeholder="Enter New Password">
+
+            <button class="btn-gold"
+                style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">
+                Change Password
+            </button>
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <div class="setting-section">
+
+            <h3>
+                <i class="fa-solid fa-bell"></i>
+                Notifications
+            </h3>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">
+                        Order Status Updates
+                    </div>
+                    <div class="setting-desc">
+                        Get alerts when order status changes
+                    </div>
+                </div>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
             </div>
 
-            <div class="grid-2">
-
+            <div class="setting-row">
                 <div>
-
-                    <div class="setting-section">
-
-                        <h3>
-                            <i class="fa-solid fa-building"></i>
-                            Company Profile
-                        </h3>
-
-                        <label style="color:black;font-size:12px;">
-                            Company Name
-                        </label>
-
-                        <input class="input-field" value="MediCore Pharmaceuticals">
-
-                        <label style="color:black;font-size:12px;">
-                            Email Address
-                        </label>
-
-                        <input class="input-field" value="admin@medicorepharma.com">
-
-                        <label style="color:black;font-size:12px;">
-                            Contact Number
-                        </label>
-
-                        <input class="input-field" value="+91 98765 43210">
-
-                        <label style="color:black;font-size:12px;">
-                            Head Office Address
-                        </label>
-
-                        <input class="input-field" value="45 Pharma Tech Park, Chennai - 600001">
-
-                        <button class="btn-gold" style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">
-                            Save Changes
-                        </button>
-
+                    <div class="setting-label">
+                        Delivery Alerts
                     </div>
-
-                    <div class="setting-section">
-
-                        <h3>
-                            <i class="fa-solid fa-lock"></i>
-                            Security Settings
-                        </h3>
-
-                        <label style="color:black;font-size:12px;">
-                            Current Password
-                        </label>
-
-                        <input class="input-field" type="password" placeholder="Enter Current Password">
-
-                        <label style="color:black;font-size:12px;">
-                            New Password
-                        </label>
-
-                        <input class="input-field" type="password" placeholder="Enter New Password">
-
-                        <button class="btn-gold" style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">
-                            Change Password
-                        </button>
-
+                    <div class="setting-desc">
+                        Notify when shipment is out for delivery
                     </div>
-
                 </div>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
 
+            <div class="setting-row">
                 <div>
-
-                    <div class="setting-section">
-
-                        <h3>
-                            <i class="fa-solid fa-bell"></i>
-                            Notifications
-                        </h3>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    Low Stock Alerts
-                                </div>
-                                <div class="setting-desc">
-                                    Get alerts when stock is running low
-                                </div>
-                            </div>
-                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    New Orders
-                                </div>
-                                <div class="setting-desc">
-                                    Notify when a new order is received
-                                </div>
-                            </div>
-                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    Payment Confirmation
-                                </div>
-                                <div class="setting-desc">
-                                    Alert when payment is received
-                                </div>
-                            </div>
-                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    Expiry Notifications
-                                </div>
-                                <div class="setting-desc">
-                                    Notify for expiring medicines
-                                </div>
-                            </div>
-                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
+                    <div class="setting-label">
+                        Invoice Reminders
                     </div>
-
-                    <div class="setting-section">
-
-                        <h3>
-                            <i class="fa-solid fa-sliders"></i>
-                            Preferences
-                        </h3>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    Dark Mode
-                                </div>
-                                <div class="setting-desc">
-                                    Enable dark theme
-                                </div>
-                            </div>
-                            <div class="toggle" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    Auto Inventory Backup
-                                </div>
-                                <div class="setting-desc">
-                                    Automatically backup stock records
-                                </div>
-                            </div>
-                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
-                        <div class="setting-row">
-                            <div>
-                                <div class="setting-label">
-                                    Two-Factor Authentication
-                                </div>
-                                <div class="setting-desc">
-                                    Extra account security
-                                </div>
-                            </div>
-                            <div class="toggle on" onclick="this.classList.toggle('on')"></div>
-                        </div>
-
+                    <div class="setting-desc">
+                        Alert before invoice due date
                     </div>
-
-                    <div class="setting-section">
-
-                        <h3>
-                            <i class="fa-solid fa-users-gear"></i>
-                            Employee Access Control
-                        </h3>
-
-                        <div class="info-row">
-                            <span class="info-label">
-                                David Lee
-                            </span>
-                            <span class="status s-active">
-                                Admin
-                            </span>
-                        </div>
-
-                        <div class="info-row">
-                            <span class="info-label">
-                                Alex Kumar
-                            </span>
-                            <span class="status s-blue">
-                                Manager
-                            </span>
-                        </div>
-
-                        <div class="info-row">
-                            <span class="info-label">
-                                Priya Sharma
-                            </span>
-                            <span class="status s-pending">
-                                Staff
-                            </span>
-                        </div>
-
-                        <button class="btn-outline errorpage" style="width:100%;margin-top:14px;padding:10px;">
-                            Manage Access
-                        </button>
-
-                    </div>
-
                 </div>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
 
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">
+                        New Offers & Discounts
+                    </div>
+                    <div class="setting-desc">
+                        Notify about new offers on medicines
+                    </div>
+                </div>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
             </div>
 
         </div>
+
+        <div class="setting-section">
+
+            <h3>
+                <i class="fa-solid fa-sliders"></i>
+                Preferences
+            </h3>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">
+                        Dark Mode
+                    </div>
+                    <div class="setting-desc">
+                        Enable dark theme
+                    </div>
+                </div>
+                <div class="toggle" onclick="this.classList.toggle('on')"></div>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">
+                        Auto Reorder Reminders
+                    </div>
+                    <div class="setting-desc">
+                        Remind to reorder frequently used medicines
+                    </div>
+                </div>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+
+            <div class="setting-row">
+                <div>
+                    <div class="setting-label">
+                        Two-Factor Authentication
+                    </div>
+                    <div class="setting-desc">
+                        Extra account security
+                    </div>
+                </div>
+                <div class="toggle on" onclick="this.classList.toggle('on')"></div>
+            </div>
+
+        </div>
+
+        <div class="setting-section">
+
+            <h3>
+                <i class="fa-solid fa-users-gear"></i>
+                Linked Account Users
+            </h3>
+
+            <div class="info-row">
+                <span class="info-label">
+                    Rajesh Menon
+                </span>
+                <span class="status s-active">
+                    Owner
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">
+                    Sneha Iyer
+                </span>
+                <span class="status s-blue">
+                    Procurement
+                </span>
+            </div>
+
+            <div class="info-row">
+                <span class="info-label">
+                    Vikram Das
+                </span>
+                <span class="status s-pending">
+                    Staff
+                </span>
+            </div>
+
+            <button class="btn-outline errorpage"
+                style="width:100%;margin-top:14px;padding:10px;">
+                Manage Users
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
 
     </div>
 
@@ -1966,7 +2021,7 @@
         const menuItems = document.querySelectorAll('.menu li[data-page]');
         const pages = document.querySelectorAll('.content');
         const pageTitle = document.getElementById('pageTitle');
-        const pageTitles = { dashboard: 'Dashboard', clients: 'Clients', projects: 'Management', meetings: 'Hearings', reports: 'Reports', settings: 'Settings' };
+        const pageTitles = { dashboard: 'Dashboard', myorders: 'My Orders', catalog: 'Medicine Catalog', deliveries: 'Deliveries', invoices: 'Invoices & Payments', settings: 'Settings' };
 
         menuItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -2003,163 +2058,163 @@
 
         /* ===== PASSWORD EYE ICON ===== */
 
-        const passwordFields = document.querySelectorAll(
-            'input[type="password"]'
-        );
+const passwordFields = document.querySelectorAll(
+  'input[type="password"]'
+);
 
-        passwordFields.forEach((input) => {
+passwordFields.forEach((input) => {
 
-            const wrapper = document.createElement("div");
-            wrapper.style.position = "relative";
+  const wrapper = document.createElement("div");
+  wrapper.style.position = "relative";
 
-            input.parentNode.insertBefore(wrapper, input);
-            wrapper.appendChild(input);
+  input.parentNode.insertBefore(wrapper, input);
+  wrapper.appendChild(input);
 
-            input.style.paddingRight = "45px";
+  input.style.paddingRight = "45px";
 
-            const eye = document.createElement("i");
-            eye.className = "fa-solid fa-eye";
-            eye.style.position = "absolute";
-            eye.style.right = "15px";
-            eye.style.top = "50%";
-            eye.style.transform = "translateY(-50%)";
-            eye.style.color = "#888";
-            eye.style.cursor = "pointer";
+  const eye = document.createElement("i");
+  eye.className = "fa-solid fa-eye";
+  eye.style.position = "absolute";
+  eye.style.right = "15px";
+  eye.style.top = "50%";
+  eye.style.transform = "translateY(-50%)";
+  eye.style.color = "#888";
+  eye.style.cursor = "pointer";
 
-            wrapper.appendChild(eye);
+  wrapper.appendChild(eye);
 
-            eye.addEventListener("click", () => {
+  eye.addEventListener("click", () => {
 
-                if (input.type === "password") {
-                    input.type = "text";
-                    eye.classList.remove("fa-eye");
-                    eye.classList.add("fa-eye-slash");
-                } else {
-                    input.type = "password";
-                    eye.classList.remove("fa-eye-slash");
-                    eye.classList.add("fa-eye");
-                }
+    if (input.type === "password") {
+      input.type = "text";
+      eye.classList.remove("fa-eye");
+      eye.classList.add("fa-eye-slash");
+    } else {
+      input.type = "password";
+      eye.classList.remove("fa-eye-slash");
+      eye.classList.add("fa-eye");
+    }
 
-            });
+  });
 
-        });
-
-
-        /* ===== INPUT VALIDATION ===== */
-        const firmName = document.querySelector('input[value="MediCore Pharmaceuticals"]');
-        const emailField = document.querySelector('input[value="admin@medicorepharma.com"]');
-        const phoneField = document.querySelector('input[value="+91 98765 43210"]');
-        const addressField = document.querySelector('input[value="45 Pharma Tech Park, Chennai - 600001"]');
-
-        const currentPassword = document.querySelector('input[placeholder="Enter Current Password"]');
-        const newPassword = document.querySelector('input[placeholder="Enter New Password"]');
+});
 
 
-        /* NAME FIELD -> NO NUMBERS */
+/* ===== INPUT VALIDATION ===== */
+const firmName = document.querySelector('input[value="Apollo Pharmacy"]');
+const emailField = document.querySelector('input[value="apollo@medicore.com"]');
+const phoneField = document.querySelector('input[value="+91 98765 43210"]');
+const addressField = document.querySelector('input[value="12 Anna Salai, Chennai - 600002"]');
 
-        firmName.addEventListener("input", () => {
-
-            firmName.value = firmName.value.replace(/[^a-zA-Z\s.&]/g, '');
-
-        });
-
-
-        /* PHONE FIELD -> ONLY NUMBERS */
-
-        phoneField.addEventListener("input", () => {
-
-            phoneField.value = phoneField.value.replace(/[^0-9+ ]/g, '');
-
-        });
+const currentPassword = document.querySelector('input[placeholder="Enter Current Password"]');
+const newPassword = document.querySelector('input[placeholder="Enter New Password"]');
 
 
-        /* EMAIL VALIDATION */
+/* NAME FIELD -> NO NUMBERS */
 
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+firmName.addEventListener("input", () => {
 
+  firmName.value = firmName.value.replace(/[^a-zA-Z\s.&]/g, '');
 
-        /* ===== SAVE CHANGES VALIDATION ===== */
-
-        const saveBtn = document.querySelector('.setting-section .btn-gold');
-
-        saveBtn.addEventListener("click", () => {
-
-            if (
-                firmName.value.trim() === "" ||
-                emailField.value.trim() === "" ||
-                phoneField.value.trim() === "" ||
-                addressField.value.trim() === ""
-            ) {
-
-                alert("Please fill all fields");
-                return;
-
-            }
-
-            /* CHECK EMAIL FORMAT */
-
-            if (!emailPattern.test(emailField.value)) {
-
-                alert("Please enter valid email");
-                return;
-
-            }
-
-            alert("Profile Updated Successfully");
-
-        });
+});
 
 
-        /* ===== CHANGE PASSWORD VALIDATION ===== */
+/* PHONE FIELD -> ONLY NUMBERS */
 
-        const passwordBtn = document.querySelectorAll('.setting-section .btn-gold')[1];
+phoneField.addEventListener("input", () => {
 
-        passwordBtn.addEventListener("click", () => {
+  phoneField.value = phoneField.value.replace(/[^0-9+ ]/g, '');
 
-            if (
-                currentPassword.value.trim() === "" ||
-                newPassword.value.trim() === ""
-            ) {
-
-                alert("Please fill all password fields");
-                return;
-
-            }
-
-            /* PASSWORD LENGTH */
-
-            if (newPassword.value.length < 6) {
-
-                alert("New Password must be at least 6 characters");
-                return;
-
-            }
-
-            /* CHECK BOTH PASSWORDS MATCH */
+});
 
 
-            alert("Password Changed Successfully");
+/* EMAIL VALIDATION */
 
-            /* CLEAR PASSWORD FIELDS */
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            currentPassword.value = "";
-            newPassword.value = "";
 
-        });
+/* ===== SAVE CHANGES VALIDATION ===== */
 
-        /* ===== ERROR PAGE REDIRECT ===== */
+const saveBtn = document.querySelector('.setting-section .btn-gold');
 
-        const errorPages = document.querySelectorAll('.errorpage');
+saveBtn.addEventListener("click", () => {
 
-        errorPages.forEach((item) => {
+  if (
+    firmName.value.trim() === "" ||
+    emailField.value.trim() === "" ||
+    phoneField.value.trim() === "" ||
+    addressField.value.trim() === ""
+  ) {
 
-            item.addEventListener('click', () => {
+    alert("Please fill all fields");
+    return;
 
-                window.location.href = "404.html";
+  }
 
-            });
+  /* CHECK EMAIL FORMAT */
 
-        });
+  if (!emailPattern.test(emailField.value)) {
+
+    alert("Please enter valid email");
+    return;
+
+  }
+
+  alert("Profile Updated Successfully");
+
+});
+
+
+/* ===== CHANGE PASSWORD VALIDATION ===== */
+
+const passwordBtn = document.querySelectorAll('.setting-section .btn-gold')[1];
+
+passwordBtn.addEventListener("click", () => {
+
+  if (
+    currentPassword.value.trim() === "" ||
+    newPassword.value.trim() === ""
+  ) {
+
+    alert("Please fill all password fields");
+    return;
+
+  }
+
+  /* PASSWORD LENGTH */
+
+  if (newPassword.value.length < 6) {
+
+    alert("New Password must be at least 6 characters");
+    return;
+
+  }
+
+  /* CHECK BOTH PASSWORDS MATCH */
+
+
+  alert("Password Changed Successfully");
+
+  /* CLEAR PASSWORD FIELDS */
+
+  currentPassword.value = "";
+  newPassword.value = "";
+
+});
+
+/* ===== ERROR PAGE REDIRECT ===== */
+
+const errorPages = document.querySelectorAll('.errorpage');
+
+errorPages.forEach((item) => {
+
+  item.addEventListener('click', () => {
+
+    window.location.href = "404.html";
+
+  });
+
+});
     </script>
 </body>
 
