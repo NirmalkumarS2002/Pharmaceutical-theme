@@ -696,16 +696,6 @@
             box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
         }
 
-        .newsletter-msg {
-            margin-top: 16px;
-            font-size: 13.5px;
-            color: #aef1cf;
-            font-weight: 600;
-            min-height: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
         /* ========================= SCROLL REVEAL ========================= */
         .reveal {
             opacity: 0;
@@ -1302,11 +1292,10 @@
             <h2>Never Miss an Update</h2>
             <p>Subscribe to our newsletter for the latest research breakthroughs, health insights, and company news
                 delivered straight to your inbox.</p>
-            <form class="newsletter-form" id="newsletterForm">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <p class="newsletter-msg" id="newsletterMsg"></p>
+          <form class="newsletter-form" id="newsletterForm">
+    <input type="email" id="emailInput" placeholder="Enter your email address" required>
+    <button type="submit">Subscribe</button>
+</form>
         </div>
     </section>
 
@@ -1331,7 +1320,7 @@
             <div class="footer-col">
                 <h4>Company</h4>
                 <ul class="footer-links">
-                    <li><a href="#about">About Us</a></li>
+                    <li><a href="about.html">About Us</a></li>
                     <li><a href="service.html">Services</a></li>
                     <li><a href="blog.html">Researchs</a></li>
                     <li><a href="contact.html">Contact</a></li>
@@ -1357,7 +1346,7 @@
                 <p style="font-size:13px; color:rgba(255,255,255,.45); line-height:1.7; margin-bottom:16px;">Stay
                     updated with our latest research, product launches, and health insights.</p>
                 <div class="footer-newsletter">
-                    <input type="email" placeholder="Enter your email address" id="footermail">
+                    <input type="email" id="footermail" placeholder="Enter your email" required>
                     <button class="footerbtn">Subscribe Now</button>
                 </div>
             </div>
@@ -1367,8 +1356,8 @@
         <div class="footer-bottom">
             <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
             <div class="footer-bottom-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Use</a>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms of Use</a>
             </div>
         </div>
     </footer>
@@ -1422,20 +1411,30 @@
         // FOOTER NEWSLETTER
         const emailInput = document.getElementById("footermail");
         const subscribeBtn = document.querySelector(".footerbtn");
-        subscribeBtn.addEventListener("click", () => {
+
+        subscribeBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+
             const email = emailInput.value.trim();
-            if (email === "") {
+
+            if (!email) {
                 alert("Please enter your email address.");
                 return;
             }
+
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
             if (!emailPattern.test(email)) {
                 alert("Please enter a valid email address.");
+                emailInput.focus();
                 return;
             }
+
             alert("Thank you for subscribing!");
             emailInput.value = "";
         });
+
+        
 
         // CATEGORY FILTER
         document.querySelectorAll(".cat-btn").forEach(btn => {
@@ -1475,6 +1474,29 @@
                 window.location.href = "index.html";
             });
         });
+
+
+        //
+
+        const form = document.getElementById("newsletterForm");
+const blogemail = document.getElementById("emailInput");
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault(); // page reload prevent
+
+    const email = blogemail.value.trim();
+
+    const emailPattern =
+        /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    alert("Thank you for subscribing!");
+    blogemail.value = "";
+});
     </script>
 </body>
 

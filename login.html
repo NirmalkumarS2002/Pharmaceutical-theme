@@ -955,29 +955,24 @@ body::before{
 
     
   });
-console.log("Selected Role:", role);
+
 
   // PASSWORD SHOW / HIDE
+const eyepass = document.getElementById("password");
+const togglePassword = document.getElementById("togglePassword");
+const eyeIcon = togglePassword.querySelector("i");
 
-  const togglePassword =
-    document.getElementById("togglePassword");
+togglePassword.addEventListener("click", () => {
 
-  togglePassword.addEventListener("click", () => {
+    if (eyepass.type === "password") {
+        eyepass.type = "text";
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+        eyepass.type = "password";
+        eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+    }
 
-    const type =
-      passwordInput.getAttribute("type") === "password"
-      ? "text"
-      : "password";
-
-    passwordInput.setAttribute("type", type);
-
-    togglePassword.innerHTML =
-      type === "password"
-      ? '<i class="fa-solid fa-eye"></i>'
-      : '<i class="fa-solid fa-eye-slash"></i>';
-
-  });
-
+});
 </script>
 
 </body>

@@ -750,13 +750,17 @@ body {
 }
 
 .service-card {
-  padding: 36px 30px;
+   padding: 36px 30px;
   border-radius: 20px;
   background: #f8fffe;
   border: 1px solid rgba(13,92,85,.1);
   transition: 0.4s ease;
   position: relative;
   overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .service-card::before {
@@ -801,10 +805,12 @@ body {
 }
 
 .service-card p {
-  font-size: 14px;
+   font-size: 14px;
   color: #5a7a76;
   line-height: 1.8;
   margin-bottom: 20px;
+
+  flex-grow: 1;
 }
 
 .service-link {
@@ -860,6 +866,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 24px;
+  align-items:stretch;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -872,6 +879,13 @@ body {
   transition: 0.35s ease;
   cursor: pointer;
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+   min-height: 310px; /* add this */
+
+  
 }
 
 .product-card:hover {
@@ -923,11 +937,17 @@ body {
   letter-spacing: 0.5px;
 }
 
-.product-card p {
+.product-card p:not(.prod-category) {
   font-size: 13px;
   color: #5a7a76;
   line-height: 1.7;
   margin-bottom: 18px;
+
+  flex-grow: 1;
+}
+
+.product-card > p:not(.prod-category){
+    flex:1;
 }
 
 .product-footer {
@@ -936,6 +956,8 @@ body {
   justify-content: space-between;
   border-top: 1px solid rgba(13,92,85,.08);
   padding-top: 14px;
+
+  margin-top: auto;
 }
 
 .product-footer span {
@@ -2094,7 +2116,8 @@ body {
         <div class="product-icon-wrap"><i class="fa-solid fa-heart-pulse"></i></div>
         <h3>CardioMax 40mg</h3>
         <p class="prod-category">Cardiology</p>
-        <p>High-efficacy statin for LDL reduction with proven cardiovascular outcome benefits.</p>
+        <p>Advanced cardiovascular therapy designed to support heart health
+        and help manage cholesterol and blood pressure levels.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Oral Tablet</span>
           <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
@@ -2142,7 +2165,8 @@ body {
         <div class="product-icon-wrap"><i class="fa-solid fa-droplet"></i></div>
         <h3>HyperControl XR</h3>
         <p class="prod-category">Cardiology</p>
-        <p>Extended-release antihypertensive for once-daily dosing with 24-hour blood pressure control.</p>
+        <p>Advanced cardiovascular therapy designed to support heart health
+        and help manage cholesterol and blood pressure levels.</p>
         <div class="product-footer">
           <span><i class="fa-solid fa-tablets"></i> Extended Release</span>
           <a href="404.html">Details <i class="fa-solid fa-arrow-right"></i></a>
@@ -2507,7 +2531,7 @@ body {
       <div class="footer-col">
         <h4>Company</h4>
         <ul class="footer-links">
-          <li><a href="#about">About Us</a></li>
+          <li><a href="about.html">About Us</a></li>
           <li><a href="service.html">Services</a></li>
           <li><a href="blog.html">Researchs</a></li>
           <li><a href="contact.html">Contact</a></li>
@@ -2543,7 +2567,7 @@ body {
       <p>© 2026 MediCore Pharma Ltd. All rights reserved.</p>
       <div class="footer-bottom-links">
         <a href="404.html">Privacy Policy</a>
-        <a href="404.html">Terms of Use</a>>
+        <a href="404.html">Terms of Use</a>
       </div>
     </div>
   </footer>
@@ -2638,13 +2662,24 @@ navBtn.addEventListener("click", () => {
     });
 
     // PRODUCTS FILTER
-    function filterProducts(btn, cat) {
-      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      document.querySelectorAll(".product-card").forEach(card => {
-        card.style.display = (cat === "all" || card.dataset.cat === cat) ? "block" : "none";
-      });
-    }
+    function filterProducts(btn, category) {
+
+    document.querySelectorAll('.filter-btn')
+        .forEach(b => b.classList.remove('active'));
+
+    btn.classList.add('active');
+
+    document.querySelectorAll('.product-card').forEach(card => {
+
+        if(category === 'all' || card.dataset.cat === category){
+            card.style.removeProperty('display');
+        }else{
+            card.style.display = 'none';
+        }
+
+    });
+}
+    
 
     // SCROLL REVEAL
     const revealEls = document.querySelectorAll(".reveal");
@@ -2824,6 +2859,13 @@ document.querySelectorAll(".nav-links a").forEach(link => {
         link.classList.add("active");
     }
 });
+
+     document.querySelectorAll(".homepage").forEach(item => {
+            item.addEventListener("click", function (e) {
+                e.preventDefault();
+                window.location.href = "index.html";
+            });
+        });
   </script>
 
 </body>
