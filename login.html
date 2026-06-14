@@ -253,6 +253,12 @@
       0 0 10px rgba(212,175,55,0.1);
     }
 
+
+    input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-textfield-decoration-container {
+    display: none !important;
+}
     /* CUSTOM DROPDOWN */
 
     .custom-select{
@@ -747,13 +753,15 @@ body::before{
           class="eye-btn"
           id="togglePassword">
 
-          <i class="fa-solid fa-eye"></i>
+          <i class="fa-solid fa-eye-slash"></i>
 
         </span>
 
       </div>
 
     </div>
+
+    
 
     <!-- LOGIN BUTTON -->
     <button class="login-btn">
@@ -966,10 +974,10 @@ togglePassword.addEventListener("click", () => {
 
     if (eyepass.type === "password") {
         eyepass.type = "text";
-        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
+        eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
     } else {
         eyepass.type = "password";
-        eyeIcon.classList.replace("fa-eye-slash", "fa-eye");
+        eyeIcon.classList.replace("fa-eye", "fa-eye-slash");
     }
 
 });
