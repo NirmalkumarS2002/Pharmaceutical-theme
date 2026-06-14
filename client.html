@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
     <style>
         * {
             margin: 0;
@@ -509,9 +510,28 @@ background: linear-gradient(135deg, #026d4f, #12c03ea9);
             margin-bottom: 12px;
         }
 
-        input[type="password"]{
+
+        .passbox {
+            position: relative;
+        }
+
+        .pass-icon {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-70%);
             display: flex;
             align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 20px
+        }
+
+
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear,
+        input[type="password"]::-webkit-textfield-decoration-container {
+            display: none !important;
         }
 
         .input-field:focus {
@@ -1832,35 +1852,40 @@ background: linear-gradient(135deg, #026d4f, #12c03ea9);
 
         </div>
 
-        <div class="setting-section">
+       <div class="setting-section">
 
-            <h3>
-                <i class="fa-solid fa-lock"></i>
-                Security Settings
-            </h3>
+                        <h3>
+                            <i class="fa-solid fa-lock"></i>
+                            Security Settings
+                        </h3>
 
-            <label style="color:black;font-size:12px;">
-                Current Password
-            </label>
+                        <label style="color:black;font-size:12px;">
+                            Current Password
+                        </label>
 
-            <input class="input-field"
-                type="password"
-                placeholder="Enter Current Password">
+                        <div class="passbox">
+                            <input class="input-field" type="password" placeholder="Enter Current Password">
+                            <span class="material-symbols-outlined pass-icon">visibility_off</span>
+                        </div>
 
-            <label style="color:black;font-size:12px;">
-                New Password
-            </label>
 
-            <input class="input-field"
-                type="password"
-                placeholder="Enter New Password">
 
-            <button class="btn-gold"
-                style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">
-                Change Password
-            </button>
+                        <label style="color:black;font-size:12px;">
+                            New Password
+                        </label>
 
-        </div>
+                        <div class="passbox">
+                            <input class="input-field" type="password" placeholder="Enter New Password">
+                            <span class="material-symbols-outlined pass-icon">visibility_off</span>
+                        </div>
+
+
+
+                        <button class="btn-gold" style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">
+                            Change Password
+                        </button>
+
+                    </div>
 
     </div>
 
@@ -2056,49 +2081,6 @@ background: linear-gradient(135deg, #026d4f, #12c03ea9);
             document.getElementById('avatarEl').innerText = savedEmail.charAt(0).toUpperCase();
         }
 
-        /* ===== PASSWORD EYE ICON ===== */
-
-const passwordFields = document.querySelectorAll(
-  'input[type="password"]'
-);
-
-passwordFields.forEach((input) => {
-
-  const wrapper = document.createElement("div");
-  wrapper.style.position = "relative";
-
-  input.parentNode.insertBefore(wrapper, input);
-  wrapper.appendChild(input);
-
-  input.style.paddingRight = "45px";
-
-  const eye = document.createElement("i");
-  eye.className = "fa-solid fa-eye";
-  eye.style.position = "absolute";
-  eye.style.right = "15px";
-  eye.style.top = "50%";
-  eye.style.transform = "translateY(-50%)";
-  eye.style.color = "#888";
-  eye.style.cursor = "pointer";
-
-  wrapper.appendChild(eye);
-
-  eye.addEventListener("click", () => {
-
-    if (input.type === "password") {
-      input.type = "text";
-      eye.classList.remove("fa-eye");
-      eye.classList.add("fa-eye-slash");
-    } else {
-      input.type = "password";
-      eye.classList.remove("fa-eye-slash");
-      eye.classList.add("fa-eye");
-    }
-
-  });
-
-});
-
 
 /* ===== INPUT VALIDATION ===== */
 const firmName = document.querySelector('input[value="Apollo Pharmacy"]');
@@ -2201,6 +2183,31 @@ passwordBtn.addEventListener("click", () => {
   newPassword.value = "";
 
 });
+
+      //password eye
+
+        const passeye = document.querySelectorAll(".pass-icon")
+
+        passeye.forEach((eyebtn) => {
+
+            const input =
+                eyebtn.parentElement.querySelector("input");
+            eyebtn.addEventListener("click", () => {
+
+                if (input.type === "password") {
+                    input.type = "text"
+                    eyebtn.textContent = "visibility"
+                }
+
+                else {
+                    input.type = "password"
+                    eyebtn.textContent = "visibility_off"
+                }
+
+            })
+
+
+        })
 
 /* ===== ERROR PAGE REDIRECT ===== */
 
