@@ -1452,8 +1452,14 @@ body {
   color: #3d5c59;
 }
 
+.custom-select label{
+    font-size: 13px;
+  font-weight: 500;
+  color: #3d5c59;
+}
+
 .form-group input,
-.form-group select,
+.select-btn,
 .form-group textarea {
   padding: 12px 16px;
   border-radius: 10px;
@@ -1467,7 +1473,7 @@ body {
 }
 
 .form-group input:focus,
-.form-group select:focus,
+.select-btn:focus,
 .form-group textarea:focus {
   border-color: #0D5C55;
   box-shadow: 0 0 0 3px rgba(13,92,85,.1);
@@ -1499,6 +1505,73 @@ body {
 .form-submit:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(13,92,85,.35);
+}
+
+.custom-select{
+    position: relative;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.select-btn{
+    height: 50px;
+    background: #ffffff;
+    border: 1px solid rgba(128, 128, 128, 0.432);
+    border-radius: 14px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.select-btn:hover{
+     border-color: #0D5C55;
+  box-shadow: 0 0 0 3px rgba(13,92,85,.1);
+}
+
+.select-btn i{
+    color: black;
+    transition: 0.3s;
+}
+
+.custom-select.active .select-btn i{
+    transform: rotate(180deg);
+}
+
+.options{
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+       background:#ffffff;
+    border:1px solid #c7ddd7;
+    border-radius: 14px;
+    overflow: hidden;
+    display: none;
+    z-index: 100;
+}
+
+.custom-select.active .options{
+    display: block;
+}
+
+.options li{
+    list-style: none;
+    padding: 15px 18px;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.options li:hover{
+   background:#eef5f3;
+    padding-left: 25px;
 }
 
 /* ========================= FOOTER ========================= */
@@ -2487,18 +2560,24 @@ body {
           <input type="tel" placeholder="+91 98765 43210" id="phone">
         </div>
 
-        <div class="form-group">
-          <label>Enquiry Type</label>
-          <select id="enquiry">
-            <option value="">Select enquiry type</option>
-            <option>Product Information</option>
-            <option>Bulk / Hospital Order</option>
-            <option>Research Partnership</option>
-            <option>Regulatory / Licensing</option>
-            <option>Medical Affairs</option>
-            <option>General Enquiry</option>
-          </select>
-        </div>
+ <div class="custom-select">
+  <label for="">Enquiry Type</label>
+    <div class="select-btn">
+        <span>Select Enquiry Type</span>
+        <i class="fa-solid fa-chevron-down"></i>
+    </div>
+
+    <ul class="options">
+        <li>Product Information</li>
+        <li>Bulk / Hospital Order</li>
+        <li>Research Partnership</li>
+        <li>Regulatory / Licensing</li>
+        <li>Medical Affairs</li>
+        <li>General Enquiry</li>
+    </ul>
+
+    <input type="hidden" id="enquiry" name="enquiry">
+</div>
 
         <div class="form-group">
           <label>Message</label>
@@ -2866,6 +2945,30 @@ document.querySelectorAll(".nav-links a").forEach(link => {
                 window.location.href = "index.html";
             });
         });
+
+        const customSelect = document.querySelector(".custom-select");
+const selectBtn = document.querySelector(".select-btn");
+const options = document.querySelectorAll(".options li");
+const selectedText = document.querySelector(".select-btn span");
+const hiddenInput = document.getElementById("enquiry");
+
+selectBtn.addEventListener("click", () => {
+    customSelect.classList.toggle("active");
+});
+
+options.forEach(option => {
+    option.addEventListener("click", () => {
+        selectedText.textContent = option.textContent;
+        hiddenInput.value = option.textContent;
+        customSelect.classList.remove("active");
+    });
+});
+
+document.addEventListener("click", (e) => {
+    if (!customSelect.contains(e.target)) {
+        customSelect.classList.remove("active");
+    }
+});
   </script>
 
 </body>
